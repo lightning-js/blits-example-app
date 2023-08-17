@@ -32,6 +32,9 @@ export default Bolt.Component('Positioning', {
         </Element>
       </Element>
 
+      <!-- positioning after a set of nested elements -->
+      <Element w="100" h="100" y="500" x="20" color="#e11d48" />
+
     </Element>`,
   state() {
     return {
