@@ -4,6 +4,7 @@ import Transitions from './pages/Transitions'
 import Colors from './pages/Colors'
 import ForLoop from './pages/ForLoop'
 import Components from './pages/Components'
+import Gradients from './pages/Gradients'
 
 export default Bolt.Application({
   components: {
@@ -12,6 +13,7 @@ export default Bolt.Application({
     Colors,
     ForLoop,
     Components,
+    Gradients,
   },
   template: `
     <Element w="1920" h="1080" color="#1e293b">
@@ -19,6 +21,7 @@ export default Bolt.Application({
       <!--Transitions /-->
       <!--Colors /-->
       <!--ForLoop /-->
-      <Components />
+      <!--Components /-->
+      <Gradients />
     </Element>`,
 })
