@@ -6,6 +6,7 @@ import ForLoop from './pages/ForLoop'
 import Components from './pages/Components'
 import Gradients from './pages/Gradients'
 import KeyInput from './pages/KeyInput'
+import Scaling from './pages/Scaling'
 
 export default Bolt.Application({
   components: {
@@ -16,6 +17,7 @@ export default Bolt.Application({
     Components,
     Gradients,
     KeyInput,
+    Scaling,
   },
   template: `
     <Element w="1920" h="1080" color="#1e293b">
@@ -25,7 +27,8 @@ export default Bolt.Application({
       <!--ForLoop /-->
       <!--Components /-->
       <!--Gradients /-->
-      <KeyInput id="keyinputPage" />
+      <!--KeyInput id="keyinputPage" /-->
+      <Scaling />
     </Element>`,
   hooks: {
     render() {
