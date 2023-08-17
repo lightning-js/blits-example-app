@@ -8,6 +8,7 @@ import Gradients from './pages/Gradients'
 import KeyInput from './pages/KeyInput'
 import Scaling from './pages/Scaling'
 import Effects from './pages/Effects'
+import Alpha from './pages/Alpha'
 
 export default Bolt.Application({
   components: {
@@ -20,6 +21,7 @@ export default Bolt.Application({
     KeyInput,
     Scaling,
     Effects,
+    Alpha,
   },
   template: `
     <Element w="1920" h="1080" color="#1e293b">
@@ -31,7 +33,8 @@ export default Bolt.Application({
       <!--Gradients /-->
       <!--KeyInput id="keyinputPage" /-->
       <!--Scaling /-->
-      <Effects />
+      <!--Effects /-->
+      <Alpha />
     </Element>`,
   hooks: {
     render() {
