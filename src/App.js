@@ -9,6 +9,7 @@ import KeyInput from './pages/KeyInput'
 import Scaling from './pages/Scaling'
 import Effects from './pages/Effects'
 import Alpha from './pages/Alpha'
+import Intro from './pages/Intro'
 
 export default Bolt.Application({
   components: {
@@ -22,6 +23,7 @@ export default Bolt.Application({
     Scaling,
     Effects,
     Alpha,
+    Intro,
   },
   template: `
     <Element w="1920" h="1080" color="#1e293b">
@@ -34,12 +36,16 @@ export default Bolt.Application({
       <!--KeyInput id="keyinputPage" /-->
       <!--Scaling /-->
       <!--Effects /-->
-      <Alpha />
+      <!--Alpha /-->
+      <Intro id="introPage">
     </Element>`,
   hooks: {
     render() {
       const keyinputPage = this.select('keyinputPage')
       if (keyinputPage) keyinputPage.focus()
+
+      const introPage = this.select('introPage')
+      if (introPage) introPage.focus()
     },
   },
 })
