@@ -21,7 +21,7 @@ export default Bolt.Component('ShowIf', {
         <!-- should not show -->
         <Element x="950" w="200" h="300" color="#84cc16" show="0" />
 
-        </Element>
+      </Element>
 
       <!-- dynamic show values -->
       <Element y="380">

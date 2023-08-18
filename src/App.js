@@ -11,6 +11,7 @@ import Effects from './pages/Effects'
 import Alpha from './pages/Alpha'
 import Intro from './pages/Intro'
 import ShowIf from './pages/ShowIf'
+import Images from './pages/Images'
 
 export default Bolt.Application({
   components: {
@@ -26,6 +27,7 @@ export default Bolt.Application({
     Alpha,
     Intro,
     ShowIf,
+    Images,
   },
   template: `
     <Element w="1920" h="1080" color="#1e293b">
@@ -39,13 +41,27 @@ export default Bolt.Application({
       <!--Scaling /-->
       <!--Effects /-->
       <!--Alpha /-->
-      <!--Intro-->
-      <ShowIf />
+      <!--Intro /-->
+      <!--ShowIf /-->
+      <Images />
     </Element>`,
+  // state() {
+  //   return {
+  //     currentPage: 0,
+  //   }
+  // },
   hooks: {
     render() {
       const keyinputPage = this.select('keyinputPage')
       if (keyinputPage) keyinputPage.focus()
     },
   },
+  // input: {
+  //   left() {
+  //     this.currentPage--
+  //   },
+  //   right() {
+  //     this.currentPage++
+  //   },
+  // },
 })
