@@ -1,6 +1,10 @@
 import Bolt from '@lightningjs/bolt'
+import Square from './../components/Square.js'
 
 export default Bolt.Component('ShowIf', {
+  components: {
+    Square,
+  },
   template: `
     <Element>
 
@@ -44,6 +48,18 @@ export default Bolt.Component('ShowIf', {
         <!--Element x="350" w="200" h="300" color="#5eead4" :show.transition="$showHideToggle" /-->
 
         </Element>
+
+        <!-- show on components! -->
+        <Element y="40" x="1000">
+          <!-- should show -->
+          <Square show="true" />
+          <!-- should not show -->
+          <Square y="100" show="false" />
+          <!-- should show / hide every 2 seconds -->
+          <Square y="200" :show="$showHideToggle" />
+        </Element>
+
+        <!-- show with a different alpha (defined as different attrubute on the element already) todo! -->
 
     </Element>`,
   state() {
