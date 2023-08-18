@@ -10,6 +10,7 @@ import Scaling from './pages/Scaling'
 import Effects from './pages/Effects'
 import Alpha from './pages/Alpha'
 import Intro from './pages/Intro'
+import ShowIf from './pages/ShowIf'
 
 export default Bolt.Application({
   components: {
@@ -24,6 +25,7 @@ export default Bolt.Application({
     Effects,
     Alpha,
     Intro,
+    ShowIf,
   },
   template: `
     <Element w="1920" h="1080" color="#1e293b">
@@ -37,15 +39,13 @@ export default Bolt.Application({
       <!--Scaling /-->
       <!--Effects /-->
       <!--Alpha /-->
-      <Intro id="introPage">
+      <!--Intro-->
+      <ShowIf />
     </Element>`,
   hooks: {
     render() {
       const keyinputPage = this.select('keyinputPage')
       if (keyinputPage) keyinputPage.focus()
-
-      const introPage = this.select('introPage')
-      if (introPage) introPage.focus()
     },
   },
 })
