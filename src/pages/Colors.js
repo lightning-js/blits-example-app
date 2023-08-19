@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Colors', {
-  template: `
+  template: /*html*/ `
     <Element>
       <!-- hex colors -->
       <Element x="20" y="20">

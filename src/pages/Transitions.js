@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Transitions', {
-  template: `
+  template: /*html*/ `
     <Element>
       <!-- simple, default transition -->
       <Element w="200" h="200" x="50" :y.transition="$y" color="#c4b5fd" />

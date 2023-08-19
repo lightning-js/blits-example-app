@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Alpha', {
-  template: `
+  template: /*html*/ `
     <Element>
       <Element y="100">
         <!-- hardcoded alpha values -->

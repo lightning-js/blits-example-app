@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Letter', {
-  template: `
+  template: /*html*/ `
     <Element>
       <Element w="$w" :h.transition="{v: 410+$offset, d: $duration, w: $wait, f: $timingFunction}"}" color="#E6E6E6" />
       <Element w="$w" h="280" :imageSource="$image" :y.transition="{v: 400+$offset, d: $duration, w: $wait, f: $timingFunction}" />

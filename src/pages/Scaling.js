@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Scaling', {
-  template: `
+  template: /*html*/ `
     <Element>
       <!-- non scaled element of 150 -->
       <Element x="100" y="100" w="150" h="150" color="#64748b" />

@@ -3,7 +3,7 @@ import Bolt from '@lightningjs/bolt'
 const colors = ['#bbf7d0', '#86efac', '#4ade80', '#22c55e', '#16a34a', '#15803d']
 
 export default Bolt.Component('ForLoop', {
-  template: `
+  template: /*html*/ `
     <Element>
       <Element>
         <!-- looping over a simple array with x values -->

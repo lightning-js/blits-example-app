@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Gradients', {
-  template: `
+  template: /*html*/ `
     <Element>
       <!-- optional notation idea -->
       <!--Element :w="1920/2" h="1080" :color="{top: '#0891b2', bottom: '#a5f3fc'}" /-->

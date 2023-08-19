@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Effects', {
-  template: `
+  template: /*html*/ `
     <Element>
       <!-- rounded corner effect -->
       <Element

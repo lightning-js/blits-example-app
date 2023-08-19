@@ -7,7 +7,7 @@ export default Bolt.Component('Components', {
     Square,
     Card,
   },
-  template: `
+  template: /*html*/ `
     <Element>
       <!-- simple square component that takes a size (number) argument and maps it to w and h -->
       <Square x="100" y="100" size="50" />

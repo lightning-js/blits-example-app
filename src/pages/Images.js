@@ -6,7 +6,7 @@ const images = [
 ]
 
 export default Bolt.Component('Images', {
-  template: `
+  template: /*html*/ `
     <Element>
       <!-- local image -->
       <Image src="assets/lightningbolt.jpg" w="428" h="234" x="100" y="100" />
