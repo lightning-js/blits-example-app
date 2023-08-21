@@ -1,23 +1,37 @@
 import Bolt from '@lightningjs/bolt'
+import Square from '../components/Square'
 
 const colors = ['#bbf7d0', '#86efac', '#4ade80', '#22c55e', '#16a34a', '#15803d']
 
 export default Bolt.Component('ForLoop', {
+  components: {
+    Square,
+  },
   template: /*html*/ `
     <Element>
       <Element>
         <!-- looping over a simple array with x values -->
-        <Element :for="item in $collection1" w="80" h="80" x="$item" color="#4d7c0f" />
+        <Element :for="item in $collection1" w="80" h="80" y="20" x="$item" color="#4d7c0f" />
       </Element>
 
       <Element>
-        <!-- looping over an array with objects -->
-        <Element :for="item in $collection2" w="80" h="80" y="$120" x="$item.x" color="$item.color" />
+          <!-- looping over an array with objects -->
+        <Element :for="item in $collection2" w="80" h="80" y="120" x="$item.x" color="$item.color" />
       </Element>
 
       <Element>
         <!-- looping over an array empty array, adding items over time -->
-        <Element :for="item in $collection3" w="80" h="80" y="$240" x="$item.x" color="$item.color" />
+        <Element :for="item in $collection3" w="80" h="80" y="220" x="$item.x" color="$item.color" />
+      </Element>
+
+      <Element y="320">
+        <!-- looping over an array of components -->
+        <Square :for="item in $collection2" x="$item.x" />
+      </Element>
+
+      <Element y="420">
+        <!-- looping over an array of components, adding items over time -->
+        <Square :for="item in $collection3" x="$item.x" />
       </Element>
 
     </Element>`,
