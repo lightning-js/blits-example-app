@@ -53,18 +53,18 @@ export default Bolt.Component('Positioning', {
   },
   hooks: {
     render() {
-      setTimeout(() => {
+      this.$setTimeout(() => {
         this.xD = this.xD + 200
         this.xC = this.xC + 100
         this.xB = this.xB + 50
         this.xA = this.xA + 25
       }, 4000)
 
-      setInterval(() => {
+      this.$setInterval(() => {
         this.yNested = this.yNested === 0 ? 50 : 0
       }, 2000)
 
-      setInterval(() => {
+      this.$setInterval(() => {
         this.xNested = this.xNested === 0 ? 150 : 0
       }, 1000)
     },

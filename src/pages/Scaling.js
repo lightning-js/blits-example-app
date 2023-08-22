@@ -35,7 +35,7 @@ export default Bolt.Component('Scaling', {
   },
   hooks: {
     render() {
-      setInterval(() => {
+      this.$setInterval(() => {
         const scale = this.direction === 'up' ? this.scale + 0.5 : 0
         this.scale = Math.max(Math.min(scale, 8), 0)
         if (this.scale === 8) {
@@ -46,7 +46,7 @@ export default Bolt.Component('Scaling', {
         }
       }, 500)
 
-      setInterval(() => {
+      this.$setInterval(() => {
         this.scale2 = this.scale2 === 1 ? 3 : 1
       }, 2000)
     },

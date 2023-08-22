@@ -28,17 +28,17 @@ export default Bolt.Component('Letter', {
   },
   methods: {
     animate() {
-      setTimeout(() => {
+      this.$setTimeout(() => {
         this.offset = 0
       }, 1000)
 
-      setTimeout(() => {
+      this.$setTimeout(() => {
         this.wait = this.delay + 150
         this.duration = 1000
         this.offset = 1080
       }, 2800)
 
-      setTimeout(() => {
+      this.$setTimeout(() => {
         this.wait = this.delay / 3
         this.timingFunction = 'ease-in-out'
         this.duration = 1500

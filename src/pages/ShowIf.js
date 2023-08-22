@@ -73,11 +73,11 @@ export default Bolt.Component('ShowIf', {
   },
   hooks: {
     render() {
-      setInterval(() => {
+      this.$setInterval(() => {
         this.showHideToggle = !!!this.showHideToggle
       }, 2000)
 
-      setTimeout(() => {
+      this.$setTimeout(() => {
         // this should not make a difference since no reactive bound is made
         this.showNr = 0
         this.hideNr = 1

@@ -61,7 +61,7 @@ export default Bolt.Component('Effects', {
   },
   hooks: {
     render() {
-      setInterval(() => {
+      this.$setInterval(() => {
         const radius = this.direction === 'up' ? this.radius + 10 : this.radius - 10
         this.radius = Math.max(Math.min(radius, 80), 0)
         if (this.radius === 80) {

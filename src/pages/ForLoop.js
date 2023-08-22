@@ -70,7 +70,7 @@ export default Bolt.Component('ForLoop', {
   },
   hooks: {
     render() {
-      setTimeout(() => {
+      this.$setTimeout(() => {
         this.collection2[0].color = colors[5]
         this.collection2[1].color = colors[4]
         this.collection2[2].color = colors[3]
@@ -80,7 +80,7 @@ export default Bolt.Component('ForLoop', {
       }, 4000)
 
       let count = 0
-      const interval = setInterval(() => {
+      const interval = this.$setInterval(() => {
         this.collection3.push({
           x: count * 100,
           color: colors[count],

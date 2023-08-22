@@ -34,7 +34,7 @@ export default Bolt.Component('Images', {
   },
   hooks: {
     render() {
-      setInterval(() => {
+      this.$setInterval(() => {
         this.image = this.image === images[0] ? images[1] : images[0]
       }, 2000)
     },

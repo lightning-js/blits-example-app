@@ -37,7 +37,7 @@ export default Bolt.Component('Alpha', {
   },
   hooks: {
     render() {
-      setInterval(() => {
+      this.$setInterval(() => {
         const alpha = this.direction === 'up' ? this.alpha + 0.2 : this.alpha - 0.2
         this.alpha = Math.max(Math.min(alpha, 1), 0.1)
         if (this.alpha === 1) {
