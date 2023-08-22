@@ -31,37 +31,45 @@ export default Bolt.Application({
   },
   template: `
     <Element w="1920" h="1080" color="#1e293b">
-      <!--Positioning /-->
-      <!--Transitions /-->
-      <!--Colors /-->
-      <!--ForLoop /-->
-      <!--Components /-->
-      <!--Gradients /-->
-      <!--KeyInput id="keyinputPage" /-->
-      <!--Scaling /-->
-      <!--Effects /-->
-      <!--Alpha /-->
-      <!--Intro /-->
-      <!--ShowIf /-->
-      <Images />
+      <RouterView />
     </Element>`,
-  // state() {
-  //   return {
-  //     currentPage: 0,
-  //   }
-  // },
-  hooks: {
-    render() {
-      const keyinputPage = this.select('keyinputPage')
-      if (keyinputPage) keyinputPage.focus()
+  state() {
+    return {
+      currentPage: 0,
+    }
+  },
+  routes: [
+    { path: '/', component: Intro },
+    { path: '/positioning', component: Positioning },
+    { path: '/transitions', component: Transitions },
+    { path: '/gradients', component: Gradients },
+    { path: '/components', component: Components },
+    { path: '/keyinput', component: KeyInput },
+    { path: '/colors', component: Colors },
+    // { path: '/forloop', component: ForLoop },
+    { path: '/scaling', component: Scaling },
+    { path: '/effects', component: Effects },
+    { path: '/alpha', component: Alpha },
+    { path: '/showif', component: ShowIf },
+    { path: '/images', component: Images },
+  ],
+  input: {
+    a() {
+      this.$router.to('/')
+    },
+    b() {
+      this.$router.to('/transitions')
+    },
+    c() {
+      this.$router.to('/positioning')
+    },
+    left() {
+      this.currentPage = Math.max(this.currentPage - 1, 0)
+      this.$router.to(this.___routes[this.currentPage].path)
+    },
+    right() {
+      this.currentPage = Math.min(this.currentPage + 1, this.___routes.length - 1)
+      this.$router.to(this.___routes[this.currentPage].path)
     },
   },
-  // input: {
-  //   left() {
-  //     this.currentPage--
-  //   },
-  //   right() {
-  //     this.currentPage++
-  //   },
-  // },
 })
