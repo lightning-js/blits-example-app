@@ -48,11 +48,21 @@ export default Bolt.Component('KeyInput', {
     },
   },
   input: {
-    left() {
-      this.focusedX = Math.max(this.focusedX - 1, 0)
+    left(e) {
+      const focusedX = this.focusedX - 1
+      if (focusedX === -1) {
+        this.parent.focus(e)
+      } else {
+        this.focusedX = Math.max(focusedX, 0)
+      }
     },
-    right() {
-      this.focusedX = Math.min(this.focusedX + 1, 3)
+    right(e) {
+      const focusedX = this.focusedX + 1
+      if (focusedX === 4) {
+        this.parent.focus(e)
+      } else {
+        this.focusedX = Math.min(focusedX, 3)
+      }
     },
     up() {
       this.focusedY = Math.max(this.focusedY - 1, 0)
