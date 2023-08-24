@@ -1,4 +1,5 @@
 import Bolt from '@lightningjs/bolt'
+
 import Positioning from './pages/Positioning'
 import Transitions from './pages/Transitions'
 import Colors from './pages/Colors'
@@ -12,6 +13,7 @@ import Alpha from './pages/Alpha'
 import Intro from './pages/Intro'
 import ShowIf from './pages/ShowIf'
 import Images from './pages/Images'
+import Rotation from './pages/Rotation'
 
 export default Bolt.Application({
   components: {
@@ -28,6 +30,7 @@ export default Bolt.Application({
     Intro,
     ShowIf,
     Images,
+    Rotation,
   },
   template: `
     <Element w="1920" h="1080" color="#1e293b">
@@ -52,6 +55,7 @@ export default Bolt.Application({
     { path: '/alpha', component: Alpha },
     { path: '/showif', component: ShowIf },
     { path: '/images', component: Images },
+    { path: '/rotation', component: Rotation },
   ],
   input: {
     a() {
