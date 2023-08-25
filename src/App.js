@@ -15,7 +15,8 @@ import ShowIf from './pages/ShowIf'
 import Images from './pages/Images'
 import Rotation from './pages/Rotation'
 import Events from './pages/Events'
-import FocusHandling from './pages/Focushandling'
+import FocusHandling from './pages/FocusHandling'
+import Home from './pages/Home'
 
 export default Bolt.Application({
   components: {
@@ -35,6 +36,7 @@ export default Bolt.Application({
     Rotation,
     Events,
     FocusHandling,
+    Home,
   },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
@@ -47,22 +49,22 @@ export default Bolt.Application({
     }
   },
   routes: [
-    { path: '/', component: Intro },
-    { path: '/positioning', component: Positioning },
-    { path: '/transitions', component: Transitions },
-    { path: '/gradients', component: Gradients },
-    { path: '/components', component: Components },
-    { path: '/keyinput', component: KeyInput },
-    { path: '/colors', component: Colors },
-    // { path: '/forloop', component: ForLoop },
-    { path: '/scaling', component: Scaling },
-    { path: '/effects', component: Effects },
-    { path: '/alpha', component: Alpha },
-    { path: '/showif', component: ShowIf },
-    { path: '/images', component: Images },
-    { path: '/rotation', component: Rotation },
-    { path: '/events', component: Events },
-    { path: '/focushandling', component: FocusHandling },
+    { path: '/', component: Home },
+    // { path: '/positioning', component: Positioning },
+    // { path: '/transitions', component: Transitions },
+    // { path: '/gradients', component: Gradients },
+    // { path: '/components', component: Components },
+    // { path: '/keyinput', component: KeyInput },
+    // { path: '/colors', component: Colors },
+    // // { path: '/forloop', component: ForLoop },
+    // { path: '/scaling', component: Scaling },
+    // { path: '/effects', component: Effects },
+    // { path: '/alpha', component: Alpha },
+    // { path: '/showif', component: ShowIf },
+    // { path: '/images', component: Images },
+    // { path: '/rotation', component: Rotation },
+    // { path: '/events', component: Events },
+    // { path: '/focushandling', component: FocusHandling },
   ],
   hooks: {
     init() {
