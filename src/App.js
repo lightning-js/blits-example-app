@@ -15,6 +15,7 @@ import ShowIf from './pages/ShowIf'
 import Images from './pages/Images'
 import Rotation from './pages/Rotation'
 import Events from './pages/Events'
+import FocusHandling from './pages/Focushandling'
 
 export default Bolt.Application({
   components: {
@@ -33,6 +34,7 @@ export default Bolt.Application({
     Images,
     Rotation,
     Events,
+    FocusHandling,
   },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
@@ -60,6 +62,7 @@ export default Bolt.Application({
     { path: '/images', component: Images },
     { path: '/rotation', component: Rotation },
     { path: '/events', component: Events },
+    { path: '/focushandling', component: FocusHandling },
   ],
   hooks: {
     init() {

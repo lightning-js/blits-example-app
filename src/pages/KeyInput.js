@@ -42,11 +42,6 @@ export default Bolt.Component('KeyInput', {
       return this.colorscheme === 'yellow' ? '#facc15' : '#38bdf8'
     },
   },
-  hooks: {
-    focus() {
-      console.log('Focus received by KeyInput Page')
-    },
-  },
   input: {
     left(e) {
       const focusedX = this.focusedX - 1

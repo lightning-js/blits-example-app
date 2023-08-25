@@ -2,7 +2,7 @@ import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Square', {
   template: /*html*/ `
-    <Element w="$size" h="$size" color="#86198f">
+    <Element w="$size" h="$size" color="#86198f" />
   `,
   props: [
     {
