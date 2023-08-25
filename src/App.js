@@ -14,6 +14,7 @@ import Intro from './pages/Intro'
 import ShowIf from './pages/ShowIf'
 import Images from './pages/Images'
 import Rotation from './pages/Rotation'
+import Events from './pages/Events'
 
 export default Bolt.Application({
   components: {
@@ -31,14 +32,16 @@ export default Bolt.Application({
     ShowIf,
     Images,
     Rotation,
+    Events,
   },
   template: `
-    <Element w="1920" h="1080" color="#1e293b">
+    <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView />
     </Element>`,
   state() {
     return {
       currentPage: 0,
+      backgroundColor: '#1e293b',
     }
   },
   routes: [
@@ -56,7 +59,15 @@ export default Bolt.Application({
     { path: '/showif', component: ShowIf },
     { path: '/images', component: Images },
     { path: '/rotation', component: Rotation },
+    { path: '/events', component: Events },
   ],
+  hooks: {
+    init() {
+      this.$listen('changeBackground', (color) => {
+        this.backgroundColor = color ? color + 80 : '#1e293b'
+      })
+    },
+  },
   input: {
     a() {
       this.$router.to('/')

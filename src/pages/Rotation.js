@@ -1,6 +1,6 @@
 import Bolt from '@lightningjs/bolt'
 
-export default Bolt.Component('Scaling', {
+export default Bolt.Component('Rotation', {
   template: /*html*/ `
     <Element>
 
