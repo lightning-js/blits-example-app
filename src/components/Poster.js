@@ -9,25 +9,26 @@ export default Bolt.Component('Poster', {
     :effects="[$shader('radius', {radius: 8})]"
     />`,
   props: ['src', 'index'],
+  state() {
+    return {
+      scale: 1,
+      colorBottom: '#000',
+    }
+  },
   computed: {
     x() {
       return this.index * 215
-    },
-    colorBottom() {
-      return this.index === 0 ? '#fff' : '#000'
-    },
-    scale() {
-      return this.index === 0 ? 1.1 : 1
     },
   },
   hooks: {
     focus() {
       this.colorBottom = '#fff'
       this.scale = 1.1
+      this.$emit('posterSelect', this.index)
     },
     unfocus() {
       this.colorBottom = '#000'
-      this.scale = 1.1
+      this.scale = 1
     },
   },
 })
