@@ -4,10 +4,13 @@ export default Bolt.Component('Poster', {
   template: /*html*/ `
     <Image w="185" h="278" x="$x"
     :src="$src"
-    :colorBottom.transition="{v: $colorBottom, d: 200, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
+    colorTop="ffffff"
+    :colorBottom="$colorBottom"
     :scale.transition="{v: $scale, d: 200, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
     :effects="[$shader('radius', {radius: 8})]"
     />`,
+  // color transitions have some issues, so I'll leave it out for now
+  // :colorBottom.transition="{v: $colorBottom, d: 200, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"!
   props: ['src', 'index'],
   state() {
     return {
