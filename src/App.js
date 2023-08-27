@@ -17,6 +17,7 @@ import Rotation from './pages/Rotation'
 import Events from './pages/Events'
 import FocusHandling from './pages/FocusHandling'
 import Home from './pages/Home'
+import Splash from './pages/Splash'
 
 export default Bolt.Application({
   components: {
@@ -37,8 +38,9 @@ export default Bolt.Application({
     Events,
     FocusHandling,
     Home,
+    Splash,
   },
-  template: `
+  template: /*html*/ `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView />
     </Element>`,
@@ -49,7 +51,8 @@ export default Bolt.Application({
     }
   },
   routes: [
-    { path: '/', component: Home },
+    { path: '/', component: Splash },
+    { path: '/home', component: Home },
     // { path: '/positioning', component: Positioning },
     // { path: '/transitions', component: Transitions },
     // { path: '/gradients', component: Gradients },
@@ -74,22 +77,25 @@ export default Bolt.Application({
     },
   },
   input: {
-    a() {
-      this.$router.to('/')
+    enter() {
+      this.$router.to('/home')
     },
-    b() {
-      this.$router.to('/transitions')
-    },
-    c() {
-      this.$router.to('/positioning')
-    },
-    left() {
-      this.currentPage = Math.max(this.currentPage - 1, 0)
-      this.$router.to(this.___routes[this.currentPage].path)
-    },
-    right() {
-      this.currentPage = Math.min(this.currentPage + 1, this.___routes.length - 1)
-      this.$router.to(this.___routes[this.currentPage].path)
-    },
+    // a() {
+    //   this.$router.to('/')
+    // },
+    // b() {
+    //   this.$router.to('/transitions')
+    // },
+    // c() {
+    //   this.$router.to('/positioning')
+    // },
+    // left() {
+    //   this.currentPage = Math.max(this.currentPage - 1, 0)
+    //   this.$router.to(this.___routes[this.currentPage].path)
+    // },
+    // right() {
+    //   this.currentPage = Math.min(this.currentPage + 1, this.___routes.length - 1)
+    //   this.$router.to(this.___routes[this.currentPage].path)
+    // },
   },
 })
