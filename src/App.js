@@ -1,5 +1,6 @@
 import Bolt from '@lightningjs/bolt'
 
+import Empty from './pages/Empty'
 import Positioning from './pages/Positioning'
 import Transitions from './pages/Transitions'
 import Colors from './pages/Colors'
@@ -16,11 +17,12 @@ import Images from './pages/Images'
 import Rotation from './pages/Rotation'
 import Events from './pages/Events'
 import FocusHandling from './pages/FocusHandling'
-import Home from './pages/Home'
+import Tmdb from './pages/Tmdb'
 import Splash from './pages/Splash'
 
 export default Bolt.Application({
   components: {
+    Empty,
     Positioning,
     Transitions,
     Colors,
@@ -37,7 +39,7 @@ export default Bolt.Application({
     Rotation,
     Events,
     FocusHandling,
-    Home,
+    Tmdb,
     Splash,
   },
   template: /*html*/ `
@@ -51,23 +53,25 @@ export default Bolt.Application({
     }
   },
   routes: [
-    { path: '/', component: Splash },
-    { path: '/home', component: Home },
-    // { path: '/positioning', component: Positioning },
-    // { path: '/transitions', component: Transitions },
-    // { path: '/gradients', component: Gradients },
-    // { path: '/components', component: Components },
-    // { path: '/keyinput', component: KeyInput },
-    // { path: '/colors', component: Colors },
-    // // { path: '/forloop', component: ForLoop },
-    // { path: '/scaling', component: Scaling },
-    // { path: '/effects', component: Effects },
-    // { path: '/alpha', component: Alpha },
-    // { path: '/showif', component: ShowIf },
-    // { path: '/images', component: Images },
-    // { path: '/rotation', component: Rotation },
-    // { path: '/events', component: Events },
-    // { path: '/focushandling', component: FocusHandling },
+    { path: '/', component: Empty },
+    { path: '/intro', component: Intro },
+    { path: '/positioning', component: Positioning },
+    { path: '/transitions', component: Transitions },
+    { path: '/gradients', component: Gradients },
+    { path: '/components', component: Components },
+    { path: '/keyinput', component: KeyInput },
+    { path: '/colors', component: Colors },
+    { path: '/forloop', component: ForLoop },
+    { path: '/scaling', component: Scaling },
+    { path: '/effects', component: Effects },
+    { path: '/alpha', component: Alpha },
+    { path: '/showif', component: ShowIf },
+    { path: '/images', component: Images },
+    { path: '/rotation', component: Rotation },
+    { path: '/events', component: Events },
+    { path: '/focushandling', component: FocusHandling },
+    { path: '/splash', component: Splash },
+    { path: '/tmdb', component: Tmdb },
   ],
   hooks: {
     init() {
@@ -80,22 +84,22 @@ export default Bolt.Application({
     enter() {
       this.$router.to('/home')
     },
-    // a() {
-    //   this.$router.to('/')
-    // },
-    // b() {
-    //   this.$router.to('/transitions')
-    // },
-    // c() {
-    //   this.$router.to('/positioning')
-    // },
-    // left() {
-    //   this.currentPage = Math.max(this.currentPage - 1, 0)
-    //   this.$router.to(this.___routes[this.currentPage].path)
-    // },
-    // right() {
-    //   this.currentPage = Math.min(this.currentPage + 1, this.___routes.length - 1)
-    //   this.$router.to(this.___routes[this.currentPage].path)
-    // },
+    a() {
+      this.$router.to('/')
+    },
+    b() {
+      this.$router.to('/transitions')
+    },
+    c() {
+      this.$router.to('/positioning')
+    },
+    left() {
+      this.currentPage = Math.max(this.currentPage - 1, 0)
+      this.$router.to(this.___routes[this.currentPage].path)
+    },
+    right() {
+      this.currentPage = Math.min(this.currentPage + 1, this.___routes.length - 1)
+      this.$router.to(this.___routes[this.currentPage].path)
+    },
   },
 })
