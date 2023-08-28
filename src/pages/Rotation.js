@@ -66,8 +66,7 @@ export default Bolt.Component('Rotation', {
       <Element x="800" y="200" w="400" h="400" color="#0891b2" :rotation="$rotation2" />
 
       <!-- reactive rotation value animated -->
-      <Element x="1400" y="200" w="400" h="400" color="#0891b2" :rotation.transition="$rotation3"/>
-
+      <!--Element x="1400" y="200" w="400" h="400" color="#0891b2" :rotation.transition="$rotation3"/-->
 
     </Element>`,
   state() {

@@ -19,8 +19,7 @@ export default Bolt.Component('Alpha', {
       <Element w="200" h="200" x="100" y="540" color="#fff" :alpha="$alpha" />
 
       <!-- reactive alpha value (with transition) -->
-      <Element w="200" h="200" x="100" y="760" color="#fff" :alpha.transition="{v: $alpha, d: 500, f: 'ease-in-out-circ'}" />
-
+      <Element w="200" h="200" x="100" y="760" color="#fff" :alpha.transition="{v: $alpha, d: 1000, f: 'ease-in-out-circ'}" />
 
       <Element w="428" h="234" x="1200" y="100" :imageSource="$image" alpha="1" />
       <Element w="428" h="234" x="1200" :y="100 + 234 + 20" :imageSource="$image" alpha=".6" />
@@ -46,7 +45,7 @@ export default Bolt.Component('Alpha', {
         if (this.alpha === 0.1) {
           this.direction = 'up'
         }
-      }, 1000)
+      }, 1400)
     },
   },
 })

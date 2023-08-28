@@ -44,9 +44,6 @@ export default Bolt.Component('ShowIf', {
         <!-- should show / hide every 2 seconds -->
         <Element x="50" w="200" h="300" color="#5eead4" :show="$showHideToggle" />
 
-        <!-- show / hide with transition ... todo! -->
-        <!--Element x="350" w="200" h="300" color="#5eead4" :show.transition="$showHideToggle" /-->
-
         </Element>
 
         <!-- show on components! -->
@@ -58,8 +55,6 @@ export default Bolt.Component('ShowIf', {
           <!-- should show / hide every 2 seconds -->
           <Square y="200" :show="$showHideToggle" />
         </Element>
-
-        <!-- show with a different alpha (defined as different attrubute on the element already) todo! -->
 
     </Element>`,
   state() {
