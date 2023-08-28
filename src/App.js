@@ -78,12 +78,14 @@ export default Bolt.Application({
       this.$listen('changeBackground', (color) => {
         this.backgroundColor = color ? color + 80 : '#1e293b'
       })
+
+      const hash = (document.location.hash || '/').replace(/^#/, '')
+      this.___routes.forEach((r, i) => {
+        if (r.path === hash) this.currentPage = i
+      })
     },
   },
   input: {
-    enter() {
-      this.$router.to('/home')
-    },
     a() {
       this.$router.to('/')
     },
