@@ -40,6 +40,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
         // Allow serving files from one level up to the project root
         allow: ['..'],
       },
+      port: 5181,
     },
     worker: {
       format: 'es',
