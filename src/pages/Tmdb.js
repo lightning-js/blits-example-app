@@ -12,7 +12,7 @@ export default Bolt.Component('Home', {
     <Element w="1920" h="1080" color="black">
       <Background :src="$src" />
       <Element :alpha.transition="{v: $alphaIn, d: 300, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
-        <Image src="assets/logo.png" x="130" :y.transition="{v: $logoY, d: 300, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}" w="125" h="30"/>
+        <Image src="assets/logo.png" x="130" :y.transition="{v: $logoY, d: 300, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}" w="125" h="30" />
         <Element :x.transition="{v: $x, d: 300, f: 'ease-in-out'}"  :y.transition="{v: $listY, d: 300, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
           <Poster :for="(item, index) in $items" index="$index" src="$item.poster" id="$item.identifier"/>
         </Element>
