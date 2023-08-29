@@ -19,6 +19,7 @@ import Events from './pages/Events'
 import FocusHandling from './pages/FocusHandling'
 import Tmdb from './pages/Tmdb'
 import Splash from './pages/Splash'
+import Sprites from './pages/Sprites'
 
 export default Bolt.Application({
   components: {
@@ -41,6 +42,7 @@ export default Bolt.Application({
     FocusHandling,
     Tmdb,
     Splash,
+    Sprites,
   },
   template: /*html*/ `
     <Element w="1920" h="1080" :color="$backgroundColor">
@@ -72,6 +74,7 @@ export default Bolt.Application({
     { path: '/focushandling', component: FocusHandling },
     { path: '/splash', component: Splash },
     { path: '/tmdb', component: Tmdb },
+    { path: '/sprites', component: Sprites },
   ],
   hooks: {
     init() {
