@@ -52,7 +52,7 @@ export default Bolt.Component('Positioning', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setTimeout(() => {
         this.xD = this.xD + 200
         this.xC = this.xC + 100

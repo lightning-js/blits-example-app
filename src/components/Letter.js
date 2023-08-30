@@ -22,7 +22,7 @@ export default Bolt.Component('Letter', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.animate()
     },
   },

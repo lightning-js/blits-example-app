@@ -35,7 +35,7 @@ export default Bolt.Component('Home', {
     },
   },
   hooks: {
-    render() {
+    ready() {
       this.alphaIn = 1
       this.listY = 700
       this.logoY = 80

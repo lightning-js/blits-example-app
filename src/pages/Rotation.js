@@ -77,7 +77,7 @@ export default Bolt.Component('Rotation', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setInterval(() => {
         const rotation = this.rotation2 + 10
         this.rotation2 = rotation <= 360 ? rotation : 0

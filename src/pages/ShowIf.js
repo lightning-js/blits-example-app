@@ -67,7 +67,7 @@ export default Bolt.Component('ShowIf', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setInterval(() => {
         this.showHideToggle = !!!this.showHideToggle
       }, 2000)

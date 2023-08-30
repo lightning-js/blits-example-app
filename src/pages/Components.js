@@ -25,7 +25,7 @@ export default Bolt.Component('Components', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setInterval(() => {
         this.x = this.x === 100 ? 250 : 100
       }, 2000)

@@ -35,7 +35,7 @@ export default Bolt.Component('EggSprite', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setInterval(() => {
         const frame = this.frame + 1
         this.frame = frame > this.map.frames.length - 1 ? 0 : frame

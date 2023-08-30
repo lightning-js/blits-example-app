@@ -20,7 +20,6 @@ export default Bolt.Component('Images', {
       <Image
         :src="$image"
         w="428" h="234" x="100" y="700"
-        :effects="[$shader('radius', {radius: 10})]"
       />
 
       <!-- local image with color -->
@@ -33,7 +32,7 @@ export default Bolt.Component('Images', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setInterval(() => {
         this.image = this.image === images[0] ? images[1] : images[0]
       }, 2000)

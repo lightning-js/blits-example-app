@@ -28,7 +28,7 @@ export default Bolt.Component('MonkeySprite', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setInterval(() => {
         const frame = this.frame + 1
         this.frame = frame > this.map.length - 1 ? 0 : frame

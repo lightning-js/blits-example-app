@@ -15,7 +15,7 @@ export default Bolt.Component('Empty', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setInterval(() => {
         this.alpha = this.count % 2 ? 0 : 1
         this.count++

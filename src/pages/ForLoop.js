@@ -8,34 +8,34 @@ export default Bolt.Component('ForLoop', {
     Square,
   },
   template: /*html*/ `
-    <Element>
       <Element>
         <!-- looping over a simple array with x values -->
-        <Element :for="item in $collection1" w="80" h="80" y="20" x="$item" color="#4d7c0f" />
-      </Element>
+        <Element y="20">
+          <Element :for="item in $collection1" w="80" h="80" x="$item" color="#4d7c0f" />
+        </Element>
 
-      <Element>
+        <Element y="120">
           <!-- looping over an array with objects -->
-        <Element :for="item in $collection2" w="80" h="80" y="120" x="$item.x" color="$item.color" />
-      </Element>
+          <Element :for="item in $collection2" w="80" h="80" :x="$item.x * $index" color="$item.color" />
+        </Element>
 
-      <Element>
-        <!-- looping over an array empty array, adding items over time -->
-        <Element :for="item in $collection3" w="80" h="80" y="220" x="$item.x" color="$item.color" />
-      </Element>
+        <Element y="220">
+          <!-- looping over an array empty array, adding items over time -->
+          <Element :for="item in $collection3" w="80" h="80" :x="$item.x" color="$item.color" />
+        </Element>
 
-      <Element y="320">
-        <!-- looping over an array of components -->
-        <Square :for="item in $collection2" x="$item.x" />
-      </Element>
+        <Element y="320">
+          <!-- looping over an array of components -->
+          <Square :for="(item, index) in $collection2" x="$item.x" :id="'square'+$index" />
+        </Element>
 
-      <Element y="420">
-        <!-- looping over an array of components, adding items over time -->
-        <Square :for="item in $collection3" x="$item.x" />
-      </Element>
+        <Element y="420">
+          <!-- looping over an array of components, adding items over time -->
+          <Square :for="item in $collection3" :x="$item.x" />
 
-    </Element>`,
+        </Element>
 
+      </Element>`,
   state() {
     return {
       collection1: [0, 100, 200, 300, 400, 500],
@@ -69,7 +69,7 @@ export default Bolt.Component('ForLoop', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setTimeout(() => {
         this.collection2[0].color = colors[5]
         this.collection2[1].color = colors[4]

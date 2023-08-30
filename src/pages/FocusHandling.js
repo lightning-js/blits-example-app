@@ -29,11 +29,7 @@ export default Bolt.Component('FocusHandling', {
   },
   hooks: {
     focus() {
-      console.log('set focus FocusHandling page received focus')
       this.select(`button${this.focused}`).focus()
-    },
-    unfocus() {
-      console.log('set focus FocusHandling page lost focus')
     },
   },
   input: {

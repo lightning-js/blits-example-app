@@ -24,7 +24,7 @@ export default Bolt.Component('Transitions', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setTimeout(() => {
         this.y = 1080 - 50 - 200
       }, 2000)

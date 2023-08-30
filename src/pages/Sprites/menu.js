@@ -33,7 +33,7 @@ export default Bolt.Component('MenuSprite', {
     }
   },
   hooks: {
-    render() {
+    ready() {
       this.$setInterval(() => {
         this.icon1 = this.icon1 === 'icon1_unfocus' ? 'icon1_focus' : 'icon1_unfocus'
       }, 2000)
