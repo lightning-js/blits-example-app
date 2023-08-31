@@ -20,13 +20,13 @@ export default Bolt.Component('Button', {
   },
   hooks: {
     focus() {
-      console.log(`Button with color ${this.color} received focus`)
+      this.$log.info(`Button with color ${this.color} received focus`)
       this.alpha = 1
       this.scale = this.scale === 1 ? 1.2 : 1
       this.zIndex = 100
     },
     unfocus() {
-      console.log(`Button with color ${this.color} lost focus`)
+      this.$log.info(`Button with color ${this.color} lost focus`)
       this.alpha = 0.4
       this.scale = 1
       this.zIndex = 1
