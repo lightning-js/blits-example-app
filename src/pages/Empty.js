@@ -11,14 +11,14 @@ export default Bolt.Component('Empty', {
   state() {
     return {
       alpha: 0,
-      count: 1,
     }
   },
   hooks: {
     ready() {
+      let count = 0
       this.$setInterval(() => {
-        this.alpha = this.count % 2 ? 0 : 1
-        this.count++
+        this.alpha = count % 2 ? 0 : 1
+        count++
       }, 800)
     },
   },
