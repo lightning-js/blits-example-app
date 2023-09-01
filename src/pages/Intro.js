@@ -6,7 +6,7 @@ export default Bolt.Component('Intro', {
     Letter,
   },
   template: /*html*/ `
-    <Element w="1920" h="1080" :imageSource="$background">
+    <Element w="1920" h="1080" :src="$background">
       <Letter letter="l" w="294" />
       <Letter letter="i-1" w="128" x="294" direction="up" delay="50" />
       <Letter letter="g-1" w="205" x="422" delay="100" />

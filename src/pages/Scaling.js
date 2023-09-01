@@ -12,7 +12,7 @@ export default Bolt.Component('Scaling', {
       <Element x="100" y="400" w="100" h="100" color="#b45309" scale="$scale" />
 
       <!-- reactive scaling (with transition) -->
-      <Element x="900" y="400" w="100" h="100" :imageSource="$balloon" :scale.transition="{v: $scale, f: 'ease-in-out'}" />
+      <Element x="900" y="400" w="100" h="100" :src="$balloon" :scale.transition="{v: $scale, f: 'ease-in-out'}" />
 
       <!-- scaling with a nested element -->
       <Element x="300" y="600" w="100" h="100" color="#059669" :scale="$scale2">
