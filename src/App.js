@@ -74,10 +74,10 @@ export default Bolt.Application({
     { path: '/rotation', component: Rotation },
     { path: '/events', component: Events },
     { path: '/focushandling', component: FocusHandling },
-    { path: '/splash', component: Splash },
-    { path: '/tmdb', component: Tmdb },
     { path: '/sprites', component: Sprites },
     { path: '/texts', component: Texts },
+    { path: '/splash', component: Splash },
+    { path: '/tmdb', component: Tmdb },
   ],
   hooks: {
     init() {
