@@ -20,6 +20,7 @@ import FocusHandling from './pages/FocusHandling'
 import Tmdb from './pages/Tmdb'
 import Splash from './pages/Splash'
 import Sprites from './pages/Sprites'
+import Texts from './pages/Texts'
 
 export default Bolt.Application({
   components: {
@@ -43,6 +44,7 @@ export default Bolt.Application({
     Tmdb,
     Splash,
     Sprites,
+    Texts,
   },
   template: /*html*/ `
     <Element w="1920" h="1080" :color="$backgroundColor">
@@ -75,13 +77,13 @@ export default Bolt.Application({
     { path: '/splash', component: Splash },
     { path: '/tmdb', component: Tmdb },
     { path: '/sprites', component: Sprites },
+    { path: '/texts', component: Texts },
   ],
   hooks: {
     init() {
       this.$listen('changeBackground', (color) => {
         this.backgroundColor = color ? color + 80 : '#1e293b'
       })
-
       const hash = (document.location.hash || '/').replace(/^#/, '')
       this.___routes.forEach((r, i) => {
         if (r.path === hash) this.currentPage = i
