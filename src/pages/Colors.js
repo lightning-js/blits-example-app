@@ -59,5 +59,28 @@ export default Bolt.Component('Colors', {
         <Element w="100" h="100" x="360" color="0f0" />
       </Element>
 
+      <Element x="620" y="20">
+        <Element w="300" h="200" x="0" :color.transition="$color1" />
+        <Element w="300" h="200" x="0" y="250" :color.transition="$color2" />
+        <Element w="300" h="200" x="100" y="400" :color.transition="$color3"/>
+        <Element w="300" h="200" x="0" y="650" :color.transition="{v: $color4, d: 1000, f: 'ease-in-out'}" />
+      </Element>
     </Element>`,
+  state() {
+    return {
+      color1: '#22d3ee',
+      color2: '#dc2626',
+      color3: 'rgba(251, 191, 36)',
+      color4: '#bfdbfe',
+    }
+  },
+  input: {
+    enter() {
+      this.color1 = this.color1 === '#0891b2' ? '#22d3ee' : '#0891b2'
+      this.color2 = this.color2 === '#dc2626' ? '#0f0' : '#dc2626'
+      this.color3 =
+        this.color3 === 'rgba(251, 191, 36)' ? 'rgba(30, 64, 175, 0.5)' : 'rgba(251, 191, 36)'
+      this.color4 = this.color4 === '#1e3a8a' ? '#bfdbfe' : '#1e3a8a'
+    },
+  },
 })
