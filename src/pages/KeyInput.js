@@ -68,5 +68,12 @@ export default Bolt.Component('KeyInput', {
     enter() {
       this.colorscheme = this.colorscheme === 'yellow' ? 'blue' : 'yellow'
     },
+    any(e) {
+      const key = parseInt(e.key)
+      if (!isNaN(key)) {
+        this.focusedX = Math.max(0, (key - 1) % 4)
+        this.focusedY = Math.max(0, Math.ceil(key / 4) - 1)
+      }
+    },
   },
 })
