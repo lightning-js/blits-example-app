@@ -1,6 +1,6 @@
 import Bolt from '@lightningjs/bolt'
 
-export default Bolt.Component('Empty', {
+export default Bolt.Component('Loading', {
   template: /*html*/ `
     <Element x="880" y="500">
       <Circle size="40" color="#94a3b8" :alpha.transition="{v: $alpha, w: 200}" />

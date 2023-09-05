@@ -1,6 +1,6 @@
 import Bolt from '@lightningjs/bolt'
 
-import Empty from './pages/Empty'
+import Loading from './pages/Loading'
 import Positioning from './pages/Positioning'
 import Transitions from './pages/Transitions'
 import Colors from './pages/Colors'
@@ -24,7 +24,7 @@ import Texts from './pages/Texts'
 
 export default Bolt.Application({
   components: {
-    Empty,
+    Loading,
     Positioning,
     Transitions,
     Colors,
@@ -57,7 +57,7 @@ export default Bolt.Application({
     }
   },
   routes: [
-    { path: '/', component: Empty },
+    { path: '/', component: Loading },
     { path: '/intro', component: Intro },
     { path: '/positioning', component: Positioning },
     { path: '/transitions', component: Transitions },
