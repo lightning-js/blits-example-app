@@ -21,6 +21,7 @@ import Tmdb from './pages/Tmdb'
 import Splash from './pages/Splash'
 import Sprites from './pages/Sprites'
 import Texts from './pages/Texts'
+import Theming from './pages/Theming'
 
 export default Bolt.Application({
   components: {
@@ -76,6 +77,7 @@ export default Bolt.Application({
     { path: '/focushandling', component: FocusHandling },
     { path: '/sprites', component: Sprites },
     { path: '/texts', component: Texts },
+    { path: '/theming', component: Theming },
     { path: '/splash', component: Splash },
     { path: '/tmdb', component: Tmdb },
   ],
