@@ -30,6 +30,8 @@ export default Bolt.Component('Texts', {
     <Element x="100" y="100">
 
       <Text content="Default text" />
+      <Text content="123456" x="400" />
+
       <Text content="Text with a different fontsize" :size="$size" y="120" />
       <Text content="Text with a different color" size="50" :color="$color" y="250" />
 
