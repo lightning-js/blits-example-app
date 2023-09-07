@@ -66,7 +66,7 @@ export default Bolt.Component('Rotation', {
       <Element x="800" y="200" w="400" h="400" color="#0891b2" :rotation="$rotation2" />
 
       <!-- reactive rotation value animated -->
-      <!--Element x="1400" y="200" w="400" h="400" color="#0891b2" :rotation.transition="$rotation3"/-->
+      <Element x="1400" y="200" w="400" h="400" color="#0891b2" :rotation.transition="$rotation3"/>
 
     </Element>`,
   state() {
@@ -83,9 +83,12 @@ export default Bolt.Component('Rotation', {
         this.rotation2 = rotation <= 360 ? rotation : 0
       }, 800)
 
-      this.$setTimeout(() => {
-        this.rotation3 = 40
-      }, 5000)
+      this.$setInterval(() => {
+        this.rotation3 = Math.max(10, Math.min(720, this.rotation3 * 2))
+        if (this.rotation3 === 720) {
+          this.rotation3 = 0
+        }
+      }, 2000)
     },
   },
 })
