@@ -6,10 +6,10 @@ const images = [
 ]
 
 export default Bolt.Component('Images', {
-  template: /*html*/ `
+  template: `
     <Element>
       <!-- local image -->
-      <Element src="assets/lightningbolt.jpg" w="428" h="234" x="100" y="100" />
+      <Element src="assets/lightningbolt.png" w="428" h="234" x="100" y="100" />
 
       <!-- remote image -->
       <Element
@@ -23,7 +23,7 @@ export default Bolt.Component('Images', {
       />
 
       <!-- local image with color -->
-      <Element src="assets/lightningbolt.jpg" w="428" h="234" x="600" y="100" color="gold" />
+      <Element  color="gold" src="assets/lightningbolt.png" w="428" h="234" x="600" y="100" />
 
     </Element>`,
   state() {

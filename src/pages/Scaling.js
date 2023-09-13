@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Scaling', {
-  template: /*html*/ `
+  template: `
     <Element>
       <!-- non scaled element of 150 -->
       <Element x="100" y="100" w="150" h="150" color="#64748b" />
@@ -12,7 +12,7 @@ export default Bolt.Component('Scaling', {
       <Element x="100" y="400" w="100" h="100" color="#b45309" scale="$scale" />
 
       <!-- reactive scaling (with transition) -->
-      <Element x="900" y="400" w="100" h="100" :src="$balloon" :scale.transition="{v: $scale, f: 'ease-in-out'}" />
+      <Element x="900" y="400" w="100" h="100" :src="$balloon" :scale.transition="{value: $scale, function: 'ease-in-out'}" />
 
       <!-- scaling with a nested element -->
       <Element x="300" y="600" w="100" h="100" color="#059669" :scale="$scale2">
@@ -29,7 +29,7 @@ export default Bolt.Component('Scaling', {
     return {
       scale: 2,
       direction: 'up',
-      balloon: `${window.location.protocol}//${window.location.host}/assets/balloon.png`,
+      balloon: '/assets/balloon.png',
       scale2: 1,
     }
   },

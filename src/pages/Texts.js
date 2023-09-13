@@ -26,7 +26,7 @@ const characters = [
 ]
 
 export default Bolt.Component('Texts', {
-  template: /*html*/ `
+  template: `
     <Element x="100" y="100">
 
       <Text content="Default text" />

@@ -1,11 +1,14 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Letter', {
-  template: /*html*/ `
+  template: `
     <Element>
-      <Element w="$w" :h.transition="{v: 410+$offset, d: $duration, w: $wait, f: $timingFunction}"}" color="#E6E6E6" />
-      <Element w="$w" h="280" :src="$image" :y.transition="{v: 400+$offset, d: $duration, w: $wait, f: $timingFunction}" />
-      <Element w="$w" :h.transition="{v: 500-$offset, d: $duration, w: $wait, f: $timingFunction}"}" :y.transition="{v: 660+$offset, d: $duration, w: $wait, f: $timingFunction}" color="#E6E6E6" />
+      <Element w="$w" :h.transition="{value: 410+$offset, duration: $duration, delay: $wait, function: $timingFunction}" color="#E6E6E6" />
+      <Element w="$w" h="280" :src="$image" :y.transition="{value: 400+$offset, duration: $duration, delay: $wait, function: $timingFunction}" />
+      <Element w="$w" color="#E6E6E6"
+        :h.transition="{value: 500-$offset, duration: $duration, delay: $wait, function: $timingFunction}"
+        :y.transition="{value: 660+$offset, duration: $duration, delay: $wait, function: $timingFunction}"
+      />
     </Element>`,
   props: ['w', 'letter', 'direction', 'delay'],
   computed: {

@@ -8,12 +8,12 @@ export default Bolt.Component('Home', {
     Poster,
     Background,
   },
-  template: /*html*/ `
+  template: `
     <Element w="1920" h="1080" color="black">
       <Background :src="$src" />
-      <Element :alpha.transition="{v: $alphaIn, d: 300, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
-        <Element src="assets/logo.png" x="130" :y.transition="{v: $logoY, d: 300, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}" w="125" h="30" />
-        <Element :x.transition="{v: $x, d: 300, f: 'ease-in-out'}"  :y.transition="{v: $listY, d: 300, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
+      <Element :alpha.transition="{value: $alphaIn, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
+        <Element src="assets/logo.png" x="130" :y.transition="{value: $logoY, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}" w="243" h="52" />
+        <Element :x.transition="{value: $x, duration: 300, function: 'ease-in-out'}"  :y.transition="{value: $listY, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
           <Poster :for="(item, index) in $items" index="$index" src="$item.poster" id="$item.identifier"/>
         </Element>
       </Element>

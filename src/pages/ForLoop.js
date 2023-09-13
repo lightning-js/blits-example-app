@@ -7,7 +7,7 @@ export default Bolt.Component('ForLoop', {
   components: {
     Square,
   },
-  template: /*html*/ `
+  template: `
       <Element>
         <!-- looping over a simple array with x values -->
         <Element y="20">

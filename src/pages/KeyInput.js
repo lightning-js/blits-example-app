@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('KeyInput', {
-  template: /*html*/ `
+  template: `
     <Element x="525" y="130">
 
       <Element w="200" h="200" :color="$focusColor" :x="$focusedX * 220" :y="$focusedY * 210" />

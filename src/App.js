@@ -18,7 +18,6 @@ import Rotation from './pages/Rotation'
 import Events from './pages/Events'
 import FocusHandling from './pages/FocusHandling'
 import Tmdb from './pages/Tmdb'
-import Splash from './pages/Splash'
 import Sprites from './pages/Sprites'
 import Texts from './pages/Texts'
 import Theming from './pages/Theming'
@@ -43,11 +42,10 @@ export default Bolt.Application({
     Events,
     FocusHandling,
     Tmdb,
-    Splash,
     Sprites,
     Texts,
   },
-  template: /*html*/ `
+  template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView />
     </Element>`,
@@ -78,7 +76,6 @@ export default Bolt.Application({
     { path: '/sprites', component: Sprites },
     { path: '/texts', component: Texts },
     { path: '/theming', component: Theming },
-    { path: '/splash', component: Splash },
     { path: '/tmdb', component: Tmdb },
   ],
   hooks: {

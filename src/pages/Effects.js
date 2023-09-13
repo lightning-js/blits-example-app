@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Effects', {
-  template: /*html*/ `
+  template: `
     <Element>
       <!-- rounded corner effect -->
       <Element
@@ -51,6 +51,11 @@ export default Bolt.Component('Effects', {
           </Element>
         </Element>
       </Element>
+
+      <Element
+        w="160" h="160" x="840" y="40" color="#3b82f6"
+        :effects="[$shader('radius', {radius: 10}), $shader('border', {width: 20, color: '#60a5fa'})]"
+      />
     </Element>`,
 
   state() {

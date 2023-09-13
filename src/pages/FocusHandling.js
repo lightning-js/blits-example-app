@@ -7,7 +7,7 @@ export default Bolt.Component('FocusHandling', {
     Menu,
     Button,
   },
-  template: /*html*/ `
+  template: `
     <Element>
       <Element x="300" y="150">
         <Button color="#ef4444" x="0" id="button1" />

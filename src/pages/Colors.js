@@ -1,8 +1,8 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Colors', {
-  template: /*html*/ `
-    <Element>
+  template: `
+    <Element w="1920" h="1080" :color.transition="$bg">
       <!-- hex colors -->
       <Element x="20" y="20">
         <Element w="100" h="100" x="0" color="#ecfeff" />
@@ -63,11 +63,12 @@ export default Bolt.Component('Colors', {
         <Element w="300" h="200" x="0" :color.transition="$color1" />
         <Element w="300" h="200" x="0" y="250" :color.transition="$color2" />
         <Element w="300" h="200" x="100" y="400" :color.transition="$color3"/>
-        <Element w="300" h="200" x="0" y="650" :color.transition="{v: $color4, d: 1000, f: 'ease-in-out'}" />
+        <Element w="300" h="200" x="0" y="650" :color.transition="{value: $color4, d: 1000, f: 'ease-in-out'}" />
       </Element>
     </Element>`,
   state() {
     return {
+      bg: '#fff',
       color1: '#22d3ee',
       color2: '#dc2626',
       color3: 'rgba(251, 191, 36)',
@@ -81,6 +82,17 @@ export default Bolt.Component('Colors', {
       this.color3 =
         this.color3 === 'rgba(251, 191, 36)' ? 'rgba(30, 64, 175, 0.5)' : 'rgba(251, 191, 36)'
       this.color4 = this.color4 === '#1e3a8a' ? '#bfdbfe' : '#1e3a8a'
+    },
+  },
+  hooks: {
+    ready() {
+      let i = 0
+      const bgColors = ['#fff', '#333', '#c0ff33', '#546aaa', '#000', 'tomato']
+      this.$setInterval(() => {
+        i = i + 1
+        if (i === bgColors.length - 1) i = 0
+        this.bg = bgColors[i]
+      }, 2000)
     },
   },
 })

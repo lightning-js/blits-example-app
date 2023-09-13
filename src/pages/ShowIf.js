@@ -5,7 +5,7 @@ export default Bolt.Component('ShowIf', {
   components: {
     Square,
   },
-  template: /*html*/ `
+  template: `
     <Element>
 
       <!-- hardcoded show values -->

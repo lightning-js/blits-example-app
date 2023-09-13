@@ -1,12 +1,12 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Button', {
-  template: /*html*/ `
+  template: `
     <Element w="300" h="80" color="$color"
       :effects="[$shader('rounded', {radius: 20})]"
       :alpha.transition="$alpha"
       :scale.transition="$scale"
-      :zIndex="$zIndex"
+      :z="$zIndex"
       :rotation="$rotate">
     </Element>`,
   props: ['color'],

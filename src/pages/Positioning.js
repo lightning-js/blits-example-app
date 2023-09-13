@@ -1,7 +1,7 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Positioning', {
-  template: /*html*/ `
+  template: `
     <Element>
       <!-- regular positioning -->
       <Element w="100" h="100" x="20" y="20" color="#ecfeff" />

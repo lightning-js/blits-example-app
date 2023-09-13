@@ -4,10 +4,10 @@ export default Bolt.Component('Background', {
   template: `
     <Element>
       <Element
-        :src="$bg1" w="1920" h="1080" colorBottom="#000" :alpha.transition="{v: $alpha1, d: 400, f: 'ease-in'}"
+        :src="$bg1" w="1920" h="1080" color="{top: '#fff', bottom: '#000'}" :alpha.transition="{value: $alpha1, duration: 400, function: 'ease-in'}"
       />
       <Element
-        :src="$bg2" w="1920" h="1080" colorBottom="#000" :alpha.transition="{v: $alpha2, d: 400, f: 'ease-in'}"
+        :src="$bg2" w="1920" h="1080" color="{top: '#fff', bottom: '#000'}" :alpha.transition="{value: $alpha2, duration: 400, function: 'ease-in'}"
       />
     </Element>`,
   props: ['src'],

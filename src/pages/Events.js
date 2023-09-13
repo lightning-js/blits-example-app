@@ -1,17 +1,16 @@
 import Bolt from '@lightningjs/bolt'
 
 export default Bolt.Component('Events', {
-  template: /*html*/ `
-  <Element x="400" y="360">
+  template: `
+    <Element x="400" y="360">
 
-    <Element w="280" h="280" color="#e5e7eb" :x="$x" y="-5" />
+      <Element w="280" h="280" color="#e5e7eb" :x="$x" y="-5" />
 
-    <Element w="250" h="250" x="10" y="10" color="$colors[0]" />
-    <Element w="250" h="250" x="290" y="10" color="$colors[1]" />
-    <Element w="250" h="250" x="570" y="10" color="$colors[2]" />
-    <Element w="250" h="250" x="850" y="10" color="$colors[3]" />
-  </Element>`,
-
+      <Element w="250" h="250" x="10" y="10" color="$colors[0]" />
+      <Element w="250" h="250" x="290" y="10" color="$colors[1]" />
+      <Element w="250" h="250" x="570" y="10" color="$colors[2]" />
+      <Element w="250" h="250" x="850" y="10" color="$colors[3]" />
+    </Element>`,
   state() {
     return {
       count: 0,
