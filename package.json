@@ -1,7 +1,7 @@
 {
-  "name": "sample-app",
+  "name": "@lightningjs/bolt-example-app",
   "version": "0.1.0",
-  "description": "Sample App",
+  "description": "Lightning 3 Bolt Example App",
   "main": "index.js",
   "scripts": {
     "start": "npm run dev",
