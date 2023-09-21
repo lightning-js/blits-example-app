@@ -15,6 +15,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import renderer from '@lightningjs/bolt/renderer'
+import renderer from '@lightningjs/blits/renderer'
 
 renderer()

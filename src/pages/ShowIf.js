@@ -15,10 +15,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 import Square from './../components/Square.js'
 
-export default Bolt.Component('ShowIf', {
+export default Blits.Component('ShowIf', {
   components: {
     Square,
   },

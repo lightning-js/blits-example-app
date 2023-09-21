@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
 import Loading from './pages/Loading'
 import Positioning from './pages/Positioning'
@@ -39,7 +39,7 @@ import Sprites from './pages/Sprites'
 import Texts from './pages/Texts'
 import Theming from './pages/Theming'
 
-export default Bolt.Application({
+export default Blits.Application({
   components: {
     Loading,
     Positioning,

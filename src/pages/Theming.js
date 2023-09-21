@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
 import Toggle from '../components/Toggle.js'
 import Bar from '../components/Bar.js'
@@ -23,7 +23,7 @@ import Bar from '../components/Bar.js'
 import darkmode from '../themes/darkmode.js'
 import lightmode from '../themes/lightmode.js'
 
-export default Bolt.Component('Theming', {
+export default Blits.Component('Theming', {
   components: {
     Bar,
     Toggle,

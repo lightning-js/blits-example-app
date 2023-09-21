@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
 const colors = ['#64748b', '#ef4444', '#f97316', '#84cc16', '#14b8a6', '#3b82f6']
 
@@ -42,7 +42,7 @@ const characters = [
   'Gamora',
 ]
 
-export default Bolt.Component('Texts', {
+export default Blits.Component('Texts', {
   template: `
     <Element x="100" y="100">
 

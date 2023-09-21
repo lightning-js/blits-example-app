@@ -15,9 +15,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
-export default Bolt.Component('Toggle', {
+export default Blits.Component('Toggle', {
   template: `
     <Element w="100" h="50" y="5" :color="$bgColor" :effects="[$shader('radius', {radius:25})]">
       <Circle :x.transition="$on ? 0 : 50" size="50" :color="$primaryColor" />

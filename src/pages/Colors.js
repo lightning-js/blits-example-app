@@ -15,9 +15,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
-export default Bolt.Component('Colors', {
+export default Blits.Component('Colors', {
   template: `
     <Element w="1920" h="1080" :color.transition="$bg">
       <!-- hex colors -->

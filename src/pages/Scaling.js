@@ -15,9 +15,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
-export default Bolt.Component('Scaling', {
+export default Blits.Component('Scaling', {
   template: `
     <Element>
       <!-- non scaled element of 150 -->

@@ -15,7 +15,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
 import App from './App.js'
 
@@ -26,4 +26,4 @@ const settings = {
   debugLevel: 1,
 }
 
-Bolt.Launch(App, 'app', settings)
+Blits.Launch(App, 'app', settings)

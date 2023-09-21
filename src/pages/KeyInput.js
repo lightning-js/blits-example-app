@@ -15,9 +15,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
-export default Bolt.Component('KeyInput', {
+export default Blits.Component('KeyInput', {
   template: `
     <Element x="525" y="130">
 

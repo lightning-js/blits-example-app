@@ -15,18 +15,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
 const images = [
   'https://images.unsplash.com/photo-1690360994204-3d10cc73a08d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=428&q=80',
   'https://images.unsplash.com/photo-1582971103098-bfc707d2ad92?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=428&q=80',
 ]
 
-export default Bolt.Component('Images', {
+export default Blits.Component('Images', {
   template: `
     <Element>
       <!-- local image -->
-      <Element src="assets/lightningbolt.png" w="428" h="234" x="100" y="100" />
+      <Element src="assets/lightningBlitspng" w="428" h="234" x="100" y="100" />
 
       <!-- remote image -->
       <Element
@@ -40,7 +40,7 @@ export default Bolt.Component('Images', {
       />
 
       <!-- local image with color -->
-      <Element  color="gold" src="assets/lightningbolt.png" w="428" h="234" x="600" y="100" />
+      <Element  color="gold" src="assets/lightningBlitspng" w="428" h="234" x="600" y="100" />
 
     </Element>`,
   state() {

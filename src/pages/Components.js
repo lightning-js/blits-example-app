@@ -15,11 +15,11 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 import Square from '../components/Square.js'
 import Card from '../components/Card.js'
 
-export default Bolt.Component('Components', {
+export default Blits.Component('Components', {
   components: {
     Square,
     Card,

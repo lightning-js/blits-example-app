@@ -15,9 +15,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
-export default Bolt.Component('Square', {
+export default Blits.Component('Square', {
   template: `
     <Element w="$size" h="$size" color="#86198f" />
   `,

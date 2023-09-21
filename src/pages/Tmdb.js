@@ -15,12 +15,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 import fetchPopular from '../api/providers/fetchPopular'
 import Poster from '../components/Poster.js'
 import Background from '../components/Background.js'
 
-export default Bolt.Component('Home', {
+export default Blits.Component('Home', {
   components: {
     Poster,
     Background,

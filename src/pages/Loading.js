@@ -15,9 +15,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
-export default Bolt.Component('Loading', {
+export default Blits.Component('Loading', {
   template: `
     <Element x="880" y="500">
       <Circle size="40" color="#94a3b8" :alpha.transition="{value: $alpha, delay: 200}" />

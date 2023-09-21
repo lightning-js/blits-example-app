@@ -15,10 +15,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 import Letter from '../components/Letter.js'
 
-export default Bolt.Component('Intro', {
+export default Blits.Component('Intro', {
   components: {
     Letter,
   },

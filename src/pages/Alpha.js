@@ -15,9 +15,9 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 
-export default Bolt.Component('Alpha', {
+export default Blits.Component('Alpha', {
   template: `
     <Element>
       <Element y="100">
@@ -47,7 +47,7 @@ export default Bolt.Component('Alpha', {
     return {
       alpha: 0.5,
       direction: 'up',
-      image: 'assets/lightningbolt.png',
+      image: 'assets/lightningBlitspng',
     }
   },
   hooks: {

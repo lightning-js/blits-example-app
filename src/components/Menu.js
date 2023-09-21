@@ -15,10 +15,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 import Button from './Button'
 
-export default Bolt.Component('Menu', {
+export default Blits.Component('Menu', {
   components: {
     Button,
   },

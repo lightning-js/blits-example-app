@@ -1,8 +1,9 @@
 {
-  "name": "@lightningjs/bolt-example-app",
+  "name": "@lightningjs/blits-example-app",
   "version": "0.1.0",
   "description": "Lightning 3 Bolt Example App",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "npm run dev",
     "lint": "eslint '**/*.js'",
@@ -32,6 +33,6 @@
     "vite": "^4.0.4"
   },
   "dependencies": {
-    "@lightningjs/bolt": "file:../packages/bolt"
+    "@lightningjs/blits": "file:../blits"
   }
 }

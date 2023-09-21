@@ -15,12 +15,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Bolt from '@lightningjs/bolt'
+import Blits from '@lightningjs/blits'
 import Square from '../components/Square'
 
 const colors = ['#bbf7d0', '#86efac', '#4ade80', '#22c55e', '#16a34a', '#15803d']
 
-export default Bolt.Component('ForLoop', {
+export default Blits.Component('ForLoop', {
   components: {
     Square,
   },
