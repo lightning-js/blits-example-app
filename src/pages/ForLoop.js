@@ -26,14 +26,13 @@ export default Blits.Component('ForLoop', {
   },
   template: `
       <Element>
-        <!-- looping over a simple array with x values -->
         <Element y="20">
           <Element :for="item in $collection1" w="80" h="80" x="$item" color="#4d7c0f" />
         </Element>
 
         <Element y="120">
           <!-- looping over an array with objects -->
-          <Element :for="item in $collection2" w="80" h="80" :x="$item.x * $index" color="$item.color" />
+          <Element :for="item in $collection2" w="80" h="80" :x="$item.x * $index" color="$item.color" key="$item.id" />
         </Element>
 
         <Element y="220">
@@ -42,15 +41,25 @@ export default Blits.Component('ForLoop', {
         </Element>
 
         <Element y="320">
-          <!-- looping over an array of components -->
-          <Square :for="(item, index) in $collection2" x="$item.x" :id="'square'+$index" />
+          <Square :for="(item, index) in $collection2" :x="$item.x * $index" :id="'square'+$index" :alpha="$alpha" />
         </Element>
 
         <Element y="420">
           <!-- looping over an array of components, adding items over time -->
-          <Square :for="item in $collection3" :x="$item.x" />
+          <Square :for="item in $collection3" :x="$item.x" key="$item.color" :alpha="$alpha" />
 
         </Element>
+
+        <Element y="520">
+          <!-- looping over an array and using a component state variable -->
+          <Element :for="item in $collection1" w="80" h="80" :x="$item" color="#eab308" :alpha="$alpha" />
+        </Element>
+
+        <Element y="620">
+          <!-- looping over an array and using a component state variable and passing a key -->
+          <Element :for="item in $collection2" w="80" h="80" :x="$item.x" color="$item.color" :alpha="$alpha" key="$item.id" />
+        </Element>
+
 
       </Element>`,
   state() {
@@ -58,31 +67,38 @@ export default Blits.Component('ForLoop', {
       collection1: [0, 100, 200, 300, 400, 500],
       collection2: [
         {
+          id: 'block1',
           x: 0,
           color: colors[0],
         },
         {
+          id: 'block2',
           x: 100,
           color: colors[1],
         },
         {
+          id: 'block3',
           x: 200,
           color: colors[2],
         },
         {
+          id: 'block4',
           x: 300,
           color: colors[3],
         },
         {
+          id: 'block5',
           x: 400,
           color: colors[4],
         },
         {
+          id: 'block6',
           x: 500,
           color: colors[5],
         },
       ],
       collection3: [],
+      alpha: 0.5
     }
   },
   hooks: {
@@ -105,6 +121,11 @@ export default Blits.Component('ForLoop', {
         count++
         if (count === colors.length) clearInterval(interval)
       }, 1000)
+
+      this.$setInterval(() => {
+        this.alpha = this.alpha === 0.5 ? 1 : 0.5
+      }, 800)
+
     },
   },
 })
