@@ -31,7 +31,7 @@ export default Blits.Component('Home', {
       <Element :alpha.transition="{value: $alphaIn, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
         <Element src="assets/logo.png" x="130" :y.transition="{value: $logoY, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}" w="243" h="52" />
         <Element :x.transition="{value: $x, duration: 300, function: 'ease-in-out'}"  :y.transition="{value: $listY, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
-          <Poster :for="(item, index) in $items" index="$index" src="$item.poster" id="$item.identifier"/>
+          <Poster :for="(item, index) in $items" index="$index" src="$item.poster" ref="$item.identifier"/>
         </Element>
       </Element>
     </Element>`,

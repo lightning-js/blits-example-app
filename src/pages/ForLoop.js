@@ -41,7 +41,7 @@ export default Blits.Component('ForLoop', {
         </Element>
 
         <Element y="320">
-          <Square :for="(item, index) in $collection2" :x="$item.x * $index" :id="'square'+$index" :alpha="$alpha" />
+          <Square :for="(item, index) in $collection2" :x="$item.x * $index" :ref="'square'+$index" :alpha="$alpha" />
         </Element>
 
         <Element y="420">

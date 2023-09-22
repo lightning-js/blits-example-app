@@ -27,17 +27,17 @@ export default Blits.Component('FocusHandling', {
   template: `
     <Element>
       <Element x="300" y="150">
-        <Button color="#ef4444" x="0" id="button1" />
-        <Button color="#f97316" x="320" id="button2" />
-        <Button color="#84cc16" x="640" id="button3" />
-        <Button color="#10b981" x="0" y="100" id="button4" />
-        <Button color="#06b6d4" y="100" x="320" id="button5" />
-        <Button color="#3b82f6" y="100" x="640" id="button6" />
-        <Button color="#8b5cf6" y="200" x="0" id="button7" />
-        <Button color="#d946ef" y="200" x="320" id="button8" />
-        <Button color="#f43f5e" y="200" x="640" id="button9" />
+        <Button color="#ef4444" x="0" ref="button1" />
+        <Button color="#f97316" x="320" ref="button2" />
+        <Button color="#84cc16" x="640" ref="button3" />
+        <Button color="#10b981" x="0" y="100" ref="button4" />
+        <Button color="#06b6d4" y="100" x="320" ref="button5" />
+        <Button color="#3b82f6" y="100" x="640" ref="button6" />
+        <Button color="#8b5cf6" y="200" x="0" ref="button7" />
+        <Button color="#d946ef" y="200" x="320" ref="button8" />
+        <Button color="#f43f5e" y="200" x="640" ref="button9" />
       </Element>
-      <Menu id="menu" />
+      <Menu ref="menu" />
     </Element>`,
   state() {
     return {
