@@ -49,19 +49,19 @@ export default Blits.Component('Texts', {
       <Text content="Default text" />
       <Text content="123456" x="400" />
 
-      <Text content="Text with a different fontsize" :size="$size" y="120" />
+      <Text content="Text with a different fontsize" :size="$size" y="120" font="raleway" />
       <Text content="Text with a different color" size="50" :color="$color" y="250" />
 
       <!-- does the font have a bold and italic? -->
-      <Text content="Bold and Italic text (todo?)" size="50" color="#0369a1" y="350" style="italic" weight="bold" />
+      <!--Text content="Bold and Italic text" size="50" color="#0369a1" y="350" style="italic" weight="bold" /-->
 
       <Text content="Letterspacing" size="50" color="#38bdf8" y="450" letterspacing="40" />
 
       <Element w="800" h="100" y="550" color="#94a3b8">
-        <Text content="Text align center (todo?)" size="50" y="15" color="#bae6fd" align="center" w="800" />
+        <Text content="Text align center" size="50" y="15" color="#bae6fd" align="center" w="800" />
       </Element>
 
-      <Text :content="$character" size="50" :color="$color" y="750" />
+      <Text :content="$character" size="50" :color="$color" y="750" font="opensans" />
 
     </Element>`,
 
