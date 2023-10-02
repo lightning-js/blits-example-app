@@ -39,15 +39,15 @@ export default Blits.Component('Alpha', {
       <Element w="200" h="200" x="100" y="760" color="#fff" :alpha.transition="{value: $alpha, duration: 1000, function: 'ease-in-out-circ'}" />
 
       <Element w="428" h="234" x="1200" y="100" :src="$image" alpha="1" />
-      <Element w="428" h="234" x="1200" :y="100 + 234 + 20" :src="$image" alpha=".6" />
-      <Element w="428" h="234" x="1200" :y="100 + (234 * 2) + (20 * 2)" :src="$image" alpha=".3" />
+      <Element w="428" h="234" x="1300" :y="100 + 234 - 40" :src="$image" alpha=".4" />
+      <Element w="428" h="234" x="1200" :y="100 + (234 * 2) - (40 * 2)" :src="$image" alpha=".1" />
 
     </Element>`,
   state() {
     return {
       alpha: 0.5,
       direction: 'up',
-      image: 'assets/lightningBlitspng',
+      image: 'assets/lightningbolt.png',
     }
   },
   hooks: {
