@@ -26,7 +26,7 @@ export default Blits.Component('Images', {
   template: `
     <Element>
       <!-- local image -->
-      <Element src="assets/lightningBlitspng" w="428" h="234" x="100" y="100" />
+      <Element src="assets/lightningbolt.png" w="428" h="234" x="100" y="100" />
 
       <!-- remote image -->
       <Element
@@ -40,7 +40,7 @@ export default Blits.Component('Images', {
       />
 
       <!-- local image with color -->
-      <Element  color="gold" src="assets/lightningBlitspng" w="428" h="234" x="600" y="100" />
+      <Element  color="gold" src="assets/lightningbolt.png" w="428" h="234" x="600" y="100" />
 
     </Element>`,
   state() {
