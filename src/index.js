@@ -16,7 +16,7 @@
  */
 
 import Blits from '@lightningjs/blits'
-import fontLoader from './fontloader.js?importChunkUrl'
+import fontLoader from './fontLoader.js?importChunkUrl'
 
 import App from './App.js'
 
