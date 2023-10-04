@@ -39,7 +39,7 @@ export default Blits.Component('Home', {
     return {
       items: [],
       src: '',
-      focused: 0,
+      focused: null,
       alphaIn: 0.001,
       logoY: 30,
       listY: 750,
@@ -51,6 +51,12 @@ export default Blits.Component('Home', {
       return 150 - Math.min(this.focused - 1, this.items.length - 8) * 215
     },
   },
+  watch: {
+    focused(value) {
+      const focusItem = this.select(this.items[value].identifier)
+      if(focusItem && focusItem.focus) focusItem.focus()
+    }
+  },
   hooks: {
     ready() {
       this.alphaIn = 1
@@ -58,9 +64,9 @@ export default Blits.Component('Home', {
       this.logoY = 80
 
       fetchPopular('movie').then((items) => {
-        this.background = items[this.focused].background
         this.items = items
-        this.select(this.items[this.focused].identifier).focus()
+        this.focused = 0
+        this.background = items[this.focused].background
       })
 
       this.$listen('posterSelect', (index) => {
@@ -71,11 +77,9 @@ export default Blits.Component('Home', {
   input: {
     left() {
       this.focused = Math.max(this.focused - 1, 0)
-      this.select(this.items[this.focused].identifier).focus()
     },
     right() {
       this.focused = Math.min(this.focused + 1, this.items.length - 1)
-      this.select(this.items[this.focused].identifier).focus()
     },
   },
 })

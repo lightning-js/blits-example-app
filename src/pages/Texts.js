@@ -62,9 +62,7 @@ export default Blits.Component('Texts', {
       </Element>
 
       <Text :content="$character" size="50" :color="$color" y="750" font="opensans" />
-
     </Element>`,
-
   state() {
     return {
       color: colors[0],

@@ -46,8 +46,15 @@ export default Blits.Component('FocusHandling', {
   },
   hooks: {
     focus() {
-      this.select(`button${this.focused}`).focus()
+      const focused = this.select(`button${this.focused}`)
+      if(focused && focused.focus) focused.focus()
     },
+  },
+  watch: {
+    focused(value) {
+      const focused = this.select(`button${value}`)
+      if(focused && focused.focus) focused.focus()
+    }
   },
   input: {
     right(event) {
@@ -56,21 +63,20 @@ export default Blits.Component('FocusHandling', {
         this.parent.focus(event)
       } else {
         this.focused = Math.min(this.focused + 1, 9)
-        this.select(`button${this.focused}`).focus()
       }
     },
     left() {
       const v = this.focused - 1
-
       if (v === 0) {
-        this.select('menu').focus()
+        const menu = this.select('menu')
+        if(menu && menu.focus) menu.focus()
       } else {
         this.focused = Math.max(v, 1)
-        this.select(`button${this.focused}`).focus()
       }
     },
     a() {
-      this.select('menu').focus()
+      const menu = this.select('menu')
+      if(menu && menu.focus) menu.focus()
     },
   },
 })

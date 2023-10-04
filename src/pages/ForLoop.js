@@ -37,7 +37,7 @@ export default Blits.Component('ForLoop', {
 
         <Element y="220">
           <!-- looping over an array empty array, adding items over time -->
-          <Element :for="item in $collection3" w="80" h="80" :x="$item.x" color="$item.color" />
+          <!--Element :for="item in $collection3" w="80" h="80" :x="$item.x" color="$item.color" /-->
         </Element>
 
         <Element y="320">
@@ -46,7 +46,7 @@ export default Blits.Component('ForLoop', {
 
         <Element y="420">
           <!-- looping over an array of components, adding items over time -->
-          <Square :for="item in $collection3" :x="$item.x" key="$item.color" :alpha="$alpha" />
+          <!--Square :for="item in $collection3" :x="$item.x" key="$item.color" :alpha="$alpha" /-->
 
         </Element>
 
