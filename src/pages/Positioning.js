@@ -52,6 +52,14 @@ export default Blits.Component('Positioning', {
       <!-- positioning after a set of nested elements -->
       <Element w="100" h="100" y="500" x="20" color="#e11d48" />
 
+      <!-- zIndex not inherited by children - currently broken and being investigated :) -->
+      <Element w="200" h="200" x="300" y="600" color="#94a3b8" z="100">
+        <Text content="Lightning!" x="100" y="140" />
+        <Element w="300" h="100" color="#475569" />
+        <Circle x="150" y="150" size="100"/>
+      </Element>
+      <Element w="300" h="300" x="300" y="600" color="#ef444480">
+
     </Element>`,
   state() {
     return {
