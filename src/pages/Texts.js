@@ -61,6 +61,10 @@ export default Blits.Component('Texts', {
         <Text content="Text align center" size="50" y="15" color="#bae6fd" align="center" w="800" />
       </Element>
 
+      <Element w="800" h="200" x="900" y="550" color="#94a3b8">
+        <Text content="$longText" size="40" color="#bae6fd" w="800" h="200" />
+      </Element>
+
       <Text :content="$character" size="50" :color="$color" y="750" font="opensans" />
     </Element>`,
   state() {
@@ -69,6 +73,7 @@ export default Blits.Component('Texts', {
       size: 10,
       character: characters[0],
       myText: 'This is my test yeah',
+      longText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at ante non mauris commodo tristique. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut quis mattis mi. Aliquam ultricies mi vel lobortis luctus. Ut non feugiat urna. Duis sed blandit dui. Donec venenatis, mauris at blandit malesuada, elit nibh scelerisque lacus, non tempus arcu mi at justo.'
     }
   },
   hooks: {
