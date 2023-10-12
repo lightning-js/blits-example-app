@@ -58,7 +58,13 @@ export default Blits.Component('Positioning', {
         <Element w="300" h="100" color="#475569" />
         <Circle x="150" y="150" size="100"/>
       </Element>
-      <Element w="300" h="300" x="300" y="600" color="#ef444480">
+      <Element w="300" h="300" x="300" y="600" color="#ef444480" />
+
+      <Element w="400" h="100" x="800" y="900" color="#0284c7">
+        <Element w="42%" h="30%" y="5%" x="1%" color="#075985" />
+        <Element :w="$bar2.v" h="30%" y="35%" x="1%" color="#6b21a8" />
+        <Element :w.transition="$bar3" h="30%" y="65%" x="1%" color="#9f1239" />
+      </Element>
 
     </Element>`,
   state() {
@@ -74,6 +80,11 @@ export default Blits.Component('Positioning', {
       xD: 380,
       yNested: 0,
       xNested: 0,
+      bar2: {
+        direction: 'up',
+        v: '10%'
+      },
+      bar3: '10%',
     }
   },
   hooks: {
@@ -92,6 +103,23 @@ export default Blits.Component('Positioning', {
       this.$setInterval(() => {
         this.xNested = this.xNested === 0 ? 150 : 0
       }, 1000)
+
+      this.$setInterval(() => {
+        const v = parseFloat(this.bar2.v)
+        const newV = this.bar2.direction === 'up' ? v + 10 : v - 10
+        this.bar2.v = newV + '%'
+        if(newV >= 90) {
+          this.bar2.direction = 'down'
+        }
+        if(newV <= 10) {
+          this.bar2.direction = 'up'
+        }
+      }, 400)
+
+      this.$setInterval(() => {
+        this.bar3 = Math.ceil(Math.random() * 96) + '%'
+      }, 2000)
+
     },
   },
 })
