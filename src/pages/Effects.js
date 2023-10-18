@@ -73,12 +73,21 @@ export default Blits.Component('Effects', {
         w="160" h="160" x="840" y="40" color="#3b82f6"
         :effects="[$shader('radius', {radius: 10}), $shader('border', {width: 20, color: '#60a5fa'})]"
       />
+
+      <Element
+        w="160" h="160" x="1040" y="40" color="#500724"
+        :effects="$effects"
+      />
     </Element>`,
 
   state() {
     return {
       direction: 'up',
       radius: 0,
+      effects: [
+        this.shader('borderTop', {width: 20, color: '#be123c'}),
+        this.shader('borderBottom', {width: 20, color: '#f43f5e'}),
+      ]
     }
   },
   hooks: {
@@ -93,6 +102,22 @@ export default Blits.Component('Effects', {
           this.direction = 'up'
         }
       }, 500)
+
+      let count = 0
+      this.$setInterval(() => {
+        count++
+        if(count % 2) {
+          this.effects = [
+            this.shader('borderLeft', {width: 20, color: '#be123c'}),
+            this.shader('borderRight', {width: 20, color: '#f43f5e'}),
+          ]
+        } else {
+          this.effects = [
+            this.shader('borderTop', {width: 20, color: '#be123c'}),
+            this.shader('borderBottom', {width: 20, color: '#f43f5e'}),
+          ]
+        }
+      }, 2000)
     },
   },
 })
