@@ -42,16 +42,23 @@ export default Blits.Component('Images', {
       <!-- local image with color -->
       <Element  color="gold" src="assets/lightningbolt.png" w="428" h="234" x="600" y="100" />
 
+      <!-- applying clipping -->
+      <Element x="600" y="400" w="428" h="234" :clipping="$clipping">
+        <Element src="assets/lightningbolt.png" w="856" h="468" />
+      </Element>
+
     </Element>`,
   state() {
     return {
       image: images[0],
+      clipping: true
     }
   },
   hooks: {
     ready() {
       this.$setInterval(() => {
         this.image = this.image === images[0] ? images[1] : images[0]
+        this.clipping = !!!this.clipping
       }, 2000)
     },
   },
