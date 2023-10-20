@@ -61,17 +61,17 @@ export default Blits.Component('ShowIf', {
         <!-- should show / hide every 2 seconds -->
         <Element x="50" w="200" h="300" color="#5eead4" :show="$showHideToggle" />
 
-        </Element>
+      </Element>
 
-        <!-- show on components! -->
-        <Element y="40" x="1000">
-          <!-- should show -->
-          <Square show="true" />
-          <!-- should not show -->
-          <Square y="100" show="false" />
-          <!-- should show / hide every 2 seconds -->
-          <Square y="200" :show="$showHideToggle" />
-        </Element>
+      <!-- show on components! -->
+      <Element y="40" x="1000">
+        <!-- should show -->
+        <Square show="true" />
+        <!-- should not show -->
+        <Square y="100" show="false" />
+        <!-- should show / hide every 2 seconds -->
+        <Square y="200" :show="$showHideToggle" />
+      </Element>
 
     </Element>`,
   state() {

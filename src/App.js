@@ -38,6 +38,7 @@ import Tmdb from './pages/Tmdb'
 import Sprites from './pages/Sprites'
 import Texts from './pages/Texts'
 import Theming from './pages/Theming'
+import Slots from './pages/Slots'
 
 export default Blits.Application({
   components: {
@@ -61,6 +62,7 @@ export default Blits.Application({
     Tmdb,
     Sprites,
     Texts,
+    Slots,
   },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
@@ -93,6 +95,7 @@ export default Blits.Application({
     { path: '/sprites', component: Sprites },
     { path: '/texts', component: Texts },
     { path: '/theming', component: Theming },
+    { path: '/slots', component: Slots },
     { path: '/tmdb', component: Tmdb },
   ],
   hooks: {
@@ -107,6 +110,9 @@ export default Blits.Application({
     },
   },
   input: {
+    escape() {
+      this.quit()
+    },
     a() {
       this.$router.to('/')
     },
