@@ -101,7 +101,9 @@ export default Blits.Application({
         this.backgroundColor = color ? color + 80 : '#1e293b'
       })
       const hash = (document.location.hash || '/').replace(/^#/, '')
-      this.___routes.forEach((r, i) => {
+
+      // @ts-ignore
+      this[Symbol.for('routes')].forEach((r, i) => {
         if (r.path === hash) this.currentPage = i
       })
     },
@@ -118,11 +120,14 @@ export default Blits.Application({
     },
     left() {
       this.currentPage = Math.max(this.currentPage - 1, 0)
-      this.$router.to(this.___routes[this.currentPage].path)
+      // @ts-ignore
+      this.$router.to(this[Symbol.for('routes')][this.currentPage].path)
     },
     right() {
-      this.currentPage = Math.min(this.currentPage + 1, this.___routes.length - 1)
-      this.$router.to(this.___routes[this.currentPage].path)
+      // @ts-ignore
+      this.currentPage = Math.min(this.currentPage + 1, this[Symbol.for('routes')].length - 1)
+      // @ts-ignore
+      this.$router.to(this[Symbol.for('routes')][this.currentPage].path)
     },
   },
 })
