@@ -19,8 +19,8 @@ import Blits from '@lightningjs/blits'
 
 export default Blits.Component('Loading', {
   template: `
-    <Text content="LOADING EXAMPLE" x="100" y="100" size="30" />
-    <Text content="use arrow keys to cycle through the examples" color="#6d7e9c" y="40" size="20" />
+    <Text content="BLITS EXAMPLE APP" x="100" y="100" size="30" />
+    <Text content="use the left / right arrow keys to cycle through the examples" color="#6d7e9c" y="40" size="20" />
     <Element x="780" y="500">
       <Circle size="40" color="#94a3b8" :alpha.transition="{value: $alpha, delay: 200}" />
       <Circle size="40" color="#94a3b8" x="60" :alpha.transition="{value: $alpha, delay: 300}" />
