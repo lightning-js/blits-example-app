@@ -7,8 +7,8 @@
       "height": 1080
     }
   ],
-  "onBeforeScript": "playwright/onBefore.js",
-  "onReadyScript": "playwright/onReady.js",
+  "onBeforeScript": "playwright/onBefore.cjs",
+  "onReadyScript": "playwright/onReady.cjs",
   "scenarios": [
     {
       "label": "Blits - Positioning",
@@ -26,7 +26,7 @@
       "label": "Blits - Transitions",
       "cookiePath": "backstop_data/engine_scripts/cookies.json",
       "url": "http://localhost:5173/#/transitions",
-      "delay": 800
+      "readyEvent":"TRANSITIONS_READY"
     },
     {
       "label": "Blits - Components",
