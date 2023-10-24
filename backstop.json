@@ -1,0 +1,134 @@
+{
+  "id": "blits_example",
+  "viewports": [
+    {
+      "label": "tv",
+      "width": 1920,
+      "height": 1080
+    }
+  ],
+  "onBeforeScript": "playwright/onBefore.js",
+  "onReadyScript": "playwright/onReady.js",
+  "scenarios": [
+    {
+      "label": "Blits - Positioning",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/positioning",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Gradients",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5174/#/gradients",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Transitions",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/transitions",
+      "delay": 800
+    },
+    {
+      "label": "Blits - Components",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/components",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Key input handling",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/keyinput",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Coloring",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/colors",
+      "delay": 300
+    },
+    {
+      "label": "Blits - For loop",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/forloop",
+      "delay": 50
+    },
+    {
+      "label": "Blits - Scaling",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/scaling",
+      "delay": 800
+    },
+    {
+      "label": "Blits - Effects",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/effects",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Alpha",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/alpha",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Conditional rendering",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/showif",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Images",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/images",
+      "delay": 200
+    },
+    {
+      "label": "Blits - Rotation",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/rotation",
+      "delay": 120
+    },
+    {
+      "label": "Blits - Events",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/events",
+      "delay": 120
+    },
+    {
+      "label": "Blits - Focus handling",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/focushandling",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Text",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/texts",
+      "delay": 20
+    },
+    {
+      "label": "Blits - Theming",
+      "cookiePath": "backstop_data/engine_scripts/cookies.json",
+      "url": "http://localhost:5173/#/theming",
+      "delay": 220
+    }
+  ],
+  "paths": {
+    "bitmaps_reference": "backstop_data/bitmaps_reference",
+    "bitmaps_test": "backstop_data/bitmaps_test",
+    "engine_scripts": "backstop_data/engine_scripts",
+    "html_report": "backstop_data/html_report",
+    "ci_report": "backstop_data/ci_report"
+  },
+  "report": ["browser"],
+  "engine": "playwright",
+  "engineOptions": {
+    "args": ["--no-sandbox"],
+    "browser": "webkit"
+  },
+  "headless": false,
+  "asyncCaptureLimit": 5,
+  "asyncCompareLimit": 50,
+  "debug": false,
+  "debugWindow": false
+}
