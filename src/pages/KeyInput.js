@@ -17,6 +17,7 @@
 
 import Blits from '@lightningjs/blits'
 
+// @ts-ignore
 export default Blits.Component('KeyInput', {
   template: `
     <Element x="525" y="130">

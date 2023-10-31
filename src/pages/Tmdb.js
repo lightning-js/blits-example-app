@@ -20,6 +20,7 @@ import fetchPopular from '../api/providers/fetchPopular'
 import Poster from '../components/Poster.js'
 import Background from '../components/Background.js'
 
+// @ts-ignore
 export default Blits.Component('Home', {
   components: {
     Poster,

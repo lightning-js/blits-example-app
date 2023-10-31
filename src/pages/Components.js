@@ -19,6 +19,7 @@ import Blits from '@lightningjs/blits'
 import Square from '../components/Square.js'
 import Card from '../components/Card.js'
 
+// @ts-ignore
 export default Blits.Component('Components', {
   components: {
     Square,

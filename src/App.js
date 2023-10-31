@@ -39,6 +39,7 @@ import Sprites from './pages/Sprites'
 import Texts from './pages/Texts'
 import Theming from './pages/Theming'
 import Slots from './pages/Slots'
+import Portal from './pages/Portal'
 
 export default Blits.Application({
   components: {
@@ -63,6 +64,7 @@ export default Blits.Application({
     Sprites,
     Texts,
     Slots,
+    Portal,
   },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
@@ -97,6 +99,7 @@ export default Blits.Application({
     { path: '/theming', component: Theming },
     { path: '/slots', component: Slots },
     { path: '/tmdb', component: Tmdb },
+    { path: '/portal', component: Portal },
   ],
   hooks: {
     init() {
