@@ -85,9 +85,9 @@ export default Blits.Component('Effects', {
       direction: 'up',
       radius: 0,
       effects: [
-        this.shader('borderTop', {width: 20, color: '#be123c'}),
-        this.shader('borderBottom', {width: 20, color: '#f43f5e'}),
-      ]
+        this.shader('borderTop', { width: 20, color: '#be123c' }),
+        this.shader('borderBottom', { width: 20, color: '#f43f5e' }),
+      ],
     }
   },
   hooks: {
@@ -106,15 +106,15 @@ export default Blits.Component('Effects', {
       let count = 0
       this.$setInterval(() => {
         count++
-        if(count % 2) {
+        if (count % 2) {
           this.effects = [
-            this.shader('borderLeft', {width: 20, color: '#be123c'}),
-            this.shader('borderRight', {width: 20, color: '#f43f5e'}),
+            this.shader('borderLeft', { width: 20, color: '#be123c' }),
+            this.shader('borderRight', { width: 20, color: '#f43f5e' }),
           ]
         } else {
           this.effects = [
-            this.shader('borderTop', {width: 20, color: '#be123c'}),
-            this.shader('borderBottom', {width: 20, color: '#f43f5e'}),
+            this.shader('borderTop', { width: 20, color: '#be123c' }),
+            this.shader('borderBottom', { width: 20, color: '#f43f5e' }),
           ]
         }
       }, 2000)

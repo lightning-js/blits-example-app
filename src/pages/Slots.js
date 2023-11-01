@@ -28,7 +28,7 @@ export default Blits.Component('Components', {
     SlotCard,
     NamedSlotCard,
     Card,
-    Square
+    Square,
   },
   template: `
     <Element>

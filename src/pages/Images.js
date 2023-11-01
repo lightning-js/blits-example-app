@@ -52,7 +52,7 @@ export default Blits.Component('Images', {
   state() {
     return {
       image: images[0],
-      clipping: true
+      clipping: true,
     }
   },
   hooks: {

@@ -47,14 +47,14 @@ export default Blits.Component('FocusHandling', {
   hooks: {
     focus() {
       const focused = this.select(`button${this.focused}`)
-      if(focused && focused.focus) focused.focus()
+      if (focused && focused.focus) focused.focus()
     },
   },
   watch: {
     focused(value) {
       const focused = this.select(`button${value}`)
-      if(focused && focused.focus) focused.focus()
-    }
+      if (focused && focused.focus) focused.focus()
+    },
   },
   input: {
     right(event) {
@@ -69,14 +69,14 @@ export default Blits.Component('FocusHandling', {
       const v = this.focused - 1
       if (v === 0) {
         const menu = this.select('menu')
-        if(menu && menu.focus) menu.focus()
+        if (menu && menu.focus) menu.focus()
       } else {
         this.focused = Math.max(v, 1)
       }
     },
     a() {
       const menu = this.select('menu')
-      if(menu && menu.focus) menu.focus()
+      if (menu && menu.focus) menu.focus()
     },
   },
 })

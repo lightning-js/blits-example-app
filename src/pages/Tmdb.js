@@ -55,8 +55,8 @@ export default Blits.Component('Home', {
   watch: {
     focused(value) {
       const focusItem = this.select(this.items[value].identifier)
-      if(focusItem && focusItem.focus) focusItem.focus()
-    }
+      if (focusItem && focusItem.focus) focusItem.focus()
+    },
   },
   hooks: {
     ready() {
