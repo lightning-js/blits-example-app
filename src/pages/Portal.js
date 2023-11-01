@@ -37,27 +37,87 @@ export default Blits.Component('Portal', {
       xOffset: 240,
       yOffset: 50,
       items: [
-        { title: "Positioning", id: "positioning", description: "Element positioning in a UI" },
-        { title: "Transitions", id: "transitions", description: "Smooth transitions and animations between UI elements" },
-        { title: "Gradients", id: "gradients", description: "Usage of gradients for stylish visual effects" },
-        { title: "Components", id: "components", description: "Building blocks of the UI, reusable and customizable" },
-        { title: "Key input", id: "keyinput", description: "Handling keyboard inputs and events" },
-        { title: "Colors", id: "colors", description: "Exploring color schemes" },
-        { title: "For Loop", id: "forloop", description: "Iterating over elements using for loops" },
-        { title: "Scaling", id: "scaling", description: "Resizing and scaling elements within the UI" },
-        { title: "Effects", id: "effects", description: "Applying visual effects to enhance user experience" },
-        { title: "Alpha", id: "alpha", description: "Adjusting the transparency or opacity of elements" },
-        { title: "Show If", id: "showif", description: "Conditionally showing or hiding elements based on certain criteria" },
-        { title: "Images", id: "images", description: "Incorporating images and graphics into the UI" },
-        { title: "Rotation", id: "rotation", description: "Rotating elements for dynamic display" },
-        { title: "Events", id: "events", description: "Handling various user and system events" },
-        { title: "Focus Handling", id: "focushandling", description: "Managing focus and user interaction within the UI" },
-        { title: "Sprites", id: "sprites", description: "Using sprites for 2D graphics and animations" },
-        { title: "Texts", id: "texts", description: "Displaying and formatting text in the UI" },
-        { title: "Theming", id: "theming", description: "Customizing the visual theme and style of the UI" },
-        { title: "Slots", id: "slots", description: "Creating flexible content slots for dynamic content insertion" },
-        { title: "Intro", id: "intro", description: "A sample of a splash screen with animations for technical demonstration" },
-        { title: "TMDB", id: "tmdb", description: "Integration with The Movie Database (TMDB) for movie-related data" }
+        { title: 'Positioning', id: 'positioning', description: 'Element positioning in a UI' },
+        {
+          title: 'Transitions',
+          id: 'transitions',
+          description: 'Smooth transitions and animations between UI elements',
+        },
+        {
+          title: 'Gradients',
+          id: 'gradients',
+          description: 'Usage of gradients for stylish visual effects',
+        },
+        {
+          title: 'Components',
+          id: 'components',
+          description: 'Building blocks of the UI, reusable and customizable',
+        },
+        { title: 'Key input', id: 'keyinput', description: 'Handling keyboard inputs and events' },
+        { title: 'Colors', id: 'colors', description: 'Exploring color schemes' },
+        {
+          title: 'For Loop',
+          id: 'forloop',
+          description: 'Iterating over elements using for loops',
+        },
+        {
+          title: 'Scaling',
+          id: 'scaling',
+          description: 'Resizing and scaling elements within the UI',
+        },
+        {
+          title: 'Effects',
+          id: 'effects',
+          description: 'Applying visual effects to enhance user experience',
+        },
+        {
+          title: 'Alpha',
+          id: 'alpha',
+          description: 'Adjusting the transparency or opacity of elements',
+        },
+        {
+          title: 'Show If',
+          id: 'showif',
+          description: 'Conditionally showing or hiding elements based on certain criteria',
+        },
+        {
+          title: 'Images',
+          id: 'images',
+          description: 'Incorporating images and graphics into the UI',
+        },
+        { title: 'Rotation', id: 'rotation', description: 'Rotating elements for dynamic display' },
+        { title: 'Events', id: 'events', description: 'Handling various user and system events' },
+        {
+          title: 'Focus Handling',
+          id: 'focushandling',
+          description: 'Managing focus and user interaction within the UI',
+        },
+        {
+          title: 'Sprites',
+          id: 'sprites',
+          description: 'Using sprites for 2D graphics and animations',
+        },
+        { title: 'Texts', id: 'texts', description: 'Displaying and formatting text in the UI' },
+        {
+          title: 'Theming',
+          id: 'theming',
+          description: 'Customizing the visual theme and style of the UI',
+        },
+        {
+          title: 'Slots',
+          id: 'slots',
+          description: 'Creating flexible content slots for dynamic content insertion',
+        },
+        {
+          title: 'Intro',
+          id: 'intro',
+          description: 'A sample of a splash screen with animations for technical demonstration',
+        },
+        {
+          title: 'TMDB',
+          id: 'tmdb',
+          description: 'Integration with The Movie Database (TMDB) for movie-related data',
+        },
       ],
     }
   },
@@ -66,22 +126,22 @@ export default Blits.Component('Portal', {
       this.focused = 0
       this.xOffset = 0
       this.yOffset = 0
-    }
+    },
   },
   watch: {
     focused(value) {
       const focusItem = this.select(`portal${value}`)
-      if(focusItem && focusItem.focus) {
+      if (focusItem && focusItem.focus) {
         focusItem.focus()
         if (value < 1) {
           this.offset = 60
         } else if (value > this.items.length - 2) {
-          this.offset = 60 - ((this.items.length - 2) * 560) + 560
+          this.offset = 60 - (this.items.length - 2) * 560 + 560
         } else {
-          this.offset = 60 - (value * 560) + 560
+          this.offset = 60 - value * 560 + 560
         }
       }
-    }
+    },
   },
   input: {
     left() {
@@ -92,6 +152,6 @@ export default Blits.Component('Portal', {
     },
     enter() {
       this.$router.to(`/${this.items[this.focused].id}`)
-    }
+    },
   },
 })

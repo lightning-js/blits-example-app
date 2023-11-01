@@ -135,6 +135,6 @@ export default Blits.Application({
     },
     back() {
       this.$router.to('/portal')
-    }
+    },
   },
 })

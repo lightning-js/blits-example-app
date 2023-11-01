@@ -33,7 +33,7 @@ export default Blits.Component('PortalItem', {
       scale: 1,
       backgroundColor: '#44037a',
       fontColor: '#e8d7f9',
-      number: this.index < 10 ? `0${this.index+1}` : this.index+1
+      number: this.index < 10 ? `0${this.index + 1}` : this.index + 1,
     }
   },
   hooks: {
