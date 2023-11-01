@@ -99,7 +99,7 @@ export default Blits.Component('ForLoop', {
         },
       ],
       collection3: [],
-      alpha: 0.5
+      alpha: 0.5,
     }
   },
   hooks: {

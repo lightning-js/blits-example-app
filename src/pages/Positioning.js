@@ -82,7 +82,7 @@ export default Blits.Component('Positioning', {
       xNested: 0,
       bar2: {
         direction: 'up',
-        v: '10%'
+        v: '10%',
       },
       bar3: '10%',
     }
@@ -108,10 +108,10 @@ export default Blits.Component('Positioning', {
         const v = parseFloat(this.bar2.v)
         const newV = this.bar2.direction === 'up' ? v + 10 : v - 10
         this.bar2.v = newV + '%'
-        if(newV >= 90) {
+        if (newV >= 90) {
           this.bar2.direction = 'down'
         }
-        if(newV <= 10) {
+        if (newV <= 10) {
           this.bar2.direction = 'up'
         }
       }, 400)
@@ -119,7 +119,6 @@ export default Blits.Component('Positioning', {
       this.$setInterval(() => {
         this.bar3 = Math.ceil(Math.random() * 96) + '%'
       }, 2000)
-
     },
   },
 })
