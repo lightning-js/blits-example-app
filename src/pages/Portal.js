@@ -25,9 +25,15 @@ export default Blits.Component('Portal', {
   },
   template: `
     <Element w="1920" h="1080" color="{top: '#44037a', bottom: '#240244'}">
-      <Element src="assets/blits-logo-full.png" w="200" h="112" :y.transition="{value: 80 - $yOffset, duration: 400}" x="60" />
-      <Element :x.transition="$offset" mountY="0.5" y="540" h="500">
-        <PortalItem :for="(item, index) in $items" :x.transition="{value: $xOffset + $index * 560, delay: 50 * ($index%4), duration: 300}" title="$item.title" description="$item.description" index="$index" :ref="'portal'+$index"  key="$item.id" />
+      <Element :x.transition="$rowOffset.example" mountY="0.5" :y.transition="-$rowFocused * 500 + 540" h="500">
+        <PortalItem :for="(item, index) in $example" :x.transition="{value: $itemOffset + $index * 430, delay: 50 * ($index%4), duration: 300}" title="$item.title" description="$item.description" index="$index" :ref="'example'+$index" key="$item.id" label="$rows[0]" />
+      </Element>
+      <Element :x.transition="$rowOffset.demo" mountY="0.5" :y.transition="-$rowFocused * 500 + 540" h="500">
+        <PortalItem :for="(item, index) in $demo" :x.transition="{value: $itemOffset + $index * 430, delay: 50 * ($index%4), duration: 300}" title="$item.title" description="$item.description" index="$index" :ref="'demo'+$index" key="$item.id" y="500" label="$rows[1]" />
+      </Element>
+      <Element w="1920" h="200" color="#44037a" >
+        <Element w="1920" h="70" y="200" color="{top: '#44037a'}" />
+        <Element src="assets/blits-logo-full.png" w="200" h="112" :y.transition="{value: 80 - $logoOffset, duration: 400}" x="60" />
       </Element>
     </Element>`,
   state() {
@@ -36,87 +42,137 @@ export default Blits.Component('Portal', {
       offset: 60,
       xOffset: 240,
       yOffset: 50,
-      items: [
-        { title: 'Positioning', id: 'positioning', description: 'Element positioning in a UI' },
+      rows: ['example', 'demo'],
+      rowFocused: 0,
+      rowOffset: {
+        example: 60,
+        demo: 60,
+      },
+      itemOffset: 240,
+      logoOffset: 50,
+      example: [
+        {
+          title: 'Positioning',
+          color: '#44037a',
+          id: 'positioning',
+          description: 'Element positioning in a UI',
+        },
         {
           title: 'Transitions',
+          color: '#44037a',
           id: 'transitions',
           description: 'Smooth transitions and animations between UI elements',
         },
         {
           title: 'Gradients',
+          color: '#44037a',
           id: 'gradients',
           description: 'Usage of gradients for stylish visual effects',
         },
         {
           title: 'Components',
+          color: '#44037a',
           id: 'components',
           description: 'Building blocks of the UI, reusable and customizable',
         },
-        { title: 'Key input', id: 'keyinput', description: 'Handling keyboard inputs and events' },
-        { title: 'Colors', id: 'colors', description: 'Exploring color schemes' },
+        {
+          title: 'Key input',
+          color: '#44037a',
+          id: 'keyinput',
+          description: 'Handling keyboard inputs and events',
+        },
+        { title: 'Colors', color: '#44037a', id: 'colors', description: 'Exploring color schemes' },
         {
           title: 'For Loop',
+          color: '#44037a',
           id: 'forloop',
           description: 'Iterating over elements using for loops',
         },
         {
           title: 'Scaling',
+          color: '#44037a',
           id: 'scaling',
           description: 'Resizing and scaling elements within the UI',
         },
         {
           title: 'Effects',
+          color: '#44037a',
           id: 'effects',
           description: 'Applying visual effects to enhance user experience',
         },
         {
           title: 'Alpha',
+          color: '#44037a',
           id: 'alpha',
           description: 'Adjusting the transparency or opacity of elements',
         },
         {
           title: 'Show If',
+          color: '#44037a',
           id: 'showif',
           description: 'Conditionally showing or hiding elements based on certain criteria',
         },
         {
           title: 'Images',
+          color: '#44037a',
           id: 'images',
           description: 'Incorporating images and graphics into the UI',
         },
-        { title: 'Rotation', id: 'rotation', description: 'Rotating elements for dynamic display' },
-        { title: 'Events', id: 'events', description: 'Handling various user and system events' },
         {
-          title: 'Focus Handling',
+          title: 'Rotation',
+          color: '#44037a',
+          id: 'rotation',
+          description: 'Rotating elements for dynamic display',
+        },
+        {
+          title: 'Events',
+          color: '#44037a',
+          id: 'events',
+          description: 'Handling various user and system events',
+        },
+        {
+          title: 'Focus',
+          color: '#44037a',
           id: 'focushandling',
           description: 'Managing focus and user interaction within the UI',
         },
         {
           title: 'Sprites',
+          color: '#44037a',
           id: 'sprites',
           description: 'Using sprites for 2D graphics and animations',
         },
-        { title: 'Texts', id: 'texts', description: 'Displaying and formatting text in the UI' },
+        {
+          title: 'Texts',
+          color: '#44037a',
+          id: 'texts',
+          description: 'Displaying and formatting text in the UI',
+        },
+        {
+          title: 'Slots',
+          color: '#44037a',
+          id: 'slots',
+          description: 'Creating flexible content slots for dynamic content insertion',
+        },
+      ],
+      demo: [
         {
           title: 'Theming',
+          color: '#f54e48',
           id: 'theming',
           description: 'Customizing the visual theme and style of the UI',
         },
         {
-          title: 'Slots',
-          id: 'slots',
-          description: 'Creating flexible content slots for dynamic content insertion',
-        },
-        {
           title: 'Intro',
+          color: '#f54e48',
           id: 'intro',
-          description: 'A sample of a splash screen with animations for technical demonstration',
+          description: 'A sample of a splash screen with animations',
         },
         {
           title: 'TMDB',
+          color: '#f54e48',
           id: 'tmdb',
-          description: 'Integration with The Movie Database (TMDB) for movie-related data',
+          description: 'Integration with The Movie Database (TMDB) API',
         },
       ],
     }
@@ -124,34 +180,68 @@ export default Blits.Component('Portal', {
   hooks: {
     focus() {
       this.focused = 0
-      this.xOffset = 0
-      this.yOffset = 0
+      this.itemOffset = 0
+      this.logoOffset = 0
     },
   },
   watch: {
     focused(value) {
-      const focusItem = this.select(`portal${value}`)
+      const focusedRow = this.rows[this.rowFocused]
+      const focusItem = this.select(`${focusedRow}${value}`)
       if (focusItem && focusItem.focus) {
         focusItem.focus()
         if (value < 1) {
-          this.offset = 60
-        } else if (value > this.items.length - 2) {
-          this.offset = 60 - (this.items.length - 2) * 560 + 560
+          this.rowOffset[focusedRow] = 60
+        } else if (value > this[focusedRow].length - 2) {
+          this.rowOffset[focusedRow] = 60 - (this[focusedRow].length - 2) * 430 + 430
         } else {
-          this.offset = 60 - value * 560 + 560
+          this.rowOffset[focusedRow] = 60 - value * 430 + 430
         }
+      }
+    },
+    rowFocused(value) {
+      const focusedRow = this.rows[value]
+      const focusItem = this.select(`${focusedRow}${this.focused}`)
+      if (focusItem && focusItem.focus) {
+        focusItem.focus()
       }
     },
   },
   input: {
+    up() {
+      if (this.rowFocused > 0) {
+        this.focused = 0
+        this.rowFocused--
+      } else {
+        this.focused = 0
+        this.rowFocused = this.rows.length - 1
+      }
+    },
+    down() {
+      if (this.rowFocused < this.rows.length - 1) {
+        this.focused = 0
+        this.rowFocused++
+      } else {
+        this.focused = 0
+        this.rowFocused = 0
+      }
+    },
     left() {
-      this.focused = this.focused === 0 ? this.items.length - 1 : this.focused - 1
+      if (this.focused > 0) {
+        this.focused--
+      } else {
+        this.focused = this[this.rows[this.rowFocused]].length - 1
+      }
     },
     right() {
-      this.focused = this.focused === this.items.length - 1 ? 0 : this.focused + 1
+      if (this.focused < this[this.rows[this.rowFocused]].length - 1) {
+        this.focused++
+      } else {
+        this.focused = 0
+      }
     },
     enter() {
-      this.$router.to(`/${this.items[this.focused].id}`)
+      this.$router.to(`/${this[this.rows[this.rowFocused]][this.focused].id}`)
     },
   },
 })
