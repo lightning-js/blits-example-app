@@ -133,5 +133,8 @@ export default Blits.Application({
       this.currentPage = Math.min(this.currentPage + 1, this.___routes.length - 1)
       this.$router.to(this.___routes[this.currentPage].path)
     },
+    back() {
+      this.$router.to('/portal')
+    }
   },
 })

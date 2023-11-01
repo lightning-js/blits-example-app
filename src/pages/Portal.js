@@ -32,7 +32,7 @@ export default Blits.Component('Portal', {
     </Element>`,
   state() {
     return {
-      focused: false,
+      focused: null,
       offset: 60,
       xOffset: 240,
       yOffset: 50,
@@ -58,12 +58,11 @@ export default Blits.Component('Portal', {
         { title: "Slots", id: "slots", description: "Creating flexible content slots for dynamic content insertion" },
         { title: "Intro", id: "intro", description: "A sample of a splash screen with animations for technical demonstration" },
         { title: "TMDB", id: "tmdb", description: "Integration with The Movie Database (TMDB) for movie-related data" }
-    ],
-    total: false
+      ],
     }
   },
   hooks: {
-    ready() {
+    focus() {
       this.focused = 0
       this.xOffset = 0
       this.yOffset = 0
