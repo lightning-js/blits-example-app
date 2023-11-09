@@ -17,43 +17,43 @@
 
 import Blits from '@lightningjs/blits'
 
-// @ts-ignore
 export default Blits.Component('PortalItem', {
   template: `
-    <Element w="370" h="400" :scale.transition="$scale" :color="$backgroundColor" :effects="[$shader('radius', {radius: 2})]">
+    <Element w="370" h="320" :scale.transition="$scale" :color="$backgroundColor" :effects="[$shader('radius', {radius: 6})]">
       <Text x="30" y="30" :content="$number" size="84" :color="$fontColor" />
       <Text x="30" y="140" :content="$title" size="42" font="raleway" :color="$fontColor" letterspacing="2" />
       <Text x="30" y="200" :content="$description" w="300" size="28" :color="$fontColor" />
-      <Element x="30" y="310" w="310" h="60" :color="$labelBackgroundColor" :effects="[$shader('radius', {radius: 2})]">
-        <Text :content="$label" size="28" :color="$labelColor" x="20" y="14" />
-      </Element>
     </Element>
   `,
-  props: ['title', 'description', 'index', 'label'],
+  props: ['title', 'description', 'index', 'id'],
   state() {
     return {
       backgroundColor: '#44037a',
-      labelBackgroundColor: '#fff',
-      labelColor: '#44037a',
       scale: 1,
       fontColor: '#e8d7f9',
       number: this.index < 9 ? `0${this.index + 1}` : this.index + 1,
     }
   },
   hooks: {
-    focus() {
+    focus(event) {
       this.backgroundColor = '#fafafa'
-      this.labelBackgroundColor = '#44037a'
-      this.labelColor = '#fafafa'
       this.fontColor = '#000'
       this.scale = 1.1
     },
     unfocus() {
-      this.backgroundColor = '#44037a'
-      this.labelBackgroundColor = '#fafafa'
-      this.labelColor = '#44037a'
-      this.fontColor = '#e8d7f9'
-      this.scale = 1
+      if (!this.$router.navigating) {
+        this.backgroundColor = '#44037a'
+        this.fontColor = '#e8d7f9'
+        this.scale = 1
+      }
+    },
+  },
+  input: {
+    enter() {
+      this.$router.to(`/${this.id}`)
+    },
+    back() {
+      // intercept
     },
   },
 })

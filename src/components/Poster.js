@@ -17,7 +17,6 @@
 
 import Blits from '@lightningjs/blits'
 
-// @ts-ignore
 export default Blits.Component('Poster', {
   template: `
     <Element w="185" h="278" x="$x"

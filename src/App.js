@@ -17,58 +17,37 @@
 
 import Blits from '@lightningjs/blits'
 
+// Demo pages
+import Portal from './pages/Portal'
 import Loading from './pages/Loading'
-import Positioning from './pages/Positioning'
-import Transitions from './pages/Transitions'
-import Colors from './pages/Colors'
-import ForLoop from './pages/ForLoop'
-import Components from './pages/Components'
-import Gradients from './pages/Gradients'
-import KeyInput from './pages/KeyInput'
-import Scaling from './pages/Scaling'
-import Effects from './pages/Effects'
-import Alpha from './pages/Alpha'
 import Intro from './pages/Intro'
-import ShowIf from './pages/ShowIf'
-import Images from './pages/Images'
-import Rotation from './pages/Rotation'
-import Events from './pages/Events'
-import FocusHandling from './pages/FocusHandling'
+import Theming from './pages/Theming'
 import Tmdb from './pages/Tmdb'
 import Sprites from './pages/Sprites'
+import FocusHandling from './pages/FocusHandling'
+
+// Example & Test pages
+import Positioning from './pages/Positioning'
+import Colors from './pages/Colors'
+import Gradients from './pages/Gradients'
+import Transitions from './pages/Transitions'
+import Alpha from './pages/Alpha'
+import Scaling from './pages/Scaling'
+import Rotation from './pages/Rotation'
+import KeyInput from './pages/KeyInput'
 import Texts from './pages/Texts'
-import Theming from './pages/Theming'
+import Images from './pages/Images'
+import Components from './pages/Components'
+import ForLoop from './pages/ForLoop'
+import Effects from './pages/Effects'
+import ShowIf from './pages/ShowIf'
+import Events from './pages/Events'
 import Slots from './pages/Slots'
-import Portal from './pages/Portal'
 
 export default Blits.Application({
-  components: {
-    Loading,
-    Positioning,
-    Transitions,
-    Colors,
-    ForLoop,
-    Components,
-    Gradients,
-    KeyInput,
-    Scaling,
-    Effects,
-    Alpha,
-    Intro,
-    ShowIf,
-    Images,
-    Rotation,
-    Events,
-    FocusHandling,
-    Tmdb,
-    Sprites,
-    Texts,
-    Slots,
-    Portal,
-  },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
-      <RouterView />
+      <RouterView ref="routerview" />
     </Element>`,
   state() {
     return {
@@ -77,38 +56,40 @@ export default Blits.Application({
     }
   },
   routes: [
-    { path: '/', component: Loading },
-    { path: '/intro', component: Intro },
-    { path: '/positioning', component: Positioning },
-    { path: '/transitions', component: Transitions },
-    { path: '/gradients', component: Gradients },
-    { path: '/components', component: Components },
-    { path: '/keyinput', component: KeyInput },
-    { path: '/colors', component: Colors },
-    { path: '/forloop', component: ForLoop },
-    { path: '/scaling', component: Scaling },
-    { path: '/effects', component: Effects },
-    { path: '/alpha', component: Alpha },
-    { path: '/showif', component: ShowIf },
-    { path: '/images', component: Images },
-    { path: '/rotation', component: Rotation },
-    { path: '/events', component: Events },
-    { path: '/focushandling', component: FocusHandling },
-    { path: '/sprites', component: Sprites },
-    { path: '/texts', component: Texts },
-    { path: '/theming', component: Theming },
-    { path: '/slots', component: Slots },
-    { path: '/tmdb', component: Tmdb },
-    { path: '/portal', component: Portal },
+    // Demo routes
+    { path: '/', component: Portal, options: { keepAlive: true } },
+    { path: '/demos/loading', component: Loading },
+    { path: '/demos/intro', component: Intro },
+    { path: '/demos/theming', component: Theming },
+    { path: '/demos/tmdb', component: Tmdb },
+    { path: '/demos/sprites', component: Sprites },
+    { path: '/demos/focushandling', component: FocusHandling },
+    // Example and test routes
+    { path: '/examples/positioning', component: Positioning },
+    { path: '/examples/colors', component: Colors },
+    { path: '/examples/gradients', component: Gradients },
+    { path: '/examples/transitions', component: Transitions },
+    { path: '/examples/alpha', component: Alpha },
+    { path: '/examples/scaling', component: Scaling },
+    { path: '/examples/rotation', component: Rotation },
+    { path: '/examples/keyinput', component: KeyInput },
+    { path: '/examples/texts', component: Texts },
+    { path: '/examples/images', component: Images },
+    { path: '/examples/components', component: Components },
+    { path: '/examples/forloop', component: ForLoop },
+    { path: '/examples/effects', component: Effects },
+    { path: '/examples/showif', component: ShowIf },
+    { path: '/examples/events', component: Events },
+    { path: '/examples/slots', component: Slots },
   ],
   hooks: {
-    init() {
+    ready() {
       this.$listen('changeBackground', (color) => {
         this.backgroundColor = color ? color + 80 : '#1e293b'
       })
-      const hash = (document.location.hash || '/').replace(/^#/, '')
-      this.___routes.forEach((r, i) => {
-        if (r.path === hash) this.currentPage = i
+
+      this.$router.routes.forEach((r, i) => {
+        if (r === this.$router.currentRoute) this.currentPage = i
       })
     },
   },
@@ -116,25 +97,8 @@ export default Blits.Application({
     escape() {
       this.quit()
     },
-    a() {
-      this.$router.to('/')
-    },
-    b() {
-      this.$router.to('/transitions')
-    },
-    c() {
-      this.$router.to('/positioning')
-    },
-    left() {
-      this.currentPage = Math.max(this.currentPage - 1, 0)
-      this.$router.to(this.___routes[this.currentPage].path)
-    },
-    right() {
-      this.currentPage = Math.min(this.currentPage + 1, this.___routes.length - 1)
-      this.$router.to(this.___routes[this.currentPage].path)
-    },
     back() {
-      this.$router.to('/portal')
+      this.$router.to('/')
     },
   },
 })

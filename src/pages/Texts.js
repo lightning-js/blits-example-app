@@ -42,7 +42,6 @@ const characters = [
   'Gamora',
 ]
 
-// @ts-ignore
 export default Blits.Component('Texts', {
   template: `
     <Element x="100" y="100">
