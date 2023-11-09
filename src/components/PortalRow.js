@@ -17,7 +17,7 @@
 
 import Blits from '@lightningjs/blits'
 
-import PortalItem from './PortalItem'
+import PortalItem from './PortalItem.js'
 
 export default Blits.Component('PortalRow', {
   components: {

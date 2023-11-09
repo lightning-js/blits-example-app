@@ -46,7 +46,7 @@ export default Blits.Component('Texts', {
   template: `
     <Element x="100" y="100">
 
-      <Text content="Default text" />
+      <Text content="Default text" @loaded="$textLoaded" />
       <Text content="123456" x="400" />
 
       <Text content="Text with a different fontsize" :size="$size" y="120" font="raleway" />
@@ -93,6 +93,11 @@ export default Blits.Component('Texts', {
         if (count2 > characters.length - 1) count2 = 0
         this.character = characters[count2]
       }, 1400)
+    },
+  },
+  methods: {
+    textLoaded(dimensions) {
+      this.$log.info(`Image loaded with w: ${dimensions.w} and h: ${dimensions.h}`)
     },
   },
 })
