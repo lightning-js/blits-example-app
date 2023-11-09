@@ -35,7 +35,7 @@ export default Blits.Component('PortalItem', {
     }
   },
   hooks: {
-    focus(event) {
+    focus() {
       this.backgroundColor = '#fafafa'
       this.fontColor = '#000'
       this.scale = 1.1

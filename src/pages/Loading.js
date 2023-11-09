@@ -25,8 +25,6 @@ export default Blits.Component('Loading', {
   },
   template: `
     <Element>
-      <Text content="BLITS EXAMPLE APP" x="100" y="100" size="30" />
-      <Text content="use the left / right arrow keys to cycle through the examples" color="#6d7e9c" x="100" y="140" size="20" />
       <Element x="880" y="500">
         <Circle size="40" color="#94a3b8" :alpha.transition="{value: $alpha, delay: 200}" />
         <Circle size="40" color="#94a3b8" x="60" :alpha.transition="{value: $alpha, delay: 300}" />
