@@ -1,7 +1,0 @@
-{
-	"recommendations": [
-		"editorconfig.editorconfig",
-		"dbaeumer.vscode-eslint",
-    "tobermory.es6-string-html"
-	]
-}
