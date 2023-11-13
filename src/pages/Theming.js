@@ -30,6 +30,9 @@ export default Blits.Component('Theming', {
   },
   template: `
     <Element w="1920" h="1080" :color.transition="$colors.bg">
+
+      <Text y="1020" x="1160" size="28" :color="$colors.color4">Use "up", "down", "left" and "right" to change the appearance</Text>
+
       <Element :x.transition="(1920 - $width) / 2" :y.transition="(1080 - $height) / 2">
         <Element x="-250" y="-100" src="assets/shadow.png" w="1000" h="900" alpha="0.5" />
 
@@ -100,18 +103,25 @@ export default Blits.Component('Theming', {
     },
   },
   input: {
-    space() {
-      this.toggleX = this.toggleX === 0 ? 48 : 0
+    right() {
+      this.toggleX = 0
       this.$setTimeout(() => {
-        this.mode = this.mode === 'dark' ? 'light' : 'dark'
+        this.mode = 'light'
       }, 150)
     },
-    a() {
-      this.radius = this.radius === 20 ? 8 : 20
+    left() {
+      this.toggleX = 48
+      this.$setTimeout(() => {
+        this.mode = 'dark'
+      }, 150)
     },
-    b() {
-      this.width = this.width === 500 ? 1200 : 500
-      this.height = this.height === 600 ? 900 : 600
+    up() {
+      this.width = 1200
+      this.height = 900
+    },
+    down() {
+      this.width = 500
+      this.height = 600
     },
   },
 })
