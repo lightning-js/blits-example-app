@@ -16,7 +16,8 @@
  */
 
 const API_KEY_V4 = import.meta.env.VITE_TMDB_KEY
-const API_BASE = 'https://api.themoviedb.org/3'
+const API_BASE = import.meta.env.VITE_TMDB_BASE_URL
+
 let tmdbConfig
 let baseImageUrl
 const basePosterSize = 'w185'
