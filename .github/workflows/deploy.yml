@@ -19,7 +19,7 @@ jobs:
       run: npm install
 
     - name: Create .env file
-      run: cp .env.example .env
+      run: cp .example.env .env
 
     - name: Build
       run: npm run build
