@@ -19,7 +19,6 @@ import Blits from '@lightningjs/blits'
 
 // Demo pages
 import Portal from './pages/Portal'
-import Loading from './pages/Loading'
 import Intro from './pages/Intro'
 import Theming from './pages/Theming'
 import Tmdb from './pages/Tmdb'
@@ -58,8 +57,21 @@ export default Blits.Application({
   routes: [
     // Demo routes
     { path: '/', component: Portal, options: { keepAlive: true } },
-    { path: '/demos/loading', component: Loading },
-    { path: '/demos/intro', component: Intro },
+    // Loading a route via a dynamic import
+    {
+      path: '/demos/loading',
+      component: () => import('./pages/Loading.js'),
+    },
+    // Loading a route in a Promise
+    {
+      path: '/demos/intro',
+      component: () => {
+        // imagine this is an API call or some other async action
+        return new Promise((resolve) => {
+          resolve(Intro)
+        })
+      },
+    },
     { path: '/demos/theming', component: Theming },
     { path: '/demos/tmdb', component: Tmdb },
     { path: '/demos/sprites', component: Sprites },
