@@ -18,6 +18,9 @@ jobs:
     - name: Install dependencies
       run: npm install
 
+    - name: Create .env file
+      run: cp .env.example .env
+
     - name: Build
       run: npm run build
 
