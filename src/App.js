@@ -42,6 +42,7 @@ import Effects from './pages/Effects'
 import ShowIf from './pages/ShowIf'
 import Events from './pages/Events'
 import Slots from './pages/Slots'
+import Exponential from './pages/Exponential'
 
 export default Blits.Application({
   template: `
@@ -93,6 +94,8 @@ export default Blits.Application({
     { path: '/examples/showif', component: ShowIf },
     { path: '/examples/events', component: Events },
     { path: '/examples/slots', component: Slots },
+    // Benchmarks and stress tests
+    { path: '/benchmarks/exponential', component: Exponential },
   ],
   hooks: {
     ready() {

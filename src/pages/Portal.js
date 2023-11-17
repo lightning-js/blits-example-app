@@ -26,8 +26,9 @@ export default Blits.Component('Portal', {
   },
   template: `
     <Element w="1920" h="1080" color="{top: '#44037a', bottom: '#240244'}">
-      <PortalRow  mountY="0.5" h="500" :y.transition="-$rowFocused * 300 + 550" title="Demos" items="$demo" ref="row0" />
-      <PortalRow  mountY="0.5" h="500" :y.transition="-$rowFocused * 300 + 1100" title="Examples and tests" items="$example" ref="row1" />
+      <PortalRow  mountY="0.5" h="500" :y.transition="-$rowFocused * 420 + 550" title="Demos" items="$demo" ref="row0" />
+      <PortalRow  mountY="0.5" h="500" :y.transition="-$rowFocused * 420 + 1100" title="Examples and tests" items="$example" ref="row1" />
+      <PortalRow  mountY="0.5" h="500" :y.transition="-$rowFocused * 420 + 1650" title="Benchmarks and stress tests" items="$benchmark" ref="row2" />
       <Element w="1920" h="200" color="#44037a">
         <Element src="assets/blits-logo-full.png" w="200" h="112" :y.transition="{value: 80 - $logoOffset, duration: 400}" x="60" />
         <Element w="1920" h="70" y="200" color="{top: '#44037a'}"/>
@@ -42,7 +43,7 @@ export default Blits.Component('Portal', {
       version: p.version,
       offset: 60,
       rowFocused: 0,
-      rows: ['demo', 'example'],
+      rows: ['demo', 'example', 'benchmark'],
       logoOffset: 50,
       demo: [
         {
@@ -160,6 +161,13 @@ export default Blits.Component('Portal', {
           description: 'Insert dynamic content from a parent into a child using slots',
         },
       ],
+      benchmark: [
+        {
+          title: 'Exponential',
+          id: 'benchmarks/exponential',
+          description: 'Spawn a large number of components at an exponential rate',
+        },
+      ],
     }
   },
   hooks: {
@@ -176,10 +184,10 @@ export default Blits.Component('Portal', {
   },
   input: {
     up() {
-      this.rowFocused = this.rowFocused === 0 ? this.rows.length - 1 : this.rowFocused - 1
+      this.rowFocused = (this.rowFocused - 1 + this.rows.length) % this.rows.length
     },
     down() {
-      this.rowFocused = this.rowFocused === this.rows.length - 1 ? 0 : this.rowFocused + 1
+      this.rowFocused = (this.rowFocused + 1) % this.rows.length
     },
   },
 })
