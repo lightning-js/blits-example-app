@@ -46,7 +46,7 @@ export default Blits.Component('Scaling', {
     return {
       scale: 2,
       direction: 'up',
-      balloon: '/assets/balloon.png',
+      balloon: 'assets/balloon.png',
       scale2: 1,
     }
   },
