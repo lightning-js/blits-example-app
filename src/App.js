@@ -43,11 +43,16 @@ import ShowIf from './pages/ShowIf'
 import Events from './pages/Events'
 import Slots from './pages/Slots'
 import Exponential from './pages/Exponential'
+import FPScounter from './components/FPScounter.js'
 
 export default Blits.Application({
+  components: {
+    FPScounter,
+  },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView ref="routerview" />
+      <FPScounter x="1610" />
     </Element>`,
   state() {
     return {

@@ -30,11 +30,14 @@ export default Blits.Component('Portal', {
       <PortalRow  mountY="0.5" h="500" :y.transition="-$rowFocused * 420 + 1100" title="Examples and tests" items="$example" ref="row1" />
       <PortalRow  mountY="0.5" h="500" :y.transition="-$rowFocused * 420 + 1650" title="Benchmarks and stress tests" items="$benchmark" ref="row2" />
       <Element w="1920" h="200" color="#44037a">
-        <Element src="assets/blits-logo-full.png" w="200" h="112" :y.transition="{value: 80 - $logoOffset, duration: 400}" x="60" />
         <Element w="1920" h="70" y="200" color="{top: '#44037a'}"/>
-        <Element :x="1920-260" :y.transition="{value: 90 - $logoOffset, duration: 400}">
-          <Text y="0" size="36">Example App</Text>
-          <Text y="50" size="24">v{{$version}}</Text>
+        <Element :y.transition="{value: 80 - $logoOffset, duration: 400}">
+          <Element src="assets/blits-logo-full.png" w="200" h="112" x="60" />
+          <Element w="2" h="120" y="-10" color="#ffffff80" x="300" />
+          <Element x="320" y="16">
+            <Text y="0" size="36">Example App</Text>
+            <Text y="50" size="24">v{{$version}}</Text>
+          </Element>
         </Element>
       </Element>
     </Element>`,
