@@ -39,7 +39,7 @@ export default Blits.Component('Theming', {
         <!-- Header -->
         <Element :w.transition="$width" :h.transition="$height" :color="$colors.color1" :effects="[$shader('radius', {radius: $radius})]">
           <Element :w.transition="$width" h="100" :color="$colors.color2" :effects="[$shader('radius', {radius: $radius})]" />
-          <Element :w.transition="$width" h="80" y="20" :color="$colors.color2">
+          <Element :w.transition="$width" h="80" y="20" :color="$colors.color2" />
 
           <Text :content="$text" :color="$colors.color3" size="28" x="20" y="14" />
           <Toggle :x.transition="$width - 120" :on="$mode === 'dark'" :bgColor="$colors.color1" primaryColor="#22c55e" />
@@ -58,7 +58,7 @@ export default Blits.Component('Theming', {
             <Bar :bgColor="$colors.color2" :primaryColor="$colors.color4" :size="$graph.size" height="170" index="2" />
             <Bar :bgColor="$colors.color2" :primaryColor="$colors.color4" :size="$graph.size" height="150" index="3" />
             <Bar :bgColor="$colors.color2" :primaryColor="$colors.color4" :size="$graph.size" height="90" index="4" />
-          <Element>
+          </Element>
         </Element>
 
       </Element>
