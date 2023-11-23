@@ -58,11 +58,11 @@ export default Blits.Component('Texts', {
       <Text content="Letterspacing" size="50" color="#38bdf8" y="450" letterspacing="40" />
 
       <Element w="800" h="100" y="550" color="#94a3b8">
-        <Text content="Text align center" size="50" y="15" color="#bae6fd" align="center" w="800" />
+        <Text content="Text align center" size="50" y="15" color="#bae6fd" align="center" wordwrap="800" />
       </Element>
 
       <Element w="800" h="200" x="900" y="550" color="#94a3b8">
-        <Text content="$longText" size="40" color="#bae6fd" w="800" h="200" />
+        <Text content="$longText" size="40" color="#bae6fd" wordwrap="800" maxlines="5" />
       </Element>
 
       <Text :content="$character" size="50" :color="$color" y="750" font="opensans" />

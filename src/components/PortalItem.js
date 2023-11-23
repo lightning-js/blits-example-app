@@ -22,7 +22,7 @@ export default Blits.Component('PortalItem', {
     <Element w="370" h="320" :scale.transition="$scale" :color="$backgroundColor" :effects="[$shader('radius', {radius: 6})]">
       <Text x="30" y="30" :content="$number" size="84" :color="$fontColor" />
       <Text x="30" y="140" :content="$title" size="42" font="raleway" :color="$fontColor" letterspacing="2" />
-      <Text x="30" y="200" :content="$description" w="300" size="28" :color="$fontColor" />
+      <Text x="30" y="200" :content="$description" wordwrap="300" size="28" :color="$fontColor" lineheight="32" />
     </Element>
   `,
   props: ['title', 'description', 'index', 'id'],
