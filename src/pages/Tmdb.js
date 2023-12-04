@@ -53,7 +53,7 @@ export default Blits.Component('TMdb', {
   },
   watch: {
     focused(value) {
-      const focusItem = this.select(this.items[value].identifier)
+      const focusItem = this.select(this.items[value] && this.items[value].identifier)
       if (focusItem && focusItem.focus) focusItem.focus()
     },
   },
@@ -73,9 +73,13 @@ export default Blits.Component('TMdb', {
         this.src = this.items[index].background
       })
     },
+    focus() {
+      this.$trigger('focused')
+    },
   },
   input: {
     left() {
+      console.log('left in tmdb')
       this.focused = Math.max(this.focused - 1, 0)
     },
     right() {

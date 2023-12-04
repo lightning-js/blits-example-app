@@ -41,13 +41,13 @@ export default Blits.Component('FocusHandling', {
     </Element>`,
   state() {
     return {
-      focused: 1,
+      focused: null,
     }
   },
   hooks: {
     focus() {
-      const focused = this.select(`button${this.focused}`)
-      if (focused && focused.focus) focused.focus()
+      this.focused = 1
+      this.$trigger('focused')
     },
   },
   watch: {
@@ -57,13 +57,8 @@ export default Blits.Component('FocusHandling', {
     },
   },
   input: {
-    right(event) {
-      const focused = this.focused + 1
-      if (focused === 10) {
-        this.parent.focus(event)
-      } else {
-        this.focused = Math.min(this.focused + 1, 9)
-      }
+    right() {
+      this.focused = Math.min(this.focused + 1, 9)
     },
     left() {
       const v = this.focused - 1
