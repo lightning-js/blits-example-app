@@ -56,7 +56,6 @@ export default Blits.Application({
     </Element>`,
   state() {
     return {
-      currentPage: 0,
       backgroundColor: '#1e293b',
     }
   },
@@ -106,10 +105,6 @@ export default Blits.Application({
     ready() {
       this.$listen('changeBackground', (color) => {
         this.backgroundColor = color ? color + 80 : '#1e293b'
-      })
-
-      this.$router.routes.forEach((r, i) => {
-        if (r === this.$router.currentRoute) this.currentPage = i
       })
     },
   },
