@@ -1,4 +1,4 @@
-import{B as e,S as l}from"./index-e60d70ba.js";import"./settings-27783f3c.js";const n=e.Component("Loading",{components:{Square:l},template:`
+import{B as e,S as l}from"./index-e6820296.js";import"./settings-27783f3c.js";const n=e.Component("Loading",{components:{Square:l},template:`
     <Element>
       <Element x="880" y="500">
         <Circle size="40" color="#94a3b8" :alpha.transition="{value: $alpha, delay: 200}" />
