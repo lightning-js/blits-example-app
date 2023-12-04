@@ -912,16 +912,25 @@ var jo=Object.defineProperty;var Wo=(r,t,e)=>t in r?jo(r,t,{enumerable:!0,config
       <!-- simple, default transition with object syntax -->
       <Element w="200" h="200" x="300" :y.transition="{value: $y}" color="#a78bfa" />
       <!-- transition with custom duration -->
-      <Element w="200" h="200" x="550" :y.transition="{value: $y, duration: 1000}" color="#8b5cf6" />
+      <Element
+        w="200" h="200" x="550"
+        :y.transition="{value: $y, duration: 1000, start: $start, end: $doneTransition3}" color="#8b5cf6"
+        ref="bla"
+      />
       <!-- transition with custom duration and wait -->
-      <Element w="200" h="200" x="800" :y.transition="{value: $y, duration: 500, delay: 1000}" color="#7c3aed" />
+      <Element
+        w="200" h="200" x="800"
+        :y.transition="{value: $y, duration: 500, delay: 1000, start: $start, end: $finished}" color="#7c3aed"
+      />
       <!-- transition with built-in easing function -->
       <Element w="200" h="200" x="1050" :y.transition="{value: $y, function: 'ease-in-out'}" color="#6d28d9" />
       <!-- transition with custom duration and a built-in easing function -->
-      <Element w="200" h="200" x="1300" :y.transition="{value: $y, duration: 2000, function: 'ease-in-out-back'}" color="#5b21b6" />
+      <Element
+        w="200" h="200" x="1300"
+        :y.transition="{value: $y, duration: 2000, function: 'ease-in-out-back', end: $finished}" color="#5b21b6" />
       <!-- transition with custom duration and a custum bezier function -->
       <Element w="200" h="200" x="1550" :y.transition="{value: $y, duration: 800, function: 'cubic-bezier(1,-0.64,.39,1.44)'}" color="#4c1d95" />
-    </Element>`,state(){return{y:50}},hooks:{ready(){this.$setTimeout(()=>{this.y=1080-50-200},2e3)}}}),ri=k.Component("Alpha",{template:`
+    </Element>`,state(){return{y:50}},hooks:{ready(){this.$setTimeout(()=>{this.y=1080-50-200},2e3)}},methods:{doneTransition3(){this.$log.info("Transition 3 is done!")},start(r,t,e){this.$log.info("Start transition",r.nodeId,t,e)},finished(r,t,e){this.$log.info("Finished transition",r.nodeId,t,e)}}}),ri=k.Component("Alpha",{template:`
     <Element>
       <Element y="100">
         <!-- hardcoded alpha values -->
@@ -1400,4 +1409,4 @@ var jo=Object.defineProperty;var Wo=(r,t,e)=>t in r?jo(r,t,{enumerable:!0,config
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView ref="routerview" />
       <FPScounter x="1610" />
-    </Element>`,state(){return{currentPage:0,backgroundColor:"#1e293b"}},routes:[{path:"/",component:Ms,options:{keepAlive:!0}},{path:"/demos/loading",component:()=>Eo(()=>import("./Loading-c81b97d4.js"),["assets/Loading-c81b97d4.js","assets/settings-27783f3c.js"])},{path:"/demos/intro",component:()=>new Promise(r=>{r(Os)})},{path:"/demos/theming",component:Ds},{path:"/demos/tmdb",component:Gs},{path:"/demos/sprites",component:Vs},{path:"/demos/focushandling",component:Zs},{path:"/examples/positioning",component:Js},{path:"/examples/colors",component:ei},{path:"/examples/gradients",component:ti},{path:"/examples/transitions",component:oi},{path:"/examples/alpha",component:ri},{path:"/examples/scaling",component:si},{path:"/examples/rotation",component:ii},{path:"/examples/keyinput",component:ni},{path:"/examples/texts",component:ai},{path:"/examples/images",component:li},{path:"/examples/components",component:ci},{path:"/examples/forloop",component:hi},{path:"/examples/effects",component:fi},{path:"/examples/showif",component:di},{path:"/examples/events",component:ui},{path:"/examples/slots",component:gi},{path:"/benchmarks/exponential",component:yi}],hooks:{ready(){this.$listen("changeBackground",r=>{this.backgroundColor=r?r+80:"#1e293b"}),this.$router.routes.forEach((r,t)=>{r===this.$router.currentRoute&&(this.currentPage=t)})}},input:{escape(){this.quit()},back(){this.$router.to("/")}}});k.Launch(bi,"app",{w:1920,h:1080,multithreaded:!1,debugLevel:1,fontLoader:gs,fonts:[{family:"lato",type:"msdf",png:"/fonts/Lato-Regular.msdf.png",json:"/fonts/Lato-Regular.msdf.json"},{family:"raleway",type:"msdf",png:"/fonts/Raleway-ExtraBold.msdf.png",json:"/fonts/Raleway-ExtraBold.msdf.json"},{family:"opensans",type:"web",file:"/fonts/OpenSans-Medium.ttf"}]});export{k as B,Ke as S};
+    </Element>`,state(){return{backgroundColor:"#1e293b"}},routes:[{path:"/",component:Ms,options:{keepAlive:!0}},{path:"/demos/loading",component:()=>Eo(()=>import("./Loading-6edb426b.js"),["assets/Loading-6edb426b.js","assets/settings-27783f3c.js"])},{path:"/demos/intro",component:()=>new Promise(r=>{r(Os)})},{path:"/demos/theming",component:Ds},{path:"/demos/tmdb",component:Gs},{path:"/demos/sprites",component:Vs},{path:"/demos/focushandling",component:Zs},{path:"/examples/positioning",component:Js},{path:"/examples/colors",component:ei},{path:"/examples/gradients",component:ti},{path:"/examples/transitions",component:oi},{path:"/examples/alpha",component:ri},{path:"/examples/scaling",component:si},{path:"/examples/rotation",component:ii},{path:"/examples/keyinput",component:ni},{path:"/examples/texts",component:ai},{path:"/examples/images",component:li},{path:"/examples/components",component:ci},{path:"/examples/forloop",component:hi},{path:"/examples/effects",component:fi},{path:"/examples/showif",component:di},{path:"/examples/events",component:ui},{path:"/examples/slots",component:gi},{path:"/benchmarks/exponential",component:yi}],hooks:{ready(){this.$listen("changeBackground",r=>{this.backgroundColor=r?r+80:"#1e293b"})}},input:{escape(){this.quit()},back(){this.$router.to("/")}}});k.Launch(bi,"app",{w:1920,h:1080,multithreaded:!1,debugLevel:1,fontLoader:gs,fonts:[{family:"lato",type:"msdf",png:"/fonts/Lato-Regular.msdf.png",json:"/fonts/Lato-Regular.msdf.json"},{family:"raleway",type:"msdf",png:"/fonts/Raleway-ExtraBold.msdf.png",json:"/fonts/Raleway-ExtraBold.msdf.json"},{family:"opensans",type:"web",file:"/fonts/OpenSans-Medium.ttf"}]});export{k as B,Ke as S};
