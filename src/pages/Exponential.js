@@ -21,12 +21,12 @@ const randomIntBetween = (from, to) => Math.floor(Math.random() * (to - from + 1
 
 const Item = Blits.Component('Item', {
   template: `<Element
-      src="assets/blits-b.png"
+      src="assets/blits-b-small.png"
       w="96"
       h="168"
-      :x.transition="{value: $x, duration: 3000}"
-      :y.transition="{value: $y, duration: 3000}"
-      :rotation.transition="{value: $rotation, duration: 3000}"
+      :x.transition="{value: $x, duration: 2900}"
+      :y.transition="{value: $y, duration: 2900}"
+      :rotation.transition="{value: $rotation, duration: 2900}"
       :scale.transition="{value: $scale, duration: 1000}"
     />`,
   state() {
