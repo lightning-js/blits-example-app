@@ -79,7 +79,6 @@ export default Blits.Component('TMdb', {
   },
   input: {
     left() {
-      console.log('left in tmdb')
       this.focused = Math.max(this.focused - 1, 0)
     },
     right() {

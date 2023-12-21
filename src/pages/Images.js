@@ -41,7 +41,7 @@ export default Blits.Component('Images', {
       />
 
       <!-- local image with color -->
-      <Element  color="gold" src="assets/lightningbolt.png" w="428" h="234" x="600" y="100" />
+      <Element color="{top: 'red', bottom: 'gold'}" src="assets/lightningbolt.png" w="428" h="234" x="600" y="100"  />
 
       <!-- applying clipping -->
       <Element x="600" y="400" w="428" h="234" :clipping="$clipping">

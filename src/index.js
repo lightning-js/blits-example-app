@@ -27,6 +27,7 @@ Blits.Launch(App, 'app', {
   multithreaded: false,
   debugLevel: 1,
   fontLoader: fontLoader,
+  reactivityMode: 'Proxy',
   fonts: [
     {
       family: 'lato',

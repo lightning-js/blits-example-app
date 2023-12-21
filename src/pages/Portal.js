@@ -26,9 +26,9 @@ export default Blits.Component('Portal', {
   },
   template: `
     <Element w="1920" h="1080" color="{top: '#44037a', bottom: '#240244'}">
-      <PortalRow  mountY="0.5" h="500" :y.transition="-$rowFocused * 420 + 550" title="Demos" items="$demo" ref="row0" />
-      <PortalRow  mountY="0.5" h="500" :y.transition="-$rowFocused * 420 + 1100" title="Examples and tests" items="$example" ref="row1" />
-      <PortalRow  mountY="0.5" h="500" :y.transition="-$rowFocused * 420 + 1650" title="Benchmarks and stress tests" items="$benchmark" ref="row2" />
+      <PortalRow mount="{y: 0.5}" h="500" :y.transition="-$rowFocused * 420 + 550" title="Demos" items="$demo" ref="row0" />
+      <PortalRow mount="{y: 0.5}" h="500" :y.transition="-$rowFocused * 420 + 1100" title="Examples and tests" items="$example" ref="row1" />
+      <PortalRow mount="{y: 0.5}" h="500" :y.transition="-$rowFocused * 420 + 1650" title="Benchmarks and stress tests" items="$benchmark" ref="row2" />
       <Element w="1920" h="200" color="#44037a">
         <Element w="1920" h="70" y="200" color="{top: '#44037a'}"/>
         <Element :y.transition="{value: 80 - $logoOffset, duration: 400}">
