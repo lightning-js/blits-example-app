@@ -42,7 +42,9 @@ import Effects from './pages/Effects'
 import ShowIf from './pages/ShowIf'
 import Events from './pages/Events'
 import Slots from './pages/Slots'
+import MemoryGame from './pages/MemoryGame'
 import Exponential from './pages/Exponential'
+
 import FPScounter from './components/FPScounter.js'
 
 export default Blits.Application({
@@ -81,6 +83,11 @@ export default Blits.Application({
     { path: '/demos/tmdb', component: Tmdb },
     { path: '/demos/sprites', component: Sprites },
     { path: '/demos/focushandling', component: FocusHandling },
+    {
+      path: '/demos/memory-game',
+      component: MemoryGame,
+      announce: "Let's play Memory",
+    },
     // Example and test routes
     { path: '/examples/positioning', component: Positioning },
     { path: '/examples/colors', component: Colors },

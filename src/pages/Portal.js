@@ -79,6 +79,11 @@ export default Blits.Component('Portal', {
           id: 'demos/focushandling',
           description: 'Managing focus between components in a simple layout',
         },
+        {
+          title: 'Memory Game',
+          id: 'demos/memory-game',
+          description: 'Memory game with speech assistence (for accessibility)',
+        },
       ],
       example: [
         {
