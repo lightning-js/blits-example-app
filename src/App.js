@@ -27,6 +27,7 @@ import FocusHandling from './pages/FocusHandling'
 
 // Example & Test pages
 import Positioning from './pages/Positioning'
+import Player from './pages/Player'
 import Colors from './pages/Colors'
 import Gradients from './pages/Gradients'
 import Transitions from './pages/Transitions'
@@ -81,6 +82,7 @@ export default Blits.Application({
     { path: '/demos/tmdb', component: Tmdb },
     { path: '/demos/sprites', component: Sprites },
     { path: '/demos/focushandling', component: FocusHandling },
+    { path: '/demos/player', component: Player },
     // Example and test routes
     { path: '/examples/positioning', component: Positioning },
     { path: '/examples/colors', component: Colors },

@@ -79,6 +79,11 @@ export default Blits.Component('Portal', {
           id: 'demos/focushandling',
           description: 'Managing focus between components in a simple layout',
         },
+        {
+          title: 'Player',
+          id: 'demos/player',
+          description: 'Demo page for player',
+        },
       ],
       example: [
         {
