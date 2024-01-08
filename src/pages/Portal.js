@@ -84,6 +84,11 @@ export default Blits.Component('Portal', {
           id: 'demos/memory-game',
           description: 'Memory game with speech assistence (for accessibility)',
         },
+        {
+          title: 'Player',
+          id: 'demos/player',
+          description: 'Demo page for player',
+        },
       ],
       example: [
         {
