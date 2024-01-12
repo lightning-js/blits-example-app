@@ -54,7 +54,7 @@ export default Blits.Application({
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView />
-      <FPScounter x="1610" />
+      <FPScounter x="1570" y="80" />
     </Element>`,
   state() {
     return {
