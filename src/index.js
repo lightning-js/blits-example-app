@@ -28,6 +28,9 @@ Blits.Launch(App, 'app', {
   debugLevel: 1,
   fontLoader: fontLoader,
   reactivityMode: 'Proxy',
+  keymap: {
+    27: 'back',
+  },
   fonts: [
     {
       family: 'lato',
