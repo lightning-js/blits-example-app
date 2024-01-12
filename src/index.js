@@ -42,5 +42,11 @@ Blits.Launch(App, 'app', {
       json: '/fonts/Raleway-ExtraBold.msdf.json',
     },
     { family: 'opensans', type: 'web', file: '/fonts/OpenSans-Medium.ttf' },
+    {
+      family: 'kalam',
+      type: 'msdf',
+      png: '/fonts/Kalam-Regular.msdf.png',
+      json: '/fonts/Kalam-Regular.msdf.json',
+    },
   ],
 })
