@@ -18,6 +18,7 @@
 import Blits from '@lightningjs/blits'
 // @ts-ignore
 import fontLoader from './fontLoader.js?importChunkUrl'
+import keymapping from './keymapping.js'
 
 import App from './App.js'
 
@@ -28,9 +29,7 @@ Blits.Launch(App, 'app', {
   debugLevel: 1,
   fontLoader: fontLoader,
   reactivityMode: 'Proxy',
-  keymap: {
-    27: 'back',
-  },
+  keymap: keymapping(),
   fonts: [
     {
       family: 'lato',
