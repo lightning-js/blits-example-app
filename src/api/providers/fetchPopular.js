@@ -25,6 +25,8 @@ export default function (type) {
         poster: getImageUrl(item.poster_path || item.profile_path),
         background: getImageUrl(item.backdrop_path, 'w1280'),
         identifier: item.id,
+        title: item.title,
+        overview: item.overview,
       }
     })
   })
