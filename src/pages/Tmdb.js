@@ -33,7 +33,7 @@ export default Blits.Component('TMdb', {
         <Text :content="$title" font="raleway" size="80" x="130" y="200" wordwrap="1000" @loaded="$positionText" />
         <Text :content="$overview" wordwrap="800" x="130" :y="$offset + 320" />
         <Element :x.transition="{value: $x, duration: 300, function: 'ease-in-out'}"  :y.transition="{value: $listY, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
-          <Poster :for="(item, index) in $items" index="$index" src="$item.poster" ref="$item.identifier"/>
+          <Poster :for="(item, index) in $items" index="$index" src="$item.poster" ref="$item.identifier" :key="$item.identifier" />
         </Element>
       </Element>
     </Element>`,
