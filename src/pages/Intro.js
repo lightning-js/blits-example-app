@@ -36,7 +36,7 @@ export default Blits.Component('Intro', {
     </Element>`,
   state() {
     return {
-      background: `${window.location.protocol}//${window.location.host}/assets/background.png`,
+      background: 'assets/background.png',
     }
   },
 })

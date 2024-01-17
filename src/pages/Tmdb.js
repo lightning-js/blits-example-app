@@ -30,8 +30,10 @@ export default Blits.Component('TMdb', {
       <Background :src="$src" />
       <Element :alpha.transition="{value: $alphaIn, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
         <Element src="assets/logo.png" x="130" :y.transition="{value: $logoY, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}" w="243" h="52" />
+        <Text :content="$title" font="raleway" size="80" x="130" y="200" wordwrap="1000" @loaded="$positionText" />
+        <Text :content="$overview" wordwrap="800" x="130" :y="$offset + 320" />
         <Element :x.transition="{value: $x, duration: 300, function: 'ease-in-out'}"  :y.transition="{value: $listY, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
-          <Poster :for="(item, index) in $items" index="$index" src="$item.poster" ref="$item.identifier"/>
+          <Poster :for="(item, index) in $items" index="$index" src="$item.poster" ref="$item.identifier" :key="$item.identifier" />
         </Element>
       </Element>
     </Element>`,
@@ -43,12 +45,19 @@ export default Blits.Component('TMdb', {
       alphaIn: 0.001,
       logoY: 30,
       listY: 750,
+      offset: 0,
     }
   },
   computed: {
     x() {
       if (this.focused <= 1) return 150
       return 150 - Math.min(this.focused - 1, this.items.length - 8) * 215
+    },
+    title() {
+      return this.items[this.focused] && this.items[this.focused].title
+    },
+    overview() {
+      return this.items[this.focused] && this.items[this.focused].overview
     },
   },
   watch: {
@@ -83,6 +92,11 @@ export default Blits.Component('TMdb', {
     },
     right() {
       this.focused = Math.min(this.focused + 1, this.items.length - 1)
+    },
+  },
+  methods: {
+    positionText(dimensions) {
+      this.offset = dimensions.h - 100
     },
   },
 })
