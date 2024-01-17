@@ -10,118 +10,118 @@
   "scenarios": [
     {
       "label": "Blits - Main Page",
-      "url": "http://localhost:5173/",
-      "delay": 300
+      "url": "http://host.docker.internal:8080/#/",
+      "delay": 500
     },
     {
       "label": "Blits - Loading",
-      "url": "http://localhost:5173/#/demos/loading",
+      "url": "http://host.docker.internal:8080/#/demos/loading",
       "delay": 1200
     },
     {
       "label": "Blits - Intro",
-      "url": "http://localhost:5173/#/demos/intro",
+      "url": "http://host.docker.internal:8080/#/demos/intro",
       "delay": 2000
     },
     {
       "label": "Blits - Theming",
-      "url": "http://localhost:5173/#/demos/theming",
+      "url": "http://host.docker.internal:8080/#/demos/theming",
       "delay": 220
     },
     {
       "label": "Blits - Tmdb",
-      "url": "http://localhost:5173/#/demos/tmdb",
+      "url": "http://host.docker.internal:8080/#/demos/tmdb",
       "delay": 300
     },
     {
       "label": "Blits - Focushandling",
-      "url": "http://localhost:5173/#/demos/focushandling",
+      "url": "http://host.docker.internal:8080/#/demos/focushandling",
       "delay": 300
     },
     {
       "label": "Blits - Memory Game",
-      "url": "http://localhost:5173/#/demos/memory-game",
+      "url": "http://host.docker.internal:8080/#/demos/memory-game",
       "delay": 300
     },
     {
       "label": "Blits - Positioning",
-      "url": "http://localhost:5173/#/examples/positioning",
+      "url": "http://host.docker.internal:8080/#/examples/positioning",
       "delay": 50
     },
     {
       "label": "Blits - Colors",
-      "url": "http://localhost:5173/#/examples/colors",
+      "url": "http://host.docker.internal:8080/#/examples/colors",
       "delay": 300
     },
     {
       "label": "Blits - Gradients",
-      "url": "http://localhost:5173/#/examples/gradients",
+      "url": "http://host.docker.internal:8080/#/examples/gradients",
       "delay": 300
     },
     {
       "label": "Blits - Transitions",
-      "url": "http://localhost:5173/#/examples/transitions",
+      "url": "http://host.docker.internal:8080/#/examples/transitions",
       "readyEvent": "TRANSITIONS_READY"
     },
     {
       "label": "Blits - Components",
-      "url": "http://localhost:5173/#/examples/components",
+      "url": "http://host.docker.internal:8080/#/examples/components",
       "delay": 300
     },
     {
       "label": "Blits - Alpha",
-      "url": "http://localhost:5173/#/examples/alpha",
+      "url": "http://host.docker.internal:8080/#/examples/alpha",
       "delay": 300
     },
     {
       "label": "Blits - Scaling",
-      "url": "http://localhost:5173/#/examples/scaling",
-      "readyEvent": "SCALING_READY"
+      "url": "http://host.docker.internal:8080/#/examples/scaling",
+      "delay": 800
     },
     {
       "label": "Blits - Rotation",
-      "url": "http://localhost:5173/#/examples/rotation",
+      "url": "http://host.docker.internal:8080/#/examples/rotation",
       "delay": 120
     },
     {
       "label": "Blits - Keyinput",
-      "url": "http://localhost:5173/#/examples/keyinput",
+      "url": "http://host.docker.internal:8080/#/examples/keyinput",
       "delay": 300
     },
     {
       "label": "Blits - Forloop",
-      "url": "http://localhost:5173/#/examples/forloop",
+      "url": "http://host.docker.internal:8080/#/examples/forloop",
       "delay": 50
     },
     {
       "label": "Blits - Effects",
-      "url": "http://localhost:5173/#/examples/effects",
+      "url": "http://host.docker.internal:8080/#/examples/effects",
       "delay": 300
     },
     {
       "label": "Blits - Showif",
-      "url": "http://localhost:5173/#/examples/showif",
+      "url": "http://host.docker.internal:8080/#/examples/showif",
       "delay": 300
     },
     {
       "label": "Blits - Events",
-      "url": "http://localhost:5173/#/examples/events",
+      "url": "http://host.docker.internal:8080/#/examples/events",
       "delay": 120
     },
     {
       "label": "Blits - Images",
-      "url": "http://localhost:5173/#/examples/images",
+      "url": "http://host.docker.internal:8080/#/examples/images",
       "delay": 50
     },
     {
       "label": "Blits - Texts",
-      "url": "http://localhost:5173/#/examples/texts",
+      "url": "http://host.docker.internal:8080/#/examples/texts",
       "delay": 300
     },
     {
       "label": "Blits - Slots",
-      "url": "http://localhost:5173/#/examples/slots",
-      "delay": 600
+      "url": "http://host.docker.internal:8080/#/examples/slots",
+      "delay": 100
     }
   ],
   "paths": {
@@ -147,5 +147,5 @@
   "asyncCompareLimit": 50,
   "debug": false,
   "debugWindow": false,
-  "misMatchThreshold": 0.2
+  "misMatchThreshold": 0.1
 }
