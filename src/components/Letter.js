@@ -30,7 +30,7 @@ export default Blits.Component('Letter', {
   props: ['w', 'letter', 'direction', 'delay'],
   computed: {
     image() {
-      return `${window.location.protocol}//${window.location.host}/assets/${this.letter}.png`
+      return `assets/${this.letter}.png`
     },
   },
   state() {

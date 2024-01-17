@@ -34,32 +34,34 @@ export default Blits.Component('Menu', {
   state() {
     return {
       x: -360,
-      focused: 1,
+      focused: null,
     }
   },
   hooks: {
     focus() {
-      this.select(`menu${this.focused}`).focus()
+      this.focused = 1
+      this.$trigger('focused')
       this.x = 0
     },
     unfocus() {
       this.x = -360
     },
   },
+  watch: {
+    focused() {
+      const item = this.select(`menu${this.focused}`)
+      item && item.focus && item.focus()
+    },
+  },
   input: {
     right() {
       this.parent.focus()
     },
-    left(e) {
-      this.parent.parent.focus(e)
-    },
     down() {
       this.focused = Math.min(this.focused + 1, 4)
-      this.select(`menu${this.focused}`).focus()
     },
     up() {
       this.focused = Math.max(this.focused - 1, 1)
-      this.select(`menu${this.focused}`).focus()
     },
   },
 })

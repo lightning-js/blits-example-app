@@ -37,10 +37,11 @@ export default Blits.Component('Images', {
       <Element
         :src="$image"
         w="428" h="234" x="100" y="700"
+        @loaded="$imageLoaded"
       />
 
       <!-- local image with color -->
-      <Element  color="gold" src="assets/lightningbolt.png" w="428" h="234" x="600" y="100" />
+      <Element color="{top: 'red', bottom: 'gold'}" src="assets/lightningbolt.png" w="428" h="234" x="600" y="100"  />
 
       <!-- applying clipping -->
       <Element x="600" y="400" w="428" h="234" :clipping="$clipping">
@@ -51,7 +52,7 @@ export default Blits.Component('Images', {
   state() {
     return {
       image: images[0],
-      clipping: true
+      clipping: true,
     }
   },
   hooks: {
@@ -60,6 +61,11 @@ export default Blits.Component('Images', {
         this.image = this.image === images[0] ? images[1] : images[0]
         this.clipping = !!!this.clipping
       }, 2000)
+    },
+  },
+  methods: {
+    imageLoaded(dimensions) {
+      this.$log.info(`Image loaded with w: ${dimensions.w} and h: ${dimensions.h}`)
     },
   },
 })

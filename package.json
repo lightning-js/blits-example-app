@@ -1,6 +1,6 @@
 {
   "name": "@lightningjs/blits-example-app",
-  "version": "0.1.1",
+  "version": "0.5.7",
   "description": "Lightning 3 Blits Example App",
   "main": "index.js",
   "type": "module",
@@ -9,7 +9,7 @@
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint '**/*.js' --fix",
     "build": "vite build",
-    "dev": "vite dev"
+    "dev": "vite dev --host"
   },
   "lint-staged": {
     "*.js": [
@@ -33,6 +33,6 @@
     "vite": "^4.0.4"
   },
   "dependencies": {
-    "@lightningjs/blits": "^0.3.15"
+    "@lightningjs/blits": "^0.6.4"
   }
 }

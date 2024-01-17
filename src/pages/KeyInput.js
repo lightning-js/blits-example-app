@@ -90,6 +90,8 @@ export default Blits.Component('KeyInput', {
       if (!isNaN(key)) {
         this.focusedX = Math.max(0, (key - 1) % 4)
         this.focusedY = Math.max(0, Math.ceil(key / 4) - 1)
+      } else {
+        this.parent.focus(e)
       }
     },
   },

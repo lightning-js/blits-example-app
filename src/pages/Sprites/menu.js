@@ -27,7 +27,7 @@ export default Blits.Component('MenuSprite', {
           <Sprite image="assets/menusprite.png" x="220" w="140" h="140" map="$map" frame="icon2" />
           <Sprite image="assets/menusprite.png" x="440" w="140" h="140" map="$map" frame="icon3" />
           <Sprite image="assets/menusprite.png" x="660" w="140" h="140" map="$map" frame="icon4_unfocus" />
-        <Element>
+        </Element>
       </Element>
     </Element>
     `,

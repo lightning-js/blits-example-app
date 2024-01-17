@@ -30,13 +30,16 @@ export default Blits.Component('Theming', {
   },
   template: `
     <Element w="1920" h="1080" :color.transition="$colors.bg">
+
+      <Text y="1020" x="1160" size="28" :color="$colors.color4">Use "up", "down", "left" and "right" to change the appearance</Text>
+
       <Element :x.transition="(1920 - $width) / 2" :y.transition="(1080 - $height) / 2">
         <Element x="-250" y="-100" src="assets/shadow.png" w="1000" h="900" alpha="0.5" />
 
         <!-- Header -->
         <Element :w.transition="$width" :h.transition="$height" :color="$colors.color1" :effects="[$shader('radius', {radius: $radius})]">
           <Element :w.transition="$width" h="100" :color="$colors.color2" :effects="[$shader('radius', {radius: $radius})]" />
-          <Element :w.transition="$width" h="80" y="20" :color="$colors.color2">
+          <Element :w.transition="$width" h="80" y="20" :color="$colors.color2" />
 
           <Text :content="$text" :color="$colors.color3" size="28" x="20" y="14" />
           <Toggle :x.transition="$width - 120" :on="$mode === 'dark'" :bgColor="$colors.color1" primaryColor="#22c55e" />
@@ -55,7 +58,7 @@ export default Blits.Component('Theming', {
             <Bar :bgColor="$colors.color2" :primaryColor="$colors.color4" :size="$graph.size" height="170" index="2" />
             <Bar :bgColor="$colors.color2" :primaryColor="$colors.color4" :size="$graph.size" height="150" index="3" />
             <Bar :bgColor="$colors.color2" :primaryColor="$colors.color4" :size="$graph.size" height="90" index="4" />
-          <Element>
+          </Element>
         </Element>
 
       </Element>
@@ -100,18 +103,25 @@ export default Blits.Component('Theming', {
     },
   },
   input: {
-    space() {
-      this.toggleX = this.toggleX === 0 ? 48 : 0
+    right() {
+      this.toggleX = 0
       this.$setTimeout(() => {
-        this.mode = this.mode === 'dark' ? 'light' : 'dark'
+        this.mode = 'light'
       }, 150)
     },
-    a() {
-      this.radius = this.radius === 20 ? 8 : 20
+    left() {
+      this.toggleX = 48
+      this.$setTimeout(() => {
+        this.mode = 'dark'
+      }, 150)
     },
-    b() {
-      this.width = this.width === 500 ? 1200 : 500
-      this.height = this.height === 600 ? 900 : 600
+    up() {
+      this.width = 1200
+      this.height = 900
+    },
+    down() {
+      this.width = 500
+      this.height = 600
     },
   },
 })

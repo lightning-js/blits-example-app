@@ -46,7 +46,7 @@ export default Blits.Component('Texts', {
   template: `
     <Element x="100" y="100">
 
-      <Text content="Default text" />
+      <Text content="Default text" @loaded="$textLoaded" />
       <Text content="123456" x="400" />
 
       <Text content="Text with a different fontsize" :size="$size" y="120" font="raleway" />
@@ -58,11 +58,11 @@ export default Blits.Component('Texts', {
       <Text content="Letterspacing" size="50" color="#38bdf8" y="450" letterspacing="40" />
 
       <Element w="800" h="100" y="550" color="#94a3b8">
-        <Text content="Text align center" size="50" y="15" color="#bae6fd" align="center" w="800" />
+        <Text content="Text align center" size="50" y="15" color="#bae6fd" align="center" wordwrap="800" />
       </Element>
 
       <Element w="800" h="200" x="900" y="550" color="#94a3b8">
-        <Text content="$longText" size="40" color="#bae6fd" w="800" h="200" />
+        <Text content="$longText" size="40" color="#bae6fd" wordwrap="800" maxlines="5" />
       </Element>
 
       <Text :content="$character" size="50" :color="$color" y="750" font="opensans" />
@@ -73,7 +73,8 @@ export default Blits.Component('Texts', {
       size: 10,
       character: characters[0],
       myText: 'This is my test yeah',
-      longText: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at ante non mauris commodo tristique. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut quis mattis mi. Aliquam ultricies mi vel lobortis luctus. Ut non feugiat urna. Duis sed blandit dui. Donec venenatis, mauris at blandit malesuada, elit nibh scelerisque lacus, non tempus arcu mi at justo.'
+      longText:
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at ante non mauris commodo tristique. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut quis mattis mi. Aliquam ultricies mi vel lobortis luctus. Ut non feugiat urna. Duis sed blandit dui. Donec venenatis, mauris at blandit malesuada, elit nibh scelerisque lacus, non tempus arcu mi at justo.',
     }
   },
   hooks: {
@@ -92,6 +93,11 @@ export default Blits.Component('Texts', {
         if (count2 > characters.length - 1) count2 = 0
         this.character = characters[count2]
       }, 1400)
+    },
+  },
+  methods: {
+    textLoaded(dimensions) {
+      this.$log.info(`Image loaded with w: ${dimensions.w} and h: ${dimensions.h}`)
     },
   },
 })
