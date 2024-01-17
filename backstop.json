@@ -1,5 +1,5 @@
 {
-  "id": "blits_example",
+  "id": "blits_example_app",
   "viewports": [
     {
       "label": "tv",
@@ -7,128 +7,145 @@
       "height": 1080
     }
   ],
-  "onBeforeScript": "playwright/onBefore.cjs",
-  "onReadyScript": "playwright/onReady.cjs",
   "scenarios": [
     {
+      "label": "Blits - Main Page",
+      "url": "http://localhost:5173/",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Loading",
+      "url": "http://localhost:5173/#/demos/loading",
+      "delay": 1200
+    },
+    {
+      "label": "Blits - Intro",
+      "url": "http://localhost:5173/#/demos/intro",
+      "delay": 2000
+    },
+    {
+      "label": "Blits - Theming",
+      "url": "http://localhost:5173/#/demos/theming",
+      "delay": 220
+    },
+    {
+      "label": "Blits - Tmdb",
+      "url": "http://localhost:5173/#/demos/tmdb",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Focushandling",
+      "url": "http://localhost:5173/#/demos/focushandling",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Memory Game",
+      "url": "http://localhost:5173/#/demos/memory-game",
+      "delay": 300
+    },
+    {
       "label": "Blits - Positioning",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/positioning",
+      "url": "http://localhost:5173/#/examples/positioning",
+      "delay": 50
+    },
+    {
+      "label": "Blits - Colors",
+      "url": "http://localhost:5173/#/examples/colors",
       "delay": 300
     },
     {
       "label": "Blits - Gradients",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5174/#/gradients",
+      "url": "http://localhost:5173/#/examples/gradients",
       "delay": 300
     },
     {
       "label": "Blits - Transitions",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/transitions",
-      "readyEvent":"TRANSITIONS_READY"
+      "url": "http://localhost:5173/#/examples/transitions",
+      "readyEvent": "TRANSITIONS_READY"
     },
     {
       "label": "Blits - Components",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/components",
-      "delay": 300
-    },
-    {
-      "label": "Blits - Key input handling",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/keyinput",
-      "delay": 300
-    },
-    {
-      "label": "Blits - Coloring",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/colors",
-      "delay": 300
-    },
-    {
-      "label": "Blits - For loop",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/forloop",
-      "delay": 50
-    },
-    {
-      "label": "Blits - Scaling",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/scaling",
-      "delay": 800
-    },
-    {
-      "label": "Blits - Effects",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/effects",
+      "url": "http://localhost:5173/#/examples/components",
       "delay": 300
     },
     {
       "label": "Blits - Alpha",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/alpha",
+      "url": "http://localhost:5173/#/examples/alpha",
       "delay": 300
     },
     {
-      "label": "Blits - Conditional rendering",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/showif",
-      "delay": 300
-    },
-    {
-      "label": "Blits - Images",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/images",
-      "delay": 200
+      "label": "Blits - Scaling",
+      "url": "http://localhost:5173/#/examples/scaling",
+      "readyEvent": "SCALING_READY"
     },
     {
       "label": "Blits - Rotation",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/rotation",
+      "url": "http://localhost:5173/#/examples/rotation",
       "delay": 120
     },
     {
-      "label": "Blits - Events",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/events",
-      "delay": 120
-    },
-    {
-      "label": "Blits - Focus handling",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/focushandling",
+      "label": "Blits - Keyinput",
+      "url": "http://localhost:5173/#/examples/keyinput",
       "delay": 300
     },
     {
-      "label": "Blits - Text",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/texts",
-      "delay": 20
+      "label": "Blits - Forloop",
+      "url": "http://localhost:5173/#/examples/forloop",
+      "delay": 50
     },
     {
-      "label": "Blits - Theming",
-      "cookiePath": "backstop_data/engine_scripts/cookies.json",
-      "url": "http://localhost:5173/#/theming",
-      "delay": 220
+      "label": "Blits - Effects",
+      "url": "http://localhost:5173/#/examples/effects",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Showif",
+      "url": "http://localhost:5173/#/examples/showif",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Events",
+      "url": "http://localhost:5173/#/examples/events",
+      "delay": 120
+    },
+    {
+      "label": "Blits - Images",
+      "url": "http://localhost:5173/#/examples/images",
+      "delay": 50
+    },
+    {
+      "label": "Blits - Texts",
+      "url": "http://localhost:5173/#/examples/texts",
+      "delay": 300
+    },
+    {
+      "label": "Blits - Slots",
+      "url": "http://localhost:5173/#/examples/slots",
+      "delay": 600
     }
   ],
   "paths": {
-    "bitmaps_reference": "backstop_data/bitmaps_reference",
-    "bitmaps_test": "backstop_data/bitmaps_test",
-    "engine_scripts": "backstop_data/engine_scripts",
-    "html_report": "backstop_data/html_report",
-    "ci_report": "backstop_data/ci_report"
+    "bitmaps_reference": "tests/backstopjs/bitmaps_reference",
+    "bitmaps_test": "tests/backstopjs/bitmaps_test",
+    "engine_scripts": "tests/backstopjs/engine_scripts",
+    "html_report": "tests/backstopjs/html_report",
+    "ci_report": "tests/backstopjs/ci_report"
   },
-  "report": ["browser"],
+  "report": [
+    "browser"
+  ],
   "engine": "playwright",
   "engineOptions": {
-    "args": ["--no-sandbox"],
-    "browser": "webkit"
+    "args": [
+      "--no-sandbox",
+      "--disable-setuid-sandbox"
+    ],
+    "browser": "chromium"
   },
   "headless": false,
-  "asyncCaptureLimit": 5,
+  "asyncCaptureLimit": 1,
   "asyncCompareLimit": 50,
   "debug": false,
-  "debugWindow": false
+  "debugWindow": false,
+  "misMatchThreshold": 0.2
 }

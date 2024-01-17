@@ -9,7 +9,8 @@
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint '**/*.js' --fix",
     "build": "vite build",
-    "dev": "vite dev --host"
+    "dev": "vite dev --host",
+    "postinstall": "npx playwright install"
   },
   "lint-staged": {
     "*.js": [
@@ -29,6 +30,7 @@
     "eslint-plugin-prettier": "^4.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
+    "playwright": "^1.41.0",
     "prettier": "^2.5.1",
     "vite": "^4.0.4"
   },

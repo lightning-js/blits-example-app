@@ -55,9 +55,9 @@ export default Blits.Component('Transitions', {
         this.y = 1080 - 50 - 200
       }, 500)
 
-      this.$setTimeout(()=>{
-        console.log("TRANSITIONS_READY")
-      },3000)
+      this.$setTimeout(() => {
+        console.log('TRANSITIONS_READY')
+      }, 3000)
     },
   },
   methods: {
