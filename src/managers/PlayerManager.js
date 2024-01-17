@@ -25,29 +25,34 @@ let videoElement
  * @returns {Promise<void>}
  */
 const init = async (element) => {
-	console.log("Inside Shaka Player")
-  shaka.polyfill.installAll() // polyfilling for devices that need it.
+	shaka.polyfill.installAll() // polyfilling for devices that need it.
 
   videoElement = element
 
   if (!videoElement) {
     videoElement = document.createElement('video')
+    videoElement.setAttribute('controls', true)
 
-    // Position our video element in the background.
-    Object.assign(videoElement.style, { position: 'absolute', left: 0, top: 0, zIndex: 0 })
-    videoElement.id = 'video-player'
-    videoElement.width = 1920
-    videoElement.height = 1080
+    const vStyles = { position: 'absolute', top: 0, left: 0, zIndex: 0 }
+    Object.assign(videoElement.style, vStyles)
+    
+    videoElement.width='1920'
+    videoElement.height='1080'
+    
+    player = new shaka.Player()
+    await player.attach(videoElement)
+
     videoElement.autoplay = true
 
-    // Position our app on top of the video element.
-    // Object.assign(document.getElementById('app').style,{ position: 'absolute', left: 0, top: 0, zIndex: 1 })
+     // Listen for error events.
+    player.addEventListener('error', (err) => {
+      console.error(err)
+    })
     document.body.insertBefore(videoElement, document.getElementById('app'))
   }
-
-  player = new shaka.Player()
-  await player.attach(videoElement)
+ 
 }
+
 
 /**
  * Loads the player.
@@ -58,20 +63,13 @@ const load = async (config) => {
   if (!player || !videoElement) {
     throw 'Player not initialised yet'
   }
+
   await player.load(config.streamUrl)
+  player
+  videoElement.hidden = false;
+  videoElement.focus();
 }
 
-const getCurrentTime = () => {
-  return videoElement?.currentTime
-}
-
-const play = () => {
-  return videoElement?.play()
-}
-
-const pause = () => {
-  return videoElement?.pause()
-}
 
 const destroy = async () => {
   await player.destroy()
@@ -80,12 +78,8 @@ const destroy = async () => {
   videoElement.remove()
   videoElement = null
 }
-
 export default {
   init,
   load,
-  getCurrentTime,
-  play,
-  pause,
   destroy
 }

@@ -21,7 +21,7 @@ import PlayerManager from '../managers/PlayerManager.js'
 export default Blits.Component('Player', {
   template: `
     <Element>
-      <Text color="black">Our awesome player</Text>
+      <Text color="white">Player Demo</Text>
     </Element>
   `,
   hooks: {
@@ -31,10 +31,11 @@ export default Blits.Component('Player', {
     async ready () {
       await PlayerManager.load({
         streamUrl: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8'
+        // streamUrl: 'https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd'
       })
     },
-    async destroy () {
-      await PlayerManager.destroy()
-    }
+	async destroy () {
+		await PlayerManager.destroy()
+	}
   }
 })
