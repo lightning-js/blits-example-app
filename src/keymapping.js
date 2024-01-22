@@ -6,8 +6,7 @@ const queryParam = (param) => {
 const keymapping = {
   sky: {
     test() {
-      console.log(queryParam('keymapping') === 'sky')
-      return navigator.userAgent.indexOf('WPE Sky_TV') > -1 || queryParam('keymapping') === 'sky'
+      return navigator.userAgent.indexOf('WPE Sky') > -1 || queryParam('keymapping') === 'sky'
     },
     mapping: {
       Escape: 'back',
