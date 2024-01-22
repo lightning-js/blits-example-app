@@ -34,21 +34,21 @@ Blits.Launch(App, 'app', {
     {
       family: 'lato',
       type: 'msdf',
-      png: '/fonts/Lato-Regular.msdf.png',
-      json: '/fonts/Lato-Regular.msdf.json',
+      png: 'fonts/Lato-Regular.msdf.png',
+      json: 'fonts/Lato-Regular.msdf.json',
     },
     {
       family: 'raleway',
       type: 'msdf',
-      png: '/fonts/Raleway-ExtraBold.msdf.png',
-      json: '/fonts/Raleway-ExtraBold.msdf.json',
+      png: 'fonts/Raleway-ExtraBold.msdf.png',
+      json: 'fonts/Raleway-ExtraBold.msdf.json',
     },
-    { family: 'opensans', type: 'web', file: '/fonts/OpenSans-Medium.ttf' },
+    { family: 'opensans', type: 'web', file: 'fonts/OpenSans-Medium.ttf' },
     {
       family: 'kalam',
       type: 'msdf',
-      png: '/fonts/Kalam-Regular.msdf.png',
-      json: '/fonts/Kalam-Regular.msdf.json',
+      png: 'fonts/Kalam-Regular.msdf.png',
+      json: 'fonts/Kalam-Regular.msdf.json',
     },
   ],
 })
