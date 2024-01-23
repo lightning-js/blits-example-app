@@ -56,7 +56,6 @@ export default Blits.Component('Scaling', {
         const scale = this.direction === 'up' ? this.scale + 0.5 : 0
         this.scale = Math.max(Math.min(scale, 8), 0)
         if (this.scale === 8) {
-          console.log('SCALING_READY')
           this.direction = 'down'
         }
         if (this.scale === 0) {
