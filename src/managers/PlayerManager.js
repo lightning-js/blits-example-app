@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Comcast Cable Communications Management, LLC
+ * Copyright 2024 Comcast Cable Communications Management, LLC
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -32,10 +32,12 @@ const init = async (element) => {
   if (!videoElement) {
     videoElement = document.createElement('video')
     videoElement.setAttribute('controls', true)
-
-    const vStyles = { position: 'absolute', top: 0, left: 0, zIndex: 0 }
-    Object.assign(videoElement.style, vStyles)
     
+    const cssString = 'position: absolute; top: 0; left: 0; zIndex: 0'
+
+    // Assign the CSS string to the cssText property
+    videoElement.style.cssText = cssString
+
     videoElement.width='1920'
     videoElement.height='1080'
     
@@ -65,9 +67,16 @@ const load = async (config) => {
   }
 
   await player.load(config.streamUrl)
-  player
-  videoElement.hidden = false;
-  videoElement.focus();
+  // videoElement.hidden = false
+  
+}
+
+const play = () => {
+  return videoElement?.play()
+}
+
+const pause = () => {
+  return videoElement?.pause()
 }
 
 
@@ -81,5 +90,7 @@ const destroy = async () => {
 export default {
   init,
   load,
+  play,
+  pause,
   destroy
 }
