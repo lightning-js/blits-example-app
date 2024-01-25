@@ -24,6 +24,11 @@ export default Blits.Component('Player', {
       <Text color="white">Player Demo</Text>
     </Element>
   `,
+  input: {
+     async space() {
+      PlayerManager.state.playingState == true ? PlayerManager.pause() : PlayerManager.play()
+     },
+  },
   hooks: {
     async init () {
       await PlayerManager.init()

@@ -19,6 +19,10 @@ import shaka from 'shaka-player'
 let player
 let videoElement
 
+const state = {
+  playingState : true
+}
+
 /**
  * Initialises the player.
  * @param {HTMLElement} [videoElement]. - The video element used to initiate playback in.
@@ -31,7 +35,7 @@ const init = async (element) => {
 
   if (!videoElement) {
     videoElement = document.createElement('video')
-    videoElement.setAttribute('controls', true)
+    // videoElement.setAttribute('controls', true)
     
     const cssString = 'position: absolute; top: 0; left: 0; zIndex: 0'
 
@@ -67,15 +71,16 @@ const load = async (config) => {
   }
 
   await player.load(config.streamUrl)
-  // videoElement.hidden = false
-  
 }
 
+
 const play = () => {
+  state.playingState = true
   return videoElement?.play()
 }
 
 const pause = () => {
+  state.playingState=false
   return videoElement?.pause()
 }
 
@@ -92,5 +97,6 @@ export default {
   load,
   play,
   pause,
+  state,
   destroy
 }
