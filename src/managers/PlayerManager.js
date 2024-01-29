@@ -54,7 +54,7 @@ const init = async (element) => {
     player.addEventListener('error', (err) => {
       console.error(err)
     })
-    document.body.insertBefore(videoElement, document.getElementById('app'))
+    document.body.insertBefore(videoElement, document.body.firstChild)
   }
  
 }
