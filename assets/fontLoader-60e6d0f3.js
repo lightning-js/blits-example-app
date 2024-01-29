@@ -1,1 +1,0 @@
-import{q as s,r as n,f as r,n as d}from"./settings-adac9901.js";class i extends s{async run(a){n.get("fonts",[]).forEach(e=>{e.type==="sdf"||e.type==="msdf"?a.fontManager.addFontFace(new r(e.family,{},e.type,a,e.png,e.json)):e.type==="web"&&a.fontManager.addFontFace(new d(e.family,{},e.file))})}}export{i as default};
