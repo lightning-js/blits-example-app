@@ -23,7 +23,7 @@ export default Blits.Component('Intro', {
     Letter,
   },
   template: `
-    <Element w="1920" h="1080" :src="$background">
+    <Element w="1920" h="1080" src="assets/background.jpg">
       <Letter letter="l" w="294" />
       <Letter letter="i-1" w="128" x="294" direction="up" delay="50" />
       <Letter letter="g-1" w="205" x="422" delay="100" />
@@ -34,9 +34,4 @@ export default Blits.Component('Intro', {
       <Letter letter="n-2" w="219" x="1377" direction="up" delay="350" />
       <Letter letter="g-2" w="324" x="1596" direction="up" delay="400" />
     </Element>`,
-  state() {
-    return {
-      background: 'assets/background.png',
-    }
-  },
 })

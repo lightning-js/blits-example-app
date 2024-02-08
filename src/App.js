@@ -46,12 +46,7 @@ import Slots from './pages/Slots'
 import MemoryGame from './pages/MemoryGame'
 import Exponential from './pages/Exponential'
 
-import FPScounter from './components/FPScounter.js'
-
 export default Blits.Application({
-  components: {
-    FPScounter,
-  },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView />
