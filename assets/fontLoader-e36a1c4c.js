@@ -1,1 +1,0 @@
-import{C as s,a as n,S as r,W as d}from"./settings-f05e2292.js";class i extends s{async run(a){n.get("fonts",[]).forEach(e=>{e.type==="sdf"||e.type==="msdf"?a.fontManager.addFontFace(new r(e.family,{},e.type,a,e.png,e.json)):e.type==="web"&&a.fontManager.addFontFace(new d(e.family,{},e.file))})}}export{i as default};
