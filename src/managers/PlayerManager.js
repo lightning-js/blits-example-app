@@ -20,46 +20,42 @@ let player
 let videoElement
 
 const state = {
-  playingState : true
+  playingState : true,
 }
 
 /**
- * Initialises the player.
- * @param {HTMLElement} [videoElement]. - The video element used to initiate playback in.
+ * Initializes the player.
+ * @param {HTMLElement} [element] - The video element used to initiate playback in.
  * @returns {Promise<void>}
  */
 const init = async (element) => {
-	shaka.polyfill.installAll() // polyfilling for devices that need it.
+  shaka.polyfill.installAll() // polyfilling for devices that need it.
 
   videoElement = element
 
   if (!videoElement) {
     videoElement = document.createElement('video')
-    // videoElement.setAttribute('controls', true)
-    
+
     const cssString = 'position: absolute; top: 0; left: 0; zIndex: 0'
 
     // Assign the CSS string to the cssText property
     videoElement.style.cssText = cssString
 
-    videoElement.width='1920'
-    videoElement.height='1080'
-    
+    videoElement.width = 1920
+    videoElement.height = 1080
+
     player = new shaka.Player()
     await player.attach(videoElement)
 
     videoElement.autoplay = true
 
-     // Listen for error events.
+    // Listen for error events.
     player.addEventListener('error', (err) => {
       console.error(err)
     })
     document.body.insertBefore(videoElement, document.body.firstChild)
   }
- 
 }
-
-
 /**
  * Loads the player.
  * @param {Object} config - The player configuration.
@@ -67,12 +63,11 @@ const init = async (element) => {
  */
 const load = async (config) => {
   if (!player || !videoElement) {
-    throw 'Player not initialised yet'
+    throw 'Player not initialized yet'
   }
 
   await player.load(config.streamUrl)
 }
-
 
 const play = () => {
   state.playingState = true
@@ -80,10 +75,9 @@ const play = () => {
 }
 
 const pause = () => {
-  state.playingState=false
+  state.playingState = false
   return videoElement?.pause()
 }
-
 
 const destroy = async () => {
   await player.destroy()
@@ -92,11 +86,30 @@ const destroy = async () => {
   videoElement.remove()
   videoElement = null
 }
+
+const getCurrentTime = () => {
+  return videoElement.currentTime
+}
+
+const getVideoDuration = () => {
+  return videoElement.duration
+}
+
+const getTimeFormat = () => {
+  let secondsToMmSs = (seconds) => new Date(seconds * 1000).toISOString().substr(14, 5)
+  return `${secondsToMmSs(videoElement.currentTime)} : ${secondsToMmSs(
+    Math.floor(videoElement.duration)
+  )}`
+}
+
 export default {
   init,
   load,
   play,
   pause,
+  getCurrentTime,
+  getVideoDuration,
+  getTimeFormat,
   state,
-  destroy
+  destroy,
 }
