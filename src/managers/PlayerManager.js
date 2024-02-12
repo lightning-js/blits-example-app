@@ -36,10 +36,7 @@ const init = async (element) => {
   if (!videoElement) {
     videoElement = document.createElement('video')
 
-    const cssString = 'position: absolute; top: 0; left: 0; zIndex: 0'
-
-    // Assign the CSS string to the cssText property
-    videoElement.style.cssText = cssString
+    videoElement.style.cssText = 'position: absolute; top: 0; left: 0; zIndex: 0'
 
     videoElement.width = 1920
     videoElement.height = 1080

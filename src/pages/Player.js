@@ -69,7 +69,6 @@ export default Blits.Component('Player', {
     async ready() {
       await PlayerManager.load({
         streamUrl: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
-        // streamUrl: 'https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd',
       })
       const secondsToMmSs = (seconds) => new Date(seconds * 1000).toISOString().substr(14, 5)
       const duration = PlayerManager.getVideoDuration()
