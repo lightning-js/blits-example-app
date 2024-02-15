@@ -41,12 +41,11 @@ export default Blits.Component('FocusHandling', {
     </Element>`,
   state() {
     return {
-      focused: null,
+      focused: 1,
     }
   },
   hooks: {
     focus() {
-      this.focused = 1
       this.$trigger('focused')
     },
   },
