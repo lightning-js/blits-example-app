@@ -16,7 +16,7 @@
  */
 
 import Blits from '@lightningjs/blits'
-import fetchPopular from '../api/providers/fetchPopular'
+import { fetchPopular } from '../api/providers/'
 import Poster from '../components/Poster.js'
 import Background from '../components/Background.js'
 
