@@ -43,7 +43,6 @@ export default Blits.Component('Poster', {
     focus() {
       this.colorBottom = '#fff'
       this.scale = 1.1
-      this.$emit('posterSelect', this.index)
     },
     unfocus() {
       this.colorBottom = '#000'

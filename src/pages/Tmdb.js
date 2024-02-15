@@ -16,60 +16,62 @@
  */
 
 import Blits from '@lightningjs/blits'
+
 import { fetchPopular } from '../api/providers/'
-import Poster from '../components/Poster.js'
+import TmdbRow from '../components/TmdbRow.js'
 import Background from '../components/Background.js'
 
 export default Blits.Component('TMdb', {
   components: {
-    Poster,
     Background,
+    TmdbRow,
   },
   template: `
     <Element w="1920" h="1080" color="black">
       <Background :src="$src" />
       <Element :alpha.transition="{value: $alphaIn, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
         <Element src="assets/logo.png" x="130" :y.transition="{value: $logoY, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}" w="243" h="52" />
-        <Text :content="$title" font="raleway" size="80" x="130" y="200" wordwrap="1000" @loaded="$positionText" />
-        <Text :content="$overview" wordwrap="800" x="130" :y="$offset + 330" lineheight="40" maxlines="6" />
-        <Element :x.transition="{value: $x, duration: 300, function: 'ease-in-out'}"  :y.transition="{value: $listY, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
-          <Poster :for="(item, index) in $items" index="$index" src="$item.poster" ref="$item.identifier" :key="$item.identifier" />
+        <Text :content="$title" font="raleway" size="80" x="130" y="200" wordwrap="1000" @loaded="$positionText" maxlines="2" />
+        <Text :content="$overview" wordwrap="800" x="130" :y="$offset + 330" lineheight="40" maxlines="4" />
+        <Element :y.transition="{value: $y, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
+         <TmdbRow :for="(row, index) in $rows" :key="$row" title="$row" :items="$items" y="$index * 450" ref="row" />
         </Element>
       </Element>
     </Element>`,
   state() {
     return {
+      rows: [
+        'Popular Movies',
+        'Upcoming TV shows',
+        'Adventure movies',
+        'Horror movies',
+        'Trending movies',
+      ],
       items: [],
       src: '',
       focused: null,
       alphaIn: 0.001,
       logoY: 30,
-      listY: 750,
       offset: 0,
+      title: '',
+      overview: '',
     }
   },
   computed: {
-    x() {
-      if (this.focused <= 1) return 150
-      return 150 - Math.min(this.focused - 1, this.items.length - 8) * 215
-    },
-    title() {
-      return this.items[this.focused] && this.items[this.focused].title
-    },
-    overview() {
-      return this.items[this.focused] && this.items[this.focused].overview
+    y(v) {
+      if (this.focused === 0) return 630
+      return 630 - Math.min(this.focused, this.rows.length) * 450
     },
   },
   watch: {
     focused(value) {
-      const focusItem = this.select(this.items[value] && this.items[value].identifier)
+      const focusItem = this.select('row' + value)
       if (focusItem && focusItem.focus) focusItem.focus()
     },
   },
   hooks: {
     ready() {
       this.alphaIn = 1
-      this.listY = 700
       this.logoY = 80
 
       fetchPopular('movie').then((items) => {
@@ -78,8 +80,10 @@ export default Blits.Component('TMdb', {
         this.background = items[this.focused].background
       })
 
-      this.$listen('posterSelect', (index) => {
-        this.src = this.items[index].background
+      this.$listen('posterSelect', (item) => {
+        this.src = item.background
+        this.title = item.title
+        this.overview = item.overview
       })
     },
     focus() {
@@ -87,11 +91,11 @@ export default Blits.Component('TMdb', {
     },
   },
   input: {
-    left() {
+    up() {
       this.focused = Math.max(this.focused - 1, 0)
     },
-    right() {
-      this.focused = Math.min(this.focused + 1, this.items.length - 1)
+    down() {
+      this.focused = Math.min(this.focused + 1, this.rows.length - 1)
     },
   },
   methods: {
