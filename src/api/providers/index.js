@@ -45,8 +45,8 @@ export const fetchUpcomingTv = () => {
 }
 
 // Gets a list of target genre movies
-export const fetchGenreMovies = () => {
-  const targetGenre = ['Adventure', 'Horror', 'Thriller']
+export const fetchGenreMovies = (genres) => {
+  const targetGenre = Array.isArray(genres) ? genres : [genres]
   return getGenre('movie').then(({ genres }) => {
     let targetGenreIds = []
     genres.forEach((item) => {

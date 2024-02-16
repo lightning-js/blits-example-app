@@ -17,7 +17,7 @@
 
 import Blits from '@lightningjs/blits'
 
-import { fetchPopular } from '../api/providers/'
+import { fetchPopular, fetchGenreMovies } from '../api/providers/'
 import TmdbRow from '../components/TmdbRow.js'
 import Background from '../components/Background.js'
 
@@ -34,19 +34,13 @@ export default Blits.Component('TMdb', {
         <Text :content="$title" font="raleway" size="80" x="130" y="200" wordwrap="1000" @loaded="$positionText" maxlines="2" />
         <Text :content="$overview" wordwrap="800" x="130" :y="$offset + 330" lineheight="40" maxlines="4" />
         <Element :y.transition="{value: $y, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
-         <TmdbRow :for="(row, index) in $rows" :key="$row" title="$row" :items="$items" y="$index * 450" ref="row" />
+         <TmdbRow :for="(row, index) in $rows" :key="$row.title" title="$row.title" :items="$row.items" y="$index * 450" ref="row" />
         </Element>
       </Element>
     </Element>`,
   state() {
     return {
-      rows: [
-        'Popular Movies',
-        'Upcoming TV shows',
-        'Adventure movies',
-        'Horror movies',
-        'Trending movies',
-      ],
+      rows: [],
       items: [],
       src: '',
       focused: null,
@@ -70,15 +64,36 @@ export default Blits.Component('TMdb', {
     },
   },
   hooks: {
-    ready() {
+    async ready() {
       this.alphaIn = 1
       this.logoY = 80
 
-      fetchPopular('movie').then((items) => {
-        this.items = items
-        this.focused = 0
-        this.background = items[this.focused].background
+      this.rows.push({
+        title: 'Popular Movies',
+        items: await fetchPopular('movie'),
       })
+
+      this.rows.push({
+        title: 'Popular TV shows',
+        items: await fetchPopular('tv'),
+      })
+
+      this.rows.push({
+        title: 'Best Adventure and Action movies',
+        items: await fetchGenreMovies(['adventure', 'action']),
+      })
+
+      this.rows.push({
+        title: 'Best Documentaries',
+        items: await fetchGenreMovies('Documentary'),
+      })
+
+      this.rows.push({
+        title: 'Best Western movies',
+        items: await fetchGenreMovies('Western'),
+      })
+
+      this.focused = 0
 
       this.$listen('posterSelect', (item) => {
         this.src = item.background
