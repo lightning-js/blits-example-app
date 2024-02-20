@@ -19,17 +19,27 @@ import Blits from '@lightningjs/blits'
 
 export default Blits.Component('Poster', {
   template: `
-    <Element
-      w="185" h="278" x="$x"
-      :src="$item.poster"
-      :scale.transition="{value: $scale, duration: 200, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
+    <Element w="1280" h="720" x="$x"
+      :src="$item.background"
+      color="{top: '#fff', bottom: '#000'}"
+      :scale.transition="{value: $scale, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
       :effects="[$shader('radius', {radius: 8})]"
-    />`,
+    >
+      <Element :alpha.transition="{value: $alpha, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}" >
+        <Element
+          w="185" h="278" x="54" y="220"
+          :src="$item.poster"
+        />
+        <Text :content="$item.title" font="raleway" y="520" x="54" size="64" wordwrap="1000" maxlines="1" />
+        <Text :content="$item.overview" size="21" y="620" x="60" color="#ccc" wordwrap="1000" maxlines="2" lineheight="36" maxlines="2" />
+      </Element>
+    </Element>`,
   props: ['src', 'index', 'item', 'width'],
   state() {
     return {
       scale: 1,
-      color: '#333',
+      zIndex: 1,
+      alpha: 0,
     }
   },
   computed: {
@@ -39,12 +49,12 @@ export default Blits.Component('Poster', {
   },
   hooks: {
     focus() {
-      this.color = '#fff'
       this.scale = 1.1
+      this.alpha = 1
     },
     unfocus() {
-      this.color = '#333'
       this.scale = 1
+      this.alpha = 0
     },
   },
 })
