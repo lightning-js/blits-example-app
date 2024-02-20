@@ -66,6 +66,14 @@ export default Blits.Component('TMdb', {
   },
   hooks: {
     async ready() {
+      this.$listen('posterSelect', (item) => {
+        if (this.focused === 0) {
+          this.src = item.background
+          this.title = item.title
+          this.overview = item.overview
+        }
+      })
+
       this.rows.push({
         title: 'Popular Movies',
         items: await fetchPopular('movie'),
@@ -75,7 +83,7 @@ export default Blits.Component('TMdb', {
       })
 
       this.rows.push({
-        title: 'Best Adventure and Action movies',
+        title: 'Best Western movies',
         items: await fetchGenreMovies(['Western']),
         type: 'Hero',
         width: 1370,
@@ -83,7 +91,7 @@ export default Blits.Component('TMdb', {
       })
 
       this.rows.push({
-        title: 'Best Adventure and Action movies',
+        title: 'Best Comedy movies',
         items: await fetchGenreMovies(['Comedy']),
         type: 'PosterTitle',
         width: 215,
@@ -123,14 +131,6 @@ export default Blits.Component('TMdb', {
       })
 
       this.focused = 0
-
-      this.$listen('posterSelect', (item) => {
-        if (this.focused === 0) {
-          this.src = item.background
-          this.title = item.title
-          this.overview = item.overview
-        }
-      })
     },
     focus() {
       this.$trigger('focused')
