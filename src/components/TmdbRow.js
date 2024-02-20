@@ -17,41 +17,38 @@
 
 import Blits from '@lightningjs/blits'
 
+import Hero from './Hero.js'
 import Poster from './Poster.js'
+import PosterTitle from './PosterTitle.js'
 
 export default Blits.Component('TmdbRow', {
   components: {
+    Hero,
     Poster,
+    PosterTitle,
   },
   template: `
-    <Element :alpha.transition="$alpha">
-      <Text :content="$title" lineheight="40" x="130" size="36" />
+    <Element>
       <Element :x.transition="{value: $x, duration: 300, function: 'ease-in-out'}" y="80">
-        <Poster :for="(item, index) in $items" index="$index" src="$item.poster" ref="poster" :key="$item.identifier" />
+        <Component is="$type" :for="(item, index) in $items" index="$index" item="$item" ref="poster" width="$width" :key="$item.identifier" />
       </Element>
     </Element>
   `,
-  props: ['title', 'items'],
+  props: ['title', 'type', 'items', 'width'],
   state() {
     return {
       focused: 0,
       offset: 0,
-      alpha: 0,
     }
   },
   hooks: {
     focus() {
       this.$trigger('focused')
-      this.alpha = 1
-    },
-    unfocus() {
-      this.alpha = 0
     },
   },
   computed: {
     x() {
-      if (this.focused <= 1) return 150
-      return 150 - Math.min(this.focused - 1, this.items.length - 8) * 215
+      return 150 - Math.min(this.focused, this.items.length - 8) * this.width
     },
   },
   watch: {

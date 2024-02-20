@@ -29,12 +29,16 @@ export default Blits.Component('TMdb', {
   template: `
     <Element w="1920" h="1080" color="black">
       <Background :src="$src" />
-      <Element :alpha.transition="{value: $alphaIn, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
-        <Element src="assets/logo.png" x="130" :y.transition="{value: $logoY, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}" w="243" h="52" />
-        <Text :content="$title" font="raleway" size="80" x="130" y="200" wordwrap="1000" @loaded="$positionText" maxlines="2" />
-        <Text :content="$overview" wordwrap="800" x="130" :y="$offset + 330" lineheight="40" maxlines="4" />
+      <Element>
+        <Element
+        :y.transition="{value: $contentY, duration: $duration}"
+        :alpha.transition="{value: $alpha, duration: $duration}" >
+          <Element src="assets/logo.png" x="140" y="90" w="243" h="52" />
+          <Text :content="$title" font="raleway" size="80" x="140" y="300" wordwrap="1000" @loaded="$positionText" maxlines="1" />
+          <Text :content="$overview" wordwrap="880" x="140" y="430" lineheight="40" maxlines="3" />
+        </Element>
         <Element :y.transition="{value: $y, duration: 300, function: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
-         <TmdbRow :for="(row, index) in $rows" :key="$row.title" title="$row.title" :items="$row.items" y="$index * 450" ref="row" />
+          <TmdbRow :for="(row, index) in $rows" :key="$row.title" title="$row.title" :items="$row.items" :type="$row.type" :width="$row.width" y="$row.y" ref="row" />
         </Element>
       </Element>
     </Element>`,
@@ -44,18 +48,15 @@ export default Blits.Component('TMdb', {
       items: [],
       src: '',
       focused: null,
-      alphaIn: 0.001,
-      logoY: 30,
-      offset: 0,
+      alpha: 1,
+      y: 550,
+      contentY: 0,
+      scale: 1,
       title: '',
       overview: '',
+      type: 'Poster',
+      duration: 300,
     }
-  },
-  computed: {
-    y(v) {
-      if (this.focused === 0) return 630
-      return 630 - Math.min(this.focused, this.rows.length) * 450
-    },
   },
   watch: {
     focused(value) {
@@ -65,40 +66,70 @@ export default Blits.Component('TMdb', {
   },
   hooks: {
     async ready() {
-      this.alphaIn = 1
-      this.logoY = 80
-
       this.rows.push({
         title: 'Popular Movies',
         items: await fetchPopular('movie'),
+        type: 'Poster',
+        width: 215,
+        y: 0,
+      })
+
+      this.rows.push({
+        title: 'Best Adventure and Action movies',
+        items: await fetchGenreMovies(['Western']),
+        type: 'Hero',
+        width: 1370,
+        y: 358,
+      })
+
+      this.rows.push({
+        title: 'Best Adventure and Action movies',
+        items: await fetchGenreMovies(['Comedy']),
+        type: 'PosterTitle',
+        width: 215,
+        y: 1158,
       })
 
       this.rows.push({
         title: 'Popular TV shows',
         items: await fetchPopular('tv'),
+        type: 'PosterTitle',
+        width: 215,
+        y: 1536,
       })
 
       this.rows.push({
         title: 'Best Adventure and Action movies',
         items: await fetchGenreMovies(['adventure', 'action']),
+        type: 'Hero',
+        width: 1370,
+        y: 1914,
       })
 
       this.rows.push({
         title: 'Best Documentaries',
         items: await fetchGenreMovies('Documentary'),
+        type: 'PosterTitle',
+        width: 215,
+        y: 2714,
       })
 
       this.rows.push({
         title: 'Best Western movies',
         items: await fetchGenreMovies('Western'),
+        type: 'PosterTitle',
+        width: 215,
+        y: 3092,
       })
 
       this.focused = 0
 
       this.$listen('posterSelect', (item) => {
-        this.src = item.background
-        this.title = item.title
-        this.overview = item.overview
+        if (this.focused === 0) {
+          this.src = item.background
+          this.title = item.title
+          this.overview = item.overview
+        }
       })
     },
     focus() {
@@ -107,15 +138,18 @@ export default Blits.Component('TMdb', {
   },
   input: {
     up() {
+      this.contentY = 0
+      this.duration = 300
       this.focused = Math.max(this.focused - 1, 0)
+      this.y = (this.focused === 0 ? 550 : 90) - this.rows[this.focused].y
+      this.alpha = this.focused === 0 ? 1 : 0
     },
     down() {
+      this.contentY = -60
+      this.duration = 200
       this.focused = Math.min(this.focused + 1, this.rows.length - 1)
-    },
-  },
-  methods: {
-    positionText(dimensions) {
-      this.offset = dimensions.h - 100
+      this.y = (this.focused === 0 ? 550 : 90) - this.rows[this.focused].y
+      this.alpha = this.focused === 0 ? 1 : 0
     },
   },
 })
