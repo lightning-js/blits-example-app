@@ -123,7 +123,7 @@ export default Blits.Component('TMdb', {
       })
 
       this.rows.push({
-        title: 'Best Western movies',
+        title: 'Best Western movies 2',
         items: await fetchGenreMovies('Western'),
         type: 'PosterTitle',
         width: 215,
