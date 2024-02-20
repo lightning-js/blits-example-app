@@ -48,11 +48,16 @@ export default Blits.Component('Images', {
         <Element src="assets/lightningbolt.png" w="856" h="468" />
       </Element>
 
+      <!-- local image with color changing-->
+      <Element :color="$color" src="assets/lightningbolt.png" w="428" h="234" x="1100" y="100"  />
+
+
     </Element>`,
   state() {
     return {
       image: images[0],
       clipping: true,
+      color: 'red',
     }
   },
   hooks: {
@@ -60,6 +65,7 @@ export default Blits.Component('Images', {
       this.$setInterval(() => {
         this.image = this.image === images[0] ? images[1] : images[0]
         this.clipping = !!!this.clipping
+        this.color = this.color === 'red' ? 'blue' : 'red'
       }, 2000)
     },
   },
