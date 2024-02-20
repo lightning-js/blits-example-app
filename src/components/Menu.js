@@ -34,17 +34,13 @@ export default Blits.Component('Menu', {
   state() {
     return {
       x: -360,
-      focused: null,
+      focused: 1,
     }
   },
   hooks: {
     focus() {
-      this.focused = 1
       this.$trigger('focused')
       this.x = 0
-    },
-    unfocus() {
-      this.x = -360
     },
   },
   watch: {
@@ -56,6 +52,7 @@ export default Blits.Component('Menu', {
   input: {
     right() {
       this.parent.focus()
+      this.x = -360
     },
     down() {
       this.focused = Math.min(this.focused + 1, 4)
@@ -63,5 +60,6 @@ export default Blits.Component('Menu', {
     up() {
       this.focused = Math.max(this.focused - 1, 1)
     },
+    left() {},
   },
 })
