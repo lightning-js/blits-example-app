@@ -27,6 +27,7 @@ import FocusHandling from './pages/FocusHandling'
 
 // Example & Test pages
 import Positioning from './pages/Positioning'
+import Player from './pages/Player'
 import Colors from './pages/Colors'
 import Gradients from './pages/Gradients'
 import Transitions from './pages/Transitions'
@@ -83,6 +84,7 @@ export default Blits.Application({
       component: MemoryGame,
       announce: "Let's play Memory",
     },
+    { path: '/demos/player', component: Player },
     // Example and test routes
     { path: '/examples/positioning', component: Positioning },
     { path: '/examples/colors', component: Colors },
