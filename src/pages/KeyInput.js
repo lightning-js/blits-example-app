@@ -60,21 +60,13 @@ export default Blits.Component('KeyInput', {
     },
   },
   input: {
-    left(e) {
+    left() {
       const focusedX = this.focusedX - 1
-      if (focusedX === -1) {
-        this.parent.focus(e)
-      } else {
-        this.focusedX = Math.max(focusedX, 0)
-      }
+      this.focusedX = Math.max(focusedX, 0)
     },
-    right(e) {
+    right() {
       const focusedX = this.focusedX + 1
-      if (focusedX === 4) {
-        this.parent.focus(e)
-      } else {
-        this.focusedX = Math.min(focusedX, 3)
-      }
+      this.focusedX = Math.min(focusedX, 3)
     },
     up() {
       this.focusedY = Math.max(this.focusedY - 1, 0)
