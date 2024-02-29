@@ -48,7 +48,7 @@ export default Blits.Component('TmdbRow', {
   },
   computed: {
     x() {
-      return 150 - Math.min(this.focused, this.items.length - 8) * this.width
+      return 150 - Math.min(this.focused, this.items.length - 1720 / this.width) * this.width
     },
   },
   watch: {
