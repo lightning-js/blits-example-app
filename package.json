@@ -1,6 +1,6 @@
 {
   "name": "@lightningjs/blits-example-app",
-  "version": "0.5.8",
+  "version": "0.7.0",
   "description": "Lightning 3 Blits Example App",
   "main": "index.js",
   "type": "module",
@@ -11,8 +11,7 @@
     "lint:fix": "eslint '**/*.js' --fix",
     "build": "vite build",
     "dev": "vite dev --host",
-    "test": "backstop --config=backstop.cjs --docker test",
-    "postinstall": "npx playwright install chromium"
+    "test": "node ./tests/scripts/run-tests.cjs"
   },
   "lint-staged": {
     "*.js": [
@@ -27,6 +26,7 @@
   "author": "Michiel van der Geest <hello@michielvandergeest.com>",
   "license": "Apache-2",
   "devDependencies": {
+    "backstopjs": "^6.3.22",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
@@ -37,6 +37,6 @@
     "vite": "^4.0.4"
   },
   "dependencies": {
-    "@lightningjs/blits": "^0.6.5"
+    "@lightningjs/blits": "^0.7.4"
   }
 }

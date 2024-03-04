@@ -40,7 +40,7 @@ export default Blits.Component('Transitions', {
       <!-- transition with custom duration and a built-in easing function -->
       <Element
         w="200" h="200" x="1300"
-        :y.transition="{value: $y, duration: $duration, function: 'ease-in-out-back', end: $finished}" color="#5b21b6" />
+        :y.transition="{value: $y, duration: 3000, function: 'ease-in-out-back', end: $finished}" color="#5b21b6" />
       <!-- transition with custom duration and a custum bezier function -->
       <Element w="200" h="200" x="1550" :y.transition="{value: $y, duration: 800, function: 'cubic-bezier(1,-0.64,.39,1.44)'}" color="#4c1d95" />
     </Element>`,

@@ -26,7 +26,7 @@ export default Blits.Component('Background', {
       <Element
         :src="$bg2" w="1920" h="1080" color="{top: '#fff', bottom: '#000'}" :alpha.transition="{value: $alpha2, duration: 400, function: 'ease-in'}"
       />
-      <Element w="1920" h="1080" :effects="[$shader('radialGradient', {colors: [0x00000000, 0x8866ddff], stops: [0.3, 1.4],height: 1080,width: 1920,pivot: [1, 0]})]" />
+      <Element w="1920" h="1080" src="assets/gradient.png" color="#8866dd" alpha="0.8" />
     </Element>`,
   props: ['src'],
   state() {
