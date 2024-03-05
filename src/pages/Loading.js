@@ -43,6 +43,11 @@ export default Blits.Component('Loading', {
       this.$setInterval(() => {
         this.alpha = count % 2 ? 0 : 1
         count++
+
+        // backstopjs
+        if (this.alpha === 0 && count > 2) {
+          console.log('backstopjs:ready')
+        }
       }, 800)
     },
   },

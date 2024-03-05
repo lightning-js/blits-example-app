@@ -103,6 +103,11 @@ export default Blits.Component('Colors', {
   },
   hooks: {
     ready() {
+      //backstopjs
+      if (process.env.NODE_ENV === 'testing') {
+        return console.log('backstopjs:ready')
+      }
+
       let i = 0
       const bgColors = ['#fff', '#333', '#c0ff33', '#546aaa', '#000', 'tomato']
       this.$setInterval(() => {

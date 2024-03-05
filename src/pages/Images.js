@@ -71,6 +71,8 @@ export default Blits.Component('Images', {
   },
   methods: {
     imageLoaded(dimensions) {
+      // backstopjs
+      console.log('backstopjs:ready')
       this.$log.info(`Image loaded with w: ${dimensions.w} and h: ${dimensions.h}`)
     },
   },

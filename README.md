@@ -18,6 +18,9 @@ Once you've directed your browser to the URL displayed in your terminal, you hav
 - Splash screen: http://localhost:5173/#/demos/intro
 - Theming: http://localhost:5173/#/demos/theming
 - TMDB example app ( API key required as described above ): http://localhost:5173/#/demos/theming
+- Sprites: http://localhost:5173/#/demos/sprites
+- Focus Handling: http://localhost:5173/#/demos/focushandling
+- Memory Game: http://localhost:5173/#/demos/memory-game
 - Positioning: http://localhost:5173/#/examples/positioning
 - Colors: http://localhost:5173/#/examples/colors
 - Gradients: http://localhost:5173/#/examples/gradients
@@ -46,21 +49,20 @@ It accomplishes this by comparing DOM screenshots over time.
 
 To get started with BackstopJS, follow these steps:
 
-1. Install Docker on your machine. You can find the installation instructions [here](https://docs.docker.com/get-docker/).
-2. Install `backstopJS` globally using the following npm command: `npm install -g backstopjs`
-3. Run the App via the the command: `npm run start:test` or `NODE_ENV=testing npm run dev`
-4. Run `backstop test --config backstop.cjs --docker` to test the App against the reference bitmaps.
+1. Run the App via the command: `npm run start:test` or `NODE_ENV=testing npm run dev`
+2. Run `npm test` to test the App against the reference bitmaps.
 
-> Note: To ensure consistent reference images across various environments, it's essential to run the tests in a Docker container using the --docker flag (when especially there are animations). The Docker mode should be employed for also running the tests to achieve maximum consistency in reference bitmaps.
 
 > Note: To ensure consistency regarding the performance of the app while creating the reference bitmaps or running the tests, `asyncCaptureLimit` should be set to `1` in the `backstop.cjs` file. This will ensure that the tests are run sequentially and not in parallel (so concurrency won't affect the performance of the app).
+
+> Note: The default host and port of the dev server is `http://localhost:5173`. If you are running the app on a different host or port, you should update `TEST_HOST` and `TEST_PORT` in the `.env` file. Or you can directly modify the `backstop.cjs` file.
 
 ### Creating Reference Bitmaps
 
 To create reference bitmaps for visual regression testing, use the following command in the terminal:
 
 ```bash
-backstop reference --config backstop.cjs --docker
+npm run test:reference
 ```
 
 This command will remove any existing reference snapshots and generate new ones based on the provided configuration `URL` in the previous section.
@@ -71,7 +73,7 @@ This command will remove any existing reference snapshots and generate new ones 
 Generate test bitmaps by using the following command in the terminal:
 
 ```bash
-$ backstop test --config backstop.cjs --docker
+$ npm test
 ```
 
 This command will produce a new set of bitmaps in the `bitmap_test/<timestamp>` folder. After bitmap generation is complete,
@@ -80,19 +82,12 @@ a report comparing the most recent bitmaps against the reference will be display
 
 ### Browser Options
 
-BackstopJS supports both Puppeteer and Playwright. To configure your browser, use the following settings in your `backstop.cjs` file:
-
-To use Chrome Headless:
+BackstopJS supports both Puppeteer and Playwright. The existing reference bitmaps were created using Puppeteer with its default browser (Chrome headless). Changing browser settings may change page load and animation timings so after a change reference bitmaps might not match with test bitmaps. In that case, reference bitmaps should be generated again.
 
 
-```json
-"engine": "playwright",
-"engineOptions": {
-    "args": ["--no-sandbox"],
-},
-```
+If you want to modify browser configuration, use the following settings in your `backstop.cjs` file:
 
-to use webkit:
+To use webkit:
 
 
 ```json

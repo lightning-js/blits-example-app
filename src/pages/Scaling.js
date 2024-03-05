@@ -52,6 +52,9 @@ export default Blits.Component('Scaling', {
   },
   hooks: {
     ready() {
+      const scaleInteval1 = process.env.NODE_ENV === 'testing' ? 2000 : 500
+      const scaleInteval2 = process.env.NODE_ENV === 'testing' ? 2000 : 2000
+
       this.$setInterval(() => {
         const scale = this.direction === 'up' ? this.scale + 0.5 : 0
         this.scale = Math.max(Math.min(scale, 8), 0)
@@ -61,11 +64,11 @@ export default Blits.Component('Scaling', {
         if (this.scale === 0) {
           this.direction = 'up'
         }
-      }, 500)
+      }, scaleInteval1)
 
       this.$setInterval(() => {
         this.scale2 = this.scale2 === 1 ? 3 : 1
-      }, 2000)
+      }, scaleInteval2)
     },
   },
 })

@@ -89,6 +89,9 @@ export default Blits.Component('Positioning', {
   },
   hooks: {
     ready() {
+      if (process.env.NODE_ENV === 'testing') {
+        return console.log('backstopjs:ready')
+      }
       this.$setTimeout(() => {
         this.xD = this.xD + 200
         this.xC = this.xC + 100
