@@ -36,13 +36,13 @@ export default Blits.Component('Transitions', {
         :y.transition="{value: $y, duration: 500, delay: 1000, start: $start, end: $finished}" color="#7c3aed"
       />
       <!-- transition with built-in easing function -->
-      <Element w="200" h="200" x="1050" :y.transition="{value: $y, function: 'ease-in-out', end: $finished}" color="#6d28d9" />
+      <Element w="200" h="200" x="1050" :y.transition="{value: $y, easing: 'ease-in-out', end: $finished}" color="#6d28d9" />
       <!-- transition with custom duration and a built-in easing function -->
       <Element
         w="200" h="200" x="1300"
-        :y.transition="{value: $y, duration: 3000, function: 'ease-in-out-back', end: $finished}" color="#5b21b6" />
+        :y.transition="{value: $y, duration: 3000, easing: 'ease-in-out-back', end: $finished}" color="#5b21b6" />
       <!-- transition with custom duration and a custum bezier function -->
-      <Element w="200" h="200" x="1550" :y.transition="{value: $y, duration: 800, function: 'cubic-bezier(1,-0.64,.39,1.44)'}" color="#4c1d95" />
+      <Element w="200" h="200" x="1550" :y.transition="{value: $y, duration: 800, easing: 'cubic-bezier(1,-0.64,.39,1.44)'}" color="#4c1d95" />
     </Element>`,
   state() {
     return {

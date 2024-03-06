@@ -21,10 +21,10 @@ export default Blits.Component('Background', {
   template: `
     <Element>
       <Element
-        :src="$bg1" w="1920" h="1080" color="{top: '#fff', bottom: '#000'}" :alpha.transition="{value: $alpha1, duration: 400, function: 'ease-in'}"
+        :src="$bg1" w="1920" h="1080" color="{top: '#fff', bottom: '#000'}" :alpha.transition="{value: $alpha1, duration: 400, easing: 'ease-in'}"
       />
       <Element
-        :src="$bg2" w="1920" h="1080" color="{top: '#fff', bottom: '#000'}" :alpha.transition="{value: $alpha2, duration: 400, function: 'ease-in'}"
+        :src="$bg2" w="1920" h="1080" color="{top: '#fff', bottom: '#000'}" :alpha.transition="{value: $alpha2, duration: 400, easing: 'ease-in'}"
       />
       <Element w="1920" h="1080" src="assets/gradient.png" color="#8866dd" alpha="0.8" />
     </Element>`,
