@@ -10,35 +10,6 @@ This Blits L3 Example App contains a demo of a TMBD integration. Head over to ht
 
 You can also take a look at the [hosted version](http://blits-demo.lightningjs.io) of this App.
 
-## App Usage
-
-Once you've directed your browser to the URL displayed in your terminal, you have the option to navigate through the various examples using the `arrow keys` or directly access a specific example. Assuming it's running at `http://localhost:5173/`: here are the direct links to each example:
-
-- Loading  http://localhost:5173/#/demos/loading
-- Splash screen: http://localhost:5173/#/demos/intro
-- Theming: http://localhost:5173/#/demos/theming
-- TMDB example app ( API key required as described above ): http://localhost:5173/#/demos/theming
-- Sprites: http://localhost:5173/#/demos/sprites
-- Focus Handling: http://localhost:5173/#/demos/focushandling
-- Memory Game: http://localhost:5173/#/demos/memory-game
-- Positioning: http://localhost:5173/#/examples/positioning
-- Colors: http://localhost:5173/#/examples/colors
-- Gradients: http://localhost:5173/#/examples/gradients
-- Transitions: http://localhost:5173/#/examples/transitions
-- Components: http://localhost:5173/#/examples/components
-- Alpha: http://localhost:5173/#/examples/alpha
-- Apply scaling: http://localhost:5173/#/examples/scaling
-- Rotation: http://localhost:5173/#/examples/rotation
-- Keyinput handling: http://localhost:5173/#/examples/keyinput
-- For loop implementation: http://localhost:5173/#/examples/forloop
-- Different effects: http://localhost:5173/#/examples/effects
-- Conditional rendering: http://localhost:5173/#/examples/showif
-- Events: http://localhost:5173/#/examples/events
-- Images: http://localhost:5173/#/examples/images
-- Text: http://localhost:5173/#/examples/texts
-- Slots: http://localhost:5173/#/examples/slots
-
-
 ## Visual Regression Test
 
 
