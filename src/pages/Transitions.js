@@ -53,7 +53,7 @@ export default Blits.Component('Transitions', {
     ready() {
       this.$setTimeout(() => {
         this.y = 1080 - 50 - 200
-      }, 2000)
+      }, 500)
     },
   },
   methods: {

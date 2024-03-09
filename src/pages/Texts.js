@@ -83,6 +83,11 @@ export default Blits.Component('Texts', {
   },
   hooks: {
     ready() {
+      // backstopjs
+      if (process.env.NODE_ENV === 'testing') {
+        return console.log('backstopjs:ready')
+      }
+
       let count = 0
       this.$setInterval(() => {
         count++

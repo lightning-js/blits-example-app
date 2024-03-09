@@ -86,6 +86,8 @@ export default Blits.Component('ShowIf', {
   hooks: {
     ready() {
       this.$setInterval(() => {
+        // backstopjs
+        console.log('backstopjs:ready')
         this.showHideToggle = !!!this.showHideToggle
       }, 2000)
 

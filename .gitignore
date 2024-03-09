@@ -3,3 +3,5 @@ node_modules
 build
 dist
 .env
+tests/backstopjs/bitmaps_test/
+tests/backstopjs/html_report/

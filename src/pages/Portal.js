@@ -182,6 +182,7 @@ export default Blits.Component('Portal', {
     ready() {
       this.logoOffset = 0
       this.$trigger('rowFocused')
+      console.log('backstopjs:ready')
     },
   },
   watch: {

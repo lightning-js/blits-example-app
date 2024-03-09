@@ -64,6 +64,11 @@ export default Blits.Component('Components', {
   },
   hooks: {
     ready() {
+      // backstopjs
+      if (process.env.NODE_ENV === 'testing') {
+        return console.log('backstopjs:ready')
+      }
+
       this.$setInterval(() => {
         const index = colors.indexOf(this.color) + 1
         this.color = index <= colors.length ? colors[index] : colors[0]

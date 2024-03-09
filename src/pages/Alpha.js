@@ -59,6 +59,10 @@ export default Blits.Component('Alpha', {
   },
   hooks: {
     ready() {
+      // backstopjs
+      if (process.env.NODE_ENV === 'testing') {
+        return console.log('backstopjs:ready')
+      }
       this.$setInterval(() => {
         const alpha = this.direction === 'up' ? this.alpha + 0.2 : this.alpha - 0.2
         this.alpha = Math.max(Math.min(alpha, 1), 0.1)

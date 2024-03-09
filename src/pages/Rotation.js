@@ -95,17 +95,24 @@ export default Blits.Component('Rotation', {
   },
   hooks: {
     ready() {
+      let interval1 = 800
+      let interval2 = 2000
+
+      if (process.env.NODE_ENV === 'testing') {
+        interval1 = interval2 = 4000
+      }
+
       this.$setInterval(() => {
         const rotation = this.rotation2 + 10
         this.rotation2 = rotation <= 360 ? rotation : 0
-      }, 800)
+      }, interval1)
 
       this.$setInterval(() => {
         this.rotation3 = Math.max(10, Math.min(720, this.rotation3 * 2))
         if (this.rotation3 === 720) {
           this.rotation3 = 0
         }
-      }, 2000)
+      }, interval2)
     },
   },
 })

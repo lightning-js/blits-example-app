@@ -49,11 +49,12 @@ export default Blits.Application({
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView />
-      <FPScounter x="1610" />
+      <FPScounter x="1610" :show="$showFPS"/>
     </Element>`,
   state() {
     return {
       backgroundColor: '#1e293b',
+      showFPS: true,
     }
   },
   routes: [
@@ -105,6 +106,10 @@ export default Blits.Application({
   ],
   hooks: {
     ready() {
+      if (process.env.NODE_ENV === 'testing') {
+        this.showFPS = false
+      }
+
       this.$listen('changeBackground', (color) => {
         this.backgroundColor = color ? color + 80 : '#1e293b'
       })
