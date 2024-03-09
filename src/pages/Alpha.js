@@ -36,7 +36,7 @@ export default Blits.Component('Alpha', {
       <Element w="200" h="200" x="100" y="540" color="#fff" :alpha="$alpha" />
 
       <!-- reactive alpha value (with transition) -->
-      <Element w="200" h="200" x="100" y="760" color="#fff" :alpha.transition="{value: $alpha, duration: 1000, function: 'ease-in-out-circ'}" />
+      <Element w="200" h="200" x="100" y="760" color="#fff" :alpha.transition="{value: $alpha, duration: 1000, easing: 'ease-in-out-circ'}" />
 
       <Element w="428" h="234" x="1200" y="100" :src="$image" alpha="1" />
       <Element w="428" h="234" x="1300" :y="100 + 234 - 40" :src="$image" alpha=".4" />
