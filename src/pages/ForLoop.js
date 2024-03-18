@@ -47,7 +47,6 @@ export default Blits.Component('ForLoop', {
       <Element y="420">
         <!-- looping over an array of components, adding items over time -->
         <Square :for="item in $collection3" :x="$item.x" key="$item.color" :alpha="$alpha" />
-
       </Element>
 
       <Element y="520">
@@ -57,7 +56,15 @@ export default Blits.Component('ForLoop', {
 
       <Element y="620">
         <!-- looping over an array and using a component state variable and passing a key -->
-        <Element :for="item in $collection2" w="80" h="80" :x="$item.x" color="$item.color" :alpha="$alpha" key="$item.id" />
+        <Element
+          :for="item in $collection2"
+          w="80"
+          h="80"
+          :x="$item.x"
+          color="$item.color"
+          :alpha="$alpha"
+          key="$item.id"
+        />
       </Element>
 
       <Element y="720">
@@ -70,7 +77,6 @@ export default Blits.Component('ForLoop', {
         <Element :for="item in $collection4" w="80" h="80" :x="$item.x" color="#8b5cf6" />
       </Element>
 
-
       <Element y="920">
         <!-- looping over an array and replacing that array with new items _with_ a key attribute-->
         <Square :for="item in $collection4" w="80" h="80" :x="$item.x" key="$item.id" />
@@ -80,9 +86,8 @@ export default Blits.Component('ForLoop', {
         <!-- looping over an array and replacing that array with new items _without_ a key attribute-->
         <Square :for="item in $collection4" w="80" h="80" :x="$item.x" />
       </Element>
-
     </Element>
-  `,
+    `,
   state() {
     return {
       collection1: [0, 100, 200, 300, 400, 500],
@@ -154,8 +159,8 @@ export default Blits.Component('ForLoop', {
 
       this.$setTimeout(() => {
         this.collection4 = [
-          { x: 100, id: 'four' },
-          { x: 500, id: 'five' },
+          { x: 100, id: 4 },
+          { x: 500, id: 5 },
         ]
       }, 2000)
     },
