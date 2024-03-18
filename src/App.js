@@ -38,6 +38,7 @@ import Texts from './pages/Texts'
 import Images from './pages/Images'
 import Components from './pages/Components'
 import ForLoop from './pages/ForLoop'
+import ForLoopAdvanced from './pages/ForLoopAdvanced.js'
 import Effects from './pages/Effects'
 import ShowIf from './pages/ShowIf'
 import Events from './pages/Events'
@@ -49,8 +50,9 @@ export default Blits.Application({
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView />
-      <FPScounter x="1610" :show="$showFPS"/>
-    </Element>`,
+      <FPScounter x="1610" :show="$showFPS" />
+    </Element>
+    `,
   state() {
     return {
       backgroundColor: '#1e293b',
@@ -97,6 +99,7 @@ export default Blits.Application({
     { path: '/examples/images', component: Images },
     { path: '/examples/components', component: Components },
     { path: '/examples/forloop', component: ForLoop },
+    { path: '/examples/advanced-forloop', component: ForLoopAdvanced },
     { path: '/examples/effects', component: Effects },
     { path: '/examples/showif', component: ShowIf },
     { path: '/examples/events', component: Events },
