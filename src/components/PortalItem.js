@@ -22,7 +22,7 @@ export default Blits.Component('PortalItem', {
     <Element
       w="370"
       h="320"
-      :scale.transition="$scale"
+      :scale.transition="$hasFocus ? 1.1 : 1"
       :color="$backgroundColor"
       :effects="[$shader('radius', {radius: 6})]"
     >
@@ -35,7 +35,6 @@ export default Blits.Component('PortalItem', {
   state() {
     return {
       backgroundColor: '#44037a',
-      scale: 1,
       fontColor: '#e8d7f9',
       number: this.index < 9 ? `0${this.index + 1}` : this.index + 1,
     }
@@ -44,13 +43,11 @@ export default Blits.Component('PortalItem', {
     focus() {
       this.backgroundColor = '#fafafa'
       this.fontColor = '#000'
-      this.scale = 1.1
     },
     unfocus() {
       if (!this.$router.navigating) {
         this.backgroundColor = '#44037a'
         this.fontColor = '#e8d7f9'
-        this.scale = 1
       }
     },
   },
