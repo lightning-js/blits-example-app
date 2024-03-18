@@ -153,8 +153,8 @@ export default Blits.Component('Portal', {
         },
         {
           title: 'Advanced loop',
-          id: 'examples/advanced-forloop',
-          description: 'Advanced array operations i.c.w. the For-loop',
+          id: 'examples/forloop-advanced',
+          description: 'Testing various Array operations with a for loop',
         },
         {
           title: 'Effects',

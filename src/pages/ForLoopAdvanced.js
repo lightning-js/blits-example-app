@@ -81,14 +81,22 @@ const makeItem = () => ({
   text: `${A[random(A.length)]} ${C[random(C.length)]} ${N[random(N.length)]}`,
 })
 
+const makeItems = (num = 1) => {
+  const result = []
+  for (let i = 0; i < num; i++) {
+    result.push(makeItem())
+  }
+  return result
+}
+
 const LegendItem = Blits.Component('LegendItem', {
   template: `
     <Element>
       <Circle color="#fb923c" size="60" />
-      <Text color="#e5e5e5" size="32" y="10" wordwrap="57" align="center">{{$id}}</Text>
-      <Text color="#e5e5e5" x="80" y="14" size="28">{{$text}}</Text>
+      <Text color="#e5e5e5" size="32" y="10" wordwrap="57" align="center">{{ $id }}</Text>
+      <Text color="#e5e5e5" x="80" y="14" size="28">{{ $text }}</Text>
     </Element>
-  `,
+    `,
   props: ['id', 'text'],
 })
 
@@ -98,8 +106,18 @@ const Row = Blits.Component('Row', {
       <Element w="10" h="60" color="#06b6d4" />
       <Text content="$text" x="30" y="10" font="opensans" color="#1e293b" />
     </Element>
-  `,
+    `,
   props: ['index', 'text'],
+})
+
+const Rows = Blits.Component('Row', {
+  components: {
+    Row,
+  },
+  template: `
+    <Row :for="(item, index) in $data" key="$item.id + 'key2'" :index="$index" text="$item.text" y="50" />
+    `,
+  props: ['data'],
 })
 
 export default Blits.Component('ForLoop', {
@@ -107,26 +125,30 @@ export default Blits.Component('ForLoop', {
     Square,
     LegendItem,
     Row,
+    Rows,
   },
+
   template: `
     <Element>
       <Text x="100" y="60" size="48">Array operations test</Text>
       <Element y="170" x="140">
-        <Text color="#e5e5e5" size="32">Key legend:</Text>
+        <Element x="-10" w="500" h="80" color="#64748b" :y.transition="$y" :alpha.transition="!!!$hide" />
+        <LegendItem y="0" id="a" text="Fill array by assignment" />
+        <LegendItem y="90" id="b" text="Push new item to array" />
+        <LegendItem y="180" id="c" text="Pop item from array" />
+        <LegendItem y="270" id="d" text="Shift item from array" />
+        <LegendItem y="360" id="e" text="Splice 2 items from array" />
+        <LegendItem y="450" id="f" text="Unshift 2 items into array" />
+        <LegendItem y="540" id="g" text="Empty array by assignment" />
+        <LegendItem y="630" id="h" text="Concat an array with items" />
+        <LegendItem y="720" id="i" text="Sort array alphabetically" />
 
-        <Element y="20">
-          <Element x="-10" w="500" h="80" color="#64748b" :y.transition="$y" :alpha.transition="!!!$hide" />
-          <LegendItem y="70" id="1" text="Fill array by assignment"/>
-          <LegendItem y="160" id="2" text="Push new item to array"/>
-          <LegendItem y="240" id="3" text="Pop item from array"/>
-          <LegendItem y="330" id="4" text="Shift item from array"/>
-          <LegendItem y="420" id="5" text="Splice 2 items from array"/>
-          <LegendItem y="510" id="6" text="Unshift 2 items into array"/>
-          <LegendItem y="600" id="7" text="Empty array by assignment"/>
+        <Element y="840">
+          <Text size="26" y="10">Array length:</Text>
+          <Text :content="$data.length" size="40" x="180" color="#fb923c" />
         </Element>
-
       </Element>
-      <Element x="800" y="20">
+      <Element x="740" y="100">
         <Text>For loop on Element</Text>
         <Element :for="(item, index) in $data" key="$item.id + 'key'" w="500" h="60" :y="$index * 80 + 50" color="#fff7ed">
           <Element w="10" h="60" color="#fb923c" />
@@ -134,17 +156,13 @@ export default Blits.Component('ForLoop', {
         </Element>
       </Element>
 
-      <Element x="1340" y="20">
-      <Text>For loop on Component</Text>
-
+      <Element x="1280" y="100">
+        <Text>For loop on Component</Text>
         <Row :for="(item, index) in $data" key="$item.id + 'key2'" :index="$index" text="$item.text" y="50" />
+        <!--         <Rows :data="$data" /> -->
       </Element>
-
-      <!-- temporary animated pixel hack to trigger render cycles -->
-      <Element w="1" h="1" y="800" :x="$x" color="red" />
-
     </Element>
-  `,
+    `,
   state() {
     return {
       count: 0,
@@ -153,6 +171,7 @@ export default Blits.Component('ForLoop', {
       y: 0,
       timeout: null,
       hide: true,
+      sortDirection: 1,
     }
   },
   computed: {
@@ -172,80 +191,70 @@ export default Blits.Component('ForLoop', {
       }, 600)
     },
   },
-  hooks: {
-    ready() {
-      // temporary animated pixel hack to trigger render cycles
-      this.$setInterval(() => (this.x = this.x + 0.00001), 100)
-    },
-  },
   input: {
-    1() {
-      this.y = 60
+    a() {
+      this.y = -10
       this.$trigger('y')
       const data = []
-      for (let i = 0; i < 10; i++) {
+      for (let i = 0; i < 6; i++) {
         data.push(makeItem())
       }
       this.data = data
     },
-    2() {
-      this.y = 150
+    b() {
+      this.y = 80
       this.$trigger('y')
       this.data.push(makeItem())
     },
-    3() {
-      this.y = 230
+    c() {
+      this.y = 170
       this.$trigger('y')
       this.data.pop()
     },
-    4() {
-      this.y = 320
+    d() {
+      this.y = 260
       this.$trigger('y')
       this.data.shift()
     },
-    5() {
-      this.y = 410
+    e() {
+      this.y = 350
       this.$trigger('y')
       this.data.splice(2, 4)
     },
-    6() {
-      this.y = 500
+    f() {
+      this.y = 440
       this.$trigger('y')
       this.data.unshift(makeItem(), makeItem())
     },
-    7() {
-      this.y = 590
+    g() {
+      this.y = 530
       this.$trigger('y')
       this.data = []
     },
-
-    // h() {
-    //   this.data = this.data.sort((a, b) => {
-    //     const textA = a.text.toLowerCase()
-    //     const textB = b.text.toLowerCase()
-
-    //     return textA < textB ? -1 : textA > textB ? 1 : 0
-    //   })
-    // },
-
-    // g() {
-    //   this.data = this.data.filter((item) => item.id % 2)
-    // },
-    // h() {
-    //   // const reversedData = this.data.slice().reverse()
-    //   // this.data.length = 0
-    //   // this.data = reversedData
-    //   this.data = this.data.toReversed()
-    //   // after 5 times, it's reaaaaly slow ...
-    //   // this.data =
-    //   // this.data = this.data.slice().reverse()
-    //   // this.data.forEach((i) => console.log(i.text))
-    // },
-
-    // // this.data[0].text = 'John doe 2' // doesn't work
-    // this.data[0] = {
-    //   id: 1,
-    //   text: 'John doe 2',
-    // }
+    h() {
+      this.y = 620
+      this.$trigger('y')
+      this.data = this.data.concat(makeItems(3))
+    },
+    i() {
+      this.y = 710
+      this.$trigger('y')
+      this.data = this.data.sort((a, b) => {
+        const textA = a.text.toLowerCase()
+        const textB = b.text.toLowerCase()
+        this.sortDirection = this.sortDirection === 1 ? 0 : 1
+        return this.sortDirection === 1
+          ? textA < textB
+            ? -1
+            : textA > textB
+            ? 1
+            : 0
+          : textA > textB
+          ? -1
+          : textA < textB
+          ? 1
+          : 0
+      })
+    },
   },
 })
