@@ -39,10 +39,10 @@ export default Blits.Component('Components', {
       <Element x="1100" y="200">
         <Text>Dynamic components</Text>
         <Component is="$dynamicComponent" y="100" />
-        <Component :for="(component, index) in $dynamicComponents" is="$component"  :x="250 * $index" y="300" />
+        <Component :for="(component, index) in $dynamicComponents" is="$component" :x="250 * $index" y="300" />
       </Element>
-
-    </Element>`,
+    </Element>
+    `,
   state() {
     return {
       x: 100,

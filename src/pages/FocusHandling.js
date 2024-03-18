@@ -38,7 +38,8 @@ export default Blits.Component('FocusHandling', {
         <Button color="#f43f5e" y="200" x="640" ref="button9" />
       </Element>
       <Menu ref="menu" />
-    </Element>`,
+    </Element>
+    `,
   state() {
     return {
       focused: 1,

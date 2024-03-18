@@ -26,11 +26,11 @@ export default Blits.Component('PortalRow', {
   template: `
     <Element>
       <Element :alpha.transition="{value: $itemOffset < 240 ? 1 : 0, duration: 200}">
-        <Text content="$title" x="60"  />
+        <Text content="$title" x="60" />
         <Element y="50" x="60" h="1" w="1800" color="#e8d7f9" />
       </Element>
 
-      <Element y="100" :x.transition="$rowOffset" >
+      <Element y="100" :x.transition="$rowOffset">
         <PortalItem
           :for="(item, index) in $items"
           :x.transition="{value: $itemOffset + $index * 430, delay: 50 * ($index%4), duration: 500}"
@@ -38,10 +38,12 @@ export default Blits.Component('PortalRow', {
           description="$item.description"
           id="$item.id"
           index="$index"
-          :ref="'item'+$index" key="$item.id" />
+          :ref="'item'+$index"
+          key="$item.id"
+        />
       </Element>
     </Element>
-  `,
+    `,
   props: ['title', 'items'],
   state() {
     return {

@@ -45,7 +45,6 @@ const characters = [
 export default Blits.Component('Texts', {
   template: `
     <Element x="100" y="100">
-
       <Text content="Default text" @loaded="$textLoaded" />
       <Text content="123456" x="400" />
 
@@ -66,11 +65,20 @@ export default Blits.Component('Texts', {
       </Element>
 
       <Element w="800" h="120" x="900" y="800" color="#94a3b8">
-        <Text content="$longText" size="40" color="#bae6fd" wordwrap="800" maxlines="2" lineheight="60" textoverflow="false" />
+        <Text
+          content="$longText"
+          size="40"
+          color="#bae6fd"
+          wordwrap="800"
+          maxlines="2"
+          lineheight="60"
+          textoverflow="false"
+        />
       </Element>
 
       <Text :content="$character" size="50" :color="$color" y="750" font="opensans" />
-    </Element>`,
+    </Element>
+    `,
   state() {
     return {
       color: colors[0],

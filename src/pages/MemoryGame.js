@@ -72,7 +72,8 @@ export default Blits.Component('Announcer', {
           :index="$index"
         />
       </Element>
-    </Element>`,
+    </Element>
+    `,
   state() {
     return {
       cards: cards.concat(cards),
