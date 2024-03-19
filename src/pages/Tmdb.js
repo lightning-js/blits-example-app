@@ -61,7 +61,7 @@ export default Blits.Component('TMdb', {
         </Element>
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       rows: [],

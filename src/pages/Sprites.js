@@ -28,7 +28,7 @@ export default Blits.Component('Sprites', {
     <Element>
       <MenuSprite :show="$currentSprite === 'menu'" />
     </Element>
-    `,
+  `,
   state() {
     return {
       currentSprite: 'menu',

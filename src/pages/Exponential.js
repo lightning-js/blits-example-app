@@ -30,7 +30,7 @@ const Item = Blits.Component('Item', {
       :rotation.transition="{value: $rotation, duration: 2900}"
       :scale.transition="{value: $scale, duration: 1000}"
     />
-    `,
+  `,
   state() {
     return {
       x: randomIntBetween(20, 1560),
@@ -60,7 +60,7 @@ export default Blits.Component('Exponential', {
     <Element>
       <Item :for="item in $items" key="$item" />
     </Element>
-    `,
+  `,
   state() {
     return {
       items: [],

@@ -59,7 +59,7 @@ export default Blits.Component('Announcer', {
     <Element>
       <Text font="raleway" size="80" color="white" content="Let's play memory!" x="580" y="60" />
       <Text font="kalam" size="40" color="#b91c1c" content="the Accessible edition :)" x="1200" y="170" rotation="-6" />
-
+    
       <Element x="260" y="260">
         <MemoryCard
           :for="(card, index) in $cards"
@@ -73,7 +73,7 @@ export default Blits.Component('Announcer', {
         />
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       cards: cards.concat(cards),

@@ -30,7 +30,7 @@ export default Blits.Component('Button', {
       :rotation="$rotate"
     >
     </Element>
-    `,
+  `,
   props: ['color'],
   state() {
     return {

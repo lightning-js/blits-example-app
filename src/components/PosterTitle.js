@@ -35,7 +35,7 @@ export default Blits.Component('PosterTitle', {
         <Text :content="$item.title" font="raleway" size="22" wordwrap="185" maxlines="2" lineheight="28" />
       </Element>
     </Element>
-    `,
+  `,
   // color transitions have some issues, so I'll leave it out for now
   // :colorBottom.transition="{v: $colorBottom, d: 200, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"!
   props: ['src', 'index', 'item', 'width'],

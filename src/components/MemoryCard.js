@@ -46,7 +46,7 @@ export default Blits.Component('MemoryCard', {
         :effects="[$shader('radius', {radius: 6})]"
       />
     </Element>
-    `,
+  `,
   props: ['row', 'col', 'image', 'description', 'index'],
   state() {
     return {

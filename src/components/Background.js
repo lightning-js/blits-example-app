@@ -36,7 +36,7 @@ export default Blits.Component('Background', {
       />
       <Element w="1920" h="1080" src="assets/gradient.png" color="#8866dd" alpha="0.8" />
     </Element>
-    `,
+  `,
   props: ['src'],
   state() {
     return {

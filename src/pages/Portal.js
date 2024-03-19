@@ -55,7 +55,7 @@ export default Blits.Component('Portal', {
         </Element>
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       version: p.version,

@@ -29,16 +29,16 @@ export default Blits.Component('NamedSlotCard', {
         <Text content="First slot" />
         <Slot y="40" ref="first" />
       </Element>
-
+    
       <Element x="200" y="20">
         <Text content="Second slot" />
         <Slot y="40" ref="second" />
       </Element>
-
+    
       <Element x="480" y="20">
         <Text content="Third slot" />
         <Slot y="40" ref="third" />
       </Element>
     </Element>
-    `,
+  `,
 })

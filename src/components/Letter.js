@@ -38,7 +38,7 @@ export default Blits.Component('Letter', {
         :y.transition="{value: 660+$offset, duration: $duration, delay: $wait, easing: $timingFunction}"
       />
     </Element>
-    `,
+  `,
   props: ['w', 'letter', 'direction', 'delay'],
   computed: {
     image() {

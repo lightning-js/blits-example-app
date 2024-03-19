@@ -30,7 +30,7 @@ export default Blits.Component('PortalItem', {
       <Text x="30" y="140" :content="$title" size="42" font="raleway" :color="$fontColor" letterspacing="2" />
       <Text x="30" y="200" :content="$description" wordwrap="300" size="28" :color="$fontColor" lineheight="32" />
     </Element>
-    `,
+  `,
   props: ['title', 'description', 'index', 'id'],
   state() {
     return {

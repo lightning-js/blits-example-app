@@ -39,7 +39,7 @@ export default Blits.Component('FocusHandling', {
       </Element>
       <Menu ref="menu" />
     </Element>
-    `,
+  `,
   state() {
     return {
       focused: 1,

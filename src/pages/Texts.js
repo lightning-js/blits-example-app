@@ -47,23 +47,23 @@ export default Blits.Component('Texts', {
     <Element x="100" y="100">
       <Text content="Default text" @loaded="$textLoaded" />
       <Text content="123456" x="400" />
-
+    
       <Text content="Text with a different fontsize" :size="$size" y="120" font="raleway" />
       <Text content="Text with a different color" size="50" :color="$color" y="250" />
-
+    
       <!-- does the font have a bold and italic? -->
       <!--Text content="Bold and Italic text" size="50" color="#0369a1" y="350" style="italic" weight="bold" /-->
-
+    
       <Text content="Letterspacing" size="50" color="#38bdf8" y="450" letterspacing="40" />
-
+    
       <Element w="800" h="100" y="550" color="#94a3b8">
         <Text content="Text align center" size="50" y="15" color="#bae6fd" align="center" wordwrap="800" />
       </Element>
-
+    
       <Element w="800" h="200" x="900" y="550" color="#94a3b8">
         <Text content="$longText" size="40" color="#bae6fd" wordwrap="800" maxlines="5" textoverflow="!!!" />
       </Element>
-
+    
       <Element w="800" h="120" x="900" y="800" color="#94a3b8">
         <Text
           content="$longText"
@@ -75,10 +75,10 @@ export default Blits.Component('Texts', {
           textoverflow="false"
         />
       </Element>
-
+    
       <Text :content="$character" size="50" :color="$color" y="750" font="opensans" />
     </Element>
-    `,
+  `,
   state() {
     return {
       color: colors[0],

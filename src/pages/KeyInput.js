@@ -21,28 +21,28 @@ export default Blits.Component('KeyInput', {
   template: `
     <Element x="525" y="130">
       <Element w="200" h="200" :color="$focusColor" :x="$focusedX * 220" :y="$focusedY * 210" />
-
+    
       <Element w="180" h="180" x="10" y="10" :color="$blockColor" />
       <Element w="180" h="180" x="230" y="10" :color="$blockColor" />
       <Element w="180" h="180" x="450" y="10" :color="$blockColor" />
       <Element w="180" h="180" x="670" y="10" :color="$blockColor" />
-
+    
       <Element w="180" h="180" x="10" y="220" :color="$blockColor" />
       <Element w="180" h="180" x="230" y="220" :color="$blockColor" />
       <Element w="180" h="180" x="450" y="220" :color="$blockColor" />
       <Element w="180" h="180" x="670" y="220" :color="$blockColor" />
-
+    
       <Element w="180" h="180" x="10" y="430" :color="$blockColor" />
       <Element w="180" h="180" x="230" y="430" :color="$blockColor" />
       <Element w="180" h="180" x="450" y="430" :color="$blockColor" />
       <Element w="180" h="180" x="670" y="430" :color="$blockColor" />
-
+    
       <Element w="180" h="180" x="10" y="640" :color="$blockColor" />
       <Element w="180" h="180" x="230" y="640" :color="$blockColor" />
       <Element w="180" h="180" x="450" y="640" :color="$blockColor" />
       <Element w="180" h="180" x="670" y="640" :color="$blockColor" />
     </Element>
-    `,
+  `,
   state() {
     return {
       focusedX: 0,

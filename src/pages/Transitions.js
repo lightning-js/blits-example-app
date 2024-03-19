@@ -66,7 +66,7 @@ export default Blits.Component('Transitions', {
         color="#4c1d95"
       />
     </Element>
-    `,
+  `,
   state() {
     return {
       y: 50,

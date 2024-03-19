@@ -35,20 +35,20 @@ export default Blits.Component('Components', {
       <SlotCard x="400" y="100" label="Element">
         <Element :color="$color" w="100" h="100" />
       </SlotCard>
-
+    
       <SlotCard x="800" y="100" label="Component">
         <Square size="200" y="50" />
       </SlotCard>
-
+    
       <SlotCard x="1200" y="100" label="Element & Component">
         <Element :color="$color" w="100" h="100" />
         <Square size="200" y="150" />
       </SlotCard>
-
+    
       <Card x="400" y="700" size="small">
         <Element :color="$color" w="100" h="100" />
       </Card>
-
+    
       <NamedSlotCard x="800" y="700">
         <Element color="#0891b2" x="10" y="140" w="80" h="60" slot="second" />
         <Element :color="$color" w="100" h="100" slot="third" />
@@ -56,7 +56,7 @@ export default Blits.Component('Components', {
         <Element color="#4d7c0f" x="40" y="40" w="40" h="60" slot="second" />
       </NamedSlotCard>
     </Element>
-    `,
+  `,
   state() {
     return {
       color: colors[0],

@@ -41,7 +41,7 @@ export default Blits.Component('TmdbRow', {
         />
       </Element>
     </Element>
-    `,
+  `,
   props: ['title', 'type', 'items', 'width'],
   state() {
     return {

@@ -34,7 +34,7 @@ export default Blits.Component('Bar', {
         :effects="[$shader('radius', {radius:10})]"
       />
     </Element>
-    `,
+  `,
   props: ['bgColor', 'primaryColor', 'height', 'index', 'size'],
   state() {
     return {

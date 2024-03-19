@@ -20,7 +20,7 @@ import Blits from '@lightningjs/blits'
 export default Blits.Component('Square', {
   template: `
     <Element :w.transition="$size" :h.transition="$size" :color.transition="$color" />
-    `,
+  `,
   props: [
     {
       key: 'size',

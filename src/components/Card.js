@@ -27,7 +27,7 @@ export default Blits.Component('Card', {
       <Square x="80" y="80" />
       <Square x="20" y="20" size="40" />
     </Element>
-    `,
+  `,
   props: ['size'],
   computed: {
     w() {
