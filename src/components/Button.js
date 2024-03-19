@@ -19,13 +19,18 @@ import Blits from '@lightningjs/blits'
 
 export default Blits.Component('Button', {
   template: `
-    <Element w="300" h="80" color="$color"
+    <Element
+      w="300"
+      h="80"
+      color="$color"
       :effects="[$shader('rounded', {radius: 20})]"
       :alpha.transition="$alpha"
       :scale.transition="$scale"
       :z="$zIndex"
-      :rotation="$rotate">
-    </Element>`,
+      :rotation="$rotate"
+    >
+    </Element>
+    `,
   props: ['color'],
   state() {
     return {

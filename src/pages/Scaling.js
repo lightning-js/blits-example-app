@@ -40,8 +40,8 @@ export default Blits.Component('Scaling', {
       <Element x="1500" y="600" w="100" h="100" color="#059669" :scale="$scale2">
         <Element x="10" y="10" h="60" w="80" color="#0369a1" :scale="$scale2 / 2" />
       </Element>
-
-    </Element>`,
+    </Element>
+    `,
   state() {
     return {
       scale: 2,

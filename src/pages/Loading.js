@@ -31,7 +31,7 @@ export default Blits.Component('Loading', {
         <Circle size="40" color="#94a3b8" x="120" :alpha.transition="{value: $alpha, delay: 400}" />
       </Element>
     </Element>
-  `,
+    `,
   state() {
     return {
       alpha: 0,

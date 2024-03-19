@@ -30,10 +30,18 @@ export default Blits.Component('TmdbRow', {
   template: `
     <Element>
       <Element :x.transition="{value: $x, duration: 300, easing: 'ease-in-out'}" y="80">
-        <Component is="$type" :for="(item, index) in $items" index="$index" item="$item" ref="poster" width="$width" :key="$item.identifier" />
+        <Component
+          is="$type"
+          :for="(item, index) in $items"
+          index="$index"
+          item="$item"
+          ref="poster"
+          width="$width"
+          :key="$item.identifier"
+        />
       </Element>
     </Element>
-  `,
+    `,
   props: ['title', 'type', 'items', 'width'],
   state() {
     return {

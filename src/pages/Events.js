@@ -20,14 +20,14 @@ import Blits from '@lightningjs/blits'
 export default Blits.Component('Events', {
   template: `
     <Element x="400" y="360">
-
       <Element w="280" h="280" color="#e5e7eb" :x="$x" y="-5" />
 
       <Element w="250" h="250" x="10" y="10" color="$colors[0]" />
       <Element w="250" h="250" x="290" y="10" color="$colors[1]" />
       <Element w="250" h="250" x="570" y="10" color="$colors[2]" />
       <Element w="250" h="250" x="850" y="10" color="$colors[3]" />
-    </Element>`,
+    </Element>
+    `,
   state() {
     return {
       count: 0,

@@ -30,7 +30,8 @@ export default Blits.Component('Menu', {
         <Button color="#e4e4e7" y="200" ref="menu3" />
         <Button color="#e4e4e7" y="300" ref="menu4" />
       </Element>
-    </Element>`,
+    </Element>
+    `,
   state() {
     return {
       x: -360,

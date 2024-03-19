@@ -33,11 +33,11 @@ export default Blits.Component('Components', {
   template: `
     <Element>
       <SlotCard x="400" y="100" label="Element">
-        <Element :color="$color" w="100" h="100"/>
+        <Element :color="$color" w="100" h="100" />
       </SlotCard>
 
       <SlotCard x="800" y="100" label="Component">
-        <Square size="200" y="50"  />
+        <Square size="200" y="50" />
       </SlotCard>
 
       <SlotCard x="1200" y="100" label="Element & Component">
@@ -55,8 +55,8 @@ export default Blits.Component('Components', {
         <Square size="100" slot="first" />
         <Element color="#4d7c0f" x="40" y="40" w="40" h="60" slot="second" />
       </NamedSlotCard>
-
-    </Element>`,
+    </Element>
+    `,
   state() {
     return {
       color: colors[0],

@@ -20,7 +20,6 @@ import Blits from '@lightningjs/blits'
 export default Blits.Component('KeyInput', {
   template: `
     <Element x="525" y="130">
-
       <Element w="200" h="200" :color="$focusColor" :x="$focusedX * 220" :y="$focusedY * 210" />
 
       <Element w="180" h="180" x="10" y="10" :color="$blockColor" />
@@ -42,8 +41,8 @@ export default Blits.Component('KeyInput', {
       <Element w="180" h="180" x="230" y="640" :color="$blockColor" />
       <Element w="180" h="180" x="450" y="640" :color="$blockColor" />
       <Element w="180" h="180" x="670" y="640" :color="$blockColor" />
-
-    </Element>`,
+    </Element>
+    `,
   state() {
     return {
       focusedX: 0,

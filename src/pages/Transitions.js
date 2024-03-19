@@ -26,24 +26,47 @@ export default Blits.Component('Transitions', {
       <Element w="200" h="200" x="300" :y.transition="{value: $y}" color="#a78bfa" />
       <!-- transition with custom duration -->
       <Element
-        w="200" h="200" x="550"
-        :y.transition="{value: $y, duration: 1000, start: $start, end: $doneTransition3}" color="#8b5cf6"
+        w="200"
+        h="200"
+        x="550"
+        :y.transition="{value: $y, duration: 1000, start: $start, end: $doneTransition3}"
+        color="#8b5cf6"
         ref="bla"
       />
       <!-- transition with custom duration and wait -->
       <Element
-        w="200" h="200" x="800"
-        :y.transition="{value: $y, duration: 500, delay: 1000, start: $start, end: $finished}" color="#7c3aed"
+        w="200"
+        h="200"
+        x="800"
+        :y.transition="{value: $y, duration: 500, delay: 1000, start: $start, end: $finished}"
+        color="#7c3aed"
       />
       <!-- transition with built-in easing function -->
-      <Element w="200" h="200" x="1050" :y.transition="{value: $y, easing: 'ease-in-out', end: $finished}" color="#6d28d9" />
+      <Element
+        w="200"
+        h="200"
+        x="1050"
+        :y.transition="{value: $y, easing: 'ease-in-out', end: $finished}"
+        color="#6d28d9"
+      />
       <!-- transition with custom duration and a built-in easing function -->
       <Element
-        w="200" h="200" x="1300"
-        :y.transition="{value: $y, duration: 3000, easing: 'ease-in-out-back', end: $finished}" color="#5b21b6" />
+        w="200"
+        h="200"
+        x="1300"
+        :y.transition="{value: $y, duration: 3000, easing: 'ease-in-out-back', end: $finished}"
+        color="#5b21b6"
+      />
       <!-- transition with custom duration and a custum bezier function -->
-      <Element w="200" h="200" x="1550" :y.transition="{value: $y, duration: 800, easing: 'cubic-bezier(1,-0.64,.39,1.44)'}" color="#4c1d95" />
-    </Element>`,
+      <Element
+        w="200"
+        h="200"
+        x="1550"
+        :y.transition="{value: $y, duration: 800, easing: 'cubic-bezier(1,-0.64,.39,1.44)'}"
+        color="#4c1d95"
+      />
+    </Element>
+    `,
   state() {
     return {
       y: 50,

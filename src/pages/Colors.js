@@ -79,10 +79,11 @@ export default Blits.Component('Colors', {
       <Element x="620" y="20">
         <Element w="300" h="200" x="0" :color.transition="$color1" />
         <Element w="300" h="200" x="0" y="250" :color.transition="$color2" />
-        <Element w="300" h="200" x="100" y="400" :color.transition="$color3"/>
+        <Element w="300" h="200" x="100" y="400" :color.transition="$color3" />
         <Element w="300" h="200" x="0" y="650" :color.transition="{value: $color4, d: 1000, f: 'ease-in-out'}" />
       </Element>
-    </Element>`,
+    </Element>
+    `,
   state() {
     return {
       bg: '#fff',
