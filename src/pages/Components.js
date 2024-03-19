@@ -36,6 +36,8 @@ export default Blits.Component('Components', {
       <Card x="500" y="100" />
       <Card x="500" y="500" size="large" />
 
+      <Square x="100" y="750" :size="$size" />
+
       <Element x="1100" y="200">
         <Text>Dynamic components</Text>
         <Component is="$dynamicComponent" y="100" />
@@ -49,12 +51,14 @@ export default Blits.Component('Components', {
       dynamicComponent: 'Square',
       dynamicComponents: ['Square', 'Card', 'Square'],
       toggle: false,
+      size: 50,
     }
   },
   hooks: {
     ready() {
       this.$setInterval(() => {
         this.x = this.x === 100 ? 250 : 100
+        this.size = this.size === 50 ? 200 : 50
       }, 2000)
     },
   },
