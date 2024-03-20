@@ -21,30 +21,53 @@ import PlayerManager from '../managers/PlayerManager.js'
 export default Blits.Component('Player', {
   template: `
     <Element>
-      <Element y="1080" mount="{y:1}" w="1920" h="150" color="$containerColor">
-        <Element x="60" y="50" w="$seekBar.w" h="$seekBar.h" color="$seekBar.color.background">
-          <Element h="$seekBar.h" :w.transition="{value: $seekBar.progress, d:100, f: 'ease-in-out'}" color="$seekBar.color.progress"/>
+      <Element y="1080" mount="{y:1}" w="1920" h="150" color="$containerColor" :alpha="$containerVisibility">
+        <Element
+          x="110"
+          y="50"
+          w="$seekBar.w"
+          h="$seekBar.h"
+          color="$seekBar.color.background"
+          :effects="[$shader('radius', {radius:8})]"
+        >
+          <Element
+            h="$seekBar.h"
+            :w.transition="{value: $seekBar.progress, d:100, f: 'ease-in-out'}"
+            :effects="[$shader('radius', {radius:8})]"
+            color="$seekBar.color.progress"
+          />
         </Element>
-        <Element x="60" y="70">
-          <Text :content="$video.currentTime" color="$video.currentTimeColor"/>
-          <Text x="1710" :content="$video.duration" color="$video.durationColor" />
+        <Element x="1720" y="40">
+          <Text :content="$video.currentTime" size="25" color="$video.currentTimeColor" />
+          <Text x="70" size="25" content="/" color="$video.currentTimeColor" />
+          <Text x="85" size="25" :content="$video.duration" color="$video.durationColor" />
         </Element>
-        <Element y="80" x="875">
-          <Element w="$controls.w" h="$controls.h" color="white" src="assets/player/pause.png" :alpha="$controls.playing" />
-          <Element w="$controls.w" h="$controls.h" color="white" src="assets/player/play.png" :alpha="!$controls.playing"/>
+        <Element
+          y="35"
+          x="50"
+          w="$controls.background.w"
+          h="$controls.background.h"
+          color="0x0087CEEB"
+          :effects="[$shader('radius', {radius:8})]"
+        >
+          <Element y="6" x="7">
+            <Element w="$controls.w" h="$controls.h" src="assets/player/pause.png" :alpha="$controls.playing" />
+            <Element w="$controls.w" h="$controls.h" src="assets/player/play.png" :alpha="!$controls.playing" />
+          </Element>
         </Element>
       </Element>
     </Element>
   `,
   state() {
     return {
-      containerColor: '#000',
+      containerColor: '0x001E293B',
+      containerVisibility: '1',
       seekBar: {
-        w: 1800,
-        h: 10,
+        w: 1600,
+        h: 15,
         color: {
           background: 'white',
-          progress: 'red',
+          progress: '0x0087CEEB',
         },
         progressChunkSize: 0,
         progress: 0,
@@ -52,13 +75,17 @@ export default Blits.Component('Player', {
       video: {
         currentTime: '00:00',
         duration: '00:00',
-        currentTimeColor: 'red',
+        currentTimeColor: 'white',
         durationColor: 'white',
       },
       controls: {
-        w: 50,
-        h: 50,
+        w: 35,
+        h: 35,
         playing: true,
+        background: {
+          w: 50,
+          h: 50,
+        },
       },
     }
   },
@@ -95,6 +122,11 @@ export default Blits.Component('Player', {
         PlayerManager.play()
         this.controls.playing = true
       }
+    },
+    any() {
+      this.containerVisibility === 0
+        ? (this.containerVisibility = 1)
+        : (this.containerVisibility = 0)
     },
   },
 })

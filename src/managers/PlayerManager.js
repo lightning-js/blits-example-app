@@ -20,7 +20,7 @@ let player
 let videoElement
 
 const state = {
-  playingState : true,
+  playingState: true,
 }
 
 /**
