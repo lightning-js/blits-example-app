@@ -45,4 +45,5 @@ Blits.Launch(App, 'app', {
       file: 'fonts/Kalam-Regular.ttf',
     },
   ],
+  viewportMargin: [0, 300, 300, 0],
 })

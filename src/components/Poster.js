@@ -23,10 +23,12 @@ export default Blits.Component('Poster', {
       w="185"
       h="278"
       x="$x"
-      :src="$item.poster"
-      :scale.transition="{value: $scale, duration: 200, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
+      color="#121212"
       :effects="[$shader('radius', {radius: 8})]"
-    />
+      :scale.transition="{value: $scale, duration: 200, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
+    >
+      <Element w="100%" h="100%" :src="$item.poster" :effects="[$shader('radius', {radius: 8})]" />
+    </Element>
   `,
   props: ['src', 'index', 'item', 'width'],
   state() {

@@ -23,13 +23,22 @@ export default Blits.Component('Poster', {
       w="1280"
       h="720"
       x="$x"
-      :src="$item.background"
-      color="{top: '#fff', bottom: '#000'}"
+      color="#121212"
       :scale.transition="{value: $scale, duration: 300, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
       :effects="[$shader('radius', {radius: 8})]"
+      clipping="true"
     >
+      <Element
+        color="{top: '#fff', bottom: '#000'}"
+        w="100%"
+        h="100%"
+        :src="$item.background"
+        :effects="[$shader('radius', {radius: 8})]"
+        :alpha.transition="$posterAlpha"
+        @loaded="$posterLoaded"
+      />
       <Element :alpha.transition="{value: $alpha, duration: 300, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
-        <Element w="185" h="278" x="54" y="220" :src="$item.poster" />
+        <Element w="185" h="278" x="54" y="220" :src="$item.poster" :alpha.transition="$posterAlpha" />
         <Text :content="$item.title" font="raleway" y="520" x="54" size="64" wordwrap="1000" maxlines="1" />
         <Text
           :content="$item.overview"
@@ -51,6 +60,7 @@ export default Blits.Component('Poster', {
       scale: 1,
       zIndex: 1,
       alpha: 0,
+      posterAlpha: 0.00001,
     }
   },
   computed: {
@@ -66,6 +76,11 @@ export default Blits.Component('Poster', {
     unfocus() {
       this.scale = 1
       this.alpha = 0
+    },
+  },
+  methods: {
+    posterLoaded() {
+      this.posterAlpha = 1
     },
   },
 })
