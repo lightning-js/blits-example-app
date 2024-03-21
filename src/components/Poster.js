@@ -25,7 +25,7 @@ export default Blits.Component('Poster', {
       x="$x"
       :src="$item.poster"
       :scale.transition="{value: $scale, duration: 200, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
-      :effects="[$shader('radius', {radius: 8})]"
+      :_effects="[$shader('radius', {radius: 8})]"
     />
   `,
   props: ['src', 'index', 'item', 'width'],
