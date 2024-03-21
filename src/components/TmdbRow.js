@@ -37,7 +37,7 @@ export default Blits.Component('TmdbRow', {
           item="$item"
           ref="poster"
           width="$width"
-          :key="$item.identifier"
+          key="$item.identifier"
         />
       </Element>
     </Element>
@@ -62,8 +62,10 @@ export default Blits.Component('TmdbRow', {
   watch: {
     focused(value) {
       const focusItem = this.select('poster' + value)
-      if (focusItem && focusItem.focus) focusItem.focus()
-      this.$emit('posterSelect', this.items[value])
+      if (focusItem && focusItem.focus) {
+        focusItem.focus()
+        this.$emit('posterSelect', this.items[value])
+      }
     },
   },
   input: {

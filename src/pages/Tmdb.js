@@ -50,7 +50,7 @@ export default Blits.Component('TMdb', {
         <Element :y.transition="{value: $y, duration: 300, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
           <TmdbRow
             :for="(row, index) in $rows"
-            :key="$row.title"
+            key="$row.title"
             title="$row.title"
             :items="$row.items"
             :type="$row.type"
