@@ -50,7 +50,7 @@ export default Blits.Component('Letter', {
       offset: this.direction === 'up' ? -680 : 680,
       duration: 1000,
       wait: 0,
-      timingeasing: 'cubic-bezier(1,-0.64,.39,1.44)',
+      timingFunction: 'cubic-bezier(1,-0.64,.39,1.44)',
     }
   },
   hooks: {
