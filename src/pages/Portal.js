@@ -151,7 +151,11 @@ export default Blits.Component('Portal', {
           id: 'examples/forloop',
           description: 'Iterating over Elements and Components using for loops',
         },
-
+        {
+          title: 'Advanced loop',
+          id: 'examples/forloop-advanced',
+          description: 'Testing various Array operations with a for loop',
+        },
         {
           title: 'Effects',
           id: 'examples/effects',
