@@ -44,7 +44,7 @@ module.exports = {
     {
       label: 'Blits - Tmdb',
       url: `http://${host}:${port}/#/demos/tmdb`,
-      delay: 1000,
+      delay: 4000,
     },
     {
       label: 'Blits - Sprites',
@@ -170,6 +170,7 @@ module.exports = {
     {
       label: 'Blits - Texts',
       url: `http://${host}:${port}/#/examples/texts`,
+      delay: 100,
       readyEvent: 'backstopjs:ready',
     },
     {

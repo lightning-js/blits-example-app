@@ -56,7 +56,7 @@ export default Blits.Component('Positioning', {
       <Element w="200" h="200" x="300" y="600" color="#94a3b8" z="100">
         <Text content="Lightning!" x="100" y="140" />
         <Element w="300" h="100" color="#475569" />
-        <Circle x="150" y="150" size="100" />
+        <Circle x="150" y="150" size="100" color="#fff" />
       </Element>
       <Element w="300" h="300" x="300" y="600" color="#ef444480" />
     

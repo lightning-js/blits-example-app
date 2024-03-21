@@ -29,12 +29,12 @@ export default Blits.Component('ShowIf', {
         <!-- should show -->
         <Element x="50" w="200" h="300" color="#bef264" show="true" />
         <!-- should not show -->
-        <Element x="350" w="200" h="300" color="#bef264" show="false" />
+        <Element x="350" w="200" h="300" color="red" show="false" />
     
         <!-- should show -->
         <Element x="650" w="200" h="300" color="#84cc16" show="1" />
         <!-- should not show -->
-        <Element x="950" w="200" h="300" color="#84cc16" show="0" />
+        <Element x="950" w="200" h="300" color="red" show="0" />
       </Element>
     
       <!-- dynamic show values -->
@@ -42,12 +42,12 @@ export default Blits.Component('ShowIf', {
         <!-- should show -->
         <Element x="50" w="200" h="300" color="#fde047" show="$showNr" />
         <!-- should not show -->
-        <Element x="350" w="200" h="300" color="#fde047" show="$hideNr" />
+        <Element x="350" w="200" h="300" color="blue" show="$hideNr" />
     
         <!-- should show -->
         <Element x="650" w="200" h="300" color="#84cc16" show="$showBool" />
         <!-- should not show -->
-        <Element x="950" w="200" h="300" color="#84cc16" show="$hideBool" />
+        <Element x="950" w="200" h="300" color="red" show="$hideBool" />
       </Element>
     
       <!-- dynamic show value -->
@@ -70,7 +70,7 @@ export default Blits.Component('ShowIf', {
   state() {
     return {
       showNr: 1,
-      hidNr: 0,
+      hideNr: 0,
       showBool: true,
       hideBool: false,
       showHideToggle: true,
