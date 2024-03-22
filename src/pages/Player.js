@@ -21,38 +21,31 @@ import PlayerManager from '../managers/PlayerManager.js'
 export default Blits.Component('Player', {
   template: `
     <Element>
-      <Element y="1080" mount="{y:1}" w="1920" h="150" color="$containerColor" :alpha="$containerVisibility">
-        <Element
-          x="110"
-          y="50"
-          w="$seekBar.w"
-          h="$seekBar.h"
-          color="$seekBar.color.background"
-          :effects="[$shader('radius', {radius:8})]"
-        >
-          <Element
-            h="$seekBar.h"
-            :w.transition="{value: $seekBar.progress, d:100, f: 'ease-in-out'}"
-            :effects="[$shader('radius', {radius:8})]"
-            color="$seekBar.color.progress"
-          />
-        </Element>
-        <Element x="1720" y="40">
-          <Text :content="$video.currentTime" size="25" color="$video.currentTimeColor" />
-          <Text x="70" size="25" content="/" color="$video.currentTimeColor" />
-          <Text x="85" size="25" :content="$video.duration" color="$video.durationColor" />
-        </Element>
-        <Element
-          y="35"
-          x="50"
-          w="$controls.background.w"
-          h="$controls.background.h"
-          color="0x0087CEEB"
-          :effects="[$shader('radius', {radius:8})]"
-        >
-          <Element y="6" x="7">
-            <Element w="$controls.w" h="$controls.h" src="assets/player/pause.png" :alpha="$controls.playing" />
-            <Element w="$controls.w" h="$controls.h" src="assets/player/play.png" :alpha="!$controls.playing" />
+      <Element
+        y="1080"
+        mount="{y:1}"
+        w="1920"
+        h="150"
+        :color="{top: 'transparent', bottom: '#444'}"
+        :alpha.transition="$controlsVisibility"
+      >
+        <Element x="60" y="50">
+          <Element w="60" h="60" color="#0087CEEB" :effects="[$shader('radius', {radius:16})]">
+            <Element y="14" x="14" w="32" h="32" :src="$playing ? 'assets/player/pause.png' : 'assets/player/play.png'" />
+          </Element>
+          <Element y="22" x="100" w="$progressLength" h="16" color="#ffffff80" :effects="[$shader('radius', {radius:8})]">
+            <Element
+              h="16"
+              :w.transition="{value: $progress, d: 100, f: 'ease-in-out'}"
+              :effects="[$shader('radius', {radius:8})]"
+              color="#0087CEEB"
+            />
+            <Circle size="28" color="#fff" y="-6" :x.transition="{value: $progress - 8, d: 100, f: 'ease-in-out'}" />
+          </Element>
+          <Element x="1660" y="16">
+            <Text :content="$currentTime" size="25" />
+            <Text x="70" size="25" content="/" />
+            <Text x="85" size="25" :content="$duration" />
           </Element>
         </Element>
       </Element>
@@ -60,73 +53,73 @@ export default Blits.Component('Player', {
   `,
   state() {
     return {
-      containerColor: '0x001E293B',
-      containerVisibility: '1',
-      seekBar: {
-        w: 1600,
-        h: 15,
-        color: {
-          background: 'white',
-          progress: '0x0087CEEB',
-        },
-        progressChunkSize: 0,
-        progress: 0,
-      },
-      video: {
-        currentTime: '00:00',
-        duration: '00:00',
-        currentTimeColor: 'white',
-        durationColor: 'white',
-      },
-      controls: {
-        w: 35,
-        h: 35,
-        playing: true,
-        background: {
-          w: 50,
-          h: 50,
-        },
-      },
+      controlsVisibility: 0,
+      progressLength: 1520,
+      progress: 0,
+      currentTime: '00:00',
+      duration: '00:00',
+      playing: false,
+      hideTimeout: null,
     }
   },
   hooks: {
+    focus() {
+      this.$emit('clearBackground')
+    },
+    unfocus() {
+      this.$emit('changeBackground')
+    },
     async init() {
       await PlayerManager.init()
     },
     async ready() {
       await PlayerManager.load({
-        streamUrl: 'https://bitdash-a.akamaihd.net/content/sintel/hls/playlist.m3u8',
+        streamUrl: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8',
       })
       const secondsToMmSs = (seconds) => new Date(seconds * 1000).toISOString().substr(14, 5)
       const duration = PlayerManager.getVideoDuration()
       if (duration) {
-        this.video.duration = secondsToMmSs(duration)
-        this.seekBar.progressChunkSize = Math.round((this.seekBar.w / duration) * 100) / 100
+        this.duration = secondsToMmSs(duration)
+        this.progressChunkSize = Math.round((this.progressLength / duration) * 100) / 100
       }
       this.$setInterval(() => {
         const currentTime = PlayerManager.getCurrentTime()
-        this.video.currentTime = secondsToMmSs(currentTime)
-        this.seekBar.progress = Math.round(currentTime * this.seekBar.progressChunkSize)
+        this.currentTime = secondsToMmSs(currentTime)
+        this.progress = Math.round(currentTime * this.progressChunkSize)
       }, 1000)
+      this.play()
     },
     async destroy() {
       await PlayerManager.destroy()
     },
   },
   input: {
-    async space() {
+    space() {
+      this.play()
+    },
+    up() {
+      this.showControls(1)
+    },
+    down() {
+      this.showControls(0)
+    },
+  },
+  methods: {
+    play() {
+      this.showControls(1)
+      this.hideTimeout = this.$setTimeout(() => this.showControls(0), 3000)
       if (PlayerManager.state.playingState == true) {
         PlayerManager.pause()
-        this.controls.playing = false
+        this.playing = false
       } else {
+        console.log('play!')
         PlayerManager.play()
-        this.controls.playing = true
+        this.playing = true
       }
     },
-    any() {
-      this.containerVisibility === 0
-        ? (this.containerVisibility = 1)
-        : (this.containerVisibility = 0)
+    showControls(v) {
+      this.$clearTimeout(this.hideTimeout)
+      this.controlsVisibility = v
     },
   },
 })

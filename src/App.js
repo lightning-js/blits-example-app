@@ -51,7 +51,8 @@ export default Blits.Application({
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView />
       <FPScounter x="1610" />
-    </Element>`,
+    </Element>
+  `,
   state() {
     return {
       backgroundColor: '#1e293b',
@@ -109,6 +110,9 @@ export default Blits.Application({
     ready() {
       this.$listen('changeBackground', (color) => {
         this.backgroundColor = color ? color + 80 : '#1e293b'
+      })
+      this.$listen('clearBackground', () => {
+        this.backgroundColor = 'transparent'
       })
     },
   },

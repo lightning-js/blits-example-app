@@ -20,7 +20,7 @@ let player
 let videoElement
 
 const state = {
-  playingState: true,
+  playingState: false,
 }
 
 /**
@@ -36,7 +36,7 @@ const init = async (element) => {
   if (!videoElement) {
     videoElement = document.createElement('video')
 
-    videoElement.style.cssText = 'position: absolute; top: 0; left: 0; zIndex: 0'
+    videoElement.style.cssText = 'position: absolute; top: 0; left: 0; z-index: -1'
 
     videoElement.width = 1920
     videoElement.height = 1080
@@ -44,7 +44,7 @@ const init = async (element) => {
     player = new shaka.Player()
     await player.attach(videoElement)
 
-    videoElement.autoplay = true
+    videoElement.autoplay = false
 
     // Listen for error events.
     player.addEventListener('error', (err) => {
@@ -67,13 +67,14 @@ const load = async (config) => {
 }
 
 const play = () => {
-  state.playingState = true
-  return videoElement?.play()
+  videoElement.play().then(() => {
+    state.playingState = true
+  })
 }
 
 const pause = () => {
+  videoElement.pause()
   state.playingState = false
-  return videoElement?.pause()
 }
 
 const destroy = async () => {

@@ -48,4 +48,5 @@ Blits.Launch(App, 'app', {
       file: 'fonts/Kalam-Regular.ttf',
     },
   ],
+  canvasColor: 'transparent',
 })
