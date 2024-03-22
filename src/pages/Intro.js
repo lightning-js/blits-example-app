@@ -33,5 +33,6 @@ export default Blits.Component('Intro', {
       <Letter letter="i-2" w="115" x="1262" delay="300" />
       <Letter letter="n-2" w="219" x="1377" direction="up" delay="350" />
       <Letter letter="g-2" w="324" x="1596" direction="up" delay="400" />
-    </Element>`,
+    </Element>
+  `,
 })

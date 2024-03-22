@@ -29,58 +29,63 @@ export default Blits.Component('ForLoop', {
       <Element y="20">
         <Element :for="item in $collection1" w="80" h="80" x="$item" color="#4d7c0f" />
       </Element>
-
+    
       <Element y="120">
         <!-- looping over an array with objects -->
         <Element :for="item in $collection2" w="80" h="80" :x="$item.x * $index" color="$item.color" key="$item.id" />
       </Element>
-
+    
       <Element y="220">
         <!-- looping over an array empty array, adding items over time -->
         <Element :for="item in $collection3" w="80" h="80" :x="$item.x" color="$item.color" />
       </Element>
-
+    
       <Element y="320">
         <Square :for="(item, index) in $collection2" :x="$item.x * $index" :ref="'square'+$index" :alpha="$alpha" />
       </Element>
-
+    
       <Element y="420">
         <!-- looping over an array of components, adding items over time -->
         <Square :for="item in $collection3" :x="$item.x" key="$item.color" :alpha="$alpha" />
-
       </Element>
-
+    
       <Element y="520">
         <!-- looping over an array and using a component state variable -->
         <Element :for="item in $collection1" w="80" h="80" :x="$item" color="#eab308" :alpha="$alpha" />
       </Element>
-
+    
       <Element y="620">
         <!-- looping over an array and using a component state variable and passing a key -->
-        <Element :for="item in $collection2" w="80" h="80" :x="$item.x" color="$item.color" :alpha="$alpha" key="$item.id" />
+        <Element
+          :for="item in $collection2"
+          w="80"
+          h="80"
+          :x="$item.x"
+          color="$item.color"
+          :alpha="$alpha"
+          key="$item.id"
+        />
       </Element>
-
+    
       <Element y="720">
         <!-- looping over an array and replacing that array with new items _with_ a key attribute-->
         <Element :for="item in $collection4" w="80" h="80" :x="$item.x" color="#06b6d4" key="$item.id" />
       </Element>
-
+    
       <Element y="720" x="700">
         <!-- looping over an array and replacing that array with new items _without_ a key attribute-->
         <Element :for="item in $collection4" w="80" h="80" :x="$item.x" color="#8b5cf6" />
       </Element>
-
-
+    
       <Element y="920">
         <!-- looping over an array and replacing that array with new items _with_ a key attribute-->
         <Square :for="item in $collection4" w="80" h="80" :x="$item.x" key="$item.id" />
       </Element>
-
+    
       <Element y="920" x="700">
         <!-- looping over an array and replacing that array with new items _without_ a key attribute-->
         <Square :for="item in $collection4" w="80" h="80" :x="$item.x" />
       </Element>
-
     </Element>
   `,
   state() {
@@ -154,8 +159,8 @@ export default Blits.Component('ForLoop', {
 
       this.$setTimeout(() => {
         this.collection4 = [
-          { x: 100, id: 'four' },
-          { x: 500, id: 'five' },
+          { x: 100, id: 4 },
+          { x: 500, id: 5 },
         ]
       }, 2000)
     },

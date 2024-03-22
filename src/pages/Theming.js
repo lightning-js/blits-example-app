@@ -30,26 +30,50 @@ export default Blits.Component('Theming', {
   },
   template: `
     <Element w="1920" h="1080" :color.transition="$colors.bg">
-
-      <Text y="1020" x="1160" size="28" :color="$colors.color4">Use "up", "down", "left" and "right" to change the appearance</Text>
-
+      <Text y="1020" x="1160" size="28" :color="$colors.color4"
+        >Use "up", "down", "left" and "right" to change the appearance</Text
+      >
+    
       <Element :x.transition="(1920 - $width) / 2" :y.transition="(1080 - $height) / 2">
         <Element x="-250" y="-100" src="assets/shadow.png" w="1000" h="900" alpha="0.5" />
-
+    
         <!-- Header -->
-        <Element :w.transition="$width" :h.transition="$height" :color="$colors.color1" :effects="[$shader('radius', {radius: $radius})]">
-          <Element :w.transition="$width" h="100" :color="$colors.color2" :effects="[$shader('radius', {radius: $radius})]" />
+        <Element
+          :w.transition="$width"
+          :h.transition="$height"
+          :color="$colors.color1"
+          :effects="[$shader('radius', {radius: $radius})]"
+        >
+          <Element
+            :w.transition="$width"
+            h="100"
+            :color="$colors.color2"
+            :effects="[$shader('radius', {radius: $radius})]"
+          />
           <Element :w.transition="$width" h="80" y="20" :color="$colors.color2" />
-
+    
           <Text :content="$text" :color="$colors.color3" size="28" x="20" y="14" />
           <Toggle :x.transition="$width - 120" :on="$mode === 'dark'" :bgColor="$colors.color1" primaryColor="#22c55e" />
-
         </Element>
-
+    
         <!-- Blocks -->
-        <Element w="200" :h.transition="$block1.height" x="25" y="140" :color="$colors.color2" :effects="[$shader('radius', {radius: $radius / 2})]" />
-        <Element :w.transition="$block2.w" :h="$block2.h" x="270" :y.transition="$block2.y" :color="$colors.color2" :effects="[$shader('radius', {radius: $radius / 2})]" />
-
+        <Element
+          w="200"
+          :h.transition="$block1.height"
+          x="25"
+          y="140"
+          :color="$colors.color2"
+          :effects="[$shader('radius', {radius: $radius / 2})]"
+        />
+        <Element
+          :w.transition="$block2.w"
+          :h="$block2.h"
+          x="270"
+          :y.transition="$block2.y"
+          :color="$colors.color2"
+          :effects="[$shader('radius', {radius: $radius / 2})]"
+        />
+    
         <!-- Graph -->
         <Element :x.transition="$graph.x" :y.transition="$graph.y" :w="$graph.w" :h="$graph.h" color="transparent">
           <Element :x.transition="$graph.offset" :y.transition="$graph.offset">
@@ -60,7 +84,6 @@ export default Blits.Component('Theming', {
             <Bar :bgColor="$colors.color2" :primaryColor="$colors.color4" :size="$graph.size" height="90" index="4" />
           </Element>
         </Element>
-
       </Element>
     </Element>
   `,

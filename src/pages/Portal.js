@@ -27,20 +27,35 @@ export default Blits.Component('Portal', {
   template: `
     <Element w="1920" h="1080" color="{top: '#44037a', bottom: '#240244'}">
       <PortalRow mount="{y: 0.5}" h="500" :y.transition="-$rowFocused * 420 + 550" title="Demos" items="$demo" ref="row0" />
-      <PortalRow mount="{y: 0.5}" h="500" :y.transition="-$rowFocused * 420 + 1100" title="Examples and tests" items="$example" ref="row1" />
-      <PortalRow mount="{y: 0.5}" h="500" :y.transition="-$rowFocused * 420 + 1650" title="Benchmarks and stress tests" items="$benchmark" ref="row2" />
+      <PortalRow
+        mount="{y: 0.5}"
+        h="500"
+        :y.transition="-$rowFocused * 420 + 1100"
+        title="Examples and tests"
+        items="$example"
+        ref="row1"
+      />
+      <PortalRow
+        mount="{y: 0.5}"
+        h="500"
+        :y.transition="-$rowFocused * 420 + 1650"
+        title="Benchmarks and stress tests"
+        items="$benchmark"
+        ref="row2"
+      />
       <Element w="1920" h="200" color="#44037a">
-        <Element w="1920" h="70" y="200" color="{top: '#44037a'}"/>
+        <Element w="1920" h="70" y="200" color="{top: '#44037a'}" />
         <Element :y.transition="{value: 80 - $logoOffset, duration: 400}">
           <Element src="assets/blits-logo-full.png" w="200" h="112" x="60" />
           <Element w="2" h="120" y="-10" color="#ffffff80" x="300" />
           <Element x="320" y="16">
             <Text y="0" size="36">Example App</Text>
-            <Text y="50" size="24">v{{$version}}</Text>
+            <Text y="50" size="24">v{{ $version }}</Text>
           </Element>
         </Element>
       </Element>
-    </Element>`,
+    </Element>
+  `,
   state() {
     return {
       version: p.version,
@@ -141,7 +156,11 @@ export default Blits.Component('Portal', {
           id: 'examples/forloop',
           description: 'Iterating over Elements and Components using for loops',
         },
-
+        {
+          title: 'Advanced loop',
+          id: 'examples/forloop-advanced',
+          description: 'Testing various Array operations with a for loop',
+        },
         {
           title: 'Effects',
           id: 'examples/effects',
@@ -187,6 +206,7 @@ export default Blits.Component('Portal', {
     ready() {
       this.logoOffset = 0
       this.$trigger('rowFocused')
+      console.log('backstopjs:ready')
     },
   },
   watch: {

@@ -27,32 +27,30 @@ export default Blits.Component('Images', {
     <Element>
       <!-- local image -->
       <Element src="assets/lightningbolt.png" w="428" h="234" x="100" y="100" />
-
+    
       <!-- remote image -->
       <Element
         src="https://images.unsplash.com/photo-1611148799269-63df34f63f6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=428&q=80"
-        w="428" h="234" x="100" y="400"
+        w="428"
+        h="234"
+        x="100"
+        y="400"
       />
-
-      <Element
-        :src="$image"
-        w="428" h="234" x="100" y="700"
-        @loaded="$imageLoaded"
-      />
-
+    
+      <Element :src="$image" w="428" h="234" x="100" y="700" @loaded="$imageLoaded" />
+    
       <!-- local image with color -->
-      <Element color="{top: 'red', bottom: 'gold'}" src="assets/lightningbolt.png" w="428" h="234" x="600" y="100"  />
-
+      <Element color="{top: 'red', bottom: 'gold'}" src="assets/lightningbolt.png" w="428" h="234" x="600" y="100" />
+    
       <!-- applying clipping -->
       <Element x="600" y="400" w="428" h="234" :clipping="$clipping">
         <Element src="assets/lightningbolt.png" w="856" h="468" />
       </Element>
-
+    
       <!-- local image with color changing-->
-      <Element :color="$color" src="assets/lightningbolt.png" w="428" h="234" x="1100" y="100"  />
-
-
-    </Element>`,
+      <Element :color="$color" src="assets/lightningbolt.png" w="428" h="234" x="1100" y="100" />
+    </Element>
+  `,
   state() {
     return {
       image: images[0],
@@ -71,6 +69,8 @@ export default Blits.Component('Images', {
   },
   methods: {
     imageLoaded(dimensions) {
+      // backstopjs
+      console.log('backstopjs:ready')
       this.$log.info(`Image loaded with w: ${dimensions.w} and h: ${dimensions.h}`)
     },
   },

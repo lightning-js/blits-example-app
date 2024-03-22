@@ -19,10 +19,34 @@ import Blits from '@lightningjs/blits'
 
 export default Blits.Component('MemoryCard', {
   template: `
-    <Element w="320" h="200" x="$col * 360" y="$row * 250" :scale.transition="$scale" :rotation.transition="$disabled ? -2 : 0">
-      <Element :h.transition="$h" w="320" y="125" mount="{y: 0.5}" :color.transition="$disabled ? '#ccc' : '#fff'"  :src="$image + '&w=320&h=200'" :effects="[$shader('radius', {radius: 6})]" :show="$open" />
-      <Element :h.transition="$h" w="320" y="125" mount="{y: 0.5}" :color="$open ? 'transparent' : {top: '#efefef', bottom: '#aaa'}" :effects="[$shader('radius', {radius: 6})]" />
-    </Element>`,
+    <Element
+      w="320"
+      h="200"
+      x="$col * 360"
+      y="$row * 250"
+      :scale.transition="$scale"
+      :rotation.transition="$disabled ? -2 : 0"
+    >
+      <Element
+        :h.transition="$h"
+        w="320"
+        y="125"
+        mount="{y: 0.5}"
+        :color.transition="$disabled ? '#ccc' : '#fff'"
+        :src="$image + '&w=320&h=200'"
+        :effects="[$shader('radius', {radius: 6})]"
+        :show="$open"
+      />
+      <Element
+        :h.transition="$h"
+        w="320"
+        y="125"
+        mount="{y: 0.5}"
+        :color="$open ? 'transparent' : {top: '#efefef', bottom: '#aaa'}"
+        :effects="[$shader('radius', {radius: 6})]"
+      />
+    </Element>
+  `,
   props: ['row', 'col', 'image', 'description', 'index'],
   state() {
     return {

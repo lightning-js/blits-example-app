@@ -35,26 +35,30 @@ export default Blits.Component('Components', {
       <!-- card component that takes a string size argument and also has a nested square component -->
       <Card x="500" y="100" />
       <Card x="500" y="500" size="large" />
-
+    
+      <Square x="100" y="750" :size="$size" />
+    
       <Element x="1100" y="200">
         <Text>Dynamic components</Text>
         <Component is="$dynamicComponent" y="100" />
-        <Component :for="(component, index) in $dynamicComponents" is="$component"  :x="250 * $index" y="300" />
+        <Component :for="(component, index) in $dynamicComponents" is="$component" :x="250 * $index" y="300" />
       </Element>
-
-    </Element>`,
+    </Element>
+  `,
   state() {
     return {
       x: 100,
       dynamicComponent: 'Square',
       dynamicComponents: ['Square', 'Card', 'Square'],
       toggle: false,
+      size: 50,
     }
   },
   hooks: {
     ready() {
       this.$setInterval(() => {
         this.x = this.x === 100 ? 250 : 100
+        this.size = this.size === 50 ? 200 : 50
       }, 2000)
     },
   },

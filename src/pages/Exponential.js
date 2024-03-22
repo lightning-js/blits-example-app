@@ -20,7 +20,8 @@ import Blits from '@lightningjs/blits'
 const randomIntBetween = (from, to) => Math.floor(Math.random() * (to - from + 1) + from)
 
 const Item = Blits.Component('Item', {
-  template: `<Element
+  template: `
+    <Element
       src="assets/blits-b-small.png"
       w="96"
       h="168"
@@ -28,7 +29,8 @@ const Item = Blits.Component('Item', {
       :y.transition="{value: $y, duration: 2900}"
       :rotation.transition="{value: $rotation, duration: 2900}"
       :scale.transition="{value: $scale, duration: 1000}"
-    />`,
+    />
+  `,
   state() {
     return {
       x: randomIntBetween(20, 1560),
@@ -54,9 +56,11 @@ export default Blits.Component('Exponential', {
   components: {
     Item,
   },
-  template: `<Element>
-    <Item :for="item in $items" key="$item" />
-  </Element>`,
+  template: `
+    <Element>
+      <Item :for="item in $items" key="$item" />
+    </Element>
+  `,
   state() {
     return {
       items: [],
@@ -69,7 +73,7 @@ export default Blits.Component('Exponential', {
           this.items.push(`item${this.items.length}`)
         }
         this.$log.info('# items', this.items.length)
-        if (this.items.length > 100) {
+        if (this.items.length > 1) {
           clearInterval(interval)
         }
       }, 2000)

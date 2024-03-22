@@ -30,7 +30,7 @@ export default Blits.Component('MenuSprite', {
         </Element>
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       icon1: 'icon1_unfocus',

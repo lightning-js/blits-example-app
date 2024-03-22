@@ -16,8 +16,6 @@
  */
 
 import Blits from '@lightningjs/blits'
-// @ts-ignore
-import fontLoader from './fontLoader.js?importChunkUrl'
 import keymapping from './keymapping.js'
 
 import App from './App.js'
@@ -27,7 +25,6 @@ Blits.Launch(App, 'app', {
   h: 1080,
   multithreaded: false,
   debugLevel: 1,
-  fontLoader: fontLoader,
   reactivityMode: 'Proxy',
   keymap: keymapping(),
   fonts: [
