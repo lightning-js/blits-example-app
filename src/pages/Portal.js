@@ -100,9 +100,9 @@ export default Blits.Component('Portal', {
           description: 'Memory game with speech assistence (for accessibility)',
         },
         {
-          title: 'Player',
+          title: 'Video player',
           id: 'demos/player',
-          description: 'Demo page for player',
+          description: 'Example of Video Playback with basic controls',
         },
       ],
       example: [
