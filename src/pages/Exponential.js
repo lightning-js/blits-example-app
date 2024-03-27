@@ -73,7 +73,7 @@ export default Blits.Component('Exponential', {
           this.items.push(`item${this.items.length}`)
         }
         this.$log.info('# items', this.items.length)
-        if (this.items.length > 1) {
+        if (this.items.length > 100) {
           clearInterval(interval)
         }
       }, 2000)
