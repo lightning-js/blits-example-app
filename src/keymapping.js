@@ -13,6 +13,37 @@ const keymapping = {
       27: 'back',
     },
   },
+  webos: {
+    test() {
+      return navigator.userAgent.indexOf('WebOS') > -1 || queryParam('keymapping') === 'webos'
+    },
+    mapping: {
+      19: 'pause',
+      33: 'channelUp',
+      34: 'channelDown',
+      412: 'rewind',
+      413: 'stop',
+      415: 'play',
+      417: 'fastForward',
+      461: 'back',
+    },
+  },
+  tizen: {
+    test() {
+      return navigator.userAgent.indexOf('Tizen') > -1 || queryParam('keymapping') === 'tizen'
+    },
+    mapping: {
+      10009: 'back',
+      10252: 'playPause',
+      19: 'pause',
+      412: 'rewind',
+      413: 'stop',
+      415: 'play',
+      417: 'fastForward',
+      427: 'channelUp',
+      428: 'channelDown',
+    },
+  },
 }
 
 export default () => {
