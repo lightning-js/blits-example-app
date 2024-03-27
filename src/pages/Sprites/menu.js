@@ -20,14 +20,12 @@ import Blits from '@lightningjs/blits'
 export default Blits.Component('MenuSprite', {
   template: `
     <Element>
-      <Element>
-        <Element src="assets/menusprite.png" x="748" y="120" w="425" h="340" />
-        <Element y="680" x="560">
-          <Sprite image="assets/menusprite.png" x="0" w="140" h="140" map="$map" :frame="$icon1" />
-          <Sprite image="assets/menusprite.png" x="220" w="140" h="140" map="$map" frame="icon2" />
-          <Sprite image="assets/menusprite.png" x="440" w="140" h="140" map="$map" frame="icon3" />
-          <Sprite image="assets/menusprite.png" x="660" w="140" h="140" map="$map" frame="icon4_unfocus" />
-        </Element>
+      <Element src="assets/menusprite.png" x="748" y="120" w="425" h="340" />
+      <Element y="680" x="560">
+        <Sprite image="assets/menusprite.png" x="0" w="140" h="140" map="$map" :frame="$icon1" />
+        <Sprite image="assets/menusprite.png" x="220" w="140" h="140" map="$map" frame="icon2" />
+        <Sprite image="assets/menusprite.png" x="440" w="140" h="140" map="$map" frame="icon3" />
+        <Sprite image="assets/menusprite.png" x="660" w="140" h="140" map="$map" frame="icon4_unfocus" />
       </Element>
     </Element>
   `,
