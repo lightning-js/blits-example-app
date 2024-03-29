@@ -16,35 +16,23 @@
  */
 
 import Blits from '@lightningjs/blits'
-import keymapping from './keymapping.js'
 
-import App from './App.js'
-
-Blits.Launch(App, 'app', {
-  w: 1920,
-  h: 1080,
-  multithreaded: false,
-  debugLevel: 1,
-  reactivityMode: 'Proxy',
-  keymap: keymapping(),
-  fonts: [
-    {
-      family: 'lato',
-      type: 'msdf',
-      file: 'fonts/Lato-Regular.ttf',
+export default Blits.Component('Ball', {
+  template: `
+    <Element w="100" h="100" src="/assets/basketball.png" />
+  `,
+  hooks: {
+    attach() {
+      this.$emit('ballUpdate', 'Attached to render tree')
     },
-    {
-      family: 'raleway',
-      type: 'msdf',
-      file: 'fonts/Raleway-ExtraBold.ttf',
+    detach() {
+      this.$emit('ballUpdate', 'Detached from render tree')
     },
-    { family: 'opensans', type: 'web', file: 'fonts/OpenSans-Medium.ttf' },
-    {
-      family: 'kalam',
-      type: 'msdf',
-      file: 'fonts/Kalam-Regular.ttf',
+    enter() {
+      this.$emit('ballUpdate', 'Entered viewport')
     },
-  ],
-  canvasColor: 'transparent',
-  viewportMargin: 100,
+    exit() {
+      this.$emit('ballUpdate', 'Exited viewport')
+    },
+  },
 })

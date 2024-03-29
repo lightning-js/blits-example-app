@@ -192,6 +192,11 @@ export default Blits.Component('Portal', {
           id: 'examples/slots',
           description: 'Insert dynamic content from a parent into a child using slots',
         },
+        {
+          title: 'Viewport',
+          id: 'examples/viewport',
+          description: 'Lifecycle events when entering and leaving the viewport (margins)',
+        },
       ],
       benchmark: [
         {
