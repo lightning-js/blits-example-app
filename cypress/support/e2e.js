@@ -22,4 +22,12 @@ import './commands'
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
 import { addCompareSnapshotCommand } from 'cypress-visual-regression/dist/command'
-addCompareSnapshotCommand()
+import 'cypress-mochawesome-reporter/register'
+addCompareSnapshotCommand({
+  clip: {
+    width: 1920,
+    height: 1080,
+    x: 20,
+    y: 30,
+  },
+})
