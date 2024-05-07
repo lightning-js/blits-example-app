@@ -55,7 +55,7 @@ describe('Demos', () => {
   })
 })
 
-describe.only('Examples and Tests', () => {
+describe('Examples and Tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173')
     cy.wait(3000)
@@ -101,7 +101,7 @@ describe.only('Examples and Tests', () => {
     navigateToNextSection(7, 'RotationsScreen')
   })
 
-  it.only('Key Input screen', () => {
+  it('Key Input screen', () => {
     navigateToNextSection(8, 'KeyInputScreen')
   })
 
