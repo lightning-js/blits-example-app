@@ -1,6 +1,6 @@
 import { defineConfig } from 'cypress'
-import { configureVisualRegression } from 'cypress-visual-regression/dist/plugin.js'
 import mochawesome from 'cypress-mochawesome-reporter/plugin.js'
+import getCompareSnapshotsPlugin from 'cypress-image-diff-js/plugin'
 
 export default defineConfig({
   defaultCommandTimeout: 15000,
@@ -18,8 +18,8 @@ export default defineConfig({
     },
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      configureVisualRegression(on)
       mochawesome(on)
+      getCompareSnapshotsPlugin(on, config)
     },
   },
 })

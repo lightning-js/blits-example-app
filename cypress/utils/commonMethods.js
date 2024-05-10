@@ -13,10 +13,7 @@ export const navigateToNextSection = (count, snapshotName) => {
     BlitsExampleContent.getBody.type('{rightarrow}')
   }
   BlitsExampleContent.getBody.type('{enter}')
-  cy.wait(2000)
-  cy.screenshot(snapshotName)
-  // cy.compareSnapshot('Loader')
-  cy.wait(2000)
+ cy.wait(2000)
   BlitsExampleContent.getBody.type('{backspace}')
   cy.wait(2000)
   cy.get('[id="282"]').should('exist')

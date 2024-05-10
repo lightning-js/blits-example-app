@@ -1,26 +1,28 @@
 import BlitsExampleContent from '../locators/BlitsExample'
 import { navigateToNextSection } from '../utils/commonMethods'
 
-describe('Demos', () => {
+describe.only('Demos', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173')
     cy.wait(3000)
+
+
   })
 
-  it('Home screen', () => {
-    console.log('Inside first test')
+  it.only('Home screen', () => {
     cy.wait(3000)
-    // cy.screenshot('Home Screen')
-    cy.get('[id="293"]').should('have.text').contains('Example App')
+    cy.compareSnapshot('Home screen')
+
+    cy.get('#294')
+       .invoke('text')
+       .then(text =>expect(text).to.equal('Example App'))
+
     cy.wait(2000)
   })
 
   it('Loader screen', () => {
-    console.log('Inside second test')
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{enter}')
-    cy.wait(2000)
-    cy.screenshot('LoaderScreen')
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{backspace}')
     cy.wait(2000)
@@ -67,7 +69,6 @@ describe('Examples and Tests', () => {
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{enter}')
     cy.wait(2000)
-    cy.screenshot('Positioning Screen')
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{backspace}')
     cy.wait(2000)
@@ -80,6 +81,7 @@ describe('Examples and Tests', () => {
   })
 
   it('Gradients screen', () => {
+
     navigateToNextSection(2, 'GradientsScreen')
   })
 
@@ -109,11 +111,9 @@ describe('Examples and Tests', () => {
     navigateToNextSection(9, 'ForLoopScreen')
   })
 
-
   it('Advanced Loop screen', () => {
     navigateToNextSection(10, 'AdvancedLoopScreen')
   })
-
 
   it('Effects screen', () => {
     navigateToNextSection(11, 'EffectsScreen')
@@ -123,11 +123,9 @@ describe('Examples and Tests', () => {
     navigateToNextSection(12, 'ShowScreen')
   })
 
-
   it('Event screen', () => {
     navigateToNextSection(13, 'EventsScreen')
   })
-
 
   it('Images screen', () => {
     navigateToNextSection(14, 'ImagesScreen')

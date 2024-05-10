@@ -15,19 +15,7 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-// import 'cypress-mochawesome-reporter/register';
-// const { addCompareSnapshotCommand } = require('cypress-visual-regression/dist/command')
-// addCompareSnapshotCommand()
-
-// Alternatively you can use CommonJS syntax:
-// require('./commands')
-import { addCompareSnapshotCommand } from 'cypress-visual-regression/dist/command'
 import 'cypress-mochawesome-reporter/register'
-addCompareSnapshotCommand({
-  clip: {
-    width: 1920,
-    height: 1080,
-    x: 20,
-    y: 30,
-  },
-})
+const compareSnapshotCommand = require('cypress-image-diff-js/command');
+
+compareSnapshotCommand();
