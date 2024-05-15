@@ -12,7 +12,8 @@
     "build": "vite build",
     "dev": "vite dev --host",
     "test": "NODE_ENV=testing backstop --config=backstop.cjs test",
-    "test:reference": "NODE_ENV=testing backstop --config=backstop.cjs reference"
+    "test:reference": "NODE_ENV=testing backstop --config=backstop.cjs reference",
+    "cypresstest": "npx cypress run "
   },
   "lint-staged": {
     "*.js": [
