@@ -18,11 +18,6 @@
 // eslint-disable-next-line no-unused-vars
 // const { initPlugin } = require('cypress-plugin-snapshots/plugin')
 
-// module.exports = (on, config) => {
-//   initPlugin(on, config)
-//   return config
-// }
-
 const getCompareSnapshotsPlugin = require('cypress-visual-regression/dist/plugin');
 
 module.exports = (on, config) => {

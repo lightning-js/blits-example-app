@@ -1,24 +1,16 @@
 import { defineConfig } from 'cypress'
-import mochawesome from 'cypress-mochawesome-reporter/plugin.js'
 import getCompareSnapshotsPlugin from 'cypress-image-diff-js/plugin'
 
 export default defineConfig({
   defaultCommandTimeout: 15000,
-  trashAssetsBeforeRuns: true,
-  reporter: 'cypress-mochawesome-reporter',
   e2e: {
+    supportFile : './tests/cypress/support/e2e.{js,jsx,ts,tsx}',
+    specPattern: './tests/cypress/e2e/*.{js,jsx,ts,tsx}',
+    screenshotsFolder: './tests/cypress/screenshots/',
     viewportWidth: 1920,
     viewportHeight: 1080,
-    env: {
-      visualRegressionType: 'regression',
-      visualRegressionBaseDirectory: 'cypress/snapshot/base',
-      visualRegressionDiffDirectory: 'cypress/snapshot/diff',
-      visualRegressionGenerateDiff: 'always',
-      visualRegressionFailSilently: true,
-    },
     setupNodeEvents(on, config) {
       // implement node event listeners here
-      mochawesome(on)
       getCompareSnapshotsPlugin(on, config)
     },
   },

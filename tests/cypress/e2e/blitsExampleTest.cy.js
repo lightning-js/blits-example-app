@@ -1,7 +1,7 @@
 import BlitsExampleContent from '../locators/BlitsExample'
 import { navigateToNextSection } from '../utils/commonMethods'
 
-describe.only('Demos', () => {
+describe('Demos', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173')
     cy.wait(3000)
@@ -9,20 +9,21 @@ describe.only('Demos', () => {
 
   })
 
-  it.only('Home screen', () => {
+  it('Home screen', () => {
     cy.wait(3000)
-    cy.compareSnapshot('Home screen')
+    cy.compareSnapshot({name : 'Home screen',  testThreshold: 0.05})
 
     cy.get('#294')
        .invoke('text')
        .then(text =>expect(text).to.equal('Example App'))
-
     cy.wait(2000)
   })
 
   it('Loader screen', () => {
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{enter}')
+    cy.wait(2000)
+    cy.compareSnapshot({name : 'Loader screen',  testThreshold: 0.05})
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{backspace}')
     cy.wait(2000)
@@ -69,6 +70,7 @@ describe('Examples and Tests', () => {
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{enter}')
     cy.wait(2000)
+    cy.compareSnapshot({name : 'Positioning screen',  testThreshold: 0.05})
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{backspace}')
     cy.wait(2000)

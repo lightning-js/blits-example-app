@@ -15,7 +15,12 @@
 
 // Import commands.js using ES2015 syntax:
 import './commands'
-import 'cypress-mochawesome-reporter/register'
+// import 'cypress-mochawesome-reporter/register'
 const compareSnapshotCommand = require('cypress-image-diff-js/command');
 
-compareSnapshotCommand();
+compareSnapshotCommand()
+after(() => {
+  cy.task('generateReport')
+})
+
+

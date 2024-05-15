@@ -29,8 +29,9 @@
   "devDependencies": {
     "backstopjs": "^6.3.22",
     "cypress": "^13.8.1",
+    "cypress-image-diff-html-report": "^2.1.2",
     "cypress-image-diff-js": "^2.1.4",
-    "cypress-mochawesome-reporter": "^3.8.2",
+
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",
