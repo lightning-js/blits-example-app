@@ -210,7 +210,7 @@ export default Blits.Component('Portal', {
   hooks: {
     ready() {
       this.logoOffset = 0
-      this.$trigger('rowFocused')
+      this.trigger('rowFocused')
       console.log('backstopjs:ready')
     },
   },

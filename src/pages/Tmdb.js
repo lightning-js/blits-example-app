@@ -153,7 +153,7 @@ export default Blits.Component('TMdb', {
       this.focused = 0
     },
     focus() {
-      this.$trigger('focused')
+      this.trigger('focused')
     },
   },
   input: {
