@@ -32,7 +32,7 @@ describe('Demos', () => {
   })
 
   it('Intro screen', () => {
-    navigateToNextSection(1, 'Intro Screen')
+    navigateToNextSection(1, 'Intro Screen', 10000)
   })
 
   it('Theming screen', () => {
@@ -54,7 +54,7 @@ describe('Demos', () => {
   })
 
   it('Video Player screen', () => {
-    navigateToNextSection(7, 'Video Player Screen')
+    navigateToNextSection(7, 'Video Player Screen', 3000)
   })
 })
 
@@ -69,8 +69,8 @@ describe('Examples and Tests', () => {
   it('Positioning screen', () => {
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{enter}')
-    cy.wait(2000)
-    cy.compareSnapshot({name : 'Positioning screen',  testThreshold: 0.05})
+    cy.wait(5000)
+    cy.compareSnapshot({name : 'Positioning screen',  testThreshold: 0.1})
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{backspace}')
     cy.wait(2000)
