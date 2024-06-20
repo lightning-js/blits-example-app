@@ -65,7 +65,7 @@ export default Blits.Component('Announcer', {
           :for="(card, index) in $cards"
           :col="$index % 4"
           :row="Math.floor($index / 4) % 3"
-          :key="$card.image"
+          key="'game_'+$index"
           image="$card.image"
           description="$card.description"
           :ref="'card' + $index"
