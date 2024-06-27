@@ -89,7 +89,12 @@ To get started with Cypress, follow these steps:
 
 Run the App via the command: `npm run dev`
 
-Run `npm run cypresstest` to test the App against the reference images located at `cypress-image-diff-screenshots/base` in the root folder of the application.
+Headless:
+Run `npm run test:cypress` to test the App in headless mode against the reference images located at `cypress-image-diff-screenshots/base` in the root folder of the application.
+
+Without Headless:
+Run `npm run test:cypress-headed` to test the App in UI mode against the reference images located at `cypress-image-diff-screenshots/base` in the root folder of the application.
+
 
 Note: The default host and port of the dev server is http://localhost:5173. If you are running the app on a different host or port, you should update TEST_HOST and TEST_PORT in the .env file.
 
@@ -105,7 +110,7 @@ As already the above snippet is used in our testscript, For the first time, Cypr
 
 ### Creating Test Screenshots :
 
-After the base Screenshots are created, when we run the command `npm run cypresstest`, again the screenshots are generated inside the cypress-image-diff-screenshots/comparison folder.
+After the base Screenshots are created, when we run the command `npm run test:cypress`, again the screenshots are generated inside the cypress-image-diff-screenshots/comparison folder.
 
 The screen shots are compared with the baseline screenshots and if there is any discrepancy, then the difference of the images is captured at cypress-image-diff-screenshots/diff folder
 
