@@ -65,7 +65,7 @@ export default Blits.Component('Announcer', {
           :for="(card, index) in $cards"
           :col="$index % 4"
           :row="Math.floor($index / 4) % 3"
-          key="'game_'+$index"
+          key="$card.id"
           image="$card.image"
           description="$card.description"
           :ref="'card' + $index"
@@ -76,7 +76,9 @@ export default Blits.Component('Announcer', {
   `,
   state() {
     return {
-      cards: cards.concat(cards),
+      cards: cards.concat(cards).map((card, ind) => {
+        return { ...card, id: `card${ind}` }
+      }),
       focusedRow: -1,
       focusedCol: -1,
       openCards: [],
@@ -85,6 +87,7 @@ export default Blits.Component('Announcer', {
   },
   hooks: {
     init() {
+      console.log(this)
       this.shuffle()
       this.$listen('selectMemoryCard', (index) => {
         if (this.openCards.length < 2) {
