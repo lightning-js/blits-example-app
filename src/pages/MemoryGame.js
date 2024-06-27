@@ -87,7 +87,6 @@ export default Blits.Component('Announcer', {
   },
   hooks: {
     init() {
-      console.log(this)
       this.shuffle()
       this.$listen('selectMemoryCard', (index) => {
         if (this.openCards.length < 2) {
