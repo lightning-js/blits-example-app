@@ -11,6 +11,6 @@ export const navigateToNextSection = (count, snapshotName, waitTime = 2000) => {
   cy.wait(2000)
   BlitsExampleContent.getBody.type('{backspace}')
   cy.wait(2000)
-  cy.get('[id="282"]').should('exist')
+  cy.get('[id="252"]').should('exist')
   cy.wait(2000)
 }

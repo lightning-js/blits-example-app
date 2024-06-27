@@ -10,10 +10,9 @@ describe('Demos', () => {
   })
 
   it('Home screen', () => {
-    cy.wait(3000)
+    cy.wait(4000)
     cy.compareSnapshot({name : 'Home screen',  testThreshold: 0.05})
-
-    cy.get('#294')
+    cy.get('#250')
        .invoke('text')
        .then(text =>expect(text).to.equal('Example App'))
     cy.wait(2000)
@@ -27,30 +26,30 @@ describe('Demos', () => {
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{backspace}')
     cy.wait(2000)
-    cy.get('[id="282"]').should('exist')
+    cy.get('[id="252"]').should('exist')
     cy.wait(2000)
   })
 
   it('Intro screen', () => {
-    navigateToNextSection(1, 'Intro Screen', 10000)
+    navigateToNextSection(1, 'Intro Screen', 8000)
   })
 
   it('Theming screen', () => {
-    navigateToNextSection(2, 'Theming Screen')
+    navigateToNextSection(2, 'Theming Screen', 1000)
   })
 
   it('TMDB screen', () => {
-    navigateToNextSection(3, 'TMDB Screen')
+    navigateToNextSection(3, 'TMDB Screen', 4000)
   })
   it('Sprites screen', () => {
-    navigateToNextSection(4, 'Sprites Screen')
+    navigateToNextSection(4, 'Sprites Screen', 1000)
   })
   it('Focus screen', () => {
-    navigateToNextSection(5, 'Focus Screen')
+    navigateToNextSection(5, 'Focus Screen', 1000)
   })
 
   it('Memory Game screen', () => {
-    navigateToNextSection(6, 'Memory Game Screen')
+    navigateToNextSection(6, 'Memory Game Screen', 1000)
   })
 
   it('Video Player screen', () => {
@@ -74,12 +73,12 @@ describe('Examples and Tests', () => {
     cy.wait(2000)
     BlitsExampleContent.getBody.type('{backspace}')
     cy.wait(2000)
-    cy.get('[id="282"]').should('exist')
+    cy.get('[id="252"]').should('exist')
     cy.wait(2000)
   })
 
   it('Colors Page', () => {
-    navigateToNextSection(3, 'ColorsScreen')
+    navigateToNextSection(3, 'ColorsScreen', 3000)
   })
 
   it('Gradients screen', () => {
@@ -88,29 +87,29 @@ describe('Examples and Tests', () => {
   })
 
   it('Transitions screen', () => {
-    navigateToNextSection(3, 'TransitionsScreen')
+    navigateToNextSection(3, 'TransitionsScreen', 5000)
   })
   it('Components screen', () => {
-    navigateToNextSection(4, 'ComponentsScreen')
+    navigateToNextSection(4, 'ComponentsScreen', 1200)
   })
   it('Alpha screen', () => {
-    navigateToNextSection(5, 'AlphaScreen')
+    navigateToNextSection(5, 'AlphaScreen', 1000)
   })
 
   it('Scaling screen', () => {
-    navigateToNextSection(6, 'ScalingScreen')
+    navigateToNextSection(6, 'ScalingScreen', 3000)
   })
 
   it('Rotation screen', () => {
-    navigateToNextSection(7, 'RotationsScreen')
+    navigateToNextSection(7, 'RotationsScreen', 2500)
   })
 
   it('Key Input screen', () => {
-    navigateToNextSection(8, 'KeyInputScreen')
+    navigateToNextSection(8, 'KeyInputScreen', 750)
   })
 
   it('Forloop screen', () => {
-    navigateToNextSection(9, 'ForLoopScreen')
+    navigateToNextSection(9, 'ForLoopScreen', 6000)
   })
 
   it('Advanced Loop screen', () => {
@@ -118,7 +117,7 @@ describe('Examples and Tests', () => {
   })
 
   it('Effects screen', () => {
-    navigateToNextSection(11, 'EffectsScreen')
+    navigateToNextSection(11, 'EffectsScreen', 500)
   })
 
   it('Show screen', () => {
@@ -126,7 +125,7 @@ describe('Examples and Tests', () => {
   })
 
   it('Event screen', () => {
-    navigateToNextSection(13, 'EventsScreen')
+    navigateToNextSection(13, 'EventsScreen', 500)
   })
 
   it('Images screen', () => {
