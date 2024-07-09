@@ -9,7 +9,7 @@ describe('Demos', () => {
 
   })
 
-  it.only('Home screen', () => {
+  it('Home screen', () => {
     cy.wait(4000)
     cy.compareSnapshot({name : 'Home screen',  testThreshold: 0.05})
     cy.get('#250')
