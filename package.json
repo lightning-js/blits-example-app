@@ -13,7 +13,7 @@
     "dev": "vite dev --host",
     "test": "NODE_ENV=testing backstop --config=backstop.cjs test",
     "test:reference": "NODE_ENV=testing backstop --config=backstop.cjs reference",
-    "test:cypress": "npx cypress run",
+    "test:cypress": "npx cypress run & npx cypress-image-diff-html-report start --autoOpen true &",
     "test:cypress-headed": "npx cypress run --headed"
   },
   "lint-staged": {

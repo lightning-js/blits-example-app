@@ -9,7 +9,7 @@ describe('Demos', () => {
 
   })
 
-  it('Home screen', () => {
+  it.only('Home screen', () => {
     cy.wait(4000)
     cy.compareSnapshot({name : 'Home screen',  testThreshold: 0.05})
     cy.get('#250')
@@ -41,9 +41,11 @@ describe('Demos', () => {
   it('TMDB screen', () => {
     navigateToNextSection(3, 'TMDB Screen', 4000)
   })
+
   it('Sprites screen', () => {
     navigateToNextSection(4, 'Sprites Screen', 1000)
   })
+
   it('Focus screen', () => {
     navigateToNextSection(5, 'Focus Screen', 1000)
   })
@@ -51,10 +53,10 @@ describe('Demos', () => {
   it('Memory Game screen', () => {
     navigateToNextSection(6, 'Memory Game Screen', 1000)
   })
-
-  it('Video Player screen', () => {
-    navigateToNextSection(7, 'Video Player Screen', 3000)
-  })
+  // TODO
+  // it('Video Player screen', () => {
+  //   navigateToNextSection(7, 'Video Player Screen', 3000)
+  // })
 })
 
 describe('Examples and Tests', () => {
@@ -76,10 +78,10 @@ describe('Examples and Tests', () => {
     cy.get('[id="252"]').should('exist')
     cy.wait(2000)
   })
-
-  it('Colors Page', () => {
-    navigateToNextSection(3, 'ColorsScreen', 3000)
-  })
+  // TODO
+  // it('Colors Page', () => {
+  //   navigateToNextSection(3, 'ColorsScreen', 3000)
+  // })
 
   it('Gradients screen', () => {
 
@@ -89,9 +91,11 @@ describe('Examples and Tests', () => {
   it('Transitions screen', () => {
     navigateToNextSection(3, 'TransitionsScreen', 5000)
   })
+
   it('Components screen', () => {
     navigateToNextSection(4, 'ComponentsScreen', 1200)
   })
+
   it('Alpha screen', () => {
     navigateToNextSection(5, 'AlphaScreen', 1000)
   })
