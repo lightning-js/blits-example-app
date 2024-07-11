@@ -1,15 +1,13 @@
 import BlitsExampleContent from '../locators/BlitsExample'
-import { navigateToNextSection } from '../utils/commonMethods'
+import { navigateToNextSection, themingScreenNavigation } from '../utils/commonMethods'
 
 describe('Demos', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173')
     cy.wait(3000)
-
-
   })
 
-  it('Home screen', () => {
+  it('HomeScreen', () => {
     cy.wait(4000)
     cy.compareSnapshot({name : 'Home screen',  testThreshold: 0.05})
     cy.get('#250')
@@ -18,40 +16,44 @@ describe('Demos', () => {
     cy.wait(2000)
   })
 
-  it('Loader screen', () => {
-    cy.wait(2000)
-    BlitsExampleContent.getBody.type('{enter}')
-    cy.wait(2000)
-    cy.compareSnapshot({name : 'Loader screen',  testThreshold: 0.05})
-    cy.wait(2000)
-    BlitsExampleContent.getBody.type('{backspace}')
-    cy.wait(2000)
-    cy.get('[id="252"]').should('exist')
-    cy.wait(2000)
+  it('LoaderScreen', () => {
+    navigateToNextSection(0, 'LoaderScreen')
   })
 
-  it('Intro screen', () => {
-    navigateToNextSection(1, 'Intro Screen', 8000)
+  it('IntroScreen', () => {
+    navigateToNextSection(1, 'IntroScreen', 8000)
   })
 
-  it('Theming screen', () => {
-    navigateToNextSection(2, 'Theming Screen', 1000)
+  it('ThemingScreen', () => {
+    navigateToNextSection(2, 'ThemingScreen', 1000)
   })
 
-  it('TMDB screen', () => {
-    navigateToNextSection(3, 'TMDB Screen', 4000)
+  it('ThemingScreen_1', () => {
+    themingScreenNavigation('ThemingScreen_1', 'rightArrow')
   })
 
-  it('Sprites screen', () => {
-    navigateToNextSection(4, 'Sprites Screen', 1000)
+  it('ThemingScreen_2', () => {
+    themingScreenNavigation('ThemingScreen_2', 'upArrow')
   })
 
-  it('Focus screen', () => {
-    navigateToNextSection(5, 'Focus Screen', 1000)
+  it('ThemingScreen_3', () => {
+    themingScreenNavigation('ThemingScreen_3', 'rightArrow' ,'upArrow')
   })
 
-  it('Memory Game screen', () => {
-    navigateToNextSection(6, 'Memory Game Screen', 1000)
+  it('TMDB_Screen', () => {
+    navigateToNextSection(3, 'TMDB_Screen', 4000)
+  })
+
+  it('SpritesScreen', () => {
+    navigateToNextSection(4, 'SpritesScreen', 1000)
+  })
+
+  it('FocusScreen', () => {
+    navigateToNextSection(5, 'FocusScreen', 1000)
+  })
+
+  it('MemoryGameScreen', () => {
+    navigateToNextSection(6, 'MemoryGameScreen', 1000)
   })
   // TODO
   // it('Video Player screen', () => {
@@ -63,88 +65,79 @@ describe('Examples and Tests', () => {
   beforeEach(() => {
     cy.visit('http://localhost:5173')
     cy.wait(3000)
-
     BlitsExampleContent.getBody.type('{downArrow}')
   })
 
-  it('Positioning screen', () => {
-    cy.wait(2000)
-    BlitsExampleContent.getBody.type('{enter}')
-    cy.wait(5000)
-    cy.compareSnapshot({name : 'Positioning screen',  testThreshold: 0.1})
-    cy.wait(2000)
-    BlitsExampleContent.getBody.type('{backspace}')
-    cy.wait(2000)
-    cy.get('[id="252"]').should('exist')
-    cy.wait(2000)
+  it('PositioningScreen', () => {
+    navigateToNextSection(0, 'PositioningScreen', 5000, 0.2)
   })
-  // TODO
-  // it('Colors Page', () => {
-  //   navigateToNextSection(3, 'ColorsScreen', 3000)
-  // })
 
-  it('Gradients screen', () => {
+  it('ColorsScreen', () => {
+    navigateToNextSection(1, 'ColorsScreen')
+  })
 
+  it('GradientsScreen', () => {
     navigateToNextSection(2, 'GradientsScreen')
   })
 
-  it('Transitions screen', () => {
+  it('TransitionsScreen', () => {
     navigateToNextSection(3, 'TransitionsScreen', 5000)
   })
 
-  it('Components screen', () => {
+  it('ComponentsScreen', () => {
     navigateToNextSection(4, 'ComponentsScreen', 1200)
   })
 
-  it('Alpha screen', () => {
+  it('AlphaScreen', () => {
     navigateToNextSection(5, 'AlphaScreen', 1000)
   })
 
-  it('Scaling screen', () => {
+  it('ScalingScreen', () => {
     navigateToNextSection(6, 'ScalingScreen', 3000)
   })
 
-  it('Rotation screen', () => {
+  it('RotationScreen', () => {
     navigateToNextSection(7, 'RotationsScreen', 2500)
   })
 
-  it('Key Input screen', () => {
+  it('KeyInputScreen', () => {
     navigateToNextSection(8, 'KeyInputScreen', 750)
   })
 
-  it('Forloop screen', () => {
+  it('ForLoopScreen', () => {
     navigateToNextSection(9, 'ForLoopScreen', 6000)
   })
 
-  it('Advanced Loop screen', () => {
+  it('AdvancedLoopScreen', () => {
     navigateToNextSection(10, 'AdvancedLoopScreen')
   })
 
-  it('Effects screen', () => {
+  it('EffectsScreen', () => {
     navigateToNextSection(11, 'EffectsScreen', 500)
   })
 
-  it('Show screen', () => {
+  it('ShowScreen', () => {
     navigateToNextSection(12, 'ShowScreen')
   })
 
-  it('Event screen', () => {
+  it('EventScreen', () => {
     navigateToNextSection(13, 'EventsScreen', 500)
   })
 
-  it('Images screen', () => {
+  it('ImagesScreen', () => {
     navigateToNextSection(14, 'ImagesScreen')
   })
 
-  it('Texts screen', () => {
+  it('TextsScreen', () => {
     navigateToNextSection(15, 'TextsScreen')
   })
 
-  it('Slots screen', () => {
+  it('SlotsScreen', () => {
     navigateToNextSection(16, 'SlotsScreen')
   })
 
-  it('Viewport screen', () => {
-    navigateToNextSection(17, 'ViewPortScreen')
+  it('ViewportScreen', () => {
+    navigateToNextSection(17, 'ViewportScreen')
   })
 })
+
