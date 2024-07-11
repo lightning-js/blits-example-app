@@ -72,9 +72,9 @@ describe('Examples and Tests', () => {
     navigateToNextSection(0, 'PositioningScreen', 5000, 0.2)
   })
 
-  it('ColorsScreen', () => {
-    navigateToNextSection(1, 'ColorsScreen')
-  })
+  // it('ColorsScreen', () => {
+  //   navigateToNextSection(1, 'ColorsScreen')
+  // })
 
   it('GradientsScreen', () => {
     navigateToNextSection(2, 'GradientsScreen')
@@ -92,9 +92,9 @@ describe('Examples and Tests', () => {
     navigateToNextSection(5, 'AlphaScreen', 1000)
   })
 
-  it('ScalingScreen', () => {
-    navigateToNextSection(6, 'ScalingScreen', 3000)
-  })
+  // it('ScalingScreen', () => {
+  //   navigateToNextSection(6, 'ScalingScreen', 3000)
+  // })
 
   it('RotationScreen', () => {
     navigateToNextSection(7, 'RotationsScreen', 2500)

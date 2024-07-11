@@ -6,15 +6,16 @@
   "type": "module",
   "scripts": {
     "start": "npm run dev",
-    "start:test": "NODE_ENV=testing npm run dev",
+    "start:test": "npm run setEnv &  npm run dev",
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint '**/*.js' --fix",
     "build": "vite build",
     "dev": "vite dev --host",
     "test": "NODE_ENV=testing backstop --config=backstop.cjs test",
     "test:reference": "NODE_ENV=testing backstop --config=backstop.cjs reference",
-    "test:cypress": "npx cypress run & npx cypress-image-diff-html-report start --autoOpen true",
-    "test:cypress-headed": "npx cypress run --headed & npx cypress-image-diff-html-report start --autoOpen true"
+    "test:cypress": "npm run setEnv & npx cypress run & npx cypress-image-diff-html-report start --autoOpen true",
+    "test:cypress-headed": "npm run setEnv & npx cypress run --headed & npx cypress-image-diff-html-report start --autoOpen true",
+    "setEnv" : "node ./scripts/env.js"
   },
   "lint-staged": {
     "*.js": [
