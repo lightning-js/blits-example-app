@@ -87,7 +87,7 @@ Cypress is a tool that facilitates both functional and visual regression testing
 
 To get started with Cypress, follow these steps:
 
-Run the App via the command: `npm run dev`
+Run the App via the command: `npm run start:test`
 
 Headless:
 Run `npm run test:cypress` to test the App in headless mode against the reference images located at `cypress-image-diff-screenshots/base` in the root folder of the application.
@@ -102,11 +102,13 @@ Note: The default host and port of the dev server is http://localhost:5173. If y
 
 ### Creating Base Screenshots :
 
-Initially no reference screenshots were available. We can take the screen shot using the below code snippet in the test spec wherever required
+Initially no reference screenshots are available. We can take the screen shot using the below code snippet in the test spec wherever required
 
 cy.compareSnapshot({name : '<Name of the screenshot>',  testThreshold: <percentage of difference>})
 
 As already the above snippet is used in our testscript, For the first time, Cypress creates reference images inside the folder cypress-image-diff-screenshots/baseline.
+
+Note: To create new screenshots remove the folder cypress-image-diff-screenshots and run the command for test so that it will create new set of screenshots. In the next run the screenshot comparison will be done.
 
 ### Creating Test Screenshots :
 
