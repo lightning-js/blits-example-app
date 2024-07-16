@@ -15,7 +15,9 @@ export const navigateToNextSection = (count, snapshotName, waitTime = 2000, thre
 export const homePageNavigation = () => {
   BlitsExampleContent.getBody.type('{backspace}')
   cy.wait(2000)
-  cy.get('[id="252"]').should('exist')
+  cy.get('#250')
+       .invoke('text')
+       .then(text =>expect(text).to.equal('Example App'))
   cy.wait(2000)
 }
 

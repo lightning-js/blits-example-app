@@ -20,6 +20,8 @@ import keymapping from './keymapping.js'
 
 import App from './App.js'
 
+const envVar = (import.meta.env.VITE_USER_NODE_ENV) == 'testing' ? true : false
+
 Blits.Launch(App, 'app', {
   w: 1920,
   h: 1080,
@@ -47,5 +49,5 @@ Blits.Launch(App, 'app', {
   ],
   canvasColor: 'transparent',
   viewportMargin: 100,
-  inspector: true
+  inspector: envVar
 })
