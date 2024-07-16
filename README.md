@@ -87,7 +87,8 @@ Cypress is a tool that facilitates both functional and visual regression testing
 
 To get started with Cypress, follow these steps:
 
-Run the App via the command: `npm run start:test`
+1. Set the env variable `NODE_ENV=testing` in the .env file
+2. Run the App via the command: `npm run start:test`
 
 Headless:
 Run `npm run test:cypress` to test the App in headless mode against the reference images located at `cypress-image-diff-screenshots/base` in the root folder of the application.

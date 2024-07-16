@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "npm run dev",
-    "start:test": "npm run setEnv &  npm run dev",
+    "start:test": "npm run setEnv & npm run dev",
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint '**/*.js' --fix",
     "build": "vite build",
