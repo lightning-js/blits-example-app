@@ -91,35 +91,43 @@ To get started with Cypress, follow these steps:
 2. Run the App via the command: `npm run start:test`
 
 Headless:
-Run `npm run test:cypress` to test the App in headless mode against the reference images located at `cypress-image-diff-screenshots/base` in the root folder of the application.
+Run `npm run test:cypress` to test the App in headless mode against the reference images located at `tests/cypress/reports/cypress-image-diff-screenshots/base` folder of the application.
 
 Without Headless:
-Run `npm run test:cypress-headed` to test the App in UI mode against the reference images located at `cypress-image-diff-screenshots/base` in the root folder of the application.
+Run `npm run test:cypress-headed` to test the App in UI mode against the reference images located at `tests/cypress/reports/cypress-image-diff-screenshots/base` folder of the application.
 
 
 Note: The default host and port of the dev server is http://localhost:5173. If you are running the app on a different host or port, you should update TEST_HOST and TEST_PORT in the .env file.
 
+### Creating Base Screenshots
 
+To create base screenshots for visual regression testing, use the following command in the terminal:
 
-### Creating Base Screenshots :
+```bash
+npm run test:cypress-reference
+```
+This command will remove any existing base snapshots and generate new ones at the location `<Root_Folder>/tests/cypress/reports/cypress-image-diff-screenshots/baseline`
 
-Initially no reference screenshots are available. We can take the screen shot using the below code snippet in the test spec wherever required
+Note: By default base screenshots are available at the above location
+
+### Creating Base Screenshots using the test code:
+
+Initially base screenshots are available. We can take the screen shot using the below code snippet in the test spec wherever required
 
 cy.compareSnapshot({name : '<Name of the screenshot>',  testThreshold: <percentage of difference>})
 
-As already the above snippet is used in our testscript, For the first time, Cypress creates reference images inside the folder cypress-image-diff-screenshots/baseline.
 
-Note: To create new screenshots remove the folder cypress-image-diff-screenshots and run the command for test so that it will create new set of screenshots. In the next run the screenshot comparison will be done.
+### Testing Screenshots :
 
-### Creating Test Screenshots :
+After the base Screenshots are created, when we run the command `npm run test:cypress`, again the screenshots are generated inside the
+`tests/cypress/reports/cypress-image-diff-screenshots/comparison` folder.
 
-After the base Screenshots are created, when we run the command `npm run test:cypress`, again the screenshots are generated inside the cypress-image-diff-screenshots/comparison folder.
-
-The screen shots are compared with the baseline screenshots and if there is any discrepancy, then the difference of the images is captured at cypress-image-diff-screenshots/diff folder
+The screen shots are compared with the baseline screenshots and if there is any discrepancy, then the difference of the images is captured at
+`tests/cypress/reports/cypress-image-diff-screenshots/diff` folder
 
 ### Report :
 
-The report is generated at the` cypress-image-diff-html-report` folder in the project root folder.
+The report is generated at the `tests/cypress/reports/cypress-image-diff-html-report` folder.
 
 
 ## Bugs or issues?

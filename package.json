@@ -13,9 +13,11 @@
     "dev": "vite dev --host",
     "test": "NODE_ENV=testing backstop --config=backstop.cjs test",
     "test:reference": "NODE_ENV=testing backstop --config=backstop.cjs reference",
-    "test:cypress": "npm run setEnv & npx cypress run & npx cypress-image-diff-html-report start --autoOpen true",
-    "test:cypress-headed": "npm run setEnv & npx cypress run --headed & npx cypress-image-diff-html-report start --autoOpen true",
-    "setEnv" : "node ./scripts/env.js"
+    "test:cypress": "npm run setEnv & npx cypress run & npx cypress-image-diff-html-report start --reportJsonDir tests/cypress/reports/cypress-image-diff-html-report --autoOpen true",
+    "test:cypress-reference": "npm run setEnv & npm run remFolder & npx cypress run --headed",
+    "test:cypress-headed": "npm run setEnv & npx cypress run --headed & npx cypress-image-diff-html-report start --reportJsonDir tests/cypress/reports/cypress-image-diff-html-report --autoOpen true",
+    "setEnv" : "node ./scripts/env.js",
+    "remFolder" : "node ./scripts/removeReports.js"
   },
   "lint-staged": {
     "*.js": [
@@ -34,7 +36,6 @@
     "cypress": "^13.8.1",
     "cypress-image-diff-html-report": "^2.1.2",
     "cypress-image-diff-js": "^2.1.4",
-
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.4",

@@ -10,7 +10,7 @@ describe('Demos', () => {
   it('HomeScreen', () => {
     cy.wait(4000)
     cy.compareSnapshot({name : 'Home screen',  testThreshold: 0.05})
-    cy.get('#250')
+    cy.get('#166')
        .invoke('text')
        .then(text =>expect(text).to.equal('Example App'))
     cy.wait(2000)
