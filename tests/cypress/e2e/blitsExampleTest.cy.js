@@ -3,7 +3,7 @@ import { navigateToNextSection, themingScreenNavigation } from '../utils/commonM
 
 describe('Demos', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:5173')
+    cy.visit(Cypress.config('baseUrl'))
     cy.wait(3000)
   })
 
@@ -63,7 +63,7 @@ describe('Demos', () => {
 
 describe('Examples and Tests', () => {
   beforeEach(() => {
-    cy.visit('http://localhost:5173')
+    cy.visit(Cypress.config('baseUrl'))
     cy.wait(3000)
     BlitsExampleContent.getBody.type('{downArrow}')
   })

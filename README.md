@@ -97,7 +97,7 @@ Without Headless:
 Run `npm run test:cypress-headed` to test the App in UI mode against the reference images located at `tests/cypress/reports/cypress-image-diff-screenshots/base` folder of the application.
 
 
-Note: The default host and port of the dev server is http://localhost:5173. If you are running the app on a different host or port, you should update TEST_HOST and TEST_PORT in the .env file.
+Note: The default url will be `'http://localhost:5173'` and can be configured in the cypress config file located in the root folder.
 
 ### Creating Base Screenshots
 
