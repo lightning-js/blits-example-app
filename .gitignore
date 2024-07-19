@@ -5,3 +5,7 @@ dist
 .env
 tests/backstopjs/bitmaps_test/
 tests/backstopjs/html_report/
+tests/cypress/screenshots/
+tests/cypress/reports/cypress-image-diff-html-report/
+tests/cypress/reports/cypress-image-diff-screenshots/comparison
+tests/cypress/reports/cypress-image-diff-screenshots/diff
