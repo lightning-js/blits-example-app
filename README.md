@@ -21,7 +21,7 @@ It accomplishes this by comparing DOM screenshots over time.
 To get started with BackstopJS, follow these steps:
 
 1. Run the App via the command: `npm run start:test` or `NODE_ENV=testing npm run dev`
-2. Run `npm test` to test the App against the reference bitmaps.
+2. Run `npm run test:backstopjs` to test the App against the reference bitmaps.
 
 
 > Note: To ensure consistency regarding the performance of the app while creating the reference bitmaps or running the tests, `asyncCaptureLimit` should be set to `1` in the `backstop.cjs` file. This will ensure that the tests are run sequentially and not in parallel (so concurrency won't affect the performance of the app).
@@ -33,7 +33,7 @@ To get started with BackstopJS, follow these steps:
 To create reference bitmaps for visual regression testing, use the following command in the terminal:
 
 ```bash
-npm run test:reference
+npm run test:backstopjs-reference
 ```
 
 This command will remove any existing reference snapshots and generate new ones based on the provided configuration `URL` in the previous section.
@@ -44,7 +44,7 @@ This command will remove any existing reference snapshots and generate new ones 
 Generate test bitmaps by using the following command in the terminal:
 
 ```bash
-$ npm test
+$ npm run test:backstopjs
 ```
 
 This command will produce a new set of bitmaps in the `bitmap_test/<timestamp>` folder. After bitmap generation is complete,

@@ -11,8 +11,9 @@
     "lint:fix": "eslint '**/*.js' --fix",
     "build": "vite build",
     "dev": "vite dev --host",
-    "test": "npm run setEnv & npx backstop --config=backstop.cjs test",
-    "test:reference": "npm run setEnv & npx backstop --config=backstop.cjs reference"
+    "test:backstopjs": "npm run setEnv & npx backstop --config=backstop.cjs test",
+    "test:backstopjs-reference": "npm run setEnv & npx backstop --config=backstop.cjs reference",
+    "setEnv": "node ./scripts/env.js"
   },
   "lint-staged": {
     "*.js": [
