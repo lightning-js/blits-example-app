@@ -51,7 +51,7 @@ export default Blits.Component('TmdbRow', {
   },
   hooks: {
     focus() {
-      this.$trigger('focused')
+      this.trigger('focused')
     },
   },
   computed: {

@@ -40,7 +40,7 @@ export default Blits.Component('Menu', {
   },
   hooks: {
     focus() {
-      this.$trigger('focused')
+      this.trigger('focused')
       this.x = 0
     },
   },

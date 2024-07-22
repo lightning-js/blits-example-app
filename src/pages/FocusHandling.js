@@ -47,7 +47,7 @@ export default Blits.Component('FocusHandling', {
   },
   hooks: {
     focus() {
-      this.$trigger('focused')
+      this.trigger('focused')
     },
   },
   watch: {

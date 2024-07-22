@@ -96,7 +96,7 @@ const LegendItem = Blits.Component('LegendItem', {
       <Text color="#e5e5e5" size="32" y="10" wordwrap="57" align="center">{{ $id }}</Text>
       <Text color="#e5e5e5" x="80" y="14" size="28">{{ $text }}</Text>
     </Element>
-    `,
+  `,
   props: ['id', 'text'],
 })
 
@@ -106,7 +106,7 @@ const Row = Blits.Component('Row', {
       <Element w="10" h="60" color="#06b6d4" />
       <Text content="$text" x="30" y="10" font="opensans" color="#1e293b" />
     </Element>
-    `,
+  `,
   props: ['index', 'text'],
 })
 
@@ -116,7 +116,7 @@ const Rows = Blits.Component('Row', {
   },
   template: `
     <Row :for="(item, index) in $data" key="$item.id + 'key2'" :index="$index" text="$item.text" y="50" />
-    `,
+  `,
   props: ['data'],
 })
 
@@ -162,7 +162,7 @@ export default Blits.Component('ForLoop', {
         <!--         <Rows :data="$data" /> -->
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       count: 0,
@@ -176,7 +176,7 @@ export default Blits.Component('ForLoop', {
   },
   computed: {
     show() {
-      return this.hide > 0
+      return this.hide === true
     },
     data2() {
       return this.data
@@ -194,7 +194,7 @@ export default Blits.Component('ForLoop', {
   input: {
     a() {
       this.y = -10
-      this.$trigger('y')
+      this.trigger('y')
       const data = []
       for (let i = 0; i < 6; i++) {
         data.push(makeItem())
@@ -203,42 +203,42 @@ export default Blits.Component('ForLoop', {
     },
     b() {
       this.y = 80
-      this.$trigger('y')
+      this.trigger('y')
       this.data.push(makeItem())
     },
     c() {
       this.y = 170
-      this.$trigger('y')
+      this.trigger('y')
       this.data.pop()
     },
     d() {
       this.y = 260
-      this.$trigger('y')
+      this.trigger('y')
       this.data.shift()
     },
     e() {
       this.y = 350
-      this.$trigger('y')
+      this.trigger('y')
       this.data.splice(2, 4)
     },
     f() {
       this.y = 440
-      this.$trigger('y')
+      this.trigger('y')
       this.data.unshift(makeItem(), makeItem())
     },
     g() {
       this.y = 530
-      this.$trigger('y')
+      this.trigger('y')
       this.data = []
     },
     h() {
       this.y = 620
-      this.$trigger('y')
+      this.trigger('y')
       this.data = this.data.concat(makeItems(3))
     },
     i() {
       this.y = 710
-      this.$trigger('y')
+      this.trigger('y')
       this.data = this.data.sort((a, b) => {
         const textA = a.text.toLowerCase()
         const textB = b.text.toLowerCase()

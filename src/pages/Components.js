@@ -35,9 +35,7 @@ export default Blits.Component('Components', {
       <!-- card component that takes a string size argument and also has a nested square component -->
       <Card x="500" y="100" />
       <Card x="500" y="500" size="large" />
-    
-      <Square x="100" y="750" :size="$size" />
-    
+
       <Element x="1100" y="200">
         <Text>Dynamic components</Text>
         <Component is="$dynamicComponent" y="100" />
