@@ -27,6 +27,7 @@ Blits.Launch(App, 'app', {
   debugLevel: 1,
   reactivityMode: 'Proxy',
   keymap: keymapping(),
+  defaultFont: 'lato',
   fonts: [
     {
       family: 'lato',
