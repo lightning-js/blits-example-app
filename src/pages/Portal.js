@@ -197,6 +197,11 @@ export default Blits.Component('Portal', {
           id: 'examples/viewport',
           description: 'Lifecycle events when entering and leaving the viewport (margins)',
         },
+        {
+          title: 'Fit (Resize)',
+          id: 'examples/resize',
+          description: 'Explains different syntaxes for using `cover` & `contain` in blits',
+        },
       ],
       benchmark: [
         {

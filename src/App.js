@@ -47,6 +47,7 @@ import Slots from './pages/Slots'
 import MemoryGame from './pages/MemoryGame'
 import Exponential from './pages/Exponential'
 import Viewport from './pages/Viewport'
+import Resize from './pages/Resize'
 
 export default Blits.Application({
   template: `
@@ -108,6 +109,7 @@ export default Blits.Application({
     { path: '/examples/events', component: Events },
     { path: '/examples/slots', component: Slots },
     { path: '/examples/viewport', component: Viewport },
+    { path: '/examples/resize', component: Resize },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
   ],
