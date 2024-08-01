@@ -1,0 +1,22 @@
+{
+    "NL-nl": {
+      "hello": "Hallo, alles goed?",
+      "bye": "Doei!",
+      "replacement": "Mijn naam is {first} {last}, ik ben {age} jaar"
+    },
+    "EN-us": {
+      "hello": "Hello, how are you doing?",
+      "bye": "Goodbye!",
+      "replacement": "My name is {first} {last}, I'm {age} years old"
+    },
+    "FR-fr": {
+      "hello": "Bonjour, ça va?",
+      "bye": "Au revoir!",
+      "replacement": "Je m'appelle {first} {last}, j'ai {age} ans"
+    },
+    "DE-de": {
+      "hello": "Gutentag, wie geht's?",
+      "bye": "Tschüss!",
+      "replacement": "Mein Name ist {first} {last}, ich bin {age} Jahre alt"
+    }
+  }
