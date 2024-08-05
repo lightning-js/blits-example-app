@@ -52,22 +52,22 @@ export default Blits.Component('LanguagePlugin', {
       languages: [
         {
           flag: '/assets/flags/united-states.png',
-          code: 'EN-us',
+          code: 'en-US',
           name: 'English',
         },
         {
           flag: '/assets/flags/netherlands.png',
-          code: 'NL-nl',
+          code: 'nl-NL',
           name: 'Dutch',
         },
         {
           flag: '/assets/flags/france.png',
-          code: 'FR-fr',
+          code: 'fr-FR',
           name: 'French',
         },
         {
           flag: '/assets/flags/germany.png',
-          code: 'DE-de',
+          code: 'de-DE',
           name: 'German',
         },
       ],
@@ -76,15 +76,13 @@ export default Blits.Component('LanguagePlugin', {
   hooks: {
     init() {
       // Set the language
-      this.$language.set('EN-us')
-
+      this.$language.set('en-US')
       // artificial delay when loading translation file
       setTimeout(() => {
         this.$language.load('/assets/translations.json').then(() => {
           this.loaded = true
         })
       }, 2000)
-
       // It's also possible to specify translations manually
       // this.$language.translations({
       //   'NL-nl': {
