@@ -22,7 +22,7 @@ export default Blits.Component('Button', {
     <Element
       w="300"
       h="80"
-      color="$color"
+      color="$color || 'red'"
       :effects="[$shader('radius', {radius: 20})]"
       :alpha.transition="$alpha"
       :scale.transition="$scale"
