@@ -18,6 +18,7 @@
 import Blits from '@lightningjs/blits'
 import Square from '../components/Square.js'
 import Card from '../components/Card.js'
+import Button from '../components/Button.js'
 
 export default Blits.Component('Components', {
   components: {
@@ -36,18 +37,18 @@ export default Blits.Component('Components', {
       <Card x="500" y="100" />
       <Card x="500" y="500" size="large" />
 
-      <Element x="1100" y="200">
+      <Element x="1000" y="100">
         <Text>Dynamic components</Text>
-        <Component is="$dynamicComponent" y="100" />
-        <Component :for="(component, index) in $dynamicComponents" is="$component" :x="250 * $index" y="300" />
+        <Component is="$dynamicComponent" y="100" color="blue" />
+        <Component :for="(bla, index) in $dynamicComponents" is="$bla" :x="205 * $index" y="300" />
       </Element>
     </Element>
   `,
   state() {
     return {
       x: 100,
-      dynamicComponent: 'Square',
-      dynamicComponents: ['Square', 'Card', 'Square'],
+      dynamicComponent: Button,
+      dynamicComponents: ['Square', 'Card', 'Square', Button],
       toggle: false,
       size: 50,
     }

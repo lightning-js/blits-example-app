@@ -16,9 +16,14 @@
  */
 
 import Blits from '@lightningjs/blits'
+import { language } from '@lightningjs/blits/plugins'
+
 import keymapping from './keymapping.js'
 
 import App from './App.js'
+
+// Use the Blits Language plugin
+Blits.Plugin(language)
 
 Blits.Launch(App, 'app', {
   w: 1920,
@@ -27,7 +32,6 @@ Blits.Launch(App, 'app', {
   debugLevel: 1,
   reactivityMode: 'Proxy',
   keymap: keymapping(),
-  defaultFont: 'lato',
   fonts: [
     {
       family: 'lato',

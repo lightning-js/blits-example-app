@@ -197,6 +197,11 @@ export default Blits.Component('Portal', {
           id: 'examples/viewport',
           description: 'Lifecycle events when entering and leaving the viewport (margins)',
         },
+        {
+          title: 'Translations',
+          id: 'examples/languageplugin',
+          description: 'Language Plugin for internationalization',
+        },
       ],
       benchmark: [
         {
