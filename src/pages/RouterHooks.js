@@ -1,176 +1,278 @@
 import Blits from '@lightningjs/blits'
 
-const Button = Blits.Component('JokeButton', {
+const hookPageTemplate = {
   template: `
     <Element
-      w="$w"
-      h="$h"
-      color="{left: '#7a65fe', right:'#e14ffe'}"
-      :scale.transition="{value:$scale, d: 300, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
+      w="1920"
+      h="1080"
+      color="#fff"
+      :effects="[$shader('radialGradient', {colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], width: 2400, height: 800})]"
     >
-      <Text x="$w/2" y="$h/2" mount="{x:0.5, y:0.7}" :content="$title" font="opensans" size="50" color="#e4fcff" />
+      <Element :show="$up !== undefined">
+        <Element src="assets/arrow.png" w="100" h="44" x="960" y="40" mount="{x: 0.5}"/>
+        <Text :content="$up && $up.toUpperCase()" x="960" y="100" size="76" mount="{x: 0.5}"/>
+      </Element>
+      <Element :show="$right !== undefined">
+        <Element src="assets/arrow.png" w="100" h="44" x="1900" y="540" mount="{x: 1, y: 0.5}" rotation="90"/>
+        <Text :content="$right && $right.toUpperCase()" x="1760" y="540" size="76" rotation="90" mount="0.5"/>
+      </Element>
+      <Element :show="$down !== undefined">
+        <Element src="assets/arrow.png" w="100" h="44" x="960" y="1040" mount="{x: 0.5, y: 1}" rotation="180"/>
+        <Text :content="$down && $down.toUpperCase()" x="960" y="980" size="76" mount="{x: 0.5, y: 1}"/>
+      </Element>
+      <Element :show="$left !== undefined">
+        <Element src="assets/arrow.png" w="100" h="44" x="40" y="540" mount="{ y: 0.5}" rotation="-90"/>
+        <Text :content="$left && $left.toUpperCase()" x="180" y="540" size="76" mount="0.5" rotation="-90"/>
+      </Element>
+
+      <Text :content="$pageTitle" font="raleway" x="960" y="540" size="240" mount="0.5"/>
     </Element>
   `,
-  props: ['title', 'w', 'h', 'navTo'],
+  props: [
+    {
+      key: 'page',
+      cast: Object,
+    },
+  ],
+  computed: {
+    pageTitle() {
+      //compute page title from page data, if there's no page data use default title
+      return (this.page && this.page.title) || this.title
+    },
+  },
   state() {
+    //default state template to indicate which directions will be available if they are defined when "extending"
     return {
-      scale: 0.98,
+      title: 'Start',
+      up: 'up',
+      right: 'right',
+      down: 'down',
+      left: 'left',
     }
   },
-  hooks: {
-    focus() {
-      this.scale = 1.2
-    },
-    unfocus() {
-      this.scale = 0.9
-    },
+}
+
+//landing page of the router hook example, contains 2 flow examples
+export const RouterHookPage = Blits.Component('RouterHookPage', {
+  ...hookPageTemplate,
+  state() {
+    return {
+      title: 'Start',
+      down: 'episode flow',
+      right: 'movie flow',
+    }
   },
   input: {
-    enter() {
-      this.$router.to(`/examples/router-hooks/${this.navTo}`)
+    right() {
+      //trigger router to navigate to movie flow
+      this.$router.to('/examples/router-hooks/movie')
+    },
+    down() {
+      //trigger router to navigate to episode flow
+      this.$router.to('/examples/router-hooks/episode/1')
     },
   },
 })
 
-export const Jokes = Blits.Component('Jokes', {
-  components: {
-    Button,
-  },
-  template: `
-    <Element w="1920" h="1080" color="#000">
-      <Text
-        x="960"
-        y="300"
-        mount="{x:0.5, y:0.5}"
-        content="Ready for a Chuckle? Pick Your Joke Category!"
-        font="opensans"
-        size="40"
-      />
-      <Button w="500" h="200" x="400" y="440" title="Programming" ref="type0" navTo="jokes/programming" />
-      <Button w="500" h="200" x="1010" y="440" title="General" ref="type1" navTo="jokes/general" />
-    </Element>
-  `,
+//movie flow page, with 2 directions left: back, right: rating
+const Movie = Blits.Component('RouterHookMovie', {
+  ...hookPageTemplate,
   state() {
     return {
-      focused: 0,
+      title: 'Movie',
+      left: 'Back',
+      right: 'Rating',
     }
-  },
-  watch: {
-    focused(v) {
-      const el = this.select(`type${v}`)
-      if (el && el.focus) el.focus()
-    },
-  },
-  hooks: {
-    focus() {
-      this.$trigger('focused')
-    },
   },
   input: {
     left() {
-      this.focused = this.focused == 1 ? 0 : 1
+      //trigger router back navigation. Leads back to: /examples/router-hooks
+      this.$router.back()
     },
     right() {
-      this.focused = this.focused == 0 ? 1 : 0
+      //trigger router to navigate to rating page
+      this.$router.to('/examples/router-hooks/rating')
     },
   },
 })
 
-export const GeneralJoke = Blits.Component('GeneralJoke', {
-  components: {
-    Button,
-  },
-  template: `
-    <Element w="1920" h="1080" color="{right:'#C0DADF', left:'#FF4E9A'}">
-      <Element src="assets/emoji.png" w="100" h="100" x="900" y="200" mount="{x:0.5}" />
-      <Text
-        x="900"
-        y="400"
-        mount="{x: 0.5, y:0.5}"
-        color="black"
-        content="$joke.setup"
-        font="opensans"
-        size="50"
-        wordwrap="1720"
-      />
-      <Text x="900" y="500" mount="{x: 0.5, y:0.5}" content="$joke.punchline" font="opensans" size="40" color="gold" />
-      <Button w="300" h="100" x="1100" y="600" title="Rate Me :)" navTo="rating" ref="rate" />
-    </Element>
-  `,
-  props: [
-    {
-      key: 'joke',
-      cast: Object,
-    },
-  ],
-  hooks: {
-    focus() {
-      const el = this.select('rate')
-      if (el && el.focus) {
-        el.focus()
-      }
-    },
-  },
-})
-
-export const ProgrammingJoke = Blits.Component('ProgrammingJoke', {
-  components: {
-    Button,
-  },
-  template: `
-    <Element w="1920" h="1080" color="#000">
-      <Element src="assets/programming.png" w="100" h="100" x="900" y="200" mount="{x:0.5}" />
-      <Text
-        x="900"
-        y="400"
-        mount="{x: 0.5, y:0.5}"
-        content="$joke.setup"
-        font="opensans"
-        size="50"
-        wordwrap="1720"
-        maxlines="2"
-      />
-      <Text x="900" y="500" mount="{x: 0.5, y:0.5}" content="$joke.punchline" font="opensans" size="40" color="red" />
-      <Button w="300" h="100" x="1100" y="600" title="Rate Me :)" navTo="rating" ref="rate" />
-    </Element>
-  `,
-  props: [
-    {
-      key: 'joke',
-      cast: Object,
-    },
-  ],
-  hooks: {
-    focus() {
-      const el = this.select('rate')
-      if (el && el.focus) {
-        el.focus()
-      }
-    },
-  },
-})
-
-export const JokesRating = Blits.Component('JokesRating', {
-  template: `
-    <Element>
-      <Text content="Coming Soon..." x="960" y="540" mount="{x: 0.5, y:0.5}" font="opensans" size="100" />
-      <Text content="Redirecting to home.." x="1200" y="900" size="40" font="opensans" />
-      <Text :content="$counter" x="1650" y="900" size="40" font="opensans" color="gold" />
-    </Element>
-  `,
+//movie flow page, with 2 directions left: back, right: Router example page landing
+const Rating = Blits.Component('RouterHookRating', {
+  ...hookPageTemplate,
   state() {
     return {
-      counter: 3,
+      title: 'Rating',
+      left: 'Back',
+      right: 'TO START',
     }
   },
-  hooks: {
-    focus() {
-      this.$setInterval(() => {
-        this.counter--
-        if (this.counter == 0) {
-          this.$router.to('/examples/router-hooks')
-        }
-      }, 1000)
+  input: {
+    left() {
+      //trigger router back navigation. Leads back to: /examples/router-hooks/movie
+      this.$router.back()
+    },
+    right() {
+      //trigger router to navigate to router hook example page landing
+      this.$router.to('/examples/router-hooks/')
     },
   },
 })
+
+//movie flow page, with 2 directions left: back, right: next episode
+const Episode = Blits.Component('RouterHookEpisode', {
+  ...hookPageTemplate,
+  state() {
+    return {
+      title: 'Episode',
+      left: 'Back',
+      right: 'NEXT EPISODE',
+    }
+  },
+  input: {
+    left() {
+      //trigger router back navigation. Leads back to: /examples/router-hooks. Even when episode id > 1
+      this.$router.back()
+    },
+    right() {
+      //trigger router to navigate to the next episode, and NOT save current episode page in navigation history
+      this.$router.to(`/examples/router-hooks/episode/${this.page.id + 1}`, undefined, {
+        inHistory: false,
+      })
+    },
+  },
+})
+
+//custom page transitions for when the router navigates to router example pages
+const PageTransitions = {
+  slideInOutLeft: {
+    before: {
+      prop: 'x',
+      value: '100%',
+    },
+    in: {
+      prop: 'x',
+      value: 0,
+      duration: 400,
+    },
+    out: {
+      prop: 'x',
+      value: '-100%',
+      duration: 400,
+    },
+  },
+  slideInOutRight: {
+    before: {
+      prop: 'x',
+      value: '-100%',
+    },
+    in: {
+      prop: 'x',
+      value: 0,
+      duration: 400,
+    },
+    out: {
+      prop: 'x',
+      value: '100%',
+      duration: 400,
+    },
+  },
+  slideInOutUp: {
+    before: {
+      prop: 'y',
+      value: '100%',
+    },
+    in: {
+      prop: 'y',
+      value: 0,
+      duration: 400,
+    },
+    out: {
+      prop: 'y',
+      value: '-100%',
+      duration: 400,
+    },
+  },
+  slideInOutDown: {
+    before: {
+      prop: 'y',
+      value: '-100%',
+    },
+    in: {
+      prop: 'y',
+      value: 0,
+      duration: 400,
+    },
+    out: {
+      prop: 'y',
+      value: '100%',
+      duration: 400,
+    },
+  },
+}
+
+export const RouterHookRoutes = [
+  {
+    path: '/examples/router-hooks',
+    component: RouterHookPage,
+    hooks: {
+      async before(to, from) {
+        //change transition based on 'from' route
+        if (from && from.path === 'examples/router-hooks/movie') {
+          to.transition = PageTransitions.slideInOutRight
+        }
+        if (from && from.path === 'examples/router-hooks/rating') {
+          to.transition = PageTransitions.slideInOutLeft
+        }
+        if (from && from.path.indexOf('episode') > -1) {
+          to.transition = PageTransitions.slideInOutDown
+        }
+        return to
+      },
+    },
+  },
+  {
+    path: '/examples/router-hooks/episode/:id',
+    component: Episode,
+    hooks: {
+      before(to, from) {
+        //change transition based on 'from' route
+        if (from && from.path.indexOf('episode') > -1) {
+          to.transition = PageTransitions.slideInOutLeft
+        }
+        const { id } = to.params
+        //if id > 5 lead route back to router example page landing
+        if (id > 5) {
+          return '/examples/router-hooks/'
+        }
+        //set page data based on episode ID
+        to.data.page = {
+          id: parseInt(id),
+          title: `Episode ${id}`,
+        }
+        return to
+      },
+    },
+    transition: PageTransitions.slideInOutUp,
+  },
+  {
+    path: '/examples/router-hooks/movie',
+    component: Movie,
+    hooks: {
+      before(to, from) {
+        //change transition based on 'from' route
+        if (from && from.path === 'examples/router-hooks') {
+          to.transition = PageTransitions.slideInOutLeft
+        }
+        if (from && from.path === 'examples/router-hooks/rating') {
+          to.transition = PageTransitions.slideInOutRight
+        }
+        return to
+      },
+    },
+  },
+  {
+    path: '/examples/router-hooks/rating',
+    component: Rating,
+    transition: PageTransitions.slideInOutLeft,
+  },
+]
