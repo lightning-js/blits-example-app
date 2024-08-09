@@ -48,7 +48,6 @@ export default Blits.Component('Input', {
   },
   hooks: {
     focus() {
-      console.log('focus!!')
       this.blink = this.$setInterval(() => {
         this.alpha = this.alpha === 1 ? 0 : 1;
       }, 400)
