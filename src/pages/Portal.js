@@ -104,6 +104,11 @@ export default Blits.Component('Portal', {
           id: 'demos/player',
           description: 'Example of Video Playback with basic controls',
         },
+        {
+          title: 'Login',
+          id: 'demos/login',
+          description: 'Example of Login page with input fields',
+        },
       ],
       example: [
         {

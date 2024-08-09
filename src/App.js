@@ -24,6 +24,7 @@ import Theming from './pages/Theming'
 import Tmdb from './pages/Tmdb'
 import Sprites from './pages/Sprites'
 import FocusHandling from './pages/FocusHandling'
+import Login from './pages/Login'
 
 // Example & Test pages
 import Positioning from './pages/Positioning'
@@ -90,6 +91,7 @@ export default Blits.Application({
       announce: "Let's play Memory",
     },
     { path: '/demos/player', component: Player },
+    { path: '/demos/login', component: Login },
     // Example and test routes
     { path: '/examples/positioning', component: Positioning },
     { path: '/examples/colors', component: Colors },
