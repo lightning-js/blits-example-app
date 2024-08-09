@@ -22,8 +22,11 @@ import keymapping from './keymapping.js'
 
 import App from './App.js'
 
+const envVar = (import.meta.env.VITE_USER_NODE_ENV) == 'testing' ? true : false
+
 // Use the Blits Language plugin
 Blits.Plugin(language)
+
 
 Blits.Launch(App, 'app', {
   w: 1920,
@@ -52,4 +55,5 @@ Blits.Launch(App, 'app', {
   ],
   canvasColor: 'transparent',
   viewportMargin: 100,
+  inspector: envVar
 })
