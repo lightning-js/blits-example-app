@@ -64,7 +64,7 @@ export default Blits.Component('Input', {
   },
   input: {
     back() {
-      if (this.text.length > 1) {
+      if (this.text.length > 0) {
         this.text = this.text.slice(0, -1);
       }
     },
