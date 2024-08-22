@@ -82,7 +82,7 @@ export default Blits.Component('KeyInput', {
         this.focusedX = Math.max(0, (key - 1) % 4)
         this.focusedY = Math.max(0, Math.ceil(key / 4) - 1)
       } else {
-        this.parent.focus(e)
+        this.parent.$focus(e)
       }
     },
   },
