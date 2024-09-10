@@ -48,7 +48,7 @@ export default Blits.Component('Events', {
     left(e) {
       const count = this.count - 1
       if (count === -1) {
-        this.parent.focus(e)
+        this.parent.$focus(e)
       } else {
         this.count = Math.max(count, 0)
       }
@@ -56,7 +56,7 @@ export default Blits.Component('Events', {
     right(e) {
       const count = this.count + 1
       if (count === 4) {
-        this.parent.focus(e)
+        this.parent.$focus(e)
       } else {
         this.count = Math.min(count, 3)
       }
