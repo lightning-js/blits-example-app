@@ -39,6 +39,6 @@
     "vite": "^4.0.4"
   },
   "dependencies": {
-    "@lightningjs/blits": "github:suresh-gangumalla/blits#fix/standard-methods-name"
+    "@lightningjs/blits": "github:lightning-js/blits#dev"
   }
 }
