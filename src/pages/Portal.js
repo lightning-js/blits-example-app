@@ -198,9 +198,9 @@ export default Blits.Component('Portal', {
           description: 'Lifecycle events when entering and leaving the viewport (margins)',
         },
         {
-          title: 'Fit (Resize)',
+          title: 'Image resizing',
           id: 'examples/resize',
-          description: 'Explains different syntaxes for using `cover` & `contain` in blits',
+          description: 'Using the "fit" syntax for resizing images on the fly',
         },
       ],
       benchmark: [
