@@ -80,8 +80,8 @@ export default Blits.Component('TMdb', {
   },
   watch: {
     focused(value) {
-      const focusItem = this.select('row' + value)
-      if (focusItem && focusItem.focus) focusItem.focus()
+      const focusItem = this.$select('row' + value)
+      if (focusItem && focusItem.$focus) focusItem.$focus()
     },
   },
   hooks: {
@@ -153,7 +153,7 @@ export default Blits.Component('TMdb', {
       this.focused = 0
     },
     focus() {
-      this.trigger('focused')
+      this.$trigger('focused')
     },
   },
   input: {

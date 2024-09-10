@@ -210,14 +210,14 @@ export default Blits.Component('Portal', {
   hooks: {
     ready() {
       this.logoOffset = 0
-      this.trigger('rowFocused')
+      this.$trigger('rowFocused')
       console.log('backstopjs:ready')
     },
   },
   watch: {
     rowFocused(v) {
-      const row = this.select(`row${v}`)
-      if (row && row.focus) row.focus()
+      const row = this.$select(`row${v}`)
+      if (row && row.$focus) row.$focus()
     },
   },
   input: {
