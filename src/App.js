@@ -48,7 +48,6 @@ import MemoryGame from './pages/MemoryGame'
 import Exponential from './pages/Exponential'
 import Viewport from './pages/Viewport'
 import { RouterHookRoutes } from './pages/RouterHooks.js'
-import { getJokes } from './api/providers/'
 
 export default Blits.Application({
   template: `

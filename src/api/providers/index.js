@@ -62,10 +62,3 @@ export const fetchGenreMovies = (genres) => {
 const getGenre = (type) => {
   return api.get(`/genre/${type}/list`)
 }
-
-export const getJokes = (type) => {
-  return fetch(`http://official-joke-api.appspot.com/jokes/${type}/random`)
-    .then((r) => r.json())
-    .then((list) => list[0])
-    .catch((e) => console.error('Fetch error:', e))
-}
