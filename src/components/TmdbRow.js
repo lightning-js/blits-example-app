@@ -51,7 +51,7 @@ export default Blits.Component('TmdbRow', {
   },
   hooks: {
     focus() {
-      this.trigger('focused')
+      this.$trigger('focused')
     },
   },
   computed: {
@@ -61,9 +61,9 @@ export default Blits.Component('TmdbRow', {
   },
   watch: {
     focused(value) {
-      const focusItem = this.select('poster' + value)
-      if (focusItem && focusItem.focus) {
-        focusItem.focus()
+      const focusItem = this.$select('poster' + value)
+      if (focusItem && focusItem.$focus) {
+        focusItem.$focus()
         this.$emit('posterSelect', this.items[value])
       }
     },

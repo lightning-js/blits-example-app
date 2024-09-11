@@ -48,6 +48,7 @@ import MemoryGame from './pages/MemoryGame'
 import Exponential from './pages/Exponential'
 import Viewport from './pages/Viewport'
 import { RouterHookRoutes } from './pages/RouterHooks.js'
+import Resize from './pages/Resize'
 
 export default Blits.Application({
   template: `
@@ -112,6 +113,7 @@ export default Blits.Application({
 
     ...RouterHookRoutes,
 
+    { path: '/examples/resize', component: Resize },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
   ],
