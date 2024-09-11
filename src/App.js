@@ -47,13 +47,13 @@ import Slots from './pages/Slots'
 import MemoryGame from './pages/MemoryGame'
 import Exponential from './pages/Exponential'
 import Viewport from './pages/Viewport'
-import { Jokes, GeneralJoke, ProgrammingJoke, JokesRating } from './pages/RouterHooks.js'
+import { RouterHookRoutes } from './pages/RouterHooks.js'
 import { getJokes } from './api/providers/'
 
 export default Blits.Application({
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
-      <RouterView />
+      <RouterView w="100%" h="100%" />
       <!-- <FPScounter x="1610" :show="$showFPS" /> -->
     </Element>
   `,
@@ -110,41 +110,8 @@ export default Blits.Application({
     { path: '/examples/events', component: Events },
     { path: '/examples/slots', component: Slots },
     { path: '/examples/viewport', component: Viewport },
-    { path: '/examples/router-hooks', component: Jokes },
-    {
-      path: '/examples/router-hooks/jokes/:type',
-      component: GeneralJoke,
-      hooks: {
-        async before(to, from) {
-          // If the type of joke is "Programming", we'll change the component to ProgrammingJokes
-          if (to.params.type == 'programming') {
-            to.component = ProgrammingJoke
-          } else {
-            to.component = GeneralJoke
-          }
-          // To pass the joke data as props to the component
-          to.data.joke = await getJokes(to.params.type)
 
-          // Return updated target route object
-          return to
-        },
-      },
-    },
-    {
-      path: '/examples/router-hooks/rating',
-      component: JokesRating,
-      hooks: {
-        async before(to, from) {
-          /**
-           * General jokes are not eligible for rating, if request
-           * is coming from general jokes route then redirect to jokes home page
-           */
-          if (from.params.type === 'general') {
-            return '/examples/router-hooks'
-          }
-        },
-      },
-    },
+    ...RouterHookRoutes,
 
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
