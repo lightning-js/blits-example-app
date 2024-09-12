@@ -252,10 +252,10 @@ export default Blits.Component('ForLoop', {
     i() {
       this.y = 710
       this.trigger('y')
+      this.sortDirection = this.sortDirection === 1 ? 0 : 1
       this.data = this.data.sort((a, b) => {
         const textA = a.text.toLowerCase()
         const textB = b.text.toLowerCase()
-        this.sortDirection = this.sortDirection === 1 ? 0 : 1
         return this.sortDirection === 1
           ? textA < textB
             ? -1
