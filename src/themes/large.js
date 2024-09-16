@@ -2,7 +2,7 @@ export default {
   w: 1200,
   h: 900,
   block1: {
-    height: 720,
+    h: 720,
   },
   block2: {
     y: 560,
