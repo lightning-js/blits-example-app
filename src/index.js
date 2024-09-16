@@ -16,11 +16,34 @@
  */
 
 import Blits from '@lightningjs/blits'
+import { theme } from '@lightningjs/blits/plugins'
 import { language } from '@lightningjs/blits/plugins'
 
 import keymapping from './keymapping.js'
-
 import App from './App.js'
+
+import colors from './themes/colors.js'
+import sizes from './themes/sizes.js'
+
+// Theme plugin instance for colors (light mode / dark mode)
+Blits.Plugin(theme, 'colors', {
+  themes: {
+    light: colors.light,
+    dark: colors.dark,
+  },
+  base: 'light',
+  current: 'dark',
+})
+
+// Theme plugin instance for sizes (small mode / large mode)
+Blits.Plugin(theme, 'sizes', {
+  themes: {
+    small: sizes.small,
+    large: sizes.large,
+  },
+  base: 'small',
+  current: 'small',
+})
 
 // Use the Blits Language plugin
 Blits.Plugin(language)

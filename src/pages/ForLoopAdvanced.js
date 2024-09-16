@@ -142,7 +142,7 @@ export default Blits.Component('ForLoop', {
         <LegendItem y="540" id="g" text="Empty array by assignment" />
         <LegendItem y="630" id="h" text="Concat an array with items" />
         <LegendItem y="720" id="i" text="Sort array alphabetically" />
-
+    
         <Element y="840">
           <Text size="26" y="10">Array length:</Text>
           <Text :content="$data.length" size="40" x="180" color="#fb923c" />
@@ -161,7 +161,7 @@ export default Blits.Component('ForLoop', {
           />
         </Element>
       </Element>
-
+    
       <Element x="1280" y="100">
         <Text>For loop on Component</Text>
         <Row
@@ -208,7 +208,7 @@ export default Blits.Component('ForLoop', {
   input: {
     a() {
       this.y = -10
-      this.trigger('y')
+      this.$trigger('y')
       const data = []
       for (let i = 0; i < 6; i++) {
         data.push(makeItem())
@@ -217,22 +217,22 @@ export default Blits.Component('ForLoop', {
     },
     b() {
       this.y = 80
-      this.trigger('y')
+      this.$trigger('y')
       this.data.push(makeItem())
     },
     c() {
       this.y = 170
-      this.trigger('y')
+      this.$trigger('y')
       this.data.pop()
     },
     d() {
       this.y = 260
-      this.trigger('y')
+      this.$trigger('y')
       this.data.shift()
     },
     e() {
       this.y = 350
-      this.trigger('y')
+      this.$trigger('y')
       this.data.splice(2, 4)
     },
     f() {
@@ -241,17 +241,17 @@ export default Blits.Component('ForLoop', {
     },
     g() {
       this.y = 530
-      this.trigger('y')
+      this.$trigger('y')
       this.data = []
     },
     h() {
       this.y = 620
-      this.trigger('y')
+      this.$trigger('y')
       this.data = this.data.concat(makeItems(3))
     },
     i() {
       this.y = 710
-      this.trigger('y')
+      this.$trigger('y')
       this.sortDirection = this.sortDirection === 1 ? 0 : 1
       this.data = this.data.sort((a, b) => {
         const textA = a.text.toLowerCase()
