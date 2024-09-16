@@ -202,6 +202,11 @@ export default Blits.Component('Portal', {
           id: 'examples/resize',
           description: 'Using the "fit" syntax for resizing images on the fly',
         },
+        {
+          title: 'Translations',
+          id: 'examples/languageplugin',
+          description: 'Language Plugin for internationalization',
+        },
       ],
       benchmark: [
         {
