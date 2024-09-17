@@ -59,7 +59,7 @@ export default Blits.Component('Announcer', {
     <Element>
       <Text font="raleway" size="80" color="white" content="Let's play memory!" x="580" y="60" />
       <Text font="kalam" size="40" color="#b91c1c" content="the Accessible edition :)" x="1200" y="170" rotation="-6" />
-
+    
       <Element x="260" y="260">
         <MemoryCard
           :for="(card, index) in $cards"
@@ -129,7 +129,7 @@ export default Blits.Component('Announcer', {
         return
       }
       v = v + this.focusedRow * 4
-      this.select('card' + v).focus()
+      this.$select('card' + v).$focus()
     },
     focusedRow(v) {
       if (this.focusedCol === -1) {
@@ -137,7 +137,7 @@ export default Blits.Component('Announcer', {
         return
       }
       v = this.focusedCol + v * 4
-      this.select('card' + v).focus()
+      this.$select('card' + v).$focus()
     },
   },
   methods: {
