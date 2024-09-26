@@ -74,10 +74,4 @@ export default Blits.Component('FocusHandling', {
       if (menu && menu.$focus) menu.$focus()
     },
   },
-  methods: {
-    zIndex(index) {
-      console.log(index)
-      return this.focused === index ? 1 : 0
-    },
-  },
 })
