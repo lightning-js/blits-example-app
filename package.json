@@ -1,6 +1,6 @@
 {
   "name": "@lightningjs/blits-example-app",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Lightning 3 Blits Example App",
   "main": "index.js",
   "type": "module",
@@ -39,6 +39,6 @@
     "vite": "^4.0.4"
   },
   "dependencies": {
-    "@lightningjs/blits": "^1.4.2"
+    "@lightningjs/blits": "^1.4.3"
   }
 }
