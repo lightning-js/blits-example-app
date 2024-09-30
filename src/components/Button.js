@@ -26,7 +26,6 @@ export default Blits.Component('Button', {
       :effects="[$shader('radius', {radius: 20})]"
       :alpha.transition="$alpha"
       :scale.transition="$scale"
-      :z="$zIndex"
       :rotation="$rotate"
     >
     </Element>
@@ -36,7 +35,6 @@ export default Blits.Component('Button', {
     return {
       alpha: 0.4,
       scale: 1,
-      zIndex: 1,
       rotate: 0,
     }
   },
@@ -45,13 +43,11 @@ export default Blits.Component('Button', {
       this.$log.info(`Button with color ${this.color} received focus`)
       this.alpha = 1
       this.scale = this.scale === 1 ? 1.2 : 1
-      this.zIndex = 100
     },
     unfocus() {
       this.$log.info(`Button with color ${this.color} lost focus`)
       this.alpha = 0.4
       this.scale = 1
-      this.zIndex = 1
       this.rotate = 0
     },
   },
