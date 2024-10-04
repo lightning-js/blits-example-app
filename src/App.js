@@ -140,5 +140,51 @@ export default Blits.Application({
     back() {
       this.$router.to('/')
     },
+    sourceCode() {
+      const sourcePath = getSourcePath(this.$router.currentRoute.path)
+      if (sourcePath) {
+        window.open(
+          `https://github.com/lightning-js/blits-example-app/tree/master/${sourcePath}`,
+          '_blank'
+        )
+      }
+    },
   },
 })
+
+const getSourcePath = (routerPath) => {
+  const sourceMap = {
+    '/': 'src/pages/Portal',
+    '/demos/loading': './pages/Loading.js',
+    '/demos/intro': 'src/pages/Intro',
+    '/demos/theming': 'src/pages/Theming',
+    '/demos/tmdb': 'src/pages/Tmdb',
+    '/demos/sprites': 'src/pages/Sprites',
+    '/demos/focushandling': 'src/pages/FocusHandling',
+    '/demos/memory-game': 'src/pages/MemoryGame',
+    '/demos/player': 'src/pages/Player',
+    '/examples/positioning': 'src/pages/Positioning',
+    '/examples/colors': 'src/pages/Colors',
+    '/examples/gradients': 'src/pages/Gradients',
+    '/examples/transitions': 'src/pages/Transitions',
+    '/examples/alpha': 'src/pages/Alpha',
+    '/examples/scaling': 'src/pages/Scaling',
+    '/examples/rotation': 'src/pages/Rotation',
+    '/examples/keyinput': 'src/pages/KeyInput',
+    '/examples/texts': 'src/pages/Texts',
+    '/examples/images': 'src/pages/Images',
+    '/examples/components': 'src/pages/Components',
+    '/examples/forloop': 'src/pages/ForLoop',
+    '/examples/forloop-advanced': 'src/pages/ForLoopAdvanced',
+    '/examples/effects': 'src/pages/Effects',
+    '/examples/showif': 'src/pages/ShowIf',
+    '/examples/events': 'src/pages/Events',
+    '/examples/slots': 'src/pages/Slots',
+    '/examples/viewport': 'src/pages/Viewport',
+    '/examples/resize': 'src/pages/Resize',
+    '/examples/languageplugin': 'src/pages/LanguagePlugin',
+    '/benchmarks/exponential': 'src/pages/Exponential',
+  }
+
+  return sourceMap['/' + routerPath] + '.js'
+}
