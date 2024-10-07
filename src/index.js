@@ -54,7 +54,8 @@ Blits.Launch(App, 'app', {
   multithreaded: false,
   debugLevel: 1,
   reactivityMode: 'Proxy',
-  keymap: keymapping(),
+  // adding source code key code: U, u
+  keymap: { ...keymapping(), ...{ 85: 'sourceCode' } },
   fonts: [
     {
       family: 'lato',

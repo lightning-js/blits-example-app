@@ -50,18 +50,26 @@ import Viewport from './pages/Viewport'
 import { RouterHookRoutes } from './pages/RouterHooks.js'
 import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
+import SourceInfo from './components/SourceInfo.js'
+
+const showSource = !!new URLSearchParams(window.location.search).get('source')
 
 export default Blits.Application({
+  components: {
+    SourceInfo,
+  },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView w="100%" h="100%" />
       <!-- <FPScounter x="1610" :show="$showFPS" /> -->
+      <SourceInfo ref="info" :show="$showInfo" />
     </Element>
   `,
   state() {
     return {
       backgroundColor: '#1e293b',
       showFPS: true,
+      showInfo: false,
     }
   },
   routes: [
@@ -124,6 +132,7 @@ export default Blits.Application({
         this.showFPS = false
       }
 
+      if (showSource === true) this.showInfo = true
       this.$listen('changeBackground', (color) => {
         this.backgroundColor = color ? color + 80 : '#1e293b'
       })
@@ -140,6 +149,7 @@ export default Blits.Application({
       this.$router.to('/')
     },
     sourceCode() {
+      this.showInfo = false
       const sourcePath = getSourcePath(this.$router.currentRoute.path)
       if (sourcePath) {
         window.open(
@@ -154,7 +164,7 @@ export default Blits.Application({
 const getSourcePath = (routerPath) => {
   const sourceMap = {
     '/': 'src/pages/Portal',
-    '/demos/loading': './pages/Loading.js',
+    '/demos/loading': 'src/pages/Loading',
     '/demos/intro': 'src/pages/Intro',
     '/demos/theming': 'src/pages/Theming',
     '/demos/tmdb': 'src/pages/Tmdb',

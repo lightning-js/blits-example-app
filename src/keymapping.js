@@ -60,8 +60,5 @@ export default () => {
     }
   })
 
-  // adding source code trigger key code: U, u
-  mapping['85'] = 'sourceCode'
-
   return mapping
 }

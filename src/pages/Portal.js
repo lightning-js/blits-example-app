@@ -56,7 +56,6 @@ export default Blits.Component('Portal', {
           </Element>
         </Element>
       </Element>
-      <SourceInfo ref="info" :show="$showInfo" />
     </Element>
   `,
   state() {
@@ -66,7 +65,6 @@ export default Blits.Component('Portal', {
       rowFocused: 0,
       rows: ['demo', 'example', 'benchmark'],
       logoOffset: 50,
-      showInfo: false,
       demo: [
         {
           title: 'Loader',
@@ -229,16 +227,7 @@ export default Blits.Component('Portal', {
   hooks: {
     ready() {
       this.logoOffset = 0
-
-      // if info popup shown before
-      if (document.cookie.includes('infoPopup=1')) {
-        this.$trigger('rowFocused')
-        console.log('backstopjs:ready')
-      } else {
-        this.showInfo = true
-        const infoPopup = this.$select('info')
-        infoPopup.$focus()
-      }
+      this.$trigger('rowFocused')
     },
   },
   watch: {
@@ -253,14 +242,6 @@ export default Blits.Component('Portal', {
     },
     down() {
       this.rowFocused = (this.rowFocused + 1) % this.rows.length
-    },
-    enter() {
-      this.showInfo = false
-
-      // set a cookie for the info popup
-      document.cookie = 'infoPopup=1; max-age=' + 90 * 24 * 60 * 60 + '; path=/'
-
-      this.$trigger('rowFocused')
     },
   },
 })
