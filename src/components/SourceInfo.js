@@ -19,12 +19,29 @@ import Blits from '@lightningjs/blits'
 
 export default Blits.Component('SourceInfo', {
   template: `
-    <Element x="580" y="260" w="600" h="400" color="#FFEB3B">
-      <Text x="30" y="30" color="#000" size="36" wordwrap="540" align="center"> Tip: Access Page Source </Text>
-      <Text x="30" y="120" color="#000" size="30" wordwrap="540" align="center">
-        Press "U" on the keyboard to open the source file of the current page in a new tab on GitHub.
-      </Text>
-      <Text x="30" y="320" color="#555" size="28" wordwrap="540" align="center"> Press "Enter" to close this info </Text>
+    <Element
+      x="1900"
+      :y.transition="{value: 1060 + $offsetY, delay: 1000, duration: 300, easing: 'ease-out'}"
+      :alpha.transition="{value: $alpha, delay: 1000, duration: 300, easing: 'ease-out'}"
+      w="480"
+      h="60"
+      mount="1"
+      color="{top: '#000000dd', bottom: '#000'}"
+      :effects="[$shader('radius', {radius: 10})]"
+    >
+      <Text y="18" size="26" wordwrap="480" align="center"> Press "S" for Source in your browser </Text>
     </Element>
   `,
+  state() {
+    return {
+      offsetY: 15,
+      alpha: 0,
+    }
+  },
+  hooks: {
+    ready() {
+      this.offsetY = 0
+      this.alpha = 1
+    },
+  },
 })
