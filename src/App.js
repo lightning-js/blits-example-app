@@ -111,9 +111,8 @@ export default Blits.Application({
     { path: '/examples/events', component: Events },
     { path: '/examples/slots', component: Slots },
     { path: '/examples/viewport', component: Viewport },
-
+    { path: '/examples/languageplugin', component: LanguagePlugin },
     ...RouterHookRoutes,
-
     { path: '/examples/resize', component: Resize },
     { path: '/examples/languageplugin', component: LanguagePlugin },
     // Benchmarks and stress tests
