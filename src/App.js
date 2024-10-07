@@ -47,13 +47,14 @@ import Slots from './pages/Slots'
 import MemoryGame from './pages/MemoryGame'
 import Exponential from './pages/Exponential'
 import Viewport from './pages/Viewport'
-import LanguagePlugin from './pages/LanguagePlugin.js'
+import { RouterHookRoutes } from './pages/RouterHooks.js'
 import Resize from './pages/Resize'
+import LanguagePlugin from './pages/LanguagePlugin.js'
 
 export default Blits.Application({
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
-      <RouterView />
+      <RouterView w="100%" h="100%" />
       <!-- <FPScounter x="1610" :show="$showFPS" /> -->
     </Element>
   `,
@@ -111,7 +112,9 @@ export default Blits.Application({
     { path: '/examples/slots', component: Slots },
     { path: '/examples/viewport', component: Viewport },
     { path: '/examples/languageplugin', component: LanguagePlugin },
+    ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
+    { path: '/examples/languageplugin', component: LanguagePlugin },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
   ],

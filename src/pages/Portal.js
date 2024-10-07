@@ -198,6 +198,11 @@ export default Blits.Component('Portal', {
           description: 'Lifecycle events when entering and leaving the viewport (margins)',
         },
         {
+          title: 'Router Hooks',
+          id: 'examples/router-hooks',
+          description: 'Example of router before hook',
+        },
+        {
           title: 'Image resizing',
           id: 'examples/resize',
           description: 'Using the "fit" syntax for resizing images on the fly',
