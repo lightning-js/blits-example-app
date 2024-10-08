@@ -1,6 +1,6 @@
 {
   "name": "@lightningjs/blits-example-app",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "description": "Lightning 3 Blits Example App",
   "main": "index.js",
   "type": "module",
