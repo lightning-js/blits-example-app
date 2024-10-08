@@ -52,7 +52,9 @@ import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import SourceInfo from './components/SourceInfo.js'
 
-const showSource = !!new URLSearchParams(window.location.search).get('source')
+const queryString = new URLSearchParams(window.location.search)
+const showSource = !!queryString.get('source')
+const showFPS = !!queryString.get('fps')
 
 export default Blits.Application({
   components: {
@@ -61,14 +63,14 @@ export default Blits.Application({
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView w="100%" h="100%" />
-      <!-- <FPScounter x="1610" :show="$showFPS" /> -->
+      <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
   `,
   state() {
     return {
       backgroundColor: '#1e293b',
-      showFPS: true,
+      showFPS: showFPS,
       showInfo: false,
     }
   },
