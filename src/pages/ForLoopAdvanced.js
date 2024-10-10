@@ -142,7 +142,7 @@ export default Blits.Component('ForLoop', {
         <LegendItem y="540" id="g" text="Empty array by assignment" />
         <LegendItem y="630" id="h" text="Concat an array with items" />
         <LegendItem y="720" id="i" text="Sort array alphabetically" />
-    
+
         <Element y="840">
           <Text size="26" y="10">Array length:</Text>
           <Text :content="$data.length" size="40" x="180" color="#fb923c" />
@@ -161,7 +161,7 @@ export default Blits.Component('ForLoop', {
           />
         </Element>
       </Element>
-    
+
       <Element x="1280" y="100">
         <Text>For loop on Component</Text>
         <Row

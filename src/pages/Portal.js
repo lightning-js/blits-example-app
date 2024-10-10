@@ -17,12 +17,14 @@
 
 import Blits from '@lightningjs/blits'
 import PortalRow from '../components/PortalRow.js'
+import SourceInfo from '../components/SourceInfo.js'
 
 import p from '../../package.json'
 
 export default Blits.Component('Portal', {
   components: {
     PortalRow,
+    SourceInfo,
   },
   template: `
     <Element w="1920" h="1080" color="{top: '#44037a', bottom: '#240244'}">
@@ -226,7 +228,6 @@ export default Blits.Component('Portal', {
     ready() {
       this.logoOffset = 0
       this.$trigger('rowFocused')
-      console.log('backstopjs:ready')
     },
   },
   watch: {
