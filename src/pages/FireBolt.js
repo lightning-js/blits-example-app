@@ -40,9 +40,8 @@ export default Blits.Component('Firebolt', {
     return {
       activeIndex: -1,
       size: 10,
-      myText: 'This is my test yeah',
-      data: 'Default Text',
-      firebolt: ['Lifecycle', 'distributor', 'make', 'model', 'latlong'],
+      data: 'Navigate Right and Left to see the results',
+      firebolt: ['Lifecycle', 'Audio', 'Make', 'Model', 'latlong'],
     }
   },
   watch: {
@@ -62,7 +61,7 @@ export default Blits.Component('Firebolt', {
   },
   methods: {
     getLifeCycle() {
-      this.data = Lifecycle.state()
+      this.data = 'LifeCycle state is ' + Lifecycle.state()
     },
     getAudio() {
       Device.audio().then((supportedAudioProfiles) => {
@@ -71,17 +70,17 @@ export default Blits.Component('Firebolt', {
     },
     getDeviceMake() {
       Device.make().then((make) => {
-        this.data = make
+        this.data = 'Device Make is ' + make
       })
     },
     getLatLon() {
       Localization.latlon().then((val) => {
-        this.data = `${val[0]}` + `, ${val[1]}`
+        this.data = `Lat value is ${val[0]}` + `, Lan value is ${val[1]}`
       })
     },
     getAccountId() {
       Account.id().then((id) => {
-        this.data = id
+        this.data = 'Account Id is' + id
       })
     },
   },
