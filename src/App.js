@@ -50,6 +50,7 @@ import Viewport from './pages/Viewport'
 import { RouterHookRoutes } from './pages/RouterHooks.js'
 import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
+import KeyCodeDemo from './pages/KeyCodeDemo.js'
 import SourceInfo from './components/SourceInfo.js'
 
 const queryString = new URLSearchParams(window.location.search)
@@ -66,7 +67,7 @@ export default Blits.Application({
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
-  `,
+    `,
   state() {
     return {
       backgroundColor: '#1e293b',
@@ -124,6 +125,7 @@ export default Blits.Application({
     ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
     { path: '/examples/languageplugin', component: LanguagePlugin },
+    { path: '/examples/keycode', component: KeyCodeDemo },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
   ],
