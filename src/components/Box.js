@@ -19,12 +19,12 @@ import Blits from '@lightningjs/blits'
 
 export default Blits.Component('Box', {
   template: `
-    <Element w="250" h="300" color="">
-      <Element w="250" h="50" color="blue">
-        <Text :content="$header" wordwrap="150" />
+    <Element w="300" h="350" color="">
+      <Element w="300" h="50" color="blue">
+        <Text x="70" y="10" :content="$header" wordwrap="200" />
       </Element>
-      <Text y="150" x="30" :content="$text" color="black" wordwrap="150" />
+      <Text y="150" x="80" :content="$text" color="black" wordwrap="200" />
     </Element>
-    `,
+  `,
   props: ['header', 'text'],
 })
