@@ -106,6 +106,11 @@ export default Blits.Component('Portal', {
           id: 'demos/player',
           description: 'Example of Video Playback with basic controls',
         },
+        {
+          title: 'Audio plugin',
+          id: 'demos/audio',
+          description: 'Example of the Blits Audio plugin',
+        },
       ],
       example: [
         {

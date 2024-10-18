@@ -51,6 +51,7 @@ import { RouterHookRoutes } from './pages/RouterHooks.js'
 import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import SourceInfo from './components/SourceInfo.js'
+import Audio from './pages/Audio.js'
 
 const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
@@ -102,6 +103,7 @@ export default Blits.Application({
       announce: "Let's play Memory",
     },
     { path: '/demos/player', component: Player },
+    { path: '/demos/audio', component: Audio },
     // Example and test routes
     { path: '/examples/positioning', component: Positioning },
     { path: '/examples/colors', component: Colors },
