@@ -57,7 +57,7 @@ export default Blits.Component('Portal', {
         </Element>
       </Element>
     </Element>
-  `,
+    `,
   state() {
     return {
       version: p.version,
@@ -213,6 +213,11 @@ export default Blits.Component('Portal', {
           title: 'Translations',
           id: 'examples/languageplugin',
           description: 'Language Plugin for internationalization',
+        },
+        {
+          title: 'KeyCode Demo',
+          id: 'examples/keycode',
+          description: 'Demo page to showcase keyboard events',
         },
       ],
       benchmark: [
