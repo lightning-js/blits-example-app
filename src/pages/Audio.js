@@ -118,12 +118,9 @@ export default Blits.Component('AudioTestPage', {
       }
     },
     enter() {
-      for (const trackKey of Object.keys(this.$audio.activeTracks)) {
-        const track = this.$audio.activeTracks[trackKey]
-        if (track) {
-          track.stop()
-        }
-      }
+      this.$audio.getActiveTracks().forEach((trackId) => {
+        this.$audio.getActiveTrackById(trackId).stop()
+      })
 
       this.$audio.playTrack(this.tracks[this.focusedTile].id)
       this.currentTrack = this.tracks[this.focusedTile].label
