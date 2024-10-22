@@ -12,13 +12,13 @@ export default Blits.Application({
         <Text :content="$value" mount="{x: 0.5}" x="960" y="100" size="32" w="800" h="200" contain="width" />
       </Element>
       <Element x="395">
-        <Box w="100" size="200" y="600" header="$header1" :text="$text1" />
-        <Box w="100" size="200" x="400" y="600" header="$header2" :text="$text2" />
-        <Box w="100" size="200" x="800" y="600" header="$header3" :text="$text3" />
+        <Box y="600" header="$keyheader" :text="$key" />
+        <Box x="400" y="600" header="$codeheader" :text="$code" />
+        <Box x="800" y="600" header="$keycodeheader" :text="$keyCode" />
       </Element>
       <Text mount="{x: 1}" x="1860" y="1000" :content="$backLabel" :color="$backPressed ? '#fff' : '#667a97'" />
     </Element>
-  `,
+    `,
   state() {
     return {
       backPressed: false,
@@ -27,12 +27,12 @@ export default Blits.Application({
       pageTitle: 'Key Code Finder',
       value:
         'Press any key to get the JavaScript keydown event key, code, which and keyCode properties:',
-      header1: 'e.key',
-      header2: 'e.code',
-      header3: 'e.keyCode',
-      text1: '...',
-      text2: '...',
-      text3: '...',
+      keyheader: 'e.key',
+      codeheader: 'e.code',
+      keycodeheader: 'e.keyCode',
+      key: '...',
+      code: '...',
+      keyCode: '...',
     }
   },
   computed: {
@@ -42,9 +42,9 @@ export default Blits.Application({
   },
   methods: {
     updateLabels(e) {
-      this.text1 = e.key
-      this.text2 = e.code
-      this.text3 = e.keyCode + ''
+      this.key = e.key
+      this.code = e.code
+      this.keyCode = e.keyCode + ''
     },
   },
   input: {
