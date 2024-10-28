@@ -96,7 +96,7 @@ const LegendItem = Blits.Component('LegendItem', {
       <Text color="#e5e5e5" size="32" y="10" wordwrap="57" align="center">{{ $id }}</Text>
       <Text color="#e5e5e5" x="80" y="14" size="28">{{ $text }}</Text>
     </Element>
-  `,
+    `,
   props: ['id', 'text'],
 })
 
@@ -106,7 +106,7 @@ const Row = Blits.Component('Row', {
       <Element w="10" h="60" color="#06b6d4" />
       <Text :content="$text" x="30" y="10" font="opensans" :color="$activeRow == $index ? '#06b6d4' : '#1e293b'" />
     </Element>
-  `,
+    `,
   props: ['index', 'text', 'activeRow'],
 })
 
@@ -115,9 +115,16 @@ const Rows = Blits.Component('Row', {
     Row,
   },
   template: `
-    <Row :for="(item, index) in $data" key="$item.id + 'key2'" :i="$index" text="$item.text" y="50" />
-  `,
-  props: ['data'],
+    <Row
+      :for="(item, index) in $data"
+      key="$item.id + 'key2'"
+      :activeRow="$activeRIndex"
+      :index="$index"
+      :text="$item.text"
+      y="50"
+    />
+    `,
+  props: ['data', 'activeRIndex'],
 })
 
 export default Blits.Component('ForLoop', {
@@ -142,7 +149,6 @@ export default Blits.Component('ForLoop', {
         <LegendItem y="540" id="g" text="Empty array by assignment" />
         <LegendItem y="630" id="h" text="Concat an array with items" />
         <LegendItem y="720" id="i" text="Sort array alphabetically" />
-
         <Element y="840">
           <Text size="26" y="10">Array length:</Text>
           <Text :content="$data.length" size="40" x="180" color="#fb923c" />
@@ -161,7 +167,6 @@ export default Blits.Component('ForLoop', {
           />
         </Element>
       </Element>
-
       <Element x="1280" y="100">
         <Text>For loop on Component</Text>
         <Row
@@ -172,10 +177,10 @@ export default Blits.Component('ForLoop', {
           :text="$item.text"
           y="50"
         />
-        <!--         <Rows :data="$data" /> -->
+        <!-- <Rows :data="$data" :activeRIndex="$activeRowIndex" /> -->
       </Element>
     </Element>
-  `,
+    `,
   state() {
     return {
       count: 0,
