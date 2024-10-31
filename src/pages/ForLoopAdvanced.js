@@ -96,35 +96,37 @@ const LegendItem = Blits.Component('LegendItem', {
       <Text color="#e5e5e5" size="32" y="10" wordwrap="57" align="center">{{ $id }}</Text>
       <Text color="#e5e5e5" x="80" y="14" size="28">{{ $text }}</Text>
     </Element>
-    `,
+  `,
   props: ['id', 'text'],
 })
 
 const Row = Blits.Component('Row', {
   template: `
-    <Element w="500" h="60" :y="$index * 80" color="#fff7ed">
+    <Element w="380" h="60" :y="$index * 80" color="#fff7ed">
       <Element w="10" h="60" color="#06b6d4" />
-      <Text :content="$text" x="30" y="10" font="opensans" :color="$activeRow == $index ? '#06b6d4' : '#1e293b'" />
+      <Text :content="$text" x="30" y="15" font="lato" size="28" :color="$activeRow == $index ? '#06b6d4' : '#1e293b'" />
     </Element>
-    `,
+  `,
   props: ['index', 'text', 'activeRow'],
 })
 
-const Rows = Blits.Component('Row', {
+const Rows = Blits.Component('Rows', {
   components: {
     Row,
   },
   template: `
-    <Row
-      :for="(item, index) in $data"
-      key="$item.id + 'key2'"
-      :activeRow="$activeRIndex"
-      :index="$index"
-      :text="$item.text"
-      y="50"
-    />
-    `,
-  props: ['data', 'activeRIndex'],
+    <Element>
+      <Row
+        :for="(item, index) in $data"
+        key="$item.id + 'key2'"
+        :activeRow="$activeRowIndex"
+        :index="$index"
+        :text="$item.text"
+        y="50"
+      />
+    </Element>
+  `,
+  props: ['data', 'activeRowIndex'],
 })
 
 export default Blits.Component('ForLoop', {
@@ -154,21 +156,23 @@ export default Blits.Component('ForLoop', {
           <Text :content="$data.length" size="40" x="180" color="#fb923c" />
         </Element>
       </Element>
-      <Element x="740" y="100">
+      <Element x="660" y="100">
         <Text>For loop on Element</Text>
-        <Element :for="(item, index) in $data" key="$item.id + 'key'" w="500" h="60" :y="$index * 80 + 50" color="#fff7ed">
+        <Element :for="(item, index) in $data" key="$item.id + 'key'" w="380" h="60" :y="$index * 80 + 50" color="#fff7ed">
           <Element w="10" h="60" color="#fb923c" />
           <Text
             :content="$item.text"
             x="30"
-            y="10"
-            font="opensans"
+            y="15"
+            font="lato"
+            size="28"
             :color="$activeRowIndex === $index ? '#06b6d4' : '#1e293b'"
           />
         </Element>
       </Element>
-      <Element x="1280" y="100">
+      <Element x="1080" y="100">
         <Text>For loop on Component</Text>
+        <!--- Forloop directly on row component -->
         <Row
           :for="(item, index) in $data"
           key="$item.id + 'key2'"
@@ -177,10 +181,14 @@ export default Blits.Component('ForLoop', {
           :text="$item.text"
           y="50"
         />
-        <!-- <Rows :data="$data" :activeRIndex="$activeRowIndex" /> -->
+      </Element>
+      <Element x="1500" y="100">
+        <Text>RowsComponent</Text>
+        <!-- Rows component that does the forloop on row component -->
+        <Rows :data="$data" :activeRowIndex="$activeRowIndex" />
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       count: 0,
