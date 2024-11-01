@@ -14,9 +14,5 @@
       "bye": "Au revoir!",
       "replacement": "Je m'appelle {first} {last}, j'ai {age} ans"
     },
-    "de-DE": {
-      "hello": "Gutentag, wie geht's?",
-      "bye": "Tschüss!",
-      "replacement": "Mein Name ist {first} {last}, ich bin {age} Jahre alt"
-    }
+    "de-DE": "/assets/de-DE.json"
   }
