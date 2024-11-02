@@ -83,6 +83,10 @@ export default Blits.Component('Texts', {
         <Text x="150" :rotation.transition="$rotation" pivot="0.5">World</Text>
         <Text x="300" :rotation.transition="$rotation" pivot="1">!!</Text>
       </Element>
+
+      <Element x="500" y="700">
+        <Text :for="(text, index) in $texts" :content="$text" :y="$index * 50" />
+      </Element>
     </Element>
   `,
   state() {
@@ -94,6 +98,7 @@ export default Blits.Component('Texts', {
       longText:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at ante non mauris commodo tristique. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut quis mattis mi. Aliquam ultricies mi vel lobortis luctus. Ut non feugiat urna. Duis sed blandit dui. Donec venenatis, mauris at blandit malesuada, elit nibh scelerisque lacus, non tempus arcu mi at justo.',
       rotation: 0,
+      texts: ['Hello', 'World', 'Lightning 3', 'Blits'],
     }
   },
   hooks: {
