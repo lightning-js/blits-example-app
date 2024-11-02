@@ -47,19 +47,31 @@ import Slots from './pages/Slots'
 import MemoryGame from './pages/MemoryGame'
 import Exponential from './pages/Exponential'
 import Viewport from './pages/Viewport'
+import { RouterHookRoutes } from './pages/RouterHooks.js'
+import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
+import SourceInfo from './components/SourceInfo.js'
+
+const queryString = new URLSearchParams(window.location.search)
+const showSource = !!queryString.get('source')
+const showFPS = !!queryString.get('fps')
 
 export default Blits.Application({
+  components: {
+    SourceInfo,
+  },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
-      <RouterView />
-      <!-- <FPScounter x="1610" :show="$showFPS" /> -->
+      <RouterView w="100%" h="100%" />
+      <FPScounter x="1610" :show="$showFPS" />
+      <SourceInfo ref="info" :show="$showInfo" />
     </Element>
   `,
   state() {
     return {
       backgroundColor: '#1e293b',
-      showFPS: true,
+      showFPS: showFPS,
+      showInfo: false,
     }
   },
   routes: [
@@ -109,6 +121,8 @@ export default Blits.Application({
     { path: '/examples/events', component: Events },
     { path: '/examples/slots', component: Slots },
     { path: '/examples/viewport', component: Viewport },
+    ...RouterHookRoutes,
+    { path: '/examples/resize', component: Resize },
     { path: '/examples/languageplugin', component: LanguagePlugin },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
@@ -119,6 +133,7 @@ export default Blits.Application({
         this.showFPS = false
       }
 
+      if (showSource === true) this.showInfo = true
       this.$listen('changeBackground', (color) => {
         this.backgroundColor = color ? color + 80 : '#1e293b'
       })
@@ -134,5 +149,52 @@ export default Blits.Application({
     back() {
       this.$router.to('/')
     },
+    sourceCode() {
+      this.showInfo = false
+      const sourcePath = getSourcePath(this.$router.currentRoute.path)
+      if (sourcePath) {
+        window.open(
+          `https://github.com/lightning-js/blits-example-app/tree/master/${sourcePath}`,
+          '_blank'
+        )
+      }
+    },
   },
 })
+
+const getSourcePath = (routerPath) => {
+  const sourceMap = {
+    '/': 'src/pages/Portal',
+    '/demos/loading': 'src/pages/Loading',
+    '/demos/intro': 'src/pages/Intro',
+    '/demos/theming': 'src/pages/Theming',
+    '/demos/tmdb': 'src/pages/Tmdb',
+    '/demos/sprites': 'src/pages/Sprites',
+    '/demos/focushandling': 'src/pages/FocusHandling',
+    '/demos/memory-game': 'src/pages/MemoryGame',
+    '/demos/player': 'src/pages/Player',
+    '/examples/positioning': 'src/pages/Positioning',
+    '/examples/colors': 'src/pages/Colors',
+    '/examples/gradients': 'src/pages/Gradients',
+    '/examples/transitions': 'src/pages/Transitions',
+    '/examples/alpha': 'src/pages/Alpha',
+    '/examples/scaling': 'src/pages/Scaling',
+    '/examples/rotation': 'src/pages/Rotation',
+    '/examples/keyinput': 'src/pages/KeyInput',
+    '/examples/texts': 'src/pages/Texts',
+    '/examples/images': 'src/pages/Images',
+    '/examples/components': 'src/pages/Components',
+    '/examples/forloop': 'src/pages/ForLoop',
+    '/examples/forloop-advanced': 'src/pages/ForLoopAdvanced',
+    '/examples/effects': 'src/pages/Effects',
+    '/examples/showif': 'src/pages/ShowIf',
+    '/examples/events': 'src/pages/Events',
+    '/examples/slots': 'src/pages/Slots',
+    '/examples/viewport': 'src/pages/Viewport',
+    '/examples/resize': 'src/pages/Resize',
+    '/examples/languageplugin': 'src/pages/LanguagePlugin',
+    '/benchmarks/exponential': 'src/pages/Exponential',
+  }
+
+  return sourceMap['/' + routerPath] + '.js'
+}

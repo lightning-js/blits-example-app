@@ -208,7 +208,7 @@ export default Blits.Component('ForLoop', {
   input: {
     a() {
       this.y = -10
-      this.trigger('y')
+      this.$trigger('y')
       const data = []
       for (let i = 0; i < 6; i++) {
         data.push(makeItem())
@@ -217,22 +217,22 @@ export default Blits.Component('ForLoop', {
     },
     b() {
       this.y = 80
-      this.trigger('y')
+      this.$trigger('y')
       this.data.push(makeItem())
     },
     c() {
       this.y = 170
-      this.trigger('y')
+      this.$trigger('y')
       this.data.pop()
     },
     d() {
       this.y = 260
-      this.trigger('y')
+      this.$trigger('y')
       this.data.shift()
     },
     e() {
       this.y = 350
-      this.trigger('y')
+      this.$trigger('y')
       this.data.splice(2, 4)
     },
     f() {
@@ -241,21 +241,21 @@ export default Blits.Component('ForLoop', {
     },
     g() {
       this.y = 530
-      this.trigger('y')
+      this.$trigger('y')
       this.data = []
     },
     h() {
       this.y = 620
-      this.trigger('y')
+      this.$trigger('y')
       this.data = this.data.concat(makeItems(3))
     },
     i() {
       this.y = 710
-      this.trigger('y')
+      this.$trigger('y')
+      this.sortDirection = this.sortDirection === 1 ? 0 : 1
       this.data = this.data.sort((a, b) => {
         const textA = a.text.toLowerCase()
         const textB = b.text.toLowerCase()
-        this.sortDirection = this.sortDirection === 1 ? 0 : 1
         return this.sortDirection === 1
           ? textA < textB
             ? -1

@@ -17,12 +17,14 @@
 
 import Blits from '@lightningjs/blits'
 import PortalRow from '../components/PortalRow.js'
+import SourceInfo from '../components/SourceInfo.js'
 
 import p from '../../package.json'
 
 export default Blits.Component('Portal', {
   components: {
     PortalRow,
+    SourceInfo,
   },
   template: `
     <Element w="1920" h="1080" color="{top: '#44037a', bottom: '#240244'}">
@@ -198,6 +200,16 @@ export default Blits.Component('Portal', {
           description: 'Lifecycle events when entering and leaving the viewport (margins)',
         },
         {
+          title: 'Router Hooks',
+          id: 'examples/router-hooks',
+          description: 'Example of router before hook',
+        },
+        {
+          title: 'Image resizing',
+          id: 'examples/resize',
+          description: 'Using the "fit" syntax for resizing images on the fly',
+        },
+        {
           title: 'Translations',
           id: 'examples/languageplugin',
           description: 'Language Plugin for internationalization',
@@ -215,14 +227,13 @@ export default Blits.Component('Portal', {
   hooks: {
     ready() {
       this.logoOffset = 0
-      this.trigger('rowFocused')
-      console.log('backstopjs:ready')
+      this.$trigger('rowFocused')
     },
   },
   watch: {
     rowFocused(v) {
-      const row = this.select(`row${v}`)
-      if (row && row.focus) row.focus()
+      const row = this.$select(`row${v}`)
+      if (row && row.$focus) row.$focus()
     },
   },
   input: {
