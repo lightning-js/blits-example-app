@@ -66,7 +66,7 @@ export default Blits.Application({
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
-  `,
+    `,
   state() {
     return {
       backgroundColor: '#1e293b',

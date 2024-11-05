@@ -22,7 +22,7 @@ import { language } from '@lightningjs/blits/plugins'
 import keymapping from './keymapping.js'
 import App from './App.js'
 
-const envVar = (import.meta.env.VITE_USER_NODE_ENV) == 'testing' ? true : false
+const envVar = (process.env.NODE_ENV) == 'testing' ? true : false
 
 import colors from './themes/colors.js'
 import sizes from './themes/sizes.js'

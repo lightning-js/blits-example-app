@@ -98,11 +98,8 @@ To get started with Cypress, follow these steps:
 1. Set the env variable `NODE_ENV=testing` in the .env file
 2. Run the App via the command: `npm run start:test`
 
-Headless:
-Run `npm run test:cypress` to test the App in headless mode against the reference images located at `tests/cypress/reports/cypress-image-diff-screenshots/base` folder of the application.
 
-Without Headless:
-Run `npm run test:cypress-headed` to test the App in UI mode against the reference images located at `tests/cypress/reports/cypress-image-diff-screenshots/base` folder of the application.
+Run `npm run test:cypress` to test the App in headless mode against the reference images located at `tests/cypress/reports/cypress-image-diff-screenshots/base` folder of the application.
 
 
 Note: The default url will be `'http://localhost:5173'` and can be configured in the cypress config file located in the root folder.
