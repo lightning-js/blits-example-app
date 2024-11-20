@@ -1,6 +1,6 @@
 {
   "name": "@lightningjs/blits-example-app",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "Lightning 3 Blits Example App",
   "main": "index.js",
   "type": "module",
@@ -15,7 +15,6 @@
     "test:backstopjs-reference": "cross-env NODE_ENV=testing npx backstop --config=backstop.cjs reference",
     "test:cypress": "cross-env NODE_ENV=testing npx cypress run && npx cypress-image-diff-html-report start --reportJsonDir tests/cypress/reports/cypress-image-diff-html-report --autoOpen true",
     "test:cypress-reference": "npm run remFolder && cross-env NODE_ENV=testing npx cypress run",
-    "test:cypress-headed": "cross-env NODE_ENV=testing npx cypress run --headed && npx cypress-image-diff-html-report start --reportJsonDir tests/cypress/reports/cypress-image-diff-html-report --autoOpen true",
     "remFolder" : "node ./scripts/removeReports.js"
   },
   "lint-staged": {
@@ -46,6 +45,6 @@
     "vite": "^4.0.4"
   },
   "dependencies": {
-    "@lightningjs/blits": "^1.8.2"
+    "@lightningjs/blits": "^1.11.0"
   }
 }

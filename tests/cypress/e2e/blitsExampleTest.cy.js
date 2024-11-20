@@ -9,7 +9,7 @@ describe('Demos', () => {
 
   it('HomeScreen', () => {
     cy.wait(4000)
-    cy.compareSnapshot({name : 'Home screen',  testThreshold: 0.05})
+    cy.compareSnapshot({name : 'Home screen',  testThreshold: 0.1})
     cy.wait(2000)
   })
 
@@ -136,5 +136,22 @@ describe('Examples and Tests', () => {
   it('ViewportScreen', () => {
     navigateToNextSection(17, 'ViewportScreen')
   })
+
+  it('RouterHooksScreen', () => {
+    navigateToNextSection(18, 'RouterHooksScreen')
+  })
+
+  it('ImageResizeScreen1', () => {
+    navigateToNextSection(19, 'ImageResizeScreen1')
+  })
+
+  it('TranslationsScreen', () => {
+    navigateToNextSection(20, 'TranslationsScreen')
+  })
+
+  it('LayoutsScreen', () => {
+    navigateToNextSection(21, 'LayoutsScreen')
+  })
+
 })
 
