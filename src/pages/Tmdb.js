@@ -65,7 +65,6 @@ export default Blits.Component('TMdb', {
   state() {
     return {
       rows: [],
-      items: [],
       src: '',
       focused: null,
       alpha: 1,
@@ -85,7 +84,61 @@ export default Blits.Component('TMdb', {
     },
   },
   hooks: {
-    async ready() {
+    async init() {
+      this.rows = [
+        {
+          title: 'Popular Movies',
+          items: await fetchPopular('movie'),
+          type: 'Poster',
+          width: 215,
+          y: 0,
+        },
+        {
+          title: 'Best Western movies',
+          items: await fetchGenreMovies(['Western']),
+          type: 'Hero',
+          width: 1370,
+          y: 358,
+        },
+        {
+          title: 'Best Comedy movies',
+          items: await fetchGenreMovies(['Comedy']),
+          type: 'PosterTitle',
+          width: 215,
+          y: 1158,
+        },
+        {
+          title: 'Popular TV shows',
+          items: await fetchPopular('tv'),
+          type: 'PosterTitle',
+          width: 215,
+          y: 1536,
+        },
+        {
+          title: 'Best Adventure and Action movies',
+          items: await fetchGenreMovies(['adventure', 'action']),
+          type: 'Hero',
+          width: 1370,
+          y: 1914,
+        },
+        {
+          title: 'Best Documentaries',
+          items: await fetchGenreMovies('Documentary'),
+          type: 'PosterTitle',
+          width: 215,
+          y: 2714,
+        },
+        {
+          title: 'Best Western movies 2',
+          items: await fetchGenreMovies('Western'),
+          type: 'PosterTitle',
+          width: 215,
+          y: 3092,
+        },
+      ]
+      this.focused = 0
+    },
+    ready() {
       this.$listen('posterSelect', (item) => {
         if (this.focused === 0) {
           this.src = item.background
@@ -93,64 +146,6 @@ export default Blits.Component('TMdb', {
           this.overview = item.overview
         }
       })
-
-      this.rows.push({
-        title: 'Popular Movies',
-        items: await fetchPopular('movie'),
-        type: 'Poster',
-        width: 215,
-        y: 0,
-      })
-
-      this.rows.push({
-        title: 'Best Western movies',
-        items: await fetchGenreMovies(['Western']),
-        type: 'Hero',
-        width: 1370,
-        y: 358,
-      })
-
-      this.rows.push({
-        title: 'Best Comedy movies',
-        items: await fetchGenreMovies(['Comedy']),
-        type: 'PosterTitle',
-        width: 215,
-        y: 1158,
-      })
-
-      this.rows.push({
-        title: 'Popular TV shows',
-        items: await fetchPopular('tv'),
-        type: 'PosterTitle',
-        width: 215,
-        y: 1536,
-      })
-
-      this.rows.push({
-        title: 'Best Adventure and Action movies',
-        items: await fetchGenreMovies(['adventure', 'action']),
-        type: 'Hero',
-        width: 1370,
-        y: 1914,
-      })
-
-      this.rows.push({
-        title: 'Best Documentaries',
-        items: await fetchGenreMovies('Documentary'),
-        type: 'PosterTitle',
-        width: 215,
-        y: 2714,
-      })
-
-      this.rows.push({
-        title: 'Best Western movies 2',
-        items: await fetchGenreMovies('Western'),
-        type: 'PosterTitle',
-        width: 215,
-        y: 3092,
-      })
-
-      this.focused = 0
     },
     focus() {
       this.$trigger('focused')
