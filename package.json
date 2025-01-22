@@ -10,9 +10,11 @@
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint '**/*.js' --fix",
     "build": "vite build",
+    "build:legacy": "npm run --legacy build",
     "dev": "vite dev --host",
     "test": "NODE_ENV=testing backstop --config=backstop.cjs test",
-    "test:reference": "NODE_ENV=testing backstop --config=backstop.cjs reference"
+    "test:reference": "NODE_ENV=testing backstop --config=backstop.cjs reference",
+    "preview": "vite preview --host --open"
   },
   "lint-staged": {
     "*.js": [
@@ -36,9 +38,16 @@
     "playwright": "^1.41.0",
     "prettier": "^2.5.1",
     "shaka-player": "^4.7.1",
-    "vite": "^4.0.4"
+    "vite": "^5.4.8",
+    "@vitejs/plugin-legacy": "^5.4.2",
+    "whatwg-fetch": "^3.6.20"
   },
   "dependencies": {
-    "@lightningjs/blits": "^1.9.1"
+    "@lightningjs/blits": "^1.16.2"
+  },
+  "overrides": {
+    "@lightningjs/blits": {
+      "@lightningjs/renderer": "^2.9.0"
+    }
   }
 }
