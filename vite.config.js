@@ -15,27 +15,45 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import blitsVitePlugins from '@lightningjs/blits/vite'
+import legacy from '@vitejs/plugin-legacy'
 
-export default defineConfig(({ command, mode, ssrBuild }) => {
+export default defineConfig(({ mode }) => {
+  const envPrefix = ['npm_config_']
+  const env = loadEnv(mode, process.cwd(), envPrefix)
+
+  let plugins = [...blitsVitePlugins]
+  const isLegacy = env.npm_config_legacy === 'true'
+
+  if (isLegacy) {
+    plugins = [
+      // @ts-ignore
+      legacy({
+        targets: ['chrome >= 38 and chrome < 45'],
+        modernPolyfills: true,
+        additionalLegacyPolyfills: ['whatwg-fetch'],
+      }),
+    ]
+  }
+
   return {
-    base: '/', // Set to your base path if you are deploying to a subdirectory (example: /myApp/)
-    plugins: [...blitsVitePlugins],
+    base: '/',
+    plugins,
     resolve: {
       mainFields: ['browser', 'module', 'jsnext:main', 'jsnext'],
     },
-    server: {
-      headers: {
-        'Cross-Origin-Opener-Policy': 'same-origin',
-        'Cross-Origin-Embedder-Policy': 'require-corp',
-      },
-      fs: {
-        allow: ['..'],
-      },
+    fs: {
+      allow: ['..'],
     },
     worker: {
       format: 'es',
+    },
+    preview: {
+      allowedHosts: true,
+    },
+    server: {
+      allowedHosts: true,
     },
   }
 })
