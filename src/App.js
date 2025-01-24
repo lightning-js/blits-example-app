@@ -51,6 +51,7 @@ import { RouterHookRoutes } from './pages/RouterHooks.js'
 import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import SourceInfo from './components/SourceInfo.js'
+import Layout from './pages/Layout.js'
 
 const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
@@ -124,6 +125,7 @@ export default Blits.Application({
     ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
     { path: '/examples/languageplugin', component: LanguagePlugin },
+    { path: '/examples/layout', component: Layout },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
   ],
@@ -212,6 +214,7 @@ const getSourcePath = (routerPath) => {
     '/examples/resize': 'src/pages/Resize',
     '/examples/languageplugin': 'src/pages/LanguagePlugin',
     '/benchmarks/exponential': 'src/pages/Exponential',
+    '/examples/layout': 'src/pages/Layout',
   }
 
   return sourceMap['/' + routerPath] + '.js'
