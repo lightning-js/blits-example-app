@@ -143,6 +143,24 @@ export default Blits.Application({
     },
   },
   input: {
+    // intercept key presses
+    async intercept(e) {
+      if (e.key === 'x') {
+        this.$log.info(`Intercepting key press (${e.key}) in App Component`)
+
+        return new Promise((resolve) => {
+          this.$log.info('Executing an async operation')
+          setTimeout(() => {
+            this.$log.info('Finished an async operation')
+            // resolve the input if you want to propagate the key press to the currently focused Component
+            resolve(e)
+          }, 2000)
+        })
+      }
+
+      // return the input event to propagate the key press to the currently focused Component
+      return e
+    },
     escape() {
       this.quit()
     },
