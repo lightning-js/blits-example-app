@@ -41,11 +41,11 @@ export default Blits.Component('TMdb', {
             size="80"
             x="140"
             y="300"
-            wordwrap="1000"
+            maxwidth="1000"
             @loaded="$positionText"
             maxlines="1"
           />
-          <Text :content="$overview" wordwrap="880" x="140" y="430" lineheight="40" maxlines="3" />
+          <Text :content="$overview" maxwidth="880" x="140" y="430" lineheight="40" maxlines="3" />
         </Element>
         <Element :y.transition="{value: $y, duration: 300, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}">
           <TmdbRow

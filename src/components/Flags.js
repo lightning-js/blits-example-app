@@ -25,7 +25,7 @@ export default Blits.Component('Flags', {
         <Text
           content="$language.name"
           y="150"
-          wordwrap="150"
+          maxwidth="150"
           align="center"
           :color="$index === $activeIndex ? '#fff' : '#aaa'"
         />
