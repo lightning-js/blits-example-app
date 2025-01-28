@@ -32,7 +32,7 @@ export default Blits.Component('PosterTitle', {
         :y.transition="{value: $y, duration: 300, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
         :alpha.transition="{value: $alpha, duration: 300, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
       >
-        <Text :content="$item.title" font="raleway" size="22" wordwrap="185" maxlines="2" lineheight="28" />
+        <Text :content="$item.title" font="raleway" size="22" maxwidth="185" maxlines="2" lineheight="28" />
       </Element>
     </Element>
   `,

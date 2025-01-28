@@ -25,19 +25,19 @@ export default Blits.Component('Positioning', {
       <Element w="100" h="100" x="140" y="20" color="#a5f3fc" />
       <Element w="100" h="100" x="260" y="20" color="#22d3ee" />
       <Element w="100" h="100" x="380" y="20" color="#0891b2" />
-    
+
       <!-- positioning with dynamic values -->
       <Element w="100" h="100" x="$x1" y="$y" color="#fdf4ff" />
       <Element w="100" h="100" x="$x2" y="$y" color="#f5d0fe" />
       <Element w="100" h="100" x="$x3" y="$y" color="#e879f9" />
       <Element w="100" h="100" x="$x4" y="$y" color="#c026d3" />
-    
+
       <!-- positioning with reactive values -->
       <Element w="100" h="100" :x="$xA" y="260" color="#fff7ed" />
       <Element w="100" h="100" :x="$xB" y="260" color="#fed7aa" />
       <Element w="100" h="100" :x="$xC" y="260" color="#fb923c" />
       <Element w="100" h="100" :x="$xD" y="260" color="#ea580c" />
-    
+
       <!--- positioning of nested elements -->
       <Element w="800" h="800" y="20" x="800" color="#ecfdf5">
         <Element w="600" h="600" y="20" x="20" color="#a7f3d0">
@@ -48,22 +48,40 @@ export default Blits.Component('Positioning', {
           </Element>
         </Element>
       </Element>
-    
+
       <!-- positioning after a set of nested elements -->
       <Element w="100" h="100" y="500" x="20" color="#e11d48" />
-    
-      <!-- zIndex not inherited by children - currently broken and being investigated :) -->
-      <Element w="200" h="200" x="300" y="600" color="#94a3b8" z="100">
+
+      <!-- z-index -->
+      <Element w="200" h="200" x="50" y="700" color="#94a3b8" z="100">
         <Text content="Lightning!" x="100" y="140" />
         <Element w="300" h="100" color="#475569" />
         <Circle x="150" y="150" size="100" color="#fff" />
       </Element>
-      <Element w="300" h="300" x="300" y="600" color="#ef444480" />
-    
+      <Element w="300" h="300" x="50" y="700" color="#ef444480" />
+
       <Element w="400" h="100" x="800" y="900" color="#0284c7">
         <Element w="42%" h="30%" y="5%" x="1%" color="#075985" />
         <Element :w="$bar2.v" h="30%" y="35%" x="1%" color="#6b21a8" />
         <Element :w.transition="$bar3" h="30%" y="65%" x="1%" color="#9f1239" />
+      </Element>
+
+      <!-- placement attribute -->
+      <Element w="250" h="250" color="#fef08a" x="450" y="700">
+        <!-- x placement -->
+        <Element w="40" h="40" placement="left" color="#818cf8" />
+        <Element w="40" h="40" placement="center" color="#2563eb" />
+        <Element w="40" h="40" placement="right" color="#1e40af" />
+
+        <!-- y placement -->
+        <Element w="40" h="40" x="54" placement="top" color="#f472b6" />
+        <Element w="40" h="40" x="54" placement="middle" color="#db2777" />
+        <Element w="40" h="40" x="54" placement="bottom" color="#be185d" />
+
+        <!-- x/y placement -->
+        <Element w="40" h="40" placement="{x: 'center', y: 'bottom'}" color="#a3e635" />
+        <Element w="40" h="40" placement="{x: 'right', y: 'middle'}" color="#65a30d" />
+        <Element w="40" h="40" placement="{x: 'center', y: 'middle'}" color="#4d7c0f" />
       </Element>
     </Element>
   `,

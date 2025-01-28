@@ -211,13 +211,13 @@ export default Blits.Component('Portal', {
         },
         {
           title: 'Translations',
-          id: 'examples/languageplugin',
+          id: 'examples/translations',
           description: 'Language Plugin for internationalization',
         },
         {
           title: 'Layout',
           id: 'examples/layout',
-          description: 'Position Elements with ease using the Layout component',
+          description: 'Using the built-in "Layout" Component',
         },
       ],
       benchmark: [
