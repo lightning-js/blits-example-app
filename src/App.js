@@ -126,8 +126,8 @@ export default Blits.Application({
     { path: '/examples/viewport', component: Viewport },
     ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
-    { path: '/examples/languageplugin', component: LanguagePlugin },
     { path: '/examples/firebolt', component: FireBoltPage },
+    { path: '/examples/translations', component: LanguagePlugin },
     { path: '/examples/layout', component: Layout },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
