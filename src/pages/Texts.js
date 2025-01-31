@@ -57,11 +57,11 @@ export default Blits.Component('Texts', {
       <Text content="Letterspacing" size="50" color="#38bdf8" y="450" letterspacing="40" />
 
       <Element w="800" h="100" y="550" color="#94a3b8">
-        <Text content="Text align center" size="50" y="15" color="#bae6fd" align="center" wordwrap="800" />
+        <Text content="Text align center" size="50" y="15" color="#bae6fd" align="center" maxwidth="800" />
       </Element>
 
       <Element w="800" h="200" x="900" y="550" color="#94a3b8">
-        <Text content="$longText" size="40" color="#bae6fd" wordwrap="800" maxlines="5" textoverflow="!!!" />
+        <Text content="$longText" size="40" color="#bae6fd" maxwidth="800" maxlines="5" textoverflow="!!!" />
       </Element>
 
       <Element w="800" h="120" x="900" y="800" color="#94a3b8">
@@ -69,7 +69,7 @@ export default Blits.Component('Texts', {
           content="$longText"
           size="40"
           color="#bae6fd"
-          wordwrap="800"
+          maxwidth="800"
           maxlines="2"
           lineheight="60"
           textoverflow="false"
@@ -83,6 +83,10 @@ export default Blits.Component('Texts', {
         <Text x="150" :rotation.transition="$rotation" pivot="0.5">World</Text>
         <Text x="300" :rotation.transition="$rotation" pivot="1">!!</Text>
       </Element>
+
+      <Element x="500" y="700">
+        <Text :for="(text, index) in $texts" :content="$text" :y="$index * 50" />
+      </Element>
     </Element>
   `,
   state() {
@@ -94,6 +98,7 @@ export default Blits.Component('Texts', {
       longText:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent at ante non mauris commodo tristique. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Ut quis mattis mi. Aliquam ultricies mi vel lobortis luctus. Ut non feugiat urna. Duis sed blandit dui. Donec venenatis, mauris at blandit malesuada, elit nibh scelerisque lacus, non tempus arcu mi at justo.',
       rotation: 0,
+      texts: ['Hello', 'World', 'Lightning 3', 'Blits'],
     }
   },
   hooks: {

@@ -211,13 +211,18 @@ export default Blits.Component('Portal', {
         },
         {
           title: 'Translations',
-          id: 'examples/languageplugin',
+          id: 'examples/translations',
           description: 'Language Plugin for internationalization',
         },
         {
           title: 'Firebolt Demo',
           id: 'examples/firebolt',
           description: 'Demo page to showcase Firebolt APIs',
+        },
+        {
+          title: 'Layout',
+          id: 'examples/layout',
+          description: 'Using the built-in "Layout" Component',
         },
       ],
       benchmark: [

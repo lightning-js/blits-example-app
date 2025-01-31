@@ -29,7 +29,7 @@ export default Blits.Component('SourceInfo', {
       color="{top: '#000000dd', bottom: '#000'}"
       :effects="[$shader('radius', {radius: 10})]"
     >
-      <Text y="18" x="20" size="26" wordwrap="440" align="center" lineheight="32">
+      <Text y="18" x="20" size="26" maxwidth="440" align="center" lineheight="32">
         Press "U" to check out the source code of this example on GitHub</Text
       >
     </Element>
