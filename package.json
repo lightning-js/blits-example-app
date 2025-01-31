@@ -39,6 +39,7 @@
     "vite": "^4.0.4"
   },
   "dependencies": {
+    "@firebolt-js/sdk": "^1.4.1",
     "@lightningjs/blits": "^1.18.1"
   }
 }

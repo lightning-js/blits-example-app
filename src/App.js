@@ -52,6 +52,7 @@ import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import SourceInfo from './components/SourceInfo.js'
 import Layout from './pages/Layout.js'
+import { FireBoltRoutes } from './pages/Firebolt.js'
 
 const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
@@ -128,6 +129,7 @@ export default Blits.Application({
     { path: '/examples/layout', component: Layout },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
+    ...FireBoltRoutes,
   ],
   hooks: {
     ready() {
