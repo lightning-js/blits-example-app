@@ -224,11 +224,6 @@ export default Blits.Component('Portal', {
           id: 'examples/layout',
           description: 'Using the built-in "Layout" Component',
         },
-        {
-          title: 'Firebolt Demo',
-          id: 'examples/firebolt',
-          description: 'Demo page to showcase Firebolt APIs',
-        },
       ],
       benchmark: [
         {

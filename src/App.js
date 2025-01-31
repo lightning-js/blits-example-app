@@ -50,7 +50,6 @@ import Viewport from './pages/Viewport'
 import { RouterHookRoutes } from './pages/RouterHooks.js'
 import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
-import FireBoltPage from './pages/FireBolt'
 import SourceInfo from './components/SourceInfo.js'
 import Layout from './pages/Layout.js'
 import { FireBoltRoutes } from './pages/Firebolt.js'
@@ -126,7 +125,6 @@ export default Blits.Application({
     { path: '/examples/viewport', component: Viewport },
     ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
-    { path: '/examples/firebolt', component: FireBoltPage },
     { path: '/examples/translations', component: LanguagePlugin },
     { path: '/examples/layout', component: Layout },
     // Benchmarks and stress tests
