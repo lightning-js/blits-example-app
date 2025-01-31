@@ -40,6 +40,6 @@
   },
   "dependencies": {
     "@lightningjs/blits": "^1.18.1",
-    "@firebolt-js/sdk": "^1.3.0"
+    "@firebolt-js/sdk": "^1.4.1"
   }
 }
