@@ -67,7 +67,7 @@ export default Blits.Application({
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
-  `,
+    `,
   state() {
     return {
       backgroundColor: '#1e293b',
@@ -124,7 +124,7 @@ export default Blits.Application({
     { path: '/examples/viewport', component: Viewport },
     ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
-    { path: '/examples/languageplugin', component: LanguagePlugin },
+    { path: '/examples/translations', component: LanguagePlugin },
     { path: '/examples/layout', component: Layout },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
