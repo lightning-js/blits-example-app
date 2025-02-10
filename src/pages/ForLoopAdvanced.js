@@ -93,7 +93,7 @@ const LegendItem = Blits.Component('LegendItem', {
   template: `
     <Element>
       <Circle color="#fb923c" size="60" />
-      <Text color="#e5e5e5" size="32" y="10" wordwrap="57" align="center">{{ $id }}</Text>
+      <Text color="#e5e5e5" size="32" y="10" maxwidth="57" align="center">{{ $id }}</Text>
       <Text color="#e5e5e5" x="80" y="14" size="28">{{ $text }}</Text>
     </Element>
   `,

@@ -3,7 +3,7 @@ import Blits from '@lightningjs/blits'
 export default Blits.Component('Resize', {
   template: `
     <Element>
-      <Text y="30" content="fit (Resize Mode) sample" wordwrap="1920" align="center" />
+      <Text y="30" content="fit (Resize Mode) sample" maxwidth="1920" align="center" />
       <Element :x.transition="{value: $pages.x1, duration: 200}" y="90">
         <Text x="100" :content="'Image dimensions: 2560 X 1440'" />
         <Text x="100" y="80" content="$titles.t1" />
