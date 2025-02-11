@@ -51,6 +51,7 @@ import { RouterHookRoutes } from './pages/RouterHooks.js'
 import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import SourceInfo from './components/SourceInfo.js'
+import SpecialCharacters from './pages/SpecialCharacters.js'
 import Layout from './pages/Layout.js'
 
 const queryString = new URLSearchParams(window.location.search)
@@ -67,7 +68,7 @@ export default Blits.Application({
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
-  `,
+    `,
   state() {
     return {
       backgroundColor: '#1e293b',
@@ -125,6 +126,7 @@ export default Blits.Application({
     ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
     { path: '/examples/languageplugin', component: LanguagePlugin },
+    { path: '/examples/special-characters', component: SpecialCharacters },
     { path: '/examples/layout', component: Layout },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
@@ -213,6 +215,7 @@ const getSourcePath = (routerPath) => {
     '/examples/viewport': 'src/pages/Viewport',
     '/examples/resize': 'src/pages/Resize',
     '/examples/languageplugin': 'src/pages/LanguagePlugin',
+    '/examples/characters': 'src/pages/Characters',
     '/examples/layout': 'src/pages/Layout',
     '/benchmarks/exponential': 'src/pages/Exponential',
     '/examples/layout': 'src/pages/Layout',

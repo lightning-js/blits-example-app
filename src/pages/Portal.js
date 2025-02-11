@@ -57,7 +57,7 @@ export default Blits.Component('Portal', {
         </Element>
       </Element>
     </Element>
-  `,
+    `,
   state() {
     return {
       version: p.version,
@@ -213,6 +213,11 @@ export default Blits.Component('Portal', {
           title: 'Translations',
           id: 'examples/translations',
           description: 'Language Plugin for internationalization',
+        },
+        {
+          title: 'Special Chars',
+          id: 'examples/special-characters',
+          description: 'Accents and special characters with MSDF fonts',
         },
         {
           title: 'Layout',
