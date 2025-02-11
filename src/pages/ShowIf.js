@@ -30,32 +30,32 @@ export default Blits.Component('ShowIf', {
         <Element x="50" w="200" h="300" color="#bef264" show="true" />
         <!-- should not show -->
         <Element x="350" w="200" h="300" color="red" show="false" />
-    
+
         <!-- should show -->
         <Element x="650" w="200" h="300" color="#84cc16" show="1" />
         <!-- should not show -->
         <Element x="950" w="200" h="300" color="red" show="0" />
       </Element>
-    
+
       <!-- dynamic show values -->
       <Element y="380">
         <!-- should show -->
         <Element x="50" w="200" h="300" color="#fde047" show="$showNr" />
         <!-- should not show -->
         <Element x="350" w="200" h="300" color="blue" show="$hideNr" />
-    
+
         <!-- should show -->
         <Element x="650" w="200" h="300" color="#84cc16" show="$showBool" />
         <!-- should not show -->
         <Element x="950" w="200" h="300" color="red" show="$hideBool" />
       </Element>
-    
+
       <!-- dynamic show value -->
       <Element y="720">
         <!-- should show / hide every 2 seconds -->
         <Element x="50" w="200" h="300" color="#5eead4" :show="$showHideToggle" />
       </Element>
-    
+
       <!-- show on components! -->
       <Element y="40" x="1000">
         <!-- should show -->
@@ -64,6 +64,16 @@ export default Blits.Component('ShowIf', {
         <Square y="100" show="false" />
         <!-- should show / hide every 2 seconds -->
         <Square y="200" :show="$showHideToggle" />
+      </Element>
+
+      <!-- show with alpha! -->
+      <Element y="40" x="1400">
+        <!-- should show -->
+        <Element w="80" h="80" show="true" alpha="0.8" color="#ff00e4" />
+        <!-- should not show -->
+        <Element y="100" w="80" h="80" show="false" alpha="0.8" color="#ff00e4" />
+        <!-- should show / hide every 2 seconds -->
+        <Element y="200" w="80" h="80" :show="$showHideToggle" alpha="0.8" color="#ff00e4" />
       </Element>
     </Element>
   `,

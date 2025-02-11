@@ -27,7 +27,6 @@ export default Blits.Component('LanguagePlugin', {
       <Flags languages="$languages" ref="flags" x="500" y="150" />
       <Text x="960" y="540" mount="0.5" :content="$$language.translate('hello')" size="80" />
       <Text x="960" y="640" mount="0.5" :content="$$language.translate('bye')" size="50" />
-
       <Text
         x="960"
         y="720"
@@ -35,7 +34,6 @@ export default Blits.Component('LanguagePlugin', {
         :content="$$language.translate('replacement', {first: 'John', last: 'Doe', age: 18})"
         size="36"
       />
-
       <Text
         size="32"
         x="960"
@@ -45,7 +43,7 @@ export default Blits.Component('LanguagePlugin', {
         :content="'Current language: ' + $$language.language + '\n Language file: ' + ($loaded === true ? 'Loaded' : 'loading ...')"
       />
     </Element>
-  `,
+    `,
   state() {
     return {
       loaded: false,
@@ -108,7 +106,7 @@ export default Blits.Component('LanguagePlugin', {
       // })
     },
     focus() {
-      this.select('flags').focus()
+      this.$select('flags').$focus()
     },
   },
 })

@@ -26,7 +26,7 @@ export default Blits.Component('Viewport', {
   },
   template: `
     <Element>
-      <Text size="32" x="960" y="540" mount="0.5" :content="$status.join('\n')" lineheight="52" wordwrap="500" />
+      <Text size="32" x="960" y="540" mount="0.5" :content="$status.join('\n')" lineheight="52" maxwidth="500" />
       <Ball
         :x.transition="{value: $x, duration: 1250}"
         :y.transition="{value: $y, duration: 1250}"

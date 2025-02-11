@@ -211,13 +211,16 @@ export default Blits.Component('Portal', {
         },
         {
           title: 'Translations',
-          id: 'examples/languageplugin',
+          id: 'examples/translations',
           description: 'Language Plugin for internationalization',
         },
         {
           title: 'Keycodes',
           id: 'examples/keycodes',
           description: 'Find the correct keycode mappings for your device',
+          title: 'Layout',
+          id: 'examples/layout',
+          description: 'Using the built-in "Layout" Component',
         },
       ],
       benchmark: [
