@@ -57,7 +57,7 @@ export default Blits.Component('Portal', {
         </Element>
       </Element>
     </Element>
-  `,
+    `,
   state() {
     return {
       version: p.version,
@@ -215,6 +215,9 @@ export default Blits.Component('Portal', {
           description: 'Language Plugin for internationalization',
         },
         {
+          title: 'Keycodes',
+          id: 'examples/keycodes',
+          description: 'Find the correct keycode mappings for your device',
           title: 'Layout',
           id: 'examples/layout',
           description: 'Using the built-in "Layout" Component',
