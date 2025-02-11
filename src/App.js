@@ -52,6 +52,7 @@ import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import KeyCodes from './pages/KeyCodes.js'
 import SourceInfo from './components/SourceInfo.js'
+import SpecialCharacters from './pages/SpecialCharacters.js'
 import Layout from './pages/Layout.js'
 import { FireBoltRoutes } from './pages/Firebolt.js'
 
@@ -129,6 +130,7 @@ export default Blits.Application({
     { path: '/examples/languageplugin', component: LanguagePlugin },
     { path: '/examples/keycodes', component: KeyCodes },
     { path: '/examples/translations', component: LanguagePlugin },
+    { path: '/examples/special-characters', component: SpecialCharacters },
     { path: '/examples/layout', component: Layout },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
@@ -218,6 +220,7 @@ const getSourcePath = (routerPath) => {
     '/examples/viewport': 'src/pages/Viewport',
     '/examples/resize': 'src/pages/Resize',
     '/examples/languageplugin': 'src/pages/LanguagePlugin',
+    '/examples/characters': 'src/pages/Characters',
     '/examples/layout': 'src/pages/Layout',
     '/benchmarks/exponential': 'src/pages/Exponential',
     '/examples/layout': 'src/pages/Layout',
