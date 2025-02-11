@@ -215,9 +215,16 @@ export default Blits.Component('Portal', {
           description: 'Language Plugin for internationalization',
         },
         {
+          title: 'Firebolt Demo',
+          id: 'examples/firebolt',
+          description: 'Demo page to showcase Firebolt APIs',
+        },
+        {
           title: 'Keycodes',
           id: 'examples/keycodes',
           description: 'Find the correct keycode mappings for your device',
+        },
+        {
           title: 'Layout',
           id: 'examples/layout',
           description: 'Using the built-in "Layout" Component',
