@@ -2,8 +2,8 @@ import Blits from '@lightningjs/blits'
 
 const Accent = Blits.Component('Accent', {
   template: `
-    <Element w="300" h="250" :color="$bColor">
-      <Text x="150" y="125" mount="{x:0.5, y:0.5}" :content="$lang" color="#000000ff" font="lato-black" />
+    <Element w="300" h="250" :color="$bColor" :effects="[{type: 'radius', props: {radius: 8}}]">
+      <Text x="150" y="125" mount="{x:0.5, y:0.5}" :content="$lang" color="#fff" font="lato-black" />
     </Element>
     `,
   state() {
@@ -11,16 +11,16 @@ const Accent = Blits.Component('Accent', {
       /**
        * background color of accent tile
        */
-      bColor: '#0000ffff',
+      bColor: "{ top: '#93C5FD', bottom: '#3B82F6' }",
     }
   },
   props: ['lang'],
   hooks: {
     focus() {
-      this.bColor = '#ffff00ff'
+      this.bColor = "{ top: '#6366F1', bottom: '#4F46E5' }"
     },
     unfocus() {
-      this.bColor = '#0000ffff'
+      this.bColor = "{ top: '#93C5FD', bottom: '#3B82F6' }"
     },
   },
 })
@@ -89,7 +89,7 @@ export default Blits.Component('Characters', {
     Accents,
   },
   template: `
-    <Element>
+    <Element w="1920">
       <Text x="960" y="50" mount="{x:0.5}" content="Alphabets" font="lato-black" size="60" />
       <Text x="960" y="150" mount="{x:0.5}" content="$alphabets" font="lato-black" size="40" letterspacing="10" />
       <Text x="960" y="290" mount="{x:0.5}" content="Accents" font="lato-black" size="60" />
@@ -99,9 +99,8 @@ export default Blits.Component('Characters', {
         h="40"
         color="#000000ff"
         :effects="[$shader('radius', {radius: 10})]"
-        x="1800"
         y="1000"
-        mount="{x:1, y:1}"
+        placement="center"
       >
         <Text
           content="The character ? represents a character that is not supported by the Lato-Black font"

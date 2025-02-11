@@ -215,9 +215,9 @@ export default Blits.Component('Portal', {
           description: 'Language Plugin for internationalization',
         },
         {
-          title: 'Characters',
-          id: 'examples/characters',
-          description: 'Displays alphabets and various language accents using MSDF',
+          title: 'Special Chars',
+          id: 'examples/special-characters',
+          description: 'Accents and special characters with MSDF fonts',
         },
       ],
       benchmark: [
