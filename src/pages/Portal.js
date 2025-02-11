@@ -215,9 +215,9 @@ export default Blits.Component('Portal', {
           description: 'Language Plugin for internationalization',
         },
         {
-          title: 'KeyCode Demo',
-          id: 'examples/keycode',
-          description: 'Demo page to showcase keyboard events',
+          title: 'Keycodes',
+          id: 'examples/keycodes',
+          description: 'Find the correct keycode mappings for your device',
         },
       ],
       benchmark: [

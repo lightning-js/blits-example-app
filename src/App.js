@@ -50,7 +50,7 @@ import Viewport from './pages/Viewport'
 import { RouterHookRoutes } from './pages/RouterHooks.js'
 import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
-import KeyCodeDemo from './pages/KeyCodeDemo.js'
+import KeyCodes from './pages/KeyCodes.js'
 import SourceInfo from './components/SourceInfo.js'
 
 const queryString = new URLSearchParams(window.location.search)
@@ -125,7 +125,7 @@ export default Blits.Application({
     ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
     { path: '/examples/languageplugin', component: LanguagePlugin },
-    { path: '/examples/keycode', component: KeyCodeDemo },
+    { path: '/examples/keycodes', component: KeyCodes },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
   ],
