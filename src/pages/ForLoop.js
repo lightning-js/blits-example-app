@@ -32,7 +32,14 @@ export default Blits.Component('ForLoop', {
 
       <Element y="120">
         <!-- looping over an array with objects -->
-        <Element :for="item in $collection2" w="80" h="80" :x="$item.x * $index" color="$item.color" key="$item.id" />
+        <Element
+          :for="(item, index) in $collection2"
+          w="80"
+          h="80"
+          :x="$item.x * $index"
+          color="$item.color"
+          key="$item.id"
+        />
       </Element>
 
       <Element y="220">

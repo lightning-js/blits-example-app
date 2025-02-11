@@ -19,7 +19,7 @@ import Blits from '@lightningjs/blits'
 
 export default Blits.Component('Transitions', {
   template: `
-    <Element>
+    <Element x="60">
       <!-- simple, default transition -->
       <Element w="200" h="200" x="50" :y.transition="$y" color="#c4b5fd" />
       <!-- simple, default transition with object syntax -->
@@ -38,7 +38,7 @@ export default Blits.Component('Transitions', {
         w="200"
         h="200"
         x="800"
-        :y.transition="{value: $y, duration: 500, delay: 1000, start: $start, end: $finished}"
+        :y.transition="{value: $y, duration: 500, delay: 500, start: $start, end: $finished}"
         color="#7c3aed"
       />
       <!-- transition with built-in easing function -->
@@ -73,10 +73,11 @@ export default Blits.Component('Transitions', {
     }
   },
   hooks: {
-    ready() {
-      this.$setTimeout(() => {
-        this.y = 1080 - 50 - 200
-      }, 500)
+    init() {
+      this.$setInterval(() => {
+        this.go()
+      }, 12000)
+      this.go()
     },
   },
   methods: {
@@ -88,6 +89,19 @@ export default Blits.Component('Transitions', {
     },
     finished(el, prop, val) {
       this.$log.info('Finished transition', el.nodeId, prop, val)
+    },
+    go() {
+      this.y = 50
+      this.$setTimeout(() => {
+        this.y = 1080 - 50 - 200
+      }, 1000)
+
+      this.$setTimeout(() => {
+        this.y = 50
+        this.$setTimeout(() => {
+          this.y = 200
+        }, 1000)
+      }, 6000)
     },
   },
 })

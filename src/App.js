@@ -52,6 +52,7 @@ import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import SourceInfo from './components/SourceInfo.js'
 import SpecialCharacters from './pages/SpecialCharacters.js'
+import Layout from './pages/Layout.js'
 
 const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
@@ -126,6 +127,7 @@ export default Blits.Application({
     { path: '/examples/resize', component: Resize },
     { path: '/examples/languageplugin', component: LanguagePlugin },
     { path: '/examples/special-characters', component: SpecialCharacters },
+    { path: '/examples/layout', component: Layout },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
   ],
@@ -145,6 +147,24 @@ export default Blits.Application({
     },
   },
   input: {
+    // intercept key presses
+    async intercept(e) {
+      if (e.key === 'x') {
+        this.$log.info(`Intercepting key press (${e.key}) in App Component`)
+
+        return new Promise((resolve) => {
+          this.$log.info('Executing an async operation')
+          setTimeout(() => {
+            this.$log.info('Finished an async operation')
+            // resolve the input if you want to propagate the key press to the currently focused Component
+            resolve(e)
+          }, 2000)
+        })
+      }
+
+      // return the input event to propagate the key press to the currently focused Component
+      return e
+    },
     escape() {
       this.quit()
     },
@@ -196,7 +216,9 @@ const getSourcePath = (routerPath) => {
     '/examples/resize': 'src/pages/Resize',
     '/examples/languageplugin': 'src/pages/LanguagePlugin',
     '/examples/characters': 'src/pages/Characters',
+    '/examples/layout': 'src/pages/Layout',
     '/benchmarks/exponential': 'src/pages/Exponential',
+    '/examples/layout': 'src/pages/Layout',
   }
 
   return sourceMap['/' + routerPath] + '.js'

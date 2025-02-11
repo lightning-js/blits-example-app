@@ -142,6 +142,29 @@ const Episode = Blits.Component('RouterHookEpisode', {
   },
 })
 
+// Episodes overview page
+const Episodes = Blits.Component('RouterHookEpisode', {
+  ...hookPageTemplate,
+  state() {
+    return {
+      title: 'Episodes \n overview',
+      right: 'FIRST EPISODE',
+    }
+  },
+  input: {
+    left() {
+      //trigger router back navigation. Leads back to: /examples/router-hooks. Even when episode id > 1
+      this.$router.back()
+    },
+    right() {
+      //trigger router to navigate to the next episode, and NOT save current episode page in navigation history
+      this.$router.to('/examples/router-hooks/episode/1', undefined, {
+        inHistory: false,
+      })
+    },
+  },
+})
+
 //custom page transitions for when the router navigates to router example pages
 const PageTransitions = {
   slideInOutLeft: {
@@ -253,6 +276,15 @@ export const RouterHookRoutes = [
       },
     },
     transition: PageTransitions.slideInOutUp,
+    options: { backtrack: true },
+  },
+  {
+    path: '/examples/router-hooks/episode',
+    component: Episodes,
+    transition: PageTransitions.slideInOutUp,
+    options: {
+      backtrack: true,
+    },
   },
   {
     path: '/examples/router-hooks/movie',

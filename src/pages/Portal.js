@@ -211,13 +211,18 @@ export default Blits.Component('Portal', {
         },
         {
           title: 'Translations',
-          id: 'examples/languageplugin',
+          id: 'examples/translations',
           description: 'Language Plugin for internationalization',
         },
         {
           title: 'Special Chars',
           id: 'examples/special-characters',
           description: 'Accents and special characters with MSDF fonts',
+        },
+        {
+          title: 'Layout',
+          id: 'examples/layout',
+          description: 'Using the built-in "Layout" Component',
         },
       ],
       benchmark: [
