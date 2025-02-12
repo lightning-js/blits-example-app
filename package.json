@@ -1,6 +1,6 @@
 {
   "name": "@lightningjs/blits-example-app",
-  "version": "1.8.0",
+  "version": "1.9.0",
   "description": "Lightning 3 Blits Example App",
   "main": "index.js",
   "type": "module",
@@ -39,7 +39,7 @@
     "vite": "^4.0.4"
   },
   "dependencies": {
-    "@lightningjs/blits": "^1.19.1",
-    "@firebolt-js/sdk": "^1.4.1"
+    "@firebolt-js/sdk": "^1.4.1",
+    "@lightningjs/blits": "^1.20.0"
   }
 }
