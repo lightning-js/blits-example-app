@@ -98,7 +98,7 @@ export default Blits.Component('Characters', {
         w="950"
         h="40"
         color="#000000ff"
-        :effects="[$shader('radius', {radius: 10})]"
+        :effects="[{type: 'radius', props: {radius: 10}}]"
         y="1000"
         placement="center"
       >

@@ -22,7 +22,7 @@ export default Blits.Component('Box', {
     <Element
       w="330"
       h="180"
-      :effects="[$shader('radius', {radius: 20}), $shader('border', {width: 1, color: '#e2e8f0'})]"
+      :effects="[{type: 'radius', props: {radius: 20}}, {type: 'border', props: {width: 1, color: '#e2e8f0'}}]"
       color="{top: '#667a97', bottom: '#475569'}"
     >
       <Text x="25" y="20" :content="$header" w="280" color="black" contain="width" />
