@@ -30,16 +30,11 @@ export default Blits.Component('Player', {
         :alpha.transition="$controlsVisibility"
       >
         <Element x="60" y="50">
-          <Element w="60" h="60" color="#0087CEEB" :effects="[$shader('radius', {radius:16})]">
+          <Element w="60" h="60" color="#0087CEEB" rounded="16">
             <Element y="14" x="14" w="32" h="32" :src="$playing ? 'assets/player/pause.png' : 'assets/player/play.png'" />
           </Element>
-          <Element y="22" x="100" w="$progressLength" h="16" color="#ffffff80" :effects="[$shader('radius', {radius:8})]">
-            <Element
-              h="16"
-              :w.transition="{value: $progress, d: 100, f: 'ease-in-out'}"
-              :effects="[$shader('radius', {radius:8})]"
-              color="#0087CEEB"
-            />
+          <Element y="22" x="100" w="$progressLength" h="16" color="#ffffff80" rounded="8">
+            <Element h="16" :w.transition="{value: $progress, d: 100, f: 'ease-in-out'}" rounded="8" color="#0087CEEB" />
             <Circle size="28" color="#fff" y="-6" :x.transition="{value: $progress - 8, d: 100, f: 'ease-in-out'}" />
           </Element>
           <Element x="1660" y="16">

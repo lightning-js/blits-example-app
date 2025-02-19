@@ -34,7 +34,7 @@ export default Blits.Component('MemoryCard', {
         mount="{y: 0.5}"
         :color.transition="$disabled ? '#ccc' : '#fff'"
         :src="$image + '&w=320&h=200'"
-        :effects="[$shader('radius', {radius: 6})]"
+        rounded="6"
         :show="$open"
       />
       <Element
@@ -43,7 +43,7 @@ export default Blits.Component('MemoryCard', {
         y="125"
         mount="{y: 0.5}"
         :color="$open ? 'transparent' : {top: '#efefef', bottom: '#aaa'}"
-        :effects="[$shader('radius', {radius: 6})]"
+        rounded="6"
       />
     </Element>
   `,

@@ -57,7 +57,7 @@ export default Blits.Component('Portal', {
         </Element>
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       version: p.version,
@@ -164,11 +164,15 @@ export default Blits.Component('Portal', {
           description: 'Testing various Array operations with a for loop',
         },
         {
-          title: 'Effects',
-          id: 'examples/effects',
-          description: 'Applying one or multiple effects (aka shaders)',
+          title: 'Shaders',
+          id: 'examples/shaders',
+          description: 'Applying shader effects with attributes',
         },
-
+        {
+          title: 'ShadersCustom',
+          id: 'examples/shaders-custom',
+          description: 'Import or Create and use custom shaders',
+        },
         {
           title: 'Show',
           id: 'examples/showif',
