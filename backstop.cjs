@@ -143,8 +143,13 @@ module.exports = {
       delay: 6000,
     },
     {
-      label: 'Blits - Effects',
-      url: `http://${host}:${port}/#/examples/effects`,
+      label: 'Blits - Shader Attributes',
+      url: `http://${host}:${port}/#/examples/shaders`,
+      delay: 500,
+    },
+    {
+      label: 'Blits - Custom Shaders',
+      url: `http://${host}:${port}/#/examples/shaders-custom`,
       delay: 500,
     },
     {

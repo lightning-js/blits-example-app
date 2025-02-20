@@ -57,7 +57,7 @@ export default Blits.Component('Portal', {
         </Element>
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       version: p.version,
@@ -164,11 +164,15 @@ export default Blits.Component('Portal', {
           description: 'Testing various Array operations with a for loop',
         },
         {
-          title: 'Effects',
-          id: 'examples/effects',
-          description: 'Applying one or multiple effects (aka shaders)',
+          title: 'Shaders',
+          id: 'examples/shaders',
+          description: 'Applying shader effects with attributes',
         },
-
+        {
+          title: 'ShadersCustom',
+          id: 'examples/shaders-custom',
+          description: 'Import or Create and use custom shaders',
+        },
         {
           title: 'Show',
           id: 'examples/showif',
@@ -215,14 +219,19 @@ export default Blits.Component('Portal', {
           description: 'Language Plugin for internationalization',
         },
         {
-          title: 'Firebolt Demo',
+          title: 'Firebolt',
           id: 'examples/firebolt',
-          description: 'Demo page to showcase Firebolt APIs',
+          description: 'Example Firebolt Integration',
         },
         {
           title: 'Keycodes',
           id: 'examples/keycodes',
           description: 'Find the correct keycode mappings for your device',
+        },
+        {
+          title: 'Special Chars',
+          id: 'examples/special-characters',
+          description: 'Accents and special characters with MSDF fonts',
         },
         {
           title: 'Layout',

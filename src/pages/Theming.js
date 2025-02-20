@@ -39,14 +39,9 @@ export default Blits.Component('Theming', {
           :w.transition="$$sizes.get('w')"
           :h.transition="$$sizes.get('h')"
           :color="$$colors.get('color1')"
-          :effects="[$shader('radius', {radius: $radius})]"
+          :rounded="$radius"
         >
-          <Element
-            :w.transition="$$sizes.get('w')"
-            h="100"
-            :color="$$colors.get('color2')"
-            :effects="[$shader('radius', {radius: $radius})]"
-          />
+          <Element :w.transition="$$sizes.get('w')" h="100" :color="$$colors.get('color2')" :rounded="$radius" />
           <Element :w.transition="$$sizes.get('w')" h="80" y="20" :color="$$colors.get('color2')" />
 
           <Text :content="$text" :color="$$colors.get('color3')" size="28" x="20" y="14" />
@@ -65,7 +60,7 @@ export default Blits.Component('Theming', {
           x="25"
           y="140"
           :color="$$colors.get('color2')"
-          :effects="[$shader('radius', {radius: $radius / 2})]"
+          :rounded="$radius / 2"
         />
         <Element
           :w.transition="$$sizes.get('block2.w')"
@@ -73,7 +68,7 @@ export default Blits.Component('Theming', {
           x="270"
           :y.transition="$$sizes.get('block2.y')"
           :color="$$colors.get('color2')"
-          :effects="[$shader('radius', {radius: $radius / 2})]"
+          :rounded="$radius / 2"
         />
 
         <!-- Graph -->
