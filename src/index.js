@@ -76,6 +76,11 @@ Blits.Launch(App, 'app', {
       type: 'msdf',
       file: 'fonts/Kalam-Regular.ttf',
     },
+    {
+      family: 'lato-black',
+      type: 'msdf',
+      file: 'fonts/Lato-Black.ttf',
+    },
   ],
   canvasColor: 'transparent',
   viewportMargin: 100,
