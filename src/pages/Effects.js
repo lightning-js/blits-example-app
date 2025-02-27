@@ -21,35 +21,37 @@ export default Blits.Component('Effects', {
   template: `
     <Element>
       <!-- rounded corner effect -->
-      <Element w="160" h="160" x="40" y="40" color="#fb923c" :effects="[$shader('radius', {radius: 44})]" />
-    
-      <Element w="160" h="160" x="240" y="40" color="#d97706" :effects="[$shader('radius', {radius: 25})]" />
-    
-      <Element w="160" h="160" x="440" y="40" color="#b45309" :effects="[$shader('radius', {radius: 80})]" />
-    
-      <Element w="160" h="160" x="640" y="40" color="#78350f" :effects="[$shader('radius', {radius: 10})]" />
-    
+      <Element w="160" h="160" x="40" y="40" color="#fb923c" :effects="[{type: 'radius', props: {radius: 44}}]" />
+
+      <Element w="160" h="160" x="240" y="40" color="#d97706" :effects="[{type: 'radius', props: {radius: 25}}]" />
+
+      <Element w="160" h="160" x="440" y="40" color="#b45309" :effects="[{type: 'radius', props: {radius: 80}}]" />
+
+      <Element w="160" h="160" x="640" y="40" color="#78350f" :effects="[{type: 'radius', props: {radius: 10}}]" />
+
       <!-- reactive rounded corner effect -->
-      <Element w="160" h="160" x="40" y="240" color="#65a30d" :effects="[$shader('radius', {radius: $radius})]" />
-    
+      <Element w="160" h="160" x="40" y="240" color="#65a30d" :effects="[{type: 'radius', props: {radius: $radius}}]" />
+
       <!-- nested rounded corner effects -->
-      <Element w="300" h="300" x="40" y="440" color="#0c4a6e" :effects="[$shader('radius', {radius: 30})]">
-        <Element w="200" h="200" x="50" y="50" color="#0284c7" :effects="[$shader('radius', {radius: 40})]">
-          <Element w="100" h="100" x="50" y="50" color="#38bdf8" :effects="[$shader('radius', {radius: 50})]">
-            <Element w="40" h="40" x="30" y="30" color="#bae6fd" :effects="[$shader('radius', {radius: 20})]"> </Element>
+      <Element w="300" h="300" x="40" y="440" color="#0c4a6e" :effects="[{type: 'radius', props: {radius: 30}}]">
+        <Element w="200" h="200" x="50" y="50" color="#0284c7" :effects="[{type: 'radius', props: {radius: 40}}]">
+          <Element w="100" h="100" x="50" y="50" color="#38bdf8" :effects="[{type: 'radius', props: {radius: 50}}]">
+            <Element w="40" h="40" x="30" y="30" color="#bae6fd" :effects="[{type: 'radius', props: {radius: 20}}]">
+
+            </Element>
           </Element>
         </Element>
       </Element>
-    
+
       <Element
         w="160"
         h="160"
         x="840"
         y="40"
         color="#3b82f6"
-        :effects="[$shader('radius', {radius: 10}), $shader('border', {width: 20, color: '#60a5fa'})]"
+        :effects="[{type: 'radius', props: {radius: 10}}, {type: 'border', props: {width: 20, color: '#60a5fa'}}]"
       />
-    
+
       <Element w="160" h="160" x="1040" y="40" color="#500724" :effects="$effects" />
     </Element>
   `,
@@ -59,8 +61,8 @@ export default Blits.Component('Effects', {
       direction: 'up',
       radius: 0,
       effects: [
-        this.shader('borderTop', { width: 20, color: '#be123c' }),
-        this.shader('borderBottom', { width: 20, color: '#f43f5e' }),
+        { type: 'borderTop', props: { width: 20, color: '#be123c' } },
+        { type: 'borderBottom', props: { width: 20, color: '#f43f5e' } },
       ],
     }
   },
@@ -82,13 +84,13 @@ export default Blits.Component('Effects', {
         count++
         if (count % 2) {
           this.effects = [
-            this.shader('borderLeft', { width: 20, color: '#be123c' }),
-            this.shader('borderRight', { width: 20, color: '#f43f5e' }),
+            { type: 'borderTop', props: { width: 50, color: '#f43f5e' } },
+            { type: 'borderBottom', props: { width: 50, color: '#be123c' } },
           ]
         } else {
           this.effects = [
-            this.shader('borderTop', { width: 20, color: '#be123c' }),
-            this.shader('borderBottom', { width: 20, color: '#f43f5e' }),
+            { type: 'borderTop', props: { width: 20, color: '#be123c' } },
+            { type: 'borderBottom', props: { width: 20, color: '#f43f5e' } },
           ]
         }
       }, 2000)
