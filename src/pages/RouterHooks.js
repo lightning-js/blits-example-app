@@ -6,26 +6,26 @@ const hookPageTemplate = {
       w="1920"
       h="1080"
       color="#fff"
-      :effects="[$shader('radialGradient', {colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], width: 2400, height: 800})]"
+      :effects="[{type: 'radialGradient', props: {colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], width: 2400, height: 800}}]"
     >
       <Element :show="$up !== undefined">
-        <Element src="assets/arrow.png" w="100" h="44" x="960" y="40" mount="{x: 0.5}"/>
-        <Text :content="$up && $up.toUpperCase()" x="960" y="100" size="76" mount="{x: 0.5}"/>
+        <Element src="assets/arrow.png" w="100" h="44" x="960" y="40" mount="{x: 0.5}" />
+        <Text :content="$up && $up.toUpperCase()" x="960" y="100" size="76" mount="{x: 0.5}" />
       </Element>
       <Element :show="$right !== undefined">
-        <Element src="assets/arrow.png" w="100" h="44" x="1900" y="540" mount="{x: 1, y: 0.5}" rotation="90"/>
-        <Text :content="$right && $right.toUpperCase()" x="1760" y="540" size="76" rotation="90" mount="0.5"/>
+        <Element src="assets/arrow.png" w="100" h="44" x="1900" y="540" mount="{x: 1, y: 0.5}" rotation="90" />
+        <Text :content="$right && $right.toUpperCase()" x="1760" y="540" size="76" rotation="90" mount="0.5" />
       </Element>
       <Element :show="$down !== undefined">
-        <Element src="assets/arrow.png" w="100" h="44" x="960" y="1040" mount="{x: 0.5, y: 1}" rotation="180"/>
-        <Text :content="$down && $down.toUpperCase()" x="960" y="980" size="76" mount="{x: 0.5, y: 1}"/>
+        <Element src="assets/arrow.png" w="100" h="44" x="960" y="1040" mount="{x: 0.5, y: 1}" rotation="180" />
+        <Text :content="$down && $down.toUpperCase()" x="960" y="980" size="76" mount="{x: 0.5, y: 1}" />
       </Element>
       <Element :show="$left !== undefined">
-        <Element src="assets/arrow.png" w="100" h="44" x="40" y="540" mount="{ y: 0.5}" rotation="-90"/>
-        <Text :content="$left && $left.toUpperCase()" x="180" y="540" size="76" mount="0.5" rotation="-90"/>
+        <Element src="assets/arrow.png" w="100" h="44" x="40" y="540" mount="{ y: 0.5}" rotation="-90" />
+        <Text :content="$left && $left.toUpperCase()" x="180" y="540" size="76" mount="0.5" rotation="-90" />
       </Element>
-
-      <Text :content="$pageTitle" font="raleway" x="960" y="540" size="240" mount="0.5"/>
+    
+      <Text :content="$pageTitle" font="raleway" x="960" y="540" size="240" mount="0.5" />
     </Element>
   `,
   props: [
@@ -136,6 +136,29 @@ const Episode = Blits.Component('RouterHookEpisode', {
     right() {
       //trigger router to navigate to the next episode, and NOT save current episode page in navigation history
       this.$router.to(`/examples/router-hooks/episode/${this.page.id + 1}`, undefined, {
+        inHistory: false,
+      })
+    },
+  },
+})
+
+// Episodes overview page
+const Episodes = Blits.Component('RouterHookEpisode', {
+  ...hookPageTemplate,
+  state() {
+    return {
+      title: 'Episodes \n overview',
+      right: 'FIRST EPISODE',
+    }
+  },
+  input: {
+    left() {
+      //trigger router back navigation. Leads back to: /examples/router-hooks. Even when episode id > 1
+      this.$router.back()
+    },
+    right() {
+      //trigger router to navigate to the next episode, and NOT save current episode page in navigation history
+      this.$router.to('/examples/router-hooks/episode/1', undefined, {
         inHistory: false,
       })
     },
@@ -253,6 +276,15 @@ export const RouterHookRoutes = [
       },
     },
     transition: PageTransitions.slideInOutUp,
+    options: { backtrack: true },
+  },
+  {
+    path: '/examples/router-hooks/episode',
+    component: Episodes,
+    transition: PageTransitions.slideInOutUp,
+    options: {
+      backtrack: true,
+    },
   },
   {
     path: '/examples/router-hooks/movie',
