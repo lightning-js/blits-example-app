@@ -52,6 +52,7 @@ import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import KeyCodes from './pages/KeyCodes.js'
 import SourceInfo from './components/SourceInfo.js'
+import SpecialCharacters from './pages/SpecialCharacters.js'
 import Layout from './pages/Layout.js'
 import { FireBoltRoutes } from './pages/Firebolt.js'
 
@@ -129,6 +130,7 @@ export default Blits.Application({
     { path: '/examples/languageplugin', component: LanguagePlugin },
     { path: '/examples/keycodes', component: KeyCodes },
     { path: '/examples/translations', component: LanguagePlugin },
+    { path: '/examples/special-characters', component: SpecialCharacters },
     { path: '/examples/layout', component: Layout },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
@@ -202,25 +204,28 @@ const getSourcePath = (routerPath) => {
     '/examples/colors': 'src/pages/Colors',
     '/examples/gradients': 'src/pages/Gradients',
     '/examples/transitions': 'src/pages/Transitions',
+    '/examples/components': 'src/pages/Components',
     '/examples/alpha': 'src/pages/Alpha',
     '/examples/scaling': 'src/pages/Scaling',
     '/examples/rotation': 'src/pages/Rotation',
     '/examples/keyinput': 'src/pages/KeyInput',
-    '/examples/texts': 'src/pages/Texts',
-    '/examples/images': 'src/pages/Images',
-    '/examples/components': 'src/pages/Components',
     '/examples/forloop': 'src/pages/ForLoop',
     '/examples/forloop-advanced': 'src/pages/ForLoopAdvanced',
     '/examples/effects': 'src/pages/Effects',
     '/examples/showif': 'src/pages/ShowIf',
     '/examples/events': 'src/pages/Events',
+    '/examples/images': 'src/pages/Images',
+    '/examples/texts': 'src/pages/Texts',
     '/examples/slots': 'src/pages/Slots',
     '/examples/viewport': 'src/pages/Viewport',
+    '/examples/router-hooks': 'src/pages/RouterHooks',
     '/examples/resize': 'src/pages/Resize',
-    '/examples/languageplugin': 'src/pages/LanguagePlugin',
+    '/examples/translations': 'src/pages/LanguagePlugin',
+    '/examples/firebolt': 'src/pages/Firebolt',
+    '/examples/keycodes': 'src/pages/KeyCodes',
+    '/examples/special-characters': 'src/pages/SpecialCharacters',
     '/examples/layout': 'src/pages/Layout',
     '/benchmarks/exponential': 'src/pages/Exponential',
-    '/examples/layout': 'src/pages/Layout',
   }
 
   return sourceMap['/' + routerPath] + '.js'

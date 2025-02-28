@@ -24,14 +24,14 @@ export default Blits.Component('Bar', {
       :h="{value: $h, duration: $duration}"
       :color="$bgColor"
       :x="$index * ($w + ($w / 4))"
-      :effects="[$shader('radius', {radius:10})]"
+      :effects="[{type: 'radius', props: {radius:10}}]"
     >
       <Element
         :w="$w"
         :y.transition="{value: $h-$innerH, duration: $duration}"
         :h.transition="{value: $innerH, duration: $duration}"
         :color="$primaryColor"
-        :effects="[$shader('radius', {radius:10})]"
+        :effects="[{type: 'radius', props: {radius:10}}]"
       />
     </Element>
   `,
