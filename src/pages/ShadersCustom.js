@@ -38,6 +38,18 @@ export default Blits.Component('ShadersCustom', {
       <Element color="green" w="250" h="250" x="490" y="400" shader="rhombus" />
       <!-- shader applied with different height -->
       <Element color="green" w="250" h="250" x="880" y="400" shader="{type: 'rhombus', height: 30}" />
+
+      <Element src="$image2" w="250" h="250" x="90" y="710" />
+      <!-- shader applied with a blur but default amount is 0 -->
+      <Element src="$image2" w="250" h="250" x="490" y="710" shader="blur" />
+      <!-- shader applied with a blur with a horizontal displacement of 20 but default specified in the shader attribute -->
+      <Element src="$image2" w="250" h="250" x="880" y="710" shader="{type: 'blur', amount: 20}" />
+
+      <!-- shader applied with a  blur with a horizontal displacement of 20 in the shader attribute. with rtt on. -->
+      <Element rtt="true" w="250" h="250" x="1260" y="710" shader="{type: 'blur', amount: 20}">
+        <!-- shader applied with a vertical blur with a displacement of 3 as we specified in the shader attribute -->
+        <Element src="$image2" w="250" h="250" shader="{type: 'blur', amount: 3, direction: 'vertical'}" />
+      </Element>
     </Element>
   `,
   state() {

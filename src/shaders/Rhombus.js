@@ -1,5 +1,4 @@
 export default {
-  name: 'Rhombus',
   props: {
     width: 0,
     height: 0,

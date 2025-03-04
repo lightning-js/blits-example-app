@@ -1,5 +1,4 @@
 export default {
-  name: 'ColorBurn',
   props: {
     color: 0x00ff00ff,
   },
