@@ -1,5 +1,5 @@
 import BlitsExampleContent from '../locators/BlitsExample'
-import { navigateToNextSection, themingScreenNavigation } from '../utils/commonMethods'
+import { navigateToNextSection, themingScreenNavigation, navigateToFireBoltScreen, navigateToFireBoltInternalScreens } from '../utils/commonMethods'
 
 describe('Demos', () => {
   beforeEach(() => {
@@ -149,8 +149,32 @@ describe('Examples and Tests', () => {
     navigateToNextSection(20, 'TranslationsScreen')
   })
 
+  it('FireBoltScreen', () => {
+    navigateToFireBoltScreen(21)
+    cy.compareSnapshot({ name:  'FireBoltHomeScreen', testThreshold: 0.05 })
+  })
+  it('FireBoltScreen-DeviceScreen', () => {
+    navigateToFireBoltInternalScreens(21,'FireBolt-DeviceMake', 2000, 0.05, 0)
+  })
+
+  it('FireBoltScreen-DeviceScreen', () => {
+    navigateToFireBoltInternalScreens(21,'FireBolt-DeviceModel', 2000, 0.05, 1)
+  })
+  
+  it('FireBoltScreen-DeviceScreen', () => {
+    navigateToFireBoltInternalScreens(21,'FireBolt-DeviceName', 2000, 0.05, 2)
+  })
+
+  it('FireBoltScreen-DeviceScreen', () => {
+    navigateToFireBoltInternalScreens(21,'FireBolt-Network', 2000, 0.05, 3)
+  })
+
+  it('FireBoltScreen-DeviceScreen', () => {
+    navigateToFireBoltInternalScreens(21,'FireBolt-Platform', 2000, 0.05, 4)
+  })
+  
   it('LayoutsScreen', () => {
-    navigateToNextSection(21, 'LayoutsScreen')
+    navigateToNextSection(24, 'LayoutsScreen')
   })
 
 })

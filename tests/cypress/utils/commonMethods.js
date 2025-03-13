@@ -30,3 +30,24 @@ export const themingScreenNavigation = (snapShotName, action, action2 = '') => {
     cy.wait(2000)
     homePageNavigation()
 }
+
+export const navigateToFireBoltScreen = (count) => {
+  cy.wait(2000)
+  for (let i = 0; i < count; i++) {
+    BlitsExampleContent.getBody.type('{rightarrow}')
+  }
+  BlitsExampleContent.getBody.type('{enter}')
+  cy.wait(2000)
+}
+
+export const navigateToFireBoltInternalScreens = (count, snapshotName, waitTime = 2000, threshold = 0.05, clickCount=0) => {
+  navigateToFireBoltScreen(count)
+  BlitsExampleContent.getBody.type('{enter}')
+  cy.wait(waitTime)
+    for (let i = 0; i < clickCount; i++) {
+      BlitsExampleContent.getBody.type('{downarrow}')
+    }
+    BlitsExampleContent.getBody.type('{enter}')
+    cy.compareSnapshot({ name: snapshotName, testThreshold: threshold})
+    BlitsExampleContent.getBody.type('{backspace}')
+}
