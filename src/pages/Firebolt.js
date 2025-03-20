@@ -57,7 +57,7 @@ const Method = Blits.Component('Methods', {
         <Text :content="$name" x="$w/2" y="$h/2" mount="0.5" color="#fff" font="lato" size="50" />
       </Element>
       <Element w="$w" h="50" color="#4B5563" y="75" :effects="[{type: 'radius', props: {radius: [0,0,8,8]}}]">
-        <Text :content="$about" wordwrap="$w" align="center" font="lato" maxlines="1" size="28" y="6" />
+        <Text :content="$about" maxwidth="$w" align="center" font="lato" maxlines="1" size="28" y="6" />
       </Element>
     </Element>
   `,
@@ -72,14 +72,10 @@ const Method = Blits.Component('Methods', {
   hooks: {
     focus() {
       this.nameBgColor = "{ top: '#6366F1', bottom: '#4F46E5' }"
+      this.$emit('execute', this.name)
     },
     unfocus() {
       this.nameBgColor = "{ top: '#93C5FD', bottom: '#3B82F6' }"
-    },
-  },
-  input: {
-    enter() {
-      this.$emit('execute', this.name)
     },
   },
 })
