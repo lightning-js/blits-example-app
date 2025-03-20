@@ -72,14 +72,10 @@ const Method = Blits.Component('Methods', {
   hooks: {
     focus() {
       this.nameBgColor = "{ top: '#6366F1', bottom: '#4F46E5' }"
+      this.$emit('execute', this.name)
     },
     unfocus() {
       this.nameBgColor = "{ top: '#93C5FD', bottom: '#3B82F6' }"
-    },
-  },
-  input: {
-    enter() {
-      this.$emit('execute', this.name)
     },
   },
 })
