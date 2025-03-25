@@ -31,6 +31,8 @@ export default Blits.Component('ShadersCustom', {
       <Element src="$image1" w="250" h="250" x="490" y="90" shader="colorBurn" />
       <!-- shader applied with a red color burn as we specified in the shader attribute -->
       <Element src="$image1" w="250" h="250" x="880" y="90" shader="{type: 'colorBurn', color: 'red'}" />
+      <!-- shader applied with a red color burn as we specified in the shader attribute -->
+      <Element src="$image1" w="250" h="250" x="1260" y="90" :shader="{type: $shType, color: 'yellow', amount: 20,}" />
 
       <!-- regular old green node -->
       <Element color="green" w="250" h="250" x="90" y="400" />
@@ -48,7 +50,7 @@ export default Blits.Component('ShadersCustom', {
       <!-- shader applied with a  blur with a horizontal displacement of 20 in the shader attribute. with rtt on. -->
       <Element rtt="true" w="250" h="250" x="1260" y="710" shader="{type: 'blur', amount: 20}">
         <!-- shader applied with a vertical blur with a displacement of 3 as we specified in the shader attribute -->
-        <Element src="$image2" w="250" h="250" shader="{type: 'blur', amount: 3, direction: 'vertical'}" />
+        <Element src="$image2" w="250" h="250" shader="{type: 'blur', amount: 3, direction: 1}" />
       </Element>
     </Element>
   `,
@@ -56,6 +58,22 @@ export default Blits.Component('ShadersCustom', {
     return {
       image1: images[0],
       image2: images[1],
+      shType: 'colorBurn',
     }
+  },
+  hooks: {
+    ready() {
+      this.$setInterval(() => {
+        if (this.shType === 'colorBurn') {
+          this.shType = 'blur'
+        } else {
+          this.shType = 'colorBurn'
+          // this.shader = {
+          //   type: 'colorBurn',
+          //   color: 'yellow',
+          // }
+        }
+      }, 5000)
+    },
   },
 })

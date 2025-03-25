@@ -49,7 +49,7 @@ export default Blits.Component('ShaderAttributes', {
         </Element>
       </Element>
 
-      <Element w="160" h="160" x="840" y="40" color="#3b82f6" rounded="10" border="{width: 20, color: '#60a5fa'}" />
+      <Element w="160" h="160" x="840" y="40" color="#3b82f6" rounded="10" :border="{width: $border, color: '#60a5fa'}" />
 
       <Element w="160" h="160" x="1040" y="40" color="#500724" />
     </Element>
@@ -59,36 +59,22 @@ export default Blits.Component('ShaderAttributes', {
     return {
       direction: 'up',
       radius: 0,
+      border: 0,
     }
   },
   hooks: {
     ready() {
-      // this.$setInterval(() => {
-      //   const radius = this.direction === 'up' ? this.radius + 10 : this.radius - 10
-      //   this.radius = Math.max(Math.min(radius, 80), 0)
-      //   if (this.radius === 80) {
-      //     this.direction = 'down'
-      //   }
-      //   if (this.radius === 0) {
-      //     this.direction = 'up'
-      //   }
-      // }, 500)
-
-      let count = 0
-      // this.$setInterval(() => {
-      //   count++
-      //   if (count % 2) {
-      //     this.effects = [
-      //       this.shader('borderLeft', { width: 20, color: '#be123c' }),
-      //       this.shader('borderRight', { width: 20, color: '#f43f5e' }),
-      //     ]
-      //   } else {
-      //     this.effects = [
-      //       this.shader('borderTop', { width: 20, color: '#be123c' }),
-      //       this.shader('borderBottom', { width: 20, color: '#f43f5e' }),
-      //     ]
-      //   }
-      // }, 2000)
+      this.$setInterval(() => {
+        const radius = this.direction === 'up' ? this.radius + 10 : this.radius - 10
+        this.radius = Math.max(Math.min(radius, 80), 0)
+        this.border = radius / 3
+        if (this.radius === 80) {
+          this.direction = 'down'
+        }
+        if (this.radius === 0) {
+          this.direction = 'up'
+        }
+      }, 500)
     },
   },
 })
