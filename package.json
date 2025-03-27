@@ -40,6 +40,6 @@
   },
   "dependencies": {
     "@firebolt-js/sdk": "^1.4.1",
-    "@lightningjs/blits": "file:../blits"
+    "@lightningjs/blits": "git+ssh://git@github.com:lightning-js/blits.git#feat/rc-3.0"
   }
 }
