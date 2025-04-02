@@ -17,6 +17,7 @@
 
 import Blits from '@lightningjs/blits'
 import MemoryCard from '../components/MemoryCard.js'
+import Toggle from '../components/Toggles.js'
 
 const cards = [
   {
@@ -54,12 +55,13 @@ const cards = [
 export default Blits.Component('Announcer', {
   components: {
     MemoryCard,
+    Toggle
   },
   template: `
     <Element>
       <Text font="raleway" size="80" color="white" content="Let's play memory!" x="580" y="60" />
       <Text font="kalam" size="40" color="#b91c1c" content="the Accessible edition :)" x="1200" y="170" rotation="-6" />
-    
+      <Toggle ref="toggle" x="100" y="200" :toggled="$toggle" />
       <Element x="260" y="260">
         <MemoryCard
           :for="(card, index) in $cards"
@@ -83,11 +85,16 @@ export default Blits.Component('Announcer', {
       focusedCol: -1,
       openCards: [],
       pairs: 0,
+      toggle: false,
+      focusable: ['toggle'],
+      focusIndex: 0,
+      toggle: true
     }
   },
   hooks: {
     init() {
       this.shuffle()
+      this.$announcer.enable()
       this.$listen('selectMemoryCard', (index) => {
         if (this.openCards.length < 2) {
           this.openCards.push(index)
@@ -118,6 +125,9 @@ export default Blits.Component('Announcer', {
         }
       })
     },
+    ready() {
+      this.$select('toggle').$focus()
+    },
     destroy() {
       this.$announcer.speak('Thanks for playing Memory')
     },
@@ -147,40 +157,67 @@ export default Blits.Component('Announcer', {
   },
   input: {
     left() {
-      if (this.focusedCol === 0) {
-        if (this.focusedRow === 0) {
-          this.$announcer.speak('You are already at the first card')
+      if (this.focusIndex === 0) {
+        if (this.focusedCol === 0) {
+          if (this.focusedRow === 0) {
+            this.$announcer.speak('You are already at the first card')
+          } else {
+            this.focusedCol = 3
+            this.focusedRow--
+          }
         } else {
-          this.focusedCol = 3
-          this.focusedRow--
+          this.focusedCol = Math.max(0, this.focusedCol - 1)
         }
-      } else {
-        this.focusedCol = Math.max(0, this.focusedCol - 1)
       }
     },
     right() {
-      if (this.focusedCol === 3) {
-        if (this.focusedRow === 2) {
-          this.$announcer.speak('You are already at the last card')
+      if (this.focusIndex === 0) {
+        if (this.focusedCol === 3) {
+          if (this.focusedRow === 2) {
+            this.$announcer.speak('You are already at the last card')
+          } else {
+            this.focusedCol = 0
+            this.focusedRow++
+          }
         } else {
-          this.focusedCol = 0
-          this.focusedRow++
+          this.focusedCol = Math.min(3, this.focusedCol + 1)
         }
-      } else {
-        this.focusedCol = Math.min(3, this.focusedCol + 1)
       }
     },
     up() {
-      if (this.focusedCol === 0) {
-        this.$announcer.speak('You are already at the first card')
+      if (this.focusIndex === 0) {
+        if (this.focusedRow === 0) {
+          this.$select('toggle').$focus()
+          this.focusIndex = -1
+        } else {
+          this.focusedRow = Math.max(0, this.focusedRow - 1)
+        }
       }
-      this.focusedRow = Math.max(0, this.focusedRow - 1)
     },
     down() {
-      if (this.focusedRow === 2) {
-        this.$announcer.speak('You are already at the last card')
+      if (this.focusIndex === -1) {
+        this.$select('card0').$focus()
+        this.focusIndex = 0
+        this.focusedRow = 0
+        this.focusedCol = 0
+      } else {
+        if (this.focusedRow === 2) {
+          this.$announcer.speak('You are already at the last card')
+        } else {
+          this.focusedRow = Math.min(2, this.focusedRow + 1)
+        }
       }
-      this.focusedRow = Math.min(2, this.focusedRow + 1)
+    },
+    enter() {
+      if (this.focusIndex === -1) {
+        this.toggle = !this.toggle
+        console.log('Toggle:', this.toggle)
+        if (this.toggle) {
+          this.$announcer.enable()
+        } else {
+          this.$announcer.disable()
+        }
+      }
     },
   },
 })
