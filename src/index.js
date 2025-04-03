@@ -81,4 +81,5 @@ Blits.Launch(App, 'app', {
   ],
   canvasColor: 'transparent',
   viewportMargin: 100,
+  announcer: true,
 })
