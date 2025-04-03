@@ -85,16 +85,14 @@ export default Blits.Component('Announcer', {
       focusedCol: -1,
       openCards: [],
       pairs: 0,
-      toggle: false,
+      toggle: true,
       focusable: ['toggle'],
       focusIndex: 0,
-      toggle: true
     }
   },
   hooks: {
     init() {
       this.shuffle()
-      this.$announcer.enable()
       this.$listen('selectMemoryCard', (index) => {
         if (this.openCards.length < 2) {
           this.openCards.push(index)
