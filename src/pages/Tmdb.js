@@ -28,7 +28,7 @@ export default Blits.Component('TMdb', {
   },
   template: `
     <Element w="1920" h="1080" color="black">
-      <Background :src="$src" />
+      <Background :bgImg="$src" />
       <Element>
         <Element
           :y.transition="{value: $contentY, duration: $duration}"

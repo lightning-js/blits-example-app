@@ -37,7 +37,7 @@ export default Blits.Component('Background', {
       <Element w="1920" h="1080" src="assets/gradient.png" color="#8866dd" alpha="0.8" />
     </Element>
   `,
-  props: ['src'],
+  props: ['bgImg'],
   state() {
     return {
       counter: 0,
@@ -48,7 +48,7 @@ export default Blits.Component('Background', {
     }
   },
   watch: {
-    src(v) {
+    bgImg(v) {
       this.counter = (this.counter + 1) % 2
       if (this.counter === 0) {
         this.bg1 = v
