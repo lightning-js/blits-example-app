@@ -11,10 +11,10 @@ export default Blits.Application({
         <Text content="KeyCode Finder" font="raleway" mount="{x: 0.5}" x="960" size="62" w="800" h="200" contain="width" />
         <Text content="Press any key to get find the correct key code mapping" mount="{x: 0.5}" x="960" y="100" size="32" w="800" h="200" contain="width" />
       </Element>
-      <Element x="395">
+      <Element x="200">
         <Box y="600" header="Key" :text="$key" />
-        <Box x="400" y="600" header="Code" :text="$code" />
-        <Box x="800" y="600" header="keyCode" :text="$keyCode" />
+        <Box x="500" y="600" header="Code" :text="$code" />
+        <Box x="1000" y="600" header="keyCode" :text="$keyCode" />
       </Element>
       <Text mount="{x: 1}" x="1860" y="1000" size="30" :content="$backLabel" :color="$backPressed ? '#fff' : '#667a97'" />
     </Element>
