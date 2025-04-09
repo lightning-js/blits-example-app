@@ -53,20 +53,11 @@ const Row = Blits.Component('Row', {
   state() {
     return {
       focusIndex: -1,
-<<<<<<< HEAD
-=======
       message: null,
->>>>>>> dev
     }
   },
   hooks: {
     focus() {
-<<<<<<< HEAD
-      this.$announcer.speak(this.title)
-      this.focusIndex = 0
-      this.$trigger('focusIndex')
-    },
-=======
       this.message = this.$announcer.speak('Row with different ' + this.title)
       this.focusIndex = 0
       this.$trigger('focusIndex')
@@ -74,7 +65,6 @@ const Row = Blits.Component('Row', {
     unfocus() {
       this.message.cancel()
     },
->>>>>>> dev
   },
   watch: {
     focusIndex(v) {
@@ -114,11 +104,7 @@ export default Blits.Component('Announcer', {
   },
   hooks: {
     focus() {
-<<<<<<< HEAD
-      this.$announcer.speak('Food')
-=======
       this.$announcer.speak('The topic is Food')
->>>>>>> dev
 
       this.$select('row1').$focus()
       this.$trigger('focusIndex')
