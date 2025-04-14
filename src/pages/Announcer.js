@@ -34,7 +34,10 @@ const Item = Blits.Component('Item', {
       this.message = this.$announcer.speak(this.name)
     },
     unfocus() {
-      this.message && this.message.cancel()
+      if (this.message) {
+        this.message.stop()
+        this.message.cancel()
+      }
     },
   },
 })
@@ -63,7 +66,10 @@ const Row = Blits.Component('Row', {
       this.$trigger('focusIndex')
     },
     unfocus() {
-      this.message.cancel()
+      if (this.message) {
+        this.message.stop()
+        this.message.cancel()
+      }
     },
   },
   watch: {
