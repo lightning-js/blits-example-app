@@ -61,7 +61,8 @@ export default Blits.Component('Announcer', {
     <Element>
       <Text font="raleway" size="80" color="white" content="Let's play memory!" x="580" y="60" />
       <Text font="kalam" size="40" color="#b91c1c" content="the Accessible edition :)" x="1200" y="170" rotation="-6" />
-      <Toggle ref="toggle" x="100" y="200" :toggled="$toggle" />
+      <Text font="raleway" size="30" color="white" content="Announcer Mode" x="260" y="200" />
+      <Toggle ref="toggle" x="525" y="200" :toggled="$toggle" />
       <Element x="260" y="260">
         <MemoryCard
           :for="(card, index) in $cards"
