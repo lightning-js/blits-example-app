@@ -125,6 +125,8 @@ export default Blits.Component('Announcer', {
       })
     },
     ready() {
+      //To make sure announcer enabled when we revisit the page
+      this.$announcer.enable()
       this.$select('toggle').$focus()
     },
     destroy() {
