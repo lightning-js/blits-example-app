@@ -75,6 +75,12 @@ export default Blits.Component('ShowIf', {
         <!-- should show / hide every 2 seconds -->
         <Element y="200" w="80" h="80" :show="$showHideToggle" alpha="0.8" color="#ff00e4" />
       </Element>
+
+      <Layout x="1000" y="380" direction="horizontal" gap="20" padding="20" color="#fff">
+        <Element w="40" h="40" :show="$showHideToggle" color="#bfdbfe" />
+        <Element w="40" h="40" color="#60a5fa" />
+        <Element w="40" h="40" color="#2563eb" />
+      </Layout>
     </Element>
   `,
   state() {
