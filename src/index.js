@@ -22,6 +22,8 @@ import { language } from '@lightningjs/blits/plugins'
 import keymapping from './keymapping.js'
 import App from './App.js'
 
+const envVar = (process.env.NODE_ENV) == 'testing' ? true : false
+
 import colors from './themes/colors.js'
 import sizes from './themes/sizes.js'
 
@@ -47,6 +49,7 @@ Blits.Plugin(theme, 'sizes', {
 
 // Use the Blits Language plugin
 Blits.Plugin(language)
+
 
 Blits.Launch(App, 'app', {
   w: 1920,
@@ -83,4 +86,5 @@ Blits.Launch(App, 'app', {
   canvasColor: 'transparent',
   viewportMargin: 100,
   announcer: true,
+  inspector: envVar
 })
