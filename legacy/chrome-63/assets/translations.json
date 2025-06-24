@@ -1,0 +1,18 @@
+{
+    "nl-NL": {
+      "hello": "Hallo, alles goed?",
+      "bye": "Doei!",
+      "replacement": "Mijn naam is {first} {last}, ik ben {age} jaar"
+    },
+    "en-US": {
+      "hello": "Hello, how are you doing?",
+      "bye": "Goodbye!",
+      "replacement": "My name is {first} {last}, I'm {age} years old"
+    },
+    "fr-FR": {
+      "hello": "Bonjour, ça va?",
+      "bye": "Au revoir!",
+      "replacement": "Je m'appelle {first} {last}, j'ai {age} ans"
+    },
+    "de-DE": "/assets/de-DE.json"
+  }
