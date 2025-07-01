@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Comcast Cable Communications Management, LLC
+ * Copyright 2025 Comcast Cable Communications Management, LLC
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,7 +15,18 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-// @ts-ignore
-import renderer from '@lightningjs/blits/renderer'
+import legacy from '@vitejs/plugin-legacy'
+import { defineConfig } from 'vite'
 
-renderer()
+export default defineConfig({
+  base: '/legacy/chrome-71/',
+  plugins: [
+    legacy({
+      targets: 'chrome >= 71 and chrome <= 79',
+      renderModernChunks: false,
+    }),
+  ],
+  build: {
+    outDir: 'dist/legacy/chrome-71/',
+  },
+})

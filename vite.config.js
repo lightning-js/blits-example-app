@@ -15,11 +15,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { defineConfig } from 'vite'
+import { defineConfig, mergeConfig, loadEnv } from 'vite'
 import blitsVitePlugins from '@lightningjs/blits/vite'
 
+import browserConfigs from './vite-configs/browsers'
+
 export default defineConfig(({ command, mode, ssrBuild }) => {
-  return {
+  const env = loadEnv(mode, process.cwd(), ['npm_config_'])
+
+  const defaultConfig = {
     base: '/', // Set to your base path if you are deploying to a subdirectory (example: /myApp/)
     plugins: [...blitsVitePlugins],
     resolve: {
@@ -38,4 +42,8 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
       format: 'es',
     },
   }
+
+  const browserConfig =
+    (env.npm_config_browser_version && browserConfigs[env.npm_config_browser_version]) || {}
+  return browserConfig ? mergeConfig(defaultConfig, browserConfig, true) : defaultConfig
 })
