@@ -57,7 +57,7 @@ export default Blits.Component('Portal', {
         </Element>
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       version: p.version,
@@ -238,6 +238,11 @@ export default Blits.Component('Portal', {
           title: 'Announcer',
           id: 'examples/announcer',
           description: 'Using the built-in "Announcer" plugin',
+        },
+        {
+          title: 'Event Emitter',
+          id: 'examples/ref-emits',
+          description: 'Differentiation between Emit by Ref and Non Ref',
         },
       ],
       benchmark: [
