@@ -56,6 +56,7 @@ import SpecialCharacters from './pages/SpecialCharacters.js'
 import Layout from './pages/Layout.js'
 import { FireBoltRoutes } from './pages/Firebolt.js'
 import Announcer from './pages/Announcer.js'
+import EventRoutes from './pages/NonRefEvents.js'
 
 const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
@@ -71,7 +72,7 @@ export default Blits.Application({
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
-    `,
+  `,
   state() {
     return {
       backgroundColor: '#1e293b',
@@ -141,6 +142,7 @@ export default Blits.Application({
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
     ...FireBoltRoutes,
+    ...EventRoutes,
   ],
   hooks: {
     ready() {
