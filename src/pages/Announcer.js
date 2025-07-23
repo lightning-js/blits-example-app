@@ -20,7 +20,12 @@ import Blits from '@lightningjs/blits'
 const Item = Blits.Component('Item', {
   template: `
     <Element :color="$hasFocus ? '#e0f2fe' : '#fef9c3'" w="200" h="200" :effects="[{type: 'radius', props: {radius: 12}}]">
-      <Text :content="$name" :size="$hasFocus ? 38 : 32" :color="$hasFocus ? '#1e3a8a' : '#2563eb'" placement="{x: 'center', y: 'middle'}" />
+      <Text
+        :content="$name"
+        :size="$hasFocus ? 38 : 32"
+        :color="$hasFocus ? '#1e3a8a' : '#2563eb'"
+        placement="{x: 'center', y: 'middle'}"
+      />
     </Element>
   `,
   props: ['name'],
@@ -49,7 +54,7 @@ const Row = Blits.Component('Row', {
   template: `
     <Element>
       <Text :content="$title" size="40" />
-        <Item :for="(item, index) in $items" name="$item" y="100" x="$index * 250 + 100" ref="item" />
+      <Item :for="(item, index) in $items" name="$item" y="100" x="$index * 250 + 100" ref="item" />
     </Element>
   `,
   props: ['title', 'items'],
@@ -111,8 +116,6 @@ export default Blits.Component('Announcer', {
   hooks: {
     focus() {
       this.$announcer.speak('The topic is Food')
-
-      this.$select('row1').$focus()
       this.$trigger('focusIndex')
     },
   },
