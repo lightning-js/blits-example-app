@@ -55,13 +55,13 @@ const cards = [
 export default Blits.Component('Announcer', {
   components: {
     MemoryCard,
-    Toggle
+    Toggle,
   },
   template: `
     <Element>
       <Text font="raleway" size="80" color="white" content="Let's play memory!" x="580" y="60" />
       <Text font="kalam" size="40" color="#b91c1c" content="the Accessible edition :)" x="1200" y="170" rotation="-6" />
-      <Text font="raleway" size="30" color="white" content="Announcer Mode" x="260" y="200" />
+      <Text size="26" color="white" content="Announcer on / off" x="260" y="200" />
       <Toggle ref="toggle" x="525" y="200" :toggled="$toggle" />
       <Element x="260" y="260">
         <MemoryCard
@@ -127,7 +127,8 @@ export default Blits.Component('Announcer', {
     ready() {
       //To make sure announcer enabled when we revisit the page
       this.$announcer.enable()
-      this.$select('toggle').$focus()
+      this.focusedRow = 0
+      this.focusedCol = 0
     },
     destroy() {
       this.$announcer.speak('Thanks for playing Memory')

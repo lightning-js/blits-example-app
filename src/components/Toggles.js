@@ -19,12 +19,21 @@ import Blits from '@lightningjs/blits'
 
 export default Blits.Component('Toggle', {
   template: `
-    <Element
-      w="$width"
-      h="$height"
-      color="#121212"
-      :effects="[{type: 'radius', props: {radius: $radius}}, {type: 'border', props:{width: $borderWidth, color: $borderColor}}]"
-    >
+    <Element>
+      <Element
+        w="$width"
+        h="$height"
+        color="#121212"
+        :alpha.transition="$hasFocus ? 0 : 1"
+        :effects="[{type: 'radius', props: {radius: $radius}}, {type: 'border', props:{width: 2, color: '#888'}}]"
+      />
+      <Element
+        w="$width"
+        h="$height"
+        color="#121212"
+        :alpha.transition="$hasFocus ? 1 : 0"
+        :effects="[{type: 'radius', props: {radius: $radius}}, {type: 'border', props:{width: 4, color: '#fff'}}]"
+      />
       <Element
         w="$innerWidth"
         h="$innerHeight"
@@ -39,23 +48,14 @@ export default Blits.Component('Toggle', {
   props: ['toggled'],
   state() {
     return {
-      borderColor: '#888',
       borderWidth: 2,
       height: 40,
       innerHeight: 18,
       innerRadius: 9,
       innerWidth: 18,
       radius: 20,
-      width: 100,
+      width: 60,
       offset: 20,
     }
-  },
-  hooks: {
-    focus() {
-      this.borderColor = '#fff'
-    },
-    unfocus() {
-      this.borderColor = '#888'
-    },
   },
 })
