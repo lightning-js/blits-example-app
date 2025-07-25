@@ -48,6 +48,6 @@
   },
   "dependencies": {
     "@firebolt-js/sdk": "^1.4.1",
-    "@lightningjs/blits": "^1.35.1"
+    "@lightningjs/blits": "github:lightning-js/blits#fix/focus-reforce-focus"
   }
 }
