@@ -57,7 +57,7 @@ export default Blits.Component('Portal', {
         </Element>
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       version: p.version,
@@ -252,8 +252,10 @@ export default Blits.Component('Portal', {
   hooks: {
     ready() {
       this.logoOffset = 0
-      this.$trigger('rowFocused')
     },
+    focus(){
+      this.$trigger('rowFocused')
+    }
   },
   watch: {
     rowFocused(v) {
