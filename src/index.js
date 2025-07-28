@@ -24,6 +24,9 @@ import App from './App.js'
 
 import colors from './themes/colors.js'
 import sizes from './themes/sizes.js'
+import ColorBurn from './shaders/ColorBurn.js'
+import Rhombus from './shaders/Rhombus.js'
+import LinearBlur from './shaders/LinearBlur.js'
 
 // Theme plugin instance for colors (light mode / dark mode)
 Blits.Plugin(theme, 'colors', {
@@ -54,9 +57,25 @@ Blits.Launch(App, 'app', {
   multithreaded: false,
   debugLevel: 1,
   reactivityMode: 'Proxy',
+  // pixelRatio: 1,
+  // renderMode: 'canvas',
   // adding source code key code: U, u
   defaultFont: 'lato',
   keymap: { ...keymapping(), ...{ 85: 'sourceCode' } },
+  shaders: [
+    {
+      name: 'colorBurn',
+      type: ColorBurn,
+    },
+    {
+      name: 'rhombus',
+      type: Rhombus,
+    },
+    {
+      name: 'blur',
+      type: LinearBlur,
+    },
+  ],
   fonts: [
     {
       family: 'lato',

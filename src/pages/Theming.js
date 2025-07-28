@@ -30,25 +30,20 @@ export default Blits.Component('Theming', {
       <Text y="1020" x="1160" size="28" :color="$$colors.get('color4')"
         >Use "up", "down", "left" and "right" to change the appearance</Text
       >
-        
+
       <Element :x.transition="(1920 - $$sizes.get('w')) / 2" :y.transition="(1080 - $$sizes.get('h')) / 2">
         <Element x="-250" y="-100" src="assets/shadow.png" w="1000" h="900" alpha="0.5" />
-        
+
         <!-- Header -->
         <Element
           :w.transition="$$sizes.get('w')"
           :h.transition="$$sizes.get('h')"
           :color="$$colors.get('color1')"
-          :effects="[{type: 'radius', props: {radius: $radius}}]"
+          :rounded="$radius"
         >
-          <Element
-            :w.transition="$$sizes.get('w')"
-            h="100"
-            :color="$$colors.get('color2')"
-            :effects="[{type: 'radius', props: {radius: $radius}}]"
-          />
+          <Element :w.transition="$$sizes.get('w')" h="100" :color="$$colors.get('color2')" :rounded="$radius" />
           <Element :w.transition="$$sizes.get('w')" h="80" y="20" :color="$$colors.get('color2')" />
-        
+
           <Text :content="$text" :color="$$colors.get('color3')" size="28" x="20" y="14" />
           <Toggle
             :x.transition="$$sizes.get('w') - 120"
@@ -57,7 +52,7 @@ export default Blits.Component('Theming', {
             primaryColor="#22c55e"
           />
         </Element>
-        
+
         <!-- Blocks -->
         <Element
           w="200"
@@ -65,7 +60,7 @@ export default Blits.Component('Theming', {
           x="25"
           y="140"
           :color="$$colors.get('color2')"
-          :effects="[{type: 'radius', props: {radius: $radius / 2}}]"
+          :rounded="$radius / 2"
         />
         <Element
           :w.transition="$$sizes.get('block2.w')"
@@ -73,9 +68,9 @@ export default Blits.Component('Theming', {
           x="270"
           :y.transition="$$sizes.get('block2.y')"
           :color="$$colors.get('color2')"
-          :effects="[{type: 'radius', props: {radius: $radius / 2}}]"
+          :rounded="$radius / 2"
         />
-        
+
         <!-- Graph -->
         <Element
           :x.transition="$$sizes.get('graph.x')"

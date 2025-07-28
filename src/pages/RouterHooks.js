@@ -6,7 +6,7 @@ const hookPageTemplate = {
       w="1920"
       h="1080"
       color="#fff"
-      :effects="[{type: 'radialGradient', props: {colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], width: 2400, height: 800}}]"
+      shader="{type: 'radialGradient', colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], width: 2400, height: 800}"
     >
       <Element :show="$up !== undefined">
         <Element src="assets/arrow.png" w="100" h="44" x="960" y="40" mount="{x: 0.5}" />
@@ -24,7 +24,6 @@ const hookPageTemplate = {
         <Element src="assets/arrow.png" w="100" h="44" x="40" y="540" mount="{ y: 0.5}" rotation="-90" />
         <Text :content="$left && $left.toUpperCase()" x="180" y="540" size="76" mount="0.5" rotation="-90" />
       </Element>
-    
       <Text :content="$pageTitle" font="raleway" x="960" y="540" size="240" mount="0.5" />
     </Element>
   `,

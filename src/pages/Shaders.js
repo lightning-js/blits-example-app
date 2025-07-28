@@ -1,0 +1,80 @@
+/*
+ * Copyright 2023 Comcast Cable Communications Management, LLC
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import Blits from '@lightningjs/blits'
+
+export default Blits.Component('ShaderAttributes', {
+  template: `
+    <Element>
+      <!-- rounded corner effect -->
+      <Element w="160" h="160" x="40" y="40" color="#fb923c" rounded="44" />
+
+      <Element w="160" h="160" x="240" y="40" color="#d97706" rounded="[25, 50]" />
+
+      <Element
+        w="160"
+        h="160"
+        x="440"
+        y="40"
+        color="#b45309"
+        border="{width: 20, color: 'green'}"
+        :shadow="{color: 'pink'}"
+      />
+
+      <Element w="160" h="160" x="640" y="40" color="#78350f" rounded="10" border="{width: 20}" />
+
+      <!-- reactive rounded corner effect -->
+      <Element w="160" h="160" x="40" y="240" color="#65a30d" :rounded="$radius" />
+
+      <!-- nested rounded corner effects -->
+      <Element w="300" h="300" x="40" y="440" color="#0c4a6e" rounded="30">
+        <Element w="200" h="200" x="50" y="50" color="#0284c7" rounded="40">
+          <Element w="100" h="100" x="50" y="50" color="#38bdf8" rounded="50">
+            <Element w="40" h="40" x="30" y="30" color="#bae6fd" rounded="20"> </Element>
+          </Element>
+        </Element>
+      </Element>
+
+      <Element w="160" h="160" x="840" y="40" color="#3b82f6" rounded="10" :border="{width: $border, color: '#60a5fa'}" />
+
+      <Element w="160" h="160" x="1040" y="40" color="#500724" />
+    </Element>
+  `,
+
+  state() {
+    return {
+      direction: 'up',
+      radius: 0,
+      border: 0,
+    }
+  },
+  hooks: {
+    ready() {
+      this.$setInterval(() => {
+        const radius = this.direction === 'up' ? this.radius + 10 : this.radius - 10
+        this.radius = Math.max(Math.min(radius, 80), 0)
+        this.border = radius / 3
+        if (this.radius === 80) {
+          this.direction = 'down'
+        }
+        if (this.radius === 0) {
+          this.direction = 'up'
+        }
+      }, 500)
+    },
+  },
+})
