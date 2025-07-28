@@ -13,7 +13,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '20'
 
     - name: Install dependencies
       run: npm install
@@ -23,6 +23,21 @@ jobs:
 
     - name: Build
       run: npm run build
+
+    - name: Build Chrome 38
+      run: npm run build:chrome38
+
+    - name: Build Chrome 49
+      run: npm run build:chrome49
+
+    - name: Build Chrome 57
+      run: npm run build:chrome57
+
+    - name: Build Chrome 63
+      run: npm run build:chrome63
+
+    - name: Build Chrome 71
+      run: npm run build:chrome71
 
     - name: Copy CNAME file for GitHub Pages
       run: cp CNAME ./dist

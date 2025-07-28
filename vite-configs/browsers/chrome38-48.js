@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Comcast Cable Communications Management, LLC
+ * Copyright 2025 Comcast Cable Communications Management, LLC
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,14 +15,23 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Blits from '@lightningjs/blits'
+import legacy from '@vitejs/plugin-legacy'
+import { defineConfig } from 'vite'
+import injectScriptPlugin from '../helpers/injectScript'
 
-export default Blits.Component('Box', {
-  template: `
-    <Element w="330" h="180" rounded="20" border="{width: 1, color: '#e2e8f0'}" color="{top: '#667a97', bottom: '#475569'}">
-      <Text x="25" y="20" :content="$header" w="280" color="black" contain="width" />
-      <Text x="25" y="90" :content="$text" size="45" w="350" contain="width" align="center" />
-    </Element>
-  `,
-  props: ['header', 'text'],
+export default defineConfig({
+  base: '/legacy/chrome-38/',
+  plugins: [
+    legacy({
+      targets: ['chrome >= 38 and chrome < 45'],
+      modernPolyfills: true,
+      additionalLegacyPolyfills: ['whatwg-fetch'],
+    }),
+    injectScriptPlugin(
+      '<script type="text/javascript">delete Symbol.prototype[Symbol.toPrimitive];</script>'
+    ),
+  ],
+  build: {
+    outDir: 'dist/legacy/chrome-38/',
+  },
 })

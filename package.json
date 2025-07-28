@@ -1,6 +1,6 @@
 {
   "name": "@lightningjs/blits-example-app",
-  "version": "1.10.0",
+  "version": "1.15.1",
   "description": "Lightning 3 Blits Example App",
   "main": "index.js",
   "type": "module",
@@ -10,6 +10,11 @@
     "lint": "eslint '**/*.js'",
     "lint:fix": "eslint '**/*.js' --fix",
     "build": "vite build",
+    "build:chrome38": "npm --browser_version=chrome38-48 run build",
+    "build:chrome49": "npm --browser_version=chrome49-56 run build",
+    "build:chrome57": "npm --browser_version=chrome57-62 run build",
+    "build:chrome63": "npm --browser_version=chrome63-70 run build",
+    "build:chrome71": "npm --browser_version=chrome71-79 run build",
     "dev": "vite dev --host",
     "test": "NODE_ENV=testing backstop --config=backstop.cjs test",
     "test:reference": "NODE_ENV=testing backstop --config=backstop.cjs reference"
@@ -27,6 +32,7 @@
   "author": "Michiel van der Geest <hello@michielvandergeest.com>",
   "license": "Apache-2",
   "devDependencies": {
+    "@vitejs/plugin-legacy": "^6.1.1",
     "backstopjs": "^6.3.22",
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
@@ -36,7 +42,9 @@
     "playwright": "^1.41.0",
     "prettier": "^2.5.1",
     "shaka-player": "^4.7.1",
-    "vite": "^4.0.4"
+    "terser": "^5.43.1",
+    "vite": "^6.3.5",
+    "whatwg-fetch": "^3.6.20"
   },
   "dependencies": {
     "@firebolt-js/sdk": "^1.4.1",

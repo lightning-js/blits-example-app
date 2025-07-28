@@ -56,6 +56,7 @@ import SourceInfo from './components/SourceInfo.js'
 import SpecialCharacters from './pages/SpecialCharacters.js'
 import Layout from './pages/Layout.js'
 import { FireBoltRoutes } from './pages/Firebolt.js'
+import Announcer from './pages/Announcer.js'
 
 const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
@@ -134,6 +135,11 @@ export default Blits.Application({
     { path: '/examples/translations', component: LanguagePlugin },
     { path: '/examples/special-characters', component: SpecialCharacters },
     { path: '/examples/layout', component: Layout },
+    {
+      path: '/examples/announcer',
+      component: Announcer,
+      announce: 'Welcome to the announcement example page',
+    },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
     ...FireBoltRoutes,

@@ -1,5 +1,5 @@
 /*
- * Copyright 2023 Comcast Cable Communications Management, LLC
+ * Copyright 2025 Comcast Cable Communications Management, LLC
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -15,14 +15,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import Blits from '@lightningjs/blits'
+import chrome3848 from './chrome38-48.js'
+import chrome4956 from './chrome49-56.js'
+import chrome5762 from './chrome57-62.js'
+import chrome6370 from './chrome63-70.js'
+import chrome7179 from './chrome71-79.js'
 
-export default Blits.Component('Box', {
-  template: `
-    <Element w="330" h="180" rounded="20" border="{width: 1, color: '#e2e8f0'}" color="{top: '#667a97', bottom: '#475569'}">
-      <Text x="25" y="20" :content="$header" w="280" color="black" contain="width" />
-      <Text x="25" y="90" :content="$text" size="45" w="350" contain="width" align="center" />
-    </Element>
-  `,
-  props: ['header', 'text'],
-})
+export default {
+  'chrome38-48': chrome3848,
+  'chrome49-56': chrome4956,
+  'chrome57-62': chrome5762,
+  'chrome63-70': chrome6370,
+  'chrome71-79': chrome7179,
+}

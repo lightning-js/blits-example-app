@@ -238,6 +238,11 @@ export default Blits.Component('Portal', {
           id: 'examples/layout',
           description: 'Using the built-in "Layout" Component',
         },
+        {
+          title: 'Announcer',
+          id: 'examples/announcer',
+          description: 'Using the built-in "Announcer" plugin',
+        },
       ],
       benchmark: [
         {
@@ -251,8 +256,10 @@ export default Blits.Component('Portal', {
   hooks: {
     ready() {
       this.logoOffset = 0
-      this.$trigger('rowFocused')
     },
+    focus(){
+      this.$trigger('rowFocused')
+    }
   },
   watch: {
     rowFocused(v) {

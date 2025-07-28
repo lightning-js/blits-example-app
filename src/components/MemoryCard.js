@@ -54,6 +54,7 @@ export default Blits.Component('MemoryCard', {
       open: false,
       h: 200,
       scale: 1,
+      announcement: null,
     }
   },
   hooks: {
@@ -79,10 +80,11 @@ export default Blits.Component('MemoryCard', {
     focus(e) {
       this.scale = 1.08
       const message = 'Card ' + (this.index + 1) + (this.disabled ? ' (disabled)' : '')
-      this.$announcer.speak(message)
+      this.announcement = this.$announcer.speak(message)
     },
     unfocus() {
       this.scale = 1
+      this.announcement.cancel()
     },
   },
   input: {
