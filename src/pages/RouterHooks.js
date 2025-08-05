@@ -6,21 +6,22 @@ const hookPageTemplate = {
       w="1920"
       h="1080"
       color="#fff"
+      radialGradient=""
       shader="{type: 'radialGradient', colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], width: 2400, height: 800}"
     >
-      <Element :show="$up !== undefined">
+      <Element :show="$up !== false">
         <Element src="assets/arrow.png" w="100" h="44" x="960" y="40" mount="{x: 0.5}" />
         <Text :content="$up && $up.toUpperCase()" x="960" y="100" size="76" mount="{x: 0.5}" />
       </Element>
-      <Element :show="$right !== undefined">
+      <Element :show="$right !== false">
         <Element src="assets/arrow.png" w="100" h="44" x="1900" y="540" mount="{x: 1, y: 0.5}" rotation="90" />
         <Text :content="$right && $right.toUpperCase()" x="1760" y="540" size="76" rotation="90" mount="0.5" />
       </Element>
-      <Element :show="$down !== undefined">
+      <Element :show="$down !== false">
         <Element src="assets/arrow.png" w="100" h="44" x="960" y="1040" mount="{x: 0.5, y: 1}" rotation="180" />
         <Text :content="$down && $down.toUpperCase()" x="960" y="980" size="76" mount="{x: 0.5, y: 1}" />
       </Element>
-      <Element :show="$left !== undefined">
+      <Element :show="$left !== false">
         <Element src="assets/arrow.png" w="100" h="44" x="40" y="540" mount="{ y: 0.5}" rotation="-90" />
         <Text :content="$left && $left.toUpperCase()" x="180" y="540" size="76" mount="0.5" rotation="-90" />
       </Element>
@@ -59,6 +60,8 @@ export const RouterHookPage = Blits.Component('RouterHookPage', {
       title: 'Start',
       down: 'episode flow',
       right: 'movie flow',
+      left: false,
+      up: false,
     }
   },
   input: {
@@ -81,6 +84,8 @@ const Movie = Blits.Component('RouterHookMovie', {
       title: 'Movie',
       left: 'Back',
       right: 'Rating',
+      up: false,
+      down: false,
     }
   },
   input: {
@@ -103,6 +108,8 @@ const Rating = Blits.Component('RouterHookRating', {
       title: 'Rating',
       left: 'Back',
       right: 'TO START',
+      up: false,
+      down: false,
     }
   },
   input: {
@@ -125,6 +132,8 @@ const Episode = Blits.Component('RouterHookEpisode', {
       title: 'Episode',
       left: 'Back',
       right: 'NEXT EPISODE',
+      up: false,
+      bottom: false,
     }
   },
   input: {
@@ -148,6 +157,9 @@ const Episodes = Blits.Component('RouterHookEpisode', {
     return {
       title: 'Episodes \n overview',
       right: 'FIRST EPISODE',
+      up: false,
+      down: false,
+      left: false,
     }
   },
   input: {

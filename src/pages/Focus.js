@@ -63,7 +63,7 @@ const Tile = Blits.Component('Tile', {
     <Element w="200" h="200" color="gray">
       <Text :content="'Tile' + $index" :color="$color" placement="{x: 'center', y: 'middle'}" />
       <Block x="130" y="130" ref="block" />
-      <Element w="30" h="30" x="100" y="0" :color="$hasFocus ? 'pink' : 'blue'" />
+      <Element w="30" h="30" x="100" y="0" :color="$$hasFocus ? 'pink' : 'blue'" />
     </Element>`,
   props: ['index'],
   state() {
@@ -139,7 +139,7 @@ export default Blits.Component('Focus', {
     },
     right(e) {
       this.index = Math.min(3, this.index + 1)
-      // this.parent.$focus(e)
+      this.parent.$focus(e)
     },
     enter() {
       this.$select('outside1').$focus()

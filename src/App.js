@@ -69,7 +69,7 @@ export default Blits.Application({
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView w="100%" h="100%" />
-      <FPScounter x="1610" :show="$showFPS" />
+      <!-- <FPScounter x="1610" :show="$showFPS" /> -->
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
   `,

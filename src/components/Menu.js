@@ -52,7 +52,7 @@ export default Blits.Component('Menu', {
   },
   input: {
     right() {
-      this.parent.$focus()
+      this.$parent.$focus()
       this.x = -360
     },
     down() {
