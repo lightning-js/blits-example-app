@@ -60,7 +60,6 @@ Blits.Launch(App, 'app', {
   // pixelRatio: 1,
   // renderMode: 'canvas',
   // adding source code key code: U, u
-  defaultFont: 'lato',
   keymap: { ...keymapping(), ...{ 85: 'sourceCode' } },
   shaders: [
     {
@@ -76,6 +75,7 @@ Blits.Launch(App, 'app', {
       type: LinearBlur,
     },
   ],
+  defaultFont: 'lato',
   fonts: [
     {
       family: 'lato',
