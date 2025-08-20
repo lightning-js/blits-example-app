@@ -24,9 +24,7 @@ export default Blits.Component('SlotCard', {
       <Text content="$label" maxwidth="260" x="20" y="400" align="center" />
     </Element>
   `,
-  props: [
-    {
-      key: 'label',
-    },
-  ],
+  props: {
+    'label': undefined
+  }
 })
