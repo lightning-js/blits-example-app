@@ -28,12 +28,9 @@ const hookPageTemplate = {
       <Text :content="$pageTitle" font="raleway" x="960" y="540" size="240" mount="0.5" />
     </Element>
   `,
-  props: [
-    {
-      key: 'page',
-      cast: Object,
-    },
-  ],
+  props: {
+    'page': undefined
+  },
   computed: {
     pageTitle() {
       //compute page title from page data, if there's no page data use default title

@@ -21,12 +21,9 @@ export default Blits.Component('Square', {
   template: `
     <Element :w.transition="$size" :h.transition="$size" :color.transition="$color" />
   `,
-  props: [
-    {
-      key: 'size',
-      default: 80,
-    },
-  ],
+  props: {
+    'size': 80
+  },
   state() {
     return {
       color: '#86198f',
