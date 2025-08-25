@@ -8,6 +8,9 @@ const hookPageTemplate = {
       color="#fff"
       :effects="[{type: 'radialGradient', props: {colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], width: 2400, height: 800}}]"
     >
+      <Element :show="$stateInfo !== undefined">
+        <Text :content="$stateInfo" x="60" y="60" size="28" />
+      </Element>
       <Element :show="$up !== undefined">
         <Element src="assets/arrow.png" w="100" h="44" x="960" y="40" mount="{x: 0.5}" />
         <Text :content="$up && $up.toUpperCase()" x="960" y="100" size="76" mount="{x: 0.5}" />
@@ -48,6 +51,7 @@ const hookPageTemplate = {
       right: 'right',
       down: 'down',
       left: 'left',
+      stateInfo: "",
     }
   },
 }
@@ -121,6 +125,28 @@ const Rating = Blits.Component('RouterHookRating', {
 //movie flow page, with 2 directions left: back, right: next episode
 const Episode = Blits.Component('RouterHookEpisode', {
   ...hookPageTemplate,
+  hooks: {
+    init() {
+      const state =  this.$router?.state;
+      if (!state) return
+
+      const params =  state['params'] || {}
+      const data =  state['data'] || {}
+      const path = state.path || ''
+      this.page = data.page || (params.id ? { id: Number(params.id), title: `Episode ${params.id}` } : this.page)
+
+      const qp = ( state['queryParams'] || state['query']) || null
+      const query = qp && typeof qp.entries === 'function' 
+        ? Object.fromEntries(qp.entries()) 
+        : Object.fromEntries(new URLSearchParams(window.location.hash.split('?')[1] || ''))
+
+      this.stateInfo = JSON.stringify({ path, params, query, data })
+   
+    },
+
+    
+  },  
+  
   state() {
     return {
       title: 'Episode',
