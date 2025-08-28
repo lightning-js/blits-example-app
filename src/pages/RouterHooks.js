@@ -51,7 +51,7 @@ const hookPageTemplate = {
       right: 'right',
       down: 'down',
       left: 'left',
-      stateInfo: "",
+      stateInfo: '',
     }
   },
 }
@@ -127,26 +127,19 @@ const Episode = Blits.Component('RouterHookEpisode', {
   ...hookPageTemplate,
   hooks: {
     init() {
-      const state =  this.$router?.state;
+      // Get router state information
+      const state = this.$router?.state
       if (!state) return
 
-      const params =  state['params'] || {}
-      const data =  state['data'] || {}
-      const path = state.path || ''
-      this.page = data.page || (params.id ? { id: Number(params.id), title: `Episode ${params.id}` } : this.page)
-
-      const qp = ( state['queryParams'] || state['query']) || null
-      const query = qp && typeof qp.entries === 'function' 
-        ? Object.fromEntries(qp.entries()) 
-        : Object.fromEntries(new URLSearchParams(window.location.hash.split('?')[1] || ''))
-
-      this.stateInfo = JSON.stringify({ path, params, query, data })
-   
+      // Display available router state information
+      this.stateInfo = JSON.stringify({
+        path: state.path || '',
+        params: state['params'] || {},
+        data: state['data'] || {},
+      })
     },
+  },
 
-    
-  },  
-  
   state() {
     return {
       title: 'Episode',
@@ -160,10 +153,14 @@ const Episode = Blits.Component('RouterHookEpisode', {
       this.$router.back()
     },
     right() {
-      //trigger router to navigate to the next episode, and NOT save current episode page in navigation history
-      this.$router.to(`/examples/router-hooks/episode/${this.page.id + 1}`, undefined, {
-        inHistory: false,
-      })
+      //trigger router to navigate to the next episode without adding to navigation history
+      this.$router.to(
+        `/examples/router-hooks/episode/${Number(this.$router.state['params'].id) + 1}`,
+        undefined,
+        {
+          inHistory: false,
+        }
+      )
     },
   },
 })
