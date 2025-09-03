@@ -77,7 +77,7 @@ export default Blits.Component('MemoryCard', {
         }
       })
     },
-    focus(e) {
+    focus() {
       this.scale = 1.08
       const message = 'Card ' + (this.index + 1) + (this.disabled ? ' (disabled)' : '')
       this.announcement = this.$announcer.speak(message)
