@@ -253,9 +253,9 @@ export default Blits.Component('Portal', {
     ready() {
       this.logoOffset = 0
     },
-    focus(){
+    focus() {
       this.$trigger('rowFocused')
-    }
+    },
   },
   watch: {
     rowFocused(v) {

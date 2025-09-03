@@ -137,7 +137,7 @@ export default Blits.Component('Focus', {
     left() {
       this.index = Math.max(1, this.index - 1)
     },
-    right(e) {
+    right() {
       this.index = Math.min(3, this.index + 1)
       // this.parent.$focus(e)
     },
