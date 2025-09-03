@@ -48,6 +48,6 @@
   },
   "dependencies": {
     "@firebolt-js/sdk": "^1.4.1",
-    "@lightningjs/blits": "^1.38.2"
+    "@lightningjs/blits": "github:lightning-js/blits#refactor/router"
   }
 }

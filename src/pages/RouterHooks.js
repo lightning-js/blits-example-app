@@ -240,10 +240,10 @@ export const RouterHookRoutes = [
     hooks: {
       async before(to, from) {
         //change transition based on 'from' route
-        if (from && from.path === 'examples/router-hooks/movie') {
+        if (from && from.path === '/examples/router-hooks/movie') {
           to.transition = PageTransitions.slideInOutRight
         }
-        if (from && from.path === 'examples/router-hooks/rating') {
+        if (from && from.path === '/examples/router-hooks/rating') {
           to.transition = PageTransitions.slideInOutLeft
         }
         if (from && from.path.indexOf('episode') > -1) {
@@ -292,10 +292,10 @@ export const RouterHookRoutes = [
     hooks: {
       before(to, from) {
         //change transition based on 'from' route
-        if (from && from.path === 'examples/router-hooks') {
+        if (from && from.path === '/examples/router-hooks') {
           to.transition = PageTransitions.slideInOutLeft
         }
-        if (from && from.path === 'examples/router-hooks/rating') {
+        if (from && from.path === '/examples/router-hooks/rating') {
           to.transition = PageTransitions.slideInOutRight
         }
         return to
