@@ -48,10 +48,6 @@
   },
   "dependencies": {
     "@firebolt-js/sdk": "^1.4.1",
-<<<<<<< HEAD
-    "@lightningjs/blits": "^1.36.0"
-=======
     "@lightningjs/blits": "^1.38.2"
->>>>>>> dev
   }
 }
