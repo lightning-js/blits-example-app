@@ -56,6 +56,7 @@ import SpecialCharacters from './pages/SpecialCharacters.js'
 import Layout from './pages/Layout.js'
 import { FireBoltRoutes } from './pages/Firebolt.js'
 import Announcer from './pages/Announcer.js'
+import { RouterExampleRoutes } from './pages/RouterExample.js'
 
 const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
@@ -140,6 +141,7 @@ export default Blits.Application({
     },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
+    ...RouterExampleRoutes,
     ...FireBoltRoutes,
   ],
   hooks: {
@@ -231,6 +233,11 @@ const getSourcePath = (routerPath) => {
     '/examples/keycodes': 'src/pages/KeyCodes',
     '/examples/special-characters': 'src/pages/SpecialCharacters',
     '/examples/layout': 'src/pages/Layout',
+    '/router-example': 'src/pages/RouterExample',
+    '/router-example/loading': 'src/pages/RouterExample',
+    '/router-example/home': 'src/pages/RouterExample',
+    '/router-example/movies': 'src/pages/RouterExample',
+    '/router-example/tv': 'src/pages/RouterExample',
     '/benchmarks/exponential': 'src/pages/Exponential',
   }
 

@@ -205,6 +205,11 @@ export default Blits.Component('Portal', {
           description: 'Example of router before hook',
         },
         {
+          title: 'Router',
+          id: 'router-example',
+          description: 'Example of router',
+        },
+        {
           title: 'Image resizing',
           id: 'examples/resize',
           description: 'Using the "fit" syntax for resizing images on the fly',
