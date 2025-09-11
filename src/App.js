@@ -52,6 +52,7 @@ import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import KeyCodes from './pages/KeyCodes.js'
 import SourceInfo from './components/SourceInfo.js'
+import MenuItem from './components/MenuItem.js'
 import SpecialCharacters from './pages/SpecialCharacters.js'
 import Layout from './pages/Layout.js'
 import { FireBoltRoutes } from './pages/Firebolt.js'
@@ -65,10 +66,21 @@ const showFPS = !!queryString.get('fps')
 export default Blits.Application({
   components: {
     SourceInfo,
+    MenuItem,
   },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView w="100%" h="100%" />
+      
+      <!-- Router Examples Menu (rendered on top) -->
+      <Element x="0" y="0" w="400" h="1080" 
+               :color="$$appState.menuFocused ? '#2563eb' : '#2d3748'" 
+               :show="$$appState.showMenu">
+        <Text content="Router Examples" x="20" y="40" size="36" font="raleway" color="#fff" />
+        <MenuItem title="Movies" :focused="$$appState.focusedItem === 0" y="120" />
+        <MenuItem title="TV Shows" :focused="$$appState.focusedItem === 1" y="200" />
+      </Element>
+      
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>

@@ -206,7 +206,7 @@ export default Blits.Component('Portal', {
         },
         {
           title: 'Router',
-          id: 'router-example',
+          id: 'router-example/movies',
           description: 'Example of router',
         },
         {
@@ -256,6 +256,8 @@ export default Blits.Component('Portal', {
   },
   hooks: {
     ready() {
+      // Hide router example menu when on Portal
+      this.$appState.showMenu = false
       this.logoOffset = 0
     },
     focus() {
