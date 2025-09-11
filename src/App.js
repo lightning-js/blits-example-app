@@ -245,11 +245,6 @@ const getSourcePath = (routerPath) => {
     '/examples/keycodes': 'src/pages/KeyCodes',
     '/examples/special-characters': 'src/pages/SpecialCharacters',
     '/examples/layout': 'src/pages/Layout',
-    '/router-example': 'src/pages/RouterExample',
-    '/router-example/loading': 'src/pages/RouterExample',
-    '/router-example/home': 'src/pages/RouterExample',
-    '/router-example/movies': 'src/pages/RouterExample',
-    '/router-example/tv': 'src/pages/RouterExample',
     '/benchmarks/exponential': 'src/pages/Exponential',
   }
 
