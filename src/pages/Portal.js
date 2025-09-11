@@ -206,7 +206,7 @@ export default Blits.Component('Portal', {
         },
         {
           title: 'Router',
-          id: 'router-example/movies',
+          id: 'examples/router/loader',
           description: 'Example of router',
         },
         {

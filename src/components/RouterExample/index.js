@@ -1,0 +1,7 @@
+export { default as Movies } from './Movies'
+export { default as Details } from './Details'
+export { default as Tv } from './Tv'
+export { default as TvDetails } from './TvDetails'
+export { default as TvSeason } from './TvSeason'
+export { default as Loader } from './Loader'
+export { default as Menu } from './Menu'

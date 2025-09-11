@@ -1,43 +1,42 @@
-
 // Import components
-import { Movies } from '../components/RouterExample/Movies.js'
-import { Details } from '../components/RouterExample/Details.js'
-import { Tv } from '../components/RouterExample/Tv.js'
-import { TvDetails } from '../components/RouterExample/TvDetails.js'
-import { TVSeason } from '../components/RouterExample/TVSeason.js'
-
+import { Movies, Details, Tv, TvDetails, TvSeason, Loader } from '../components/RouterExample'
 
 // Router Routes
 export const RouterExampleRoutes = [
-    {
-        path: '/router-example/movies',
-        component: Movies,
-        keepAlive: true,
-        announce: 'Browsing Movies'
+  {
+    path: '/examples/router/loader',
+    component: Loader,
+    options: {
+      inHistory: false,
     },
-    {
-        path: '/router-example/movies/:id',
-        component: Details,
-        reuseComponent: true,
-        announce: 'Movie Details'
-    },
-    {
-        path: '/router-example/tv',
-        component: Tv,
-        keepAlive: true,
-        announce: 'Browsing TV Shows'
-    },
-   
-    {
-        path: '/router-example/tv/:id/season/:season',
-        component: TVSeason,
-        announce: 'TV Season Details'
-    },
-    {
-        path: '/router-example/tv/:id',
-        component: TvDetails,
-        reuseComponent: true,
-        announce: 'TV Show Details'
-    },
+  },
+  {
+    path: '/examples/router/movies',
+    component: Movies,
+    keepAlive: true,
+    announce: 'Browsing Movies',
+  },
+  {
+    path: '/examples/router/movies/:id',
+    component: Details,
+    reuseComponent: true,
+    announce: 'Movie Details',
+  },
+  {
+    path: '/examples/router/tv',
+    component: Tv,
+    keepAlive: true,
+    announce: 'Browsing TV Shows',
+  },
+  {
+    path: '/examples/router/tv/:id/season/:season',
+    component: TvSeason,
+    announce: 'TV Season Details',
+  },
+  {
+    path: '/examples/router/tv/:id',
+    component: TvDetails,
+    reuseComponent: true,
+    announce: 'TV Show Details',
+  },
 ]
- 
