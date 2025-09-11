@@ -52,8 +52,8 @@ Blits.Plugin(language)
 // Use the Blits Global App State plugin
 Blits.Plugin(appState, {
   showMenu: false,
-  focusedItem: 0,
-  menuFocused: false,
+  focusMenu: false,
+  activeView: null,
 })
 
 Blits.Launch(App, 'app', {
