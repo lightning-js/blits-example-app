@@ -54,6 +54,7 @@ Blits.Plugin(appState, {
   showMenu: false,
   focusMenu: false,
   activeView: null,
+  selectedMovie: null,
 })
 
 Blits.Launch(App, 'app', {

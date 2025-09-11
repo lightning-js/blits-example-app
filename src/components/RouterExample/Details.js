@@ -14,19 +14,11 @@ export default Blits.Component('Details', {
         <Element x="40" y="160" w="1438" h="600" color="#374151" :effects="[{type: 'radius', props: 12}]">
           <Text content="Movie Information" x="40" y="40" size="32" color="#fff" />
           <Text :content="'Movie ID: ' + $movieId" x="40" y="100" size="24" color="#e2e8f0" />
-          <Text content="Title: The Amazing Adventure" x="40" y="140" size="24" color="#e2e8f0" />
-          <Text content="Genre: Action/Adventure" x="40" y="180" size="24" color="#e2e8f0" />
-          <Text content="Year: 2024" x="40" y="220" size="24" color="#e2e8f0" />
-          <Text content="Rating: 8.5/10" x="40" y="260" size="24" color="#e2e8f0" />
-          <Text content="Duration: 2h 15min" x="40" y="300" size="24" color="#e2e8f0" />
-          <Text
-            content="Description: An epic adventure through mysterious lands"
-            x="40"
-            y="360"
-            size="20"
-            color="#a0aec0"
-          />
-          <Text content="with stunning visuals and compelling characters." x="40" y="390" size="20" color="#a0aec0" />
+          <Text :content="'Title: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.title : 'Movie not found')" x="40" y="140" size="24" color="#e2e8f0" />
+          <Text :content="'Genre: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.genre : 'N/A')" x="40" y="180" size="24" color="#e2e8f0" />
+          <Text :content="'Year: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.year : 'N/A')" x="40" y="220" size="24" color="#e2e8f0" />
+          <Text :content="'Director: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.director : 'N/A')" x="40" y="260" size="24" color="#e2e8f0" />
+          <Text :content="'Mood: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.mood : 'N/A')" x="40" y="300" size="20" color="#a0aec0" />
           <Text content="Focus is now on this content area - use BACK to return" x="40" y="460" size="18" color="#718096" />
         </Element>
       </Element>
@@ -40,6 +32,7 @@ export default Blits.Component('Details', {
   hooks: {
     ready() {
       this.movieId = String(this.$router.currentRoute.params.id || 'No ID')
+      
       // Show menu and focus Movies
       this.$appState.showMenu = true
       this.$appState.focusedItem = 0
@@ -47,7 +40,7 @@ export default Blits.Component('Details', {
   },
   input: {
     back() {
-      this.$router.to('/router-example/movies')
+      this.$router.to('/examples/router/movies')
     },
   },
 })
