@@ -71,7 +71,7 @@ export default Blits.Application({
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView w="100%" h="100%" />
-
+    
       <!-- Router Examples Menu (rendered on top) -->
       <Menu :show="$$appState.showMenu" ref="routerMenu" />
       <FPScounter x="1610" :show="$showFPS" />
@@ -83,7 +83,6 @@ export default Blits.Application({
       backgroundColor: '#1e293b',
       showFPS: showFPS,
       showInfo: false,
-      showRouterMenu: false,
     }
   },
   routes: [
@@ -203,7 +202,6 @@ export default Blits.Application({
   },
   watch: {
     '$appState.focusMenu'(v) {
-      this.showRouterMenu = v
       if (v === true) {
         const menu = this.$select('routerMenu')
         menu && menu.$focus && menu.$focus()
