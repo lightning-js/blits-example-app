@@ -37,7 +37,7 @@ export default Blits.Component('Menu', {
     MenuItem,
   },
   template: `
-    <Element x="0" y="0" w="400" h="1080" :color="$color">
+    <Element :x.transition="{value: $x, duration: 400, easing: 'ease-out'}" y="0" w="400" h="1080" :color="$color">
       <Text content="Router Examples" x="20" y="40" size="36" font="raleway" color="#fff" />
       <MenuItem title="Movies" y="120" ref="menu1" />
       <MenuItem title="TV Shows" y="200" ref="menu2" />
@@ -47,6 +47,7 @@ export default Blits.Component('Menu', {
     return {
       focused: 1,
       color: '#2d3748',
+      x: -400
     }
   },
   watch: {
@@ -58,6 +59,9 @@ export default Blits.Component('Menu', {
   hooks: {
     focus() {
       this.$trigger('focused')
+    },
+    ready() {
+      this.x = 0
     },
   },
   input: {
