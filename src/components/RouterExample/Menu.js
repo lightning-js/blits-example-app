@@ -2,7 +2,15 @@ import Blits from '@lightningjs/blits'
 
 const MenuItem = Blits.Component('MenuItem', {
   template: `
-    <Element x="20" y="$y" w="360" h="60" :color.transition="{value: $color, duration: 500}" :effects="[{type: 'radius', props: 8}]" :alpha.transition="{value: $alpha, duration:1200}">
+    <Element
+      x="20"
+      y="$y"
+      w="360"
+      h="60"
+      :color.transition="{value: $color, duration: 500}"
+      :effects="[{type: 'radius', props: 8}]"
+      :alpha.transition="{value: $alpha, duration:1200}"
+    >
       <Text :content="$title" x="20" y="15" size="28" color="#fff" />
     </Element>
   `,
@@ -51,7 +59,7 @@ export default Blits.Component('Menu', {
     return {
       focused: 1,
       color: '#2d3748',
-      x: -400
+      x: -400,
     }
   },
   watch: {

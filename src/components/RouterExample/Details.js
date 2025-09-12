@@ -18,7 +18,7 @@ export default Blits.Component('Details', {
         <Element x="40" y="160" w="1438" h="600" color="#374151" :effects="[{type: 'radius', props: 12}]">
           <Element w="1438" h="5" :color="$color" />
           <Text content="Movie Information" x="40" y="40" size="32" color="#fff" />
-          <Text :content="'Movie ID: ' + $movieId" x="40" y="100" size="24" color="#e2e8f0" />
+          <Text :content="'Movie ID: ' + $id" x="40" y="100" size="24" color="#e2e8f0" />
           <Text
             :content="'Title: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.title : 'Movie not found')"
             x="40"
@@ -57,25 +57,19 @@ export default Blits.Component('Details', {
           <Text content="Focus is now on this content area - use BACK to return" x="40" y="460" size="18" color="#718096" />
         </Element>
 
-        <List type="movies" :currentIndex="$movieId" />
+        <List x="40" type="movies" :currentIndex="$id" ref="list" />
       </Element>
     </Element>
   `,
+  props: ['id'],
   state() {
     return {
-      movieId: 'N/A',
       color: '#374151',
     }
   },
   hooks: {
-    ready() {
-      this.movieId = String(this.$router.currentRoute.params.id || 'No ID')
-    },
     focus() {
       this.color = '#fbbf24'
-    },
-    unfocus() {
-      this.color = '#374151'
     },
   },
   input: {
@@ -84,6 +78,11 @@ export default Blits.Component('Details', {
         this.$appState.activeView = this
         this.$appState.focusMenu = true
       }
+    },
+    down() {
+      this.color = '#374151'
+      const list = this.$select('list')
+      if (list && list.$focus) list.$focus()
     },
   },
 })
