@@ -43,9 +43,5 @@ export default Blits.Component('TvDetails', {
       const showId = this.showId || '1'
       this.$router.to(`/router-example/tv/${showId}/season/1`)
     },
-
-    back() {
-      this.$router.to('/router-example/tv')
-    },
   },
 })
