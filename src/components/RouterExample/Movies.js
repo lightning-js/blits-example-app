@@ -29,7 +29,7 @@ export default Blits.Component('Movies', {
             :year="$movie.year"
             :mood="$movie.mood"
             :movieId="$movie.id"
-            :focused="$index === $focusedMovieIndex"
+            :focused="$index === $focusedMovieIndex && !$menuFocused"
             :ref="'movie' + $movie.id"
           />
 
@@ -37,7 +37,7 @@ export default Blits.Component('Movies', {
             <Text content="Controls:" x="20" y="20" size="16" color="#a0aec0" />
             <Text content="⏎ ENTER → Movie Details" x="20" y="45" size="14" color="#e2e8f0" />
             <Text content="⬅ BACK → Return to Sidebar" x="20" y="70" size="14" color="#e2e8f0" />
-            
+
           </Element>
         </Element>
       </Element>
@@ -116,15 +116,14 @@ export default Blits.Component('Movies', {
     },
   },
 
-  watch: {
-    '$appState.focusMenu'(value) {
-      if (value !== undefined && value !== null) {
-        this.menuFocused = value
-      } else {
-        this.menuFocused = false
-      }
-    },
-  },
+  // watch: {
+  //   '$appState.focusMenu'(value) {
+  //     this.menuFocused = value === true
+  //     if (value === false && this.$appState.activeView === this) {
+  //       this.$focus()
+  //     }
+  //   },
+  // },
 
   hooks: {
     ready() {
@@ -133,15 +132,21 @@ export default Blits.Component('Movies', {
         this.$appState.showMenu = true
         this.$appState.focusedItem = 0
         this.$appState.focusMenu = false 
+        this.$appState.activeView = this
       }
-      
-      
+
+      // Reset local focus state
+      this.menuFocused = false
+
       // Force focus immediately
       this.$focus()
     },
     focus() {
       this.$log.info('Movies Focus')
-      this.menuFocused = false 
+      this.menuFocused = false
+      if (this.$appState) {
+        this.$appState.focusMenu = false
+      }
     },
     unfocus() {
       this.$log.info('Movies unfocus')
@@ -150,18 +155,11 @@ export default Blits.Component('Movies', {
 
   input: {
     left() {
-      
       if (this.focusedMovieIndex % 3 === 0) {
-        
         this.menuFocused = true
         if (this.$appState) {
           this.$appState.activeView = this
           this.$appState.focusMenu = true
-          
-          const menu = this.parent.$select('routerMenu')
-          if (menu && menu.$focus) {
-            menu.$focus()
-          }
         }
       } else {
         // Move left within the grid
@@ -170,6 +168,17 @@ export default Blits.Component('Movies', {
     },
 
     right() {
+      // If menu is focused, return focus to movies
+      if (this.menuFocused) {
+        this.menuFocused = false
+        if (this.$appState) {
+          this.$appState.focusMenu = false
+        }
+
+        this.$focus()
+        return
+      }
+
       // Move right within the grid
       if (this.focusedMovieIndex < this.movies.length - 1) {
         this.focusedMovieIndex = Math.min(this.movies.length - 1, this.focusedMovieIndex + 1)
@@ -193,10 +202,10 @@ export default Blits.Component('Movies', {
     },
 
     enter() {
-      
+
       const movie = this.movies[this.focusedMovieIndex]
       if (movie) {
-        
+
         this.$appState.selectedMovie = movie
         this.$router.to(`/examples/router/movies/${movie.id}`)
       }
