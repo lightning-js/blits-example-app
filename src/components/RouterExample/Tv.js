@@ -11,6 +11,7 @@ export default Blits.Component('Tv', {
         <Text content="TV Shows" x="40" y="80" size="42" font="raleway" color="#fff" />
 
         <Element x="40" y="160" w="1200" h="400" color="#374151" :effects="[{type: 'radius', props: 12}]">
+          <Element w="1200" h="5" :color="$color" />
           <Text content="TV Shows Main Page" x="40" y="40" size="28" color="#fff" />
 
           <Element x="40" y="160" w="500" h="150" color="#4a5568" :effects="[{type: 'radius', props: 8}]">
@@ -22,6 +23,19 @@ export default Blits.Component('Tv', {
       </Element>
     </Element>
   `,
+  state() {
+    return {
+      color: '#374151',
+    }
+  },
+  hooks: {
+    focus() {
+      this.color = '#fbbf24'
+    },
+    unfocus() {
+      this.color = '#374151'
+    },
+  },
   input: {
     left() {
       // Focus menu

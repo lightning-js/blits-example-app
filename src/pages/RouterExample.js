@@ -150,22 +150,23 @@ export const RouterExampleRoutes = [
         to.data.movies = await getMovies()
       },
     },
-    transition: PageTransitions.slideInOutLeft,
+    // transition: PageTransitions.slideInOutLeft,
   },
   {
     path: '/examples/router/movies/:id',
     component: Details,
     options: {
-      reuseComponent: true,
-      keepAlive: false,
+      keepAlive: true,
     },
     announce: 'Movie Details',
-    transition: PageTransitions.slideInOutRight,
+    // transition: PageTransitions.slideInOutRight,
   },
   {
     path: '/examples/router/tv',
     component: Tv,
-    keepAlive: true,
+    options: {
+      keepAlive: true,
+    },
     announce: 'Browsing TV Shows',
   },
   {

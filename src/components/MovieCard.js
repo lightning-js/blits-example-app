@@ -15,7 +15,7 @@ export default Blits.Component('MovieCard', {
       <Text :content="$genre" x="20" y="75" size="14" :color="$focused ? '#e2e8f0' : '#a0aec0'" />
       <Text :content="'Directed by ' + $director" x="20" y="100" size="12" :color="$focused ? '#cbd5e1' : '#9ca3af'" />
       <Text :content="$mood" x="20" y="125" size="12" :color="$focused ? '#cbd5e1' : '#9ca3af'" />
-    
+
       <!-- Focus border indicator -->
       <Element
         :show="$focused"

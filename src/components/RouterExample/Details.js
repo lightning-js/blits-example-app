@@ -1,17 +1,22 @@
 import Blits from '@lightningjs/blits'
+import { List } from './List'
 
 export default Blits.Component('Details', {
+  components: {
+    List,
+  },
   template: `
     <Element w="1920" h="1080" color="#1e293b">
       <!-- Divider -->
       <Element x="400" y="0" w="2" h="1080" color="#4a5568" />
-    
+
       <!-- Content -->
       <Element x="402" y="0" w="1518" h="1080">
         <Text content="Movie Details" x="40" y="40" size="42" font="raleway" color="#fff" />
         <Text content="Press BACK to return to movies" x="40" y="100" size="20" color="#a0aec0" />
-    
+
         <Element x="40" y="160" w="1438" h="600" color="#374151" :effects="[{type: 'radius', props: 12}]">
+          <Element w="1438" h="5" :color="$color" />
           <Text content="Movie Information" x="40" y="40" size="32" color="#fff" />
           <Text :content="'Movie ID: ' + $movieId" x="40" y="100" size="24" color="#e2e8f0" />
           <Text
@@ -51,17 +56,34 @@ export default Blits.Component('Details', {
           />
           <Text content="Focus is now on this content area - use BACK to return" x="40" y="460" size="18" color="#718096" />
         </Element>
+
+        <List type="movies" :currentIndex="$movieId" />
       </Element>
     </Element>
   `,
   state() {
     return {
       movieId: 'N/A',
+      color: '#374151',
     }
   },
   hooks: {
     ready() {
       this.movieId = String(this.$router.currentRoute.params.id || 'No ID')
+    },
+    focus() {
+      this.color = '#fbbf24'
+    },
+    unfocus() {
+      this.color = '#374151'
+    },
+  },
+  input: {
+    left() {
+      if (this.$appState) {
+        this.$appState.activeView = this
+        this.$appState.focusMenu = true
+      }
     },
   },
 })
