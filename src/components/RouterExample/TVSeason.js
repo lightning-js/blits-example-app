@@ -46,10 +46,6 @@ export default Blits.Component('TvSeason', {
   },
 
   input: {
-    back() {
-      this.$router.to(`/router-example/tv/${this.showId}`)
-    },
-
     left() {
       const prev = this.currentSeason - 1
       if (prev >= 1) {

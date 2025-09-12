@@ -9,14 +9,14 @@ export default Blits.Component('Movies', {
     <Element w="1920" h="1080" color="#1e293b" focusable="true">
       <!-- Divider -->
       <Element x="400" y="0" w="2" h="1080" color="#4a5568" />
-    
+
       <!-- Content -->
       <Element x="402" y="0" w="1518" h="1080">
         <Text content="Movies" x="40" y="80" size="42" font="raleway" color="#fff" />
-    
+
         <Element x="40" y="160" w="1400" h="800" color="#374151" :effects="[{type: 'radius', props: 12}]">
           <Text content="Movies Collection" x="40" y="40" size="28" color="#fff" />
-    
+
           <!-- Movie Cards using for-loop -->
           <MovieCard
             :for="(movie, index) in $movies"
@@ -31,7 +31,7 @@ export default Blits.Component('Movies', {
             :movieId="$movie.id"
             :ref="'movie' + $index"
           />
-    
+
           <Element x="40" y="560" w="500" h="100" color="#4a5568" :effects="[{type: 'radius', props: 8}]">
             <Text content="Controls:" x="20" y="20" size="16" color="#a0aec0" />
             <Text content="⏎ ENTER → Movie Details" x="20" y="45" size="14" color="#e2e8f0" />

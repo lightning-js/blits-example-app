@@ -27,7 +27,7 @@ export default Blits.Component('Loader', {
   },
   methods: {
     finish() {
-      this.$router.to('examples/router/movies')
+      this.$router.to('/examples/router/movies')
     },
   },
 })

@@ -75,10 +75,7 @@ export default Blits.Component('Menu', {
       }
     },
     back() {
-      // Navigate back to home and hide menu
-      this.$appState.showMenu = false
-      this.$appState.focusMenu = false
-      this.$router.to('/')
+      this.$router.back()
     },
   },
 })

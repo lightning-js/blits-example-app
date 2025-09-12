@@ -71,9 +71,9 @@ export default Blits.Application({
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
       <RouterView w="100%" h="100%" />
-    
+
       <!-- Router Examples Menu (rendered on top) -->
-      <Menu :show="$$appState.showMenu" ref="routerMenu" />
+      <Menu :alpha="$$appState.showMenu" ref="routerMenu" />
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
@@ -87,11 +87,15 @@ export default Blits.Application({
   },
   routes: [
     // Demo routes
-    { path: '/', component: Portal, options: { keepAlive: true } },
+    { path: '/', component: Portal, options: { keepAlive: true, reuseComponent: true } },
     // Loading a route via a dynamic import
     {
       path: '/demos/loading',
       component: () => import('./pages/Loading.js'),
+      options: {
+        keepAlive: true,
+        reuseComponent: true,
+      },
     },
     // Loading a route in a Promise
     {
@@ -205,6 +209,11 @@ export default Blits.Application({
       if (v === true) {
         const menu = this.$select('routerMenu')
         menu && menu.$focus && menu.$focus()
+      }
+    },
+    '$router.state.path'(v) {
+      if (v !== undefined && v.includes('/examples/router/') === false) {
+        this.$appState.showMenu = false
       }
     },
   },
