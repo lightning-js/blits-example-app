@@ -1,6 +1,6 @@
 // Import components
 import { Movies, Details, Tv, TvDetails, TvSeason, Loader } from '../components/RouterExample'
-import { getMovies } from '../api/routerExampleData'
+import { getMovies, getTvShows } from '../api/routerExampleData'
 
 //custom page transitions for when the router navigates to router example pages
 const PageTransitions = {
@@ -68,6 +68,23 @@ const PageTransitions = {
       duration: 400,
     },
   },
+  zoomIn: {
+    before: {
+      prop: 'scale',
+      value: 0.5,
+    },
+    in: {
+      prop: 'scale',
+      value: 1,
+      duration: 400,
+      easing: 'ease-out',
+    },
+    out: {
+      prop: 'scale',
+      value: 0.5,
+      duration: 300,
+    },
+  },
 }
 
 // Router Routes
@@ -116,11 +133,28 @@ export const RouterExampleRoutes = [
       keepAlive: true,
     },
     announce: 'Browsing TV Shows',
+    hooks: {
+      before: async (to, from) => {
+        to.data.tvShows = await getTvShows()
+      },
+    },
+    transition: PageTransitions.zoomIn,
   },
   {
     path: '/examples/router/tv/:id/season/:season',
     component: TvSeason,
     announce: 'TV Season Details',
+    options: {
+      reuseComponent: true,
+    },
+    hooks: {
+      async before(to, from) {
+        const id = to.params.id
+        const tvShows = await getTvShows()
+        this.$appState.selectedTvShow = tvShows[id - 1]
+      },
+    },
+    transition: PageTransitions.zoomIn,
   },
   {
     path: '/examples/router/tv/:id',
@@ -129,5 +163,13 @@ export const RouterExampleRoutes = [
       reuseComponent: true,
     },
     announce: 'TV Show Details',
+    hooks: {
+      async before(to, from) {
+        const id = to.params.id
+        const tvShows = await getTvShows()
+        this.$appState.selectedTvShow = tvShows[id - 1]
+      },
+    },
+    transition: PageTransitions.zoomIn,
   },
 ]
