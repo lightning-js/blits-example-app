@@ -106,6 +106,9 @@ export const RouterExampleRoutes = [
     hooks: {
       before: async (to, from) => {
         to.data.movies = await getMovies()
+        if (from.path === '/examples/router/tv') {
+          to.transition = PageTransitions.zoomIn
+        }
       },
     },
     transition: PageTransitions.slideInOutLeft,
