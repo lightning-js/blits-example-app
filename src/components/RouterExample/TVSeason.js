@@ -1,6 +1,10 @@
 import Blits from '@lightningjs/blits'
+import { List } from './List'
 
 export default Blits.Component('TvSeason', {
+  components: {
+    List,
+  },
   template: `
     <Element w="1920" h="1080" color="#1e293b" focusable="true">
       <!-- Divider -->
@@ -34,13 +38,23 @@ export default Blits.Component('TvSeason', {
                 :color="($focusedEpisodeIndex === $index && $isFocused) ? '#000' : '#cbd5e1'"
               />
             </Element>
+
+            <!-- Episode Details Display -->
+            <Element x="250" y="40" w="600" h="300" color="#4a5568" :effects="[{type: 'radius', props: 8}]">
+              <Text content="Episode Details" x="20" y="20" size="20" color="#fff" />
+              <Text :content="$episodeDetails.title" x="20" y="60" size="18" color="#e2e8f0" />
+              <Text :content="$episodeDetails.description" x="20" y="100" size="14" color="#cbd5e1" />
+              <Text :content="'Duration: ' + $episodeDetails.duration" x="20" y="140" size="14" color="#a0aec0" />
+              <Text :content="'Air Date: ' + $episodeDetails.airDate" x="20" y="170" size="14" color="#a0aec0" />
+              <Text :content="'Rating: ' + $episodeDetails.rating" x="20" y="200" size="14" color="#a0aec0" />
+            </Element>
           </Element>
 
-          <Element x="40" y="520" w="600" h="60" color="#4a5568" :effects="[{type: 'radius', props: 8}]">
-            <Text content="Controls:" x="20" y="10" size="16" color="#a0aec0" />
-            <Text content="↑↓ Navigate Episodes | ← Sidebar | → Details | ⬅ BACK" x="20" y="30" size="14" color="#e2e8f0" />
-          </Element>
+          
         </Element>
+
+        <!-- TV Shows List for navigation -->
+        <List x="40" type="tv" :currentIndex="$tvShow ? $tvShow.id - 1 : 0" ref="tvSeasonList" />
       </Element>
     </Element>
   `,
@@ -56,7 +70,40 @@ export default Blits.Component('TvSeason', {
     }
   },
 
- 
+  computed: {
+    episodeDetails() {
+      const episode = this.episodes[this.focusedEpisodeIndex]
+      if (!episode) {
+        return {
+          title: 'No Episode Selected',
+          description: 'Select an episode to view details',
+          duration: 'N/A',
+          airDate: 'N/A',
+          rating: 'N/A'
+        }
+      }
+      
+      // Generate random episode details
+      const descriptions = [
+        'An exciting episode filled with drama and suspense.',
+        'A character-driven story that explores deep themes.',
+        'Action-packed episode with thrilling sequences.',
+        'A comedic episode that brings light-hearted moments.',
+        'A plot-twisting episode that changes everything.'
+      ]
+      
+      const durations = ['42 min', '45 min', '38 min', '50 min', '40 min']
+      const ratings = ['8.2/10', '9.1/10', '7.8/10', '8.9/10', '8.5/10']
+      
+      return {
+        title: episode.title,
+        description: descriptions[episode.number - 1] || descriptions[0],
+        duration: durations[episode.number - 1] || durations[0],
+        airDate: `Season ${this.currentSeason}, Episode ${episode.number}`,
+        rating: ratings[episode.number - 1] || ratings[0]
+      }
+    }
+  },
 
   watch: {
     tvShow() {
@@ -165,7 +212,11 @@ export default Blits.Component('TvSeason', {
       // Navigate down through episodes
       if (this.focusedEpisodeIndex < this.episodes.length - 1) {
         this.focusedEpisodeIndex = this.focusedEpisodeIndex + 1
-      }
+        } else {
+          // Move to TV shows list
+          const tvSeasonList = this.$select('tvSeasonList')
+          if (tvSeasonList && tvSeasonList.$focus) tvSeasonList.$focus()
+        }
     },
   },
 })

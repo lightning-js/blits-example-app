@@ -1,4 +1,5 @@
 import Blits from '@lightningjs/blits'
+import { List } from './List'
 
 const SeasonItem = Blits.Component('SeasonItem', {
   template: `
@@ -41,6 +42,7 @@ const SeasonItem = Blits.Component('SeasonItem', {
 export default Blits.Component('TvDetails', {
   components: {
     SeasonItem,
+    List,
   },
   template: `
     <Element w="1920" h="1080" color="#1e293b" focusable="true">
@@ -86,6 +88,9 @@ export default Blits.Component('TvDetails', {
               :ref="'season' + $index"
             />
           </Element>
+
+           
+          <List x="0" type="tv" :currentIndex="$tvShow ? $tvShow.id - 1 : 0" ref="tvList" />
         </Element>
       </Element>
     </Element>
@@ -153,8 +158,12 @@ export default Blits.Component('TvDetails', {
     },
     down() {
       // Move down through seasons vertically
-      if (this.focusedSeasonIndex < this.seasons.length) {
+      if (this.focusedSeasonIndex < this.seasons.length - 1) {
         this.focusedSeasonIndex = this.focusedSeasonIndex + 1
+      } else {
+        // Move to TV shows list
+        const tvList = this.$select('tvList')
+        if (tvList && tvList.$focus) tvList.$focus()
       }
     },
     enter() {

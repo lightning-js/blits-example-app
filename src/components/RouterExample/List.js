@@ -1,12 +1,12 @@
 import Blits from '@lightningjs/blits'
-import { getMovies } from '../../api/routerExampleData'
+import { getMovies, getTvShows } from '../../api/routerExampleData'
 
 const ListItem = Blits.Component('ListItem', {
   template: `
     <Element w="$w" h="$h" :color="$bColor" :effects="[{type: 'radius', props: {radius: 8}}]">
       <Text content="$title" x="20" y="20" size="20" :color="$focused ? '#fff' : '#e2e8f0'" font="raleway" />
       <Text content="$genre" x="20" y="55" size="14" :color="$focused ? '#e2e8f0' : '#a0aec0'" />
-      <Text :content="'Directed by ' + $director" x="20" y="80" size="12" :color="$focused ? '#cbd5e1' : '#9ca3af'" />
+      <Text :content="$subtitle" x="20" y="80" size="12" :color="$focused ? '#cbd5e1' : '#9ca3af'" />
     </Element>
   `,
   state() {
@@ -17,7 +17,7 @@ const ListItem = Blits.Component('ListItem', {
       bColor: '#374151',
     }
   },
-  props: ['title', 'genre', 'director'],
+  props: ['title', 'genre', 'subtitle'],
   hooks: {
     focus() {
       this.focused = true
@@ -41,7 +41,7 @@ export const List = Blits.Component('List', {
         key="$item.id"
         title="$item.title"
         genre="$item.genre"
-        director="$item.director"
+        :subtitle="$item.subtitle"
         :x="$index * 450"
         ref="listItem"
       />
@@ -86,6 +86,9 @@ export const List = Blits.Component('List', {
       if (this.type === 'movies') {
         this.$appState.selectedMovie = targetItem
         this.$router.to(`/examples/router/movies/${targetItem.id}`)
+      } else if (this.type === 'tv') {
+        this.$appState.selectedTvShow = targetItem
+        this.$router.to(`/examples/router/tv/${targetItem.id}`)
       }
     },
     up() {
@@ -102,8 +105,12 @@ export const List = Blits.Component('List', {
       let d
       if (this.type == 'movies') {
         d = await getMovies()
+        // Add subtitle for movies
+        d = d.map(item => ({ ...item, subtitle: `Directed by ${item.director}` }))
       } else if (this.type == 'tv') {
-        // d = await getTv()
+        d = await getTvShows()
+        // Add subtitle for TV shows
+        d = d.map(item => ({ ...item, subtitle: `Created by ${item.creator} • ${item.seasons} seasons` }))
       }
       this.data = d
     },
