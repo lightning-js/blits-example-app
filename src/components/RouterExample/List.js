@@ -1,6 +1,33 @@
 import Blits from '@lightningjs/blits'
 import { getMovies, getTvShows } from '../../api/routerExampleData'
 
+const SeasonListItem = Blits.Component('SeasonsListItem', {
+  template: `
+    <Element w="$w" :h="$h" :color="$bColor" :effects="[{type: 'radius', props: {radius: 8}}]">
+      <Text content="$title" :x="$w/2" :y="$h/2" mount="0.5" :color="$focused ? '#fff' : '#e2e8f0'" font="raleway" />
+    </Element>
+  `,
+  state() {
+    return {
+      w: 400,
+      h: 70,
+      focused: false,
+      bColor: '#374151',
+    }
+  },
+  props: ['title'],
+  hooks: {
+    focus() {
+      this.focused = true
+      this.bColor = '#3741ff'
+    },
+    unfocus() {
+      this.focused = false
+      this.bColor = '#374151'
+    },
+  },
+})
+
 const ListItem = Blits.Component('ListItem', {
   template: `
     <Element w="$w" h="$h" :color="$bColor" :effects="[{type: 'radius', props: {radius: 8}}]">
@@ -33,18 +60,30 @@ const ListItem = Blits.Component('ListItem', {
 export const List = Blits.Component('List', {
   components: {
     ListItem,
+    SeasonListItem,
   },
   template: `
     <Element :x.transition="$x" y="$y">
-      <ListItem
-        :for="(item, index) in $data"
-        key="$item.id"
-        title="$item.title"
-        genre="$item.genre"
-        :subtitle="$item.subtitle"
-        :x="$index * 450"
-        ref="listItem"
-      />
+      <Element :show="!$isSeasonsList">
+        <ListItem
+          :for="(item, index) in $data"
+          key="$item.id"
+          title="$item.title"
+          genre="$item.genre"
+          :subtitle="$item.subtitle"
+          :x="$index * 450"
+          ref="listItem"
+        />
+      </Element>
+      <Element :show="$isSeasonsList">
+        <SeasonListItem
+          :for="(item, index) in $data"
+          key="$item.id"
+          title="$item.title"
+          :x="$index * 450"
+          ref="seasonListItem"
+        />
+      </Element>
     </Element>
   `,
   state() {
@@ -53,13 +92,18 @@ export const List = Blits.Component('List', {
       y: 800,
       activeIndex: 0,
       data: [],
+      isSeasonsList: false,
     }
   },
   props: ['type', 'currentIndex'],
   watch: {
     activeIndex(v) {
       if (v !== undefined) {
-        const el = this.$select(`listItem${v}`)
+        const el =
+          this.isSeasonsList === true
+            ? this.$select(`seasonListItem${v}`)
+            : this.$select(`listItem${v}`)
+
         if (el && el.$focus) {
           el.$focus()
         }
@@ -89,6 +133,9 @@ export const List = Blits.Component('List', {
       } else if (this.type === 'tv') {
         this.$appState.selectedTvShow = targetItem
         this.$router.to(`/examples/router/tv/${targetItem.id}`)
+      } else if (this.type === 'tv-seasons') {
+        const activeShowId = this.$appState.selectedTvShow.id
+        this.$router.to(`/examples/router/tv/${activeShowId}/season/${targetItem.id}`)
       }
     },
     up() {
@@ -106,11 +153,21 @@ export const List = Blits.Component('List', {
       if (this.type == 'movies') {
         d = await getMovies()
         // Add subtitle for movies
-        d = d.map(item => ({ ...item, subtitle: `Directed by ${item.director}` }))
+        d = d.map((item) => ({ ...item, subtitle: `Directed by ${item.director}` }))
       } else if (this.type == 'tv') {
         d = await getTvShows()
         // Add subtitle for TV shows
-        d = d.map(item => ({ ...item, subtitle: `Created by ${item.creator} • ${item.seasons} seasons` }))
+        d = d.map((item) => ({
+          ...item,
+          subtitle: `Created by ${item.creator} • ${item.seasons} seasons`,
+        }))
+      } else if (this.type === 'tv-seasons') {
+        this.isSeasonsList = true
+        const activeShowSeasonsCount = this.$appState.selectedTvShow.seasons || 1
+        d = []
+        for (let i = 1; i <= activeShowSeasonsCount; i++) {
+          d.push({ id: i, title: `Season ${i}` })
+        }
       }
       this.data = d
     },

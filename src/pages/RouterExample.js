@@ -124,6 +124,7 @@ export const RouterExampleRoutes = [
         const id = to.params.id
         const movies = await getMovies()
         this.$appState.selectedMovie = movies[id - 1]
+        to.announce = `${this.$appState.selectedMovie.title} Movie Details`
       },
     },
     announce: 'Movie Details',
@@ -152,9 +153,13 @@ export const RouterExampleRoutes = [
     },
     hooks: {
       async before(to, from) {
-        const id = to.params.id
-        const tvShows = await getTvShows()
-        this.$appState.selectedTvShow = tvShows[id - 1]
+        const seasonId = to.params.season
+        const showTitle = this.$appState.selectedTvShow.title
+        to.announce = `${showTitle} Show Season ${seasonId} Details`
+        to.data = {
+          seasonId,
+          showTitle,
+        }
       },
     },
     transition: PageTransitions.zoomIn,
@@ -171,6 +176,8 @@ export const RouterExampleRoutes = [
         const id = to.params.id
         const tvShows = await getTvShows()
         this.$appState.selectedTvShow = tvShows[id - 1]
+        const title = this.$appState.selectedTvShow.title
+        to.announce = `${title} Show Details`
       },
     },
     transition: PageTransitions.zoomIn,

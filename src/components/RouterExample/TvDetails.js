@@ -3,14 +3,7 @@ import { List } from './List'
 
 const SeasonItem = Blits.Component('SeasonItem', {
   template: `
-    <Element
-      x="0"
-      y="$y"
-      w="200"
-      h="50"
-      :color="$focused ? '#fbbf24' : '#4a5568'"
-      :effects="[{type: 'radius', props: 8}]"
-    >
+    <Element x="0" y="$y" w="200" h="50" :color="$focused ? '#fbbf24' : '#4a5568'" :effects="[{type: 'radius', props: 8}]">
       <Text :content="'Season ' + $seasonNumber" x="20" y="15" size="18" :color="$focused ? '#000' : '#fff'" />
     </Element>
   `,
@@ -33,7 +26,9 @@ const SeasonItem = Blits.Component('SeasonItem', {
       this.$appState.focusMenu = false
       // Ensure the TV show data is in global state before navigation
       if (this.$appState && this.$appState.selectedTvShow) {
-        this.$router.to(`/examples/router/tv/${this.$appState.selectedTvShow.id}/season/${this.seasonNumber}`)
+        this.$router.to(
+          `/examples/router/tv/${this.$appState.selectedTvShow.id}/season/${this.seasonNumber}`
+        )
       }
     },
   },
@@ -45,17 +40,17 @@ export default Blits.Component('TvDetails', {
     List,
   },
   template: `
-    <Element w="1920" h="1080" color="#1e293b" focusable="true">
+    <Element w="1920" h="1080" color="#1e293b">
       <!-- Divider -->
-      <Element x="400" y="0" w="2" h="1080" color="#4a5568" />
+      <Element x="400" w="2" h="1080" color="#4a5568" />
 
       <!-- Content -->
-      <Element x="402" y="0" w="1518" h="1080">
+      <Element x="402" w="1518">
         <Text content="TV Show Details" x="40" y="80" size="42" font="raleway" color="#fff" />
 
-        <Element x="40" y="160" w="1400" h="800" color="#374151" :effects="[{type: 'radius', props: 12}]">
+        <Element x="40" y="160" w="1400" h="720" color="#374151" :effects="[{type: 'radius', props: 12}]">
           <Text :content="$tvShow ? $tvShow.title : 'Loading...'" x="40" y="40" size="32" color="#fff" font="raleway" />
-          
+
           <Element x="40" y="100" w="600" h="300">
             <Text :content="'Created by: ' + ($tvShow ? $tvShow.creator : 'N/A')" x="0" y="0" size="20" color="#e2e8f0" />
             <Text :content="'Genre: ' + ($tvShow ? $tvShow.genre : 'N/A')" x="0" y="40" size="18" color="#cbd5e1" />
@@ -77,20 +72,20 @@ export default Blits.Component('TvDetails', {
           </Element>
 
           <!-- Seasons List -->
-          <Element x="40" y="420" w="1200" h="200">
-            <Text content="Seasons:" x="0" y="0" size="24" color="#fff" />
-            
-            <SeasonItem
-              :for="(season, index) in $seasons"
-              key="$season"
-              :seasonNumber="$season"
-              :y="40 + ($index * 60)"
-              :ref="'season' + $index"
-            />
+          <Element x="40" y="420" w="1200">
+            <Text content="Seasons:" size="24" color="#fff" />
+            <Element w="1200" h="200" clipping="true" y="40">
+              <SeasonItem
+                :for="(season, index) in $seasons"
+                key="$season"
+                :seasonNumber="$season"
+                :y="($index * 60)"
+                :ref="'season' + $index"
+              />
+            </Element>
           </Element>
 
-           
-          <List x="0" type="tv" :currentIndex="$tvShow ? $tvShow.id - 1 : 0" ref="tvList" />
+          <List y="-50" type="tv" :currentIndex="$tvShow ? $tvShow.id - 1 : 0" ref="tvList" />
         </Element>
       </Element>
     </Element>
@@ -123,22 +118,17 @@ export default Blits.Component('TvDetails', {
   },
   hooks: {
     ready() {
-      // Show menu and focus TV Shows
-      if (this.$appState) {
-        this.$appState.showMenu = true
-        this.$appState.focusMenu = false
-      }
-      
       // Get the selected TV show from app state
       if (this.$appState && this.$appState.selectedTvShow) {
         this.tvShow = this.$appState.selectedTvShow
-      } 
+      }
     },
     focus() {
       // Ensure we have the TV show data
       if (this.$appState && this.$appState.selectedTvShow && !this.tvShow) {
         this.tvShow = this.$appState.selectedTvShow
       }
+      this.focusedSeasonIndex = 0
       this.$trigger('focusedSeasonIndex')
     },
   },

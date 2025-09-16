@@ -12,13 +12,19 @@ export default Blits.Component('TvSeason', {
 
       <!-- Content -->
       <Element x="402" y="0" w="1518" h="1080">
-        <Text :content="($tvShow ? $tvShow.title : 'TV Show') + ' - Season ' + $currentSeason" x="40" y="80" size="36" font="raleway" color="#fff" />
+        <Text
+          :content="($showTitle ? $showTitle : 'TV Show') + ' - Season ' + $seasonId"
+          x="40"
+          y="80"
+          size="36"
+          font="raleway"
+          color="#fff"
+        />
 
         <Element x="40" y="160" w="1400" h="600" color="#374151" :effects="[{type: 'radius', props: 12}]">
-          
           <Element x="40" y="100" w="1200" h="400">
             <Text content="Episodes:" x="0" y="0" size="20" color="#e2e8f0" />
-            
+
             <!-- Episode list with focus -->
             <Element
               :for="(episode, index) in $episodes"
@@ -49,27 +55,21 @@ export default Blits.Component('TvSeason', {
               <Text :content="'Rating: ' + $episodeDetails.rating" x="20" y="200" size="14" color="#a0aec0" />
             </Element>
           </Element>
-
-          
         </Element>
 
         <!-- TV Shows List for navigation -->
-        <List x="40" type="tv" :currentIndex="$tvShow ? $tvShow.id - 1 : 0" ref="tvSeasonList" />
+        <List x="40" type="tv-seasons" :currentIndex="$seasonId" ref="tvSeasonList" />
       </Element>
     </Element>
   `,
-
+  props: ['showTitle', 'seasonId'],
   state() {
     return {
-      currentSeason: 1,
-      showId: 'N/A',
-      tvShow: null,
       episodes: [],
       focusedEpisodeIndex: 0,
       isFocused: false,
     }
   },
-
   computed: {
     episodeDetails() {
       const episode = this.episodes[this.focusedEpisodeIndex]
@@ -79,42 +79,40 @@ export default Blits.Component('TvSeason', {
           description: 'Select an episode to view details',
           duration: 'N/A',
           airDate: 'N/A',
-          rating: 'N/A'
+          rating: 'N/A',
         }
       }
-      
+
       // Generate random episode details
       const descriptions = [
         'An exciting episode filled with drama and suspense.',
         'A character-driven story that explores deep themes.',
         'Action-packed episode with thrilling sequences.',
         'A comedic episode that brings light-hearted moments.',
-        'A plot-twisting episode that changes everything.'
+        'A plot-twisting episode that changes everything.',
       ]
-      
+
       const durations = ['42 min', '45 min', '38 min', '50 min', '40 min']
       const ratings = ['8.2/10', '9.1/10', '7.8/10', '8.9/10', '8.5/10']
-      
+
       return {
         title: episode.title,
         description: descriptions[episode.number - 1] || descriptions[0],
         duration: durations[episode.number - 1] || durations[0],
         airDate: `Season ${this.currentSeason}, Episode ${episode.number}`,
-        rating: ratings[episode.number - 1] || ratings[0]
+        rating: ratings[episode.number - 1] || ratings[0],
       }
-    }
+    },
   },
 
   watch: {
-    tvShow() {
-      // Regenerate episodes when TV show data changes
-      this.generateEpisodes()
-    },
-    currentSeason() {
-      // Regenerate episodes when season changes
-      this.generateEpisodes()
-      // Reset episode focus when season changes
-      this.focusedEpisodeIndex = 0
+    seasonId(v) {
+      if (v != undefined) {
+        // Regenerate episodes when season changes
+        this.generateEpisodes()
+        // Reset episode focus when season changes
+        this.focusedEpisodeIndex = 0
+      }
     },
     focusedEpisodeIndex() {
       if (this.focusedEpisodeIndex >= this.episodes.length) {
@@ -125,64 +123,20 @@ export default Blits.Component('TvSeason', {
 
   hooks: {
     ready() {
-      const { params } = this.$router.currentRoute
-      this.currentSeason = parseInt(String(params.season)) || 1
-      this.showId = String(params.id || 'N/A')
-      
-      // Show menu and focus TV Shows
-      if (this.$appState) {
-        this.$appState.showMenu = true
-        this.$appState.focusMenu = false
-      }
-      
-      // Load TV show data
-      this.loadTvShowData()
+      this.generateEpisodes()
     },
     focus() {
-      // Set component as focused
       this.isFocused = true
-      this.loadTvShowData()
-
-      if (this.$focus) {
-        this.$focus()
-      }
-    },
-    unfocus() {
-      // Set component as unfocused
-      this.isFocused = false
+      this.$trigger('focusedEpisodeIndex')
     },
   },
 
   methods: {
-    loadTvShowData() {
-      // Get the selected TV show from app state
-      if (this.$appState && this.$appState.selectedTvShow) {
-        this.tvShow = this.$appState.selectedTvShow
-      } else {
-        // Fallback: create a dummy TV show for testing if data is not available
-        this.tvShow = {
-          id: parseInt(this.showId) || 1,
-          title: 'Sample TV Show',
-          seasons: 5,
-          creator: 'Sample Creator',
-          genre: 'Drama',
-          year: 2020,
-          episodes: 50,
-          status: 'Ongoing',
-          rating: '8.5/10',
-          mood: 'Dramatic, engaging'
-        }
-      }
-      
-      // Generate episodes for current season
-      this.generateEpisodes()
-    },
-
     generateEpisodes() {
       // Generate simple episodes for the current season
       const episodeCount = 5 // Fixed episode count for simplicity
       this.episodes = []
-      
+
       for (let i = 1; i <= episodeCount; i++) {
         this.episodes.push({
           number: i,
@@ -212,11 +166,12 @@ export default Blits.Component('TvSeason', {
       // Navigate down through episodes
       if (this.focusedEpisodeIndex < this.episodes.length - 1) {
         this.focusedEpisodeIndex = this.focusedEpisodeIndex + 1
-        } else {
-          // Move to TV shows list
-          const tvSeasonList = this.$select('tvSeasonList')
-          if (tvSeasonList && tvSeasonList.$focus) tvSeasonList.$focus()
-        }
+      } else {
+        this.isFocused = false
+        // Move to TV shows list
+        const tvSeasonList = this.$select('tvSeasonList')
+        if (tvSeasonList && tvSeasonList.$focus) tvSeasonList.$focus()
+      }
     },
   },
 })
