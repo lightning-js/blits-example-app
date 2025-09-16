@@ -142,7 +142,10 @@ export default Blits.Component('TvSeason', {
       // Set component as focused
       this.isFocused = true
       this.loadTvShowData()
-      this.$trigger('focusedEpisodeIndex')
+
+      if (this.$focus) {
+        this.$focus()
+      }
     },
     unfocus() {
       // Set component as unfocused
@@ -210,7 +213,6 @@ export default Blits.Component('TvSeason', {
       if (this.focusedEpisodeIndex < this.episodes.length - 1) {
         this.focusedEpisodeIndex = this.focusedEpisodeIndex + 1
         } else {
-          this.isFocused = false
           // Move to TV shows list
           const tvSeasonList = this.$select('tvSeasonList')
           if (tvSeasonList && tvSeasonList.$focus) tvSeasonList.$focus()
