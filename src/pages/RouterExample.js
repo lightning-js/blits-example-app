@@ -123,8 +123,15 @@ export const RouterExampleRoutes = [
       async before(to, from) {
         const id = to.params.id
         const movies = await getMovies()
-        this.$appState.selectedMovie = movies[id - 1]
-        to.announce = `${this.$appState.selectedMovie.title} Movie Details`
+        const selectedMovie = movies[id - 1]
+        
+        // Handle invalid movie ID
+        if (!selectedMovie) {
+          return '*' // Redirect to 404 page
+        }
+        
+        this.$appState.selectedMovie = selectedMovie
+        to.announce = `${selectedMovie.title} Movie Details`
       },
     },
     announce: 'Movie Details',
@@ -154,6 +161,17 @@ export const RouterExampleRoutes = [
     hooks: {
       async before(to, from) {
         const seasonId = to.params.season
+        
+        // Handle missing TV show data
+        if (!this.$appState.selectedTvShow) {
+          return '*' // Redirect to 404 page
+        }
+        
+        const season = parseInt(seasonId)
+        if (!season || season < 1 || season > 5) {
+          return '*' // Redirect to 404 for invalid season
+        }
+        
         const showTitle = this.$appState.selectedTvShow.title
         to.announce = `${showTitle} Show Season ${seasonId} Details`
         to.data = {
@@ -175,9 +193,15 @@ export const RouterExampleRoutes = [
       async before(to, from) {
         const id = to.params.id
         const tvShows = await getTvShows()
-        this.$appState.selectedTvShow = tvShows[id - 1]
-        const title = this.$appState.selectedTvShow.title
-        to.announce = `${title} Show Details`
+        const selectedTvShow = tvShows[id - 1]
+        
+        // Handle invalid TV show ID
+        if (!selectedTvShow) {
+          return '*' // Redirect to 404 page
+        }
+        
+        this.$appState.selectedTvShow = selectedTvShow
+        to.announce = `${selectedTvShow.title} Show Details`
       },
     },
     transition: PageTransitions.zoomIn,

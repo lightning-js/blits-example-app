@@ -68,7 +68,7 @@ export default Blits.Component('Movies', {
     ready() {
       // Show menu and focus Movies (same pattern as other RouterExample components)
       if (this.$appState) {
-        this.$appState.showMenu = true
+        // this.$appState.showMenu = true
         this.$appState.focusMenu = false
       }
     },

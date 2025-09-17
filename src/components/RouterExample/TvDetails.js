@@ -48,8 +48,8 @@ export default Blits.Component('TvDetails', {
       <Element x="402" w="1518">
         <Text content="TV Show Details" x="40" y="80" size="42" font="raleway" color="#fff" />
 
-        <Element x="40" y="160" w="1400" h="720" color="#374151" :effects="[{type: 'radius', props: 12}]">
-          <Text :content="$tvShow ? $tvShow.title : 'Loading...'" x="40" y="40" size="32" color="#fff" font="raleway" />
+        <Element x="40" y="160" w="1400" h="760" color="#374151" :effects="[{type: 'radius', props: 12}]">
+          <Text :content="$tvShow ? $tvShow.title : 'Loading6...'" x="40" y="40" size="32" color="#fff" font="raleway" />
 
           <Element x="40" y="100" w="600" h="300">
             <Text :content="'Created by: ' + ($tvShow ? $tvShow.creator : 'N/A')" x="0" y="0" size="20" color="#e2e8f0" />
@@ -74,7 +74,7 @@ export default Blits.Component('TvDetails', {
           <!-- Seasons List -->
           <Element x="40" y="420" w="1200">
             <Text content="Seasons:" size="24" color="#fff" />
-            <Element w="1200" h="200" clipping="true" y="40">
+            <Element w="1200" h="300" clipping="true" y="40">
               <SeasonItem
                 :for="(season, index) in $seasons"
                 key="$season"
@@ -85,7 +85,7 @@ export default Blits.Component('TvDetails', {
             </Element>
           </Element>
 
-          <List y="-50" type="tv" :currentIndex="$tvShow ? $tvShow.id - 1 : 0" ref="tvList" />
+          <List y="0" type="tv" :currentIndex="$tvShow ? $tvShow.id - 1 : 0" ref="tvList" />
         </Element>
       </Element>
     </Element>

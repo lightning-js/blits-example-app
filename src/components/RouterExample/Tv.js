@@ -69,7 +69,7 @@ export default Blits.Component('Tv', {
   hooks: {
     ready() {
       if (this.$appState) {
-        this.$appState.showMenu = true
+        // this.$appState.showMenu = true
         this.$appState.focusMenu = false
       }
     },

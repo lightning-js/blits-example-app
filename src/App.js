@@ -152,8 +152,14 @@ export default Blits.Application({
     { path: '/benchmarks/exponential', component: Exponential },
     ...RouterExampleRoutes,
     ...FireBoltRoutes,
+    // Global 404 route - must be last
+    {
+      path: '*',
+      component: () => import('./components/RouterExample/NotFound.js'),
+      announce: 'Page Not Found - Press Back to Return'
+    },
   ],
-  hooks: {
+  hooks: { 
     ready() {
       if (process.env.NODE_ENV === 'testing') {
         this.showFPS = false
@@ -212,8 +218,17 @@ export default Blits.Application({
       }
     },
     '$router.state.path'(v) {
-      if (v !== undefined && v.includes('/examples/router/') === false) {
-        this.$appState.showMenu = false
+      if (v !== undefined) {
+        const isRouterPath = v.includes('/examples/router/')
+        const isLoaderPath = v.includes('/examples/router/loader')
+        
+        if (isRouterPath && !isLoaderPath) {
+          // Show menu for all router pages except loader
+          this.$appState.showMenu = true
+        } else {
+          // Hide menu for non-router pages and loader
+          this.$appState.showMenu = false
+        }
       }
     },
   },
