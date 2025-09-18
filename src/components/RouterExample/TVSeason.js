@@ -13,7 +13,7 @@ export default Blits.Component('TvSeason', {
       <!-- Content -->
       <Element x="402" y="0" w="1518" h="1080">
         <Text
-          :content="($showTitle ? $showTitle : 'TV Show') + ' - Season ' + $seasonId"
+          :content="($showTitle ? $showTitle : 'TV Show') + ' - Season ' + $season"
           x="40"
           y="80"
           size="36"
@@ -58,11 +58,11 @@ export default Blits.Component('TvSeason', {
         </Element>
 
         <!-- TV Shows List for navigation -->
-        <List x="40" type="tv-seasons" :currentIndex="$seasonId" ref="tvSeasonList" />
+        <List x="40" type="tv-seasons" ref="tvSeasonList" />
       </Element>
     </Element>
   `,
-  props: ['showTitle', 'seasonId'],
+  props: ['showTitle', 'season'],
   state() {
     return {
       episodes: [],
@@ -106,7 +106,7 @@ export default Blits.Component('TvSeason', {
   },
 
   watch: {
-    seasonId(v) {
+    season(v) {
       if (v != undefined) {
         // Regenerate episodes when season changes
         this.generateEpisodes()
@@ -128,6 +128,9 @@ export default Blits.Component('TvSeason', {
     focus() {
       this.isFocused = true
       this.$trigger('focusedEpisodeIndex')
+    },
+    destroy() {
+      this.$log.info('>>>>>>>>>>>>> Destoyed TV seasons >>>>>>>>>>>>>>>>>>>>')
     },
   },
 

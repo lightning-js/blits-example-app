@@ -117,11 +117,6 @@ export default Blits.Component('Tv', {
     enter() {
       const selectedTvShow = this.tvShows[this.focusedTvShowIndex]
       if (selectedTvShow) {
-        // Store the selected TV show in global state
-        if (this.$appState) {
-          this.$appState.selectedTvShow = null
-          this.$appState.selectedTvShow = selectedTvShow
-        }
         // Navigate to TV details
         this.$router.to(`/examples/router/tv/${selectedTvShow.id}`)
       }

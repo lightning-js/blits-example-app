@@ -57,7 +57,7 @@ export default Blits.Component('Details', {
           <Text content="Focus is now on this content area - use BACK to return" x="40" y="460" size="18" color="#718096" />
         </Element>
 
-        <List x="40" type="movies" :currentIndex="$id" ref="list" />
+        <List x="40" type="movies" ref="list" />
       </Element>
     </Element>
   `,

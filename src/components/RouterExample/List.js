@@ -4,7 +4,7 @@ import { getMovies, getTvShows } from '../../api/routerExampleData'
 const SeasonListItem = Blits.Component('SeasonsListItem', {
   template: `
     <Element w="$w" :h="$h" :color="$bColor" :effects="[{type: 'radius', props: {radius: 8}}]">
-      <Text content="$title" :x="$w/2" :y="$h/2" mount="0.5" :color="$focused ? '#fff' : '#e2e8f0'" font="raleway" />
+      <Text :content="$title" :x="$w/2" :y="$h/2" mount="0.5" :color="$focused ? '#fff' : '#e2e8f0'" font="raleway" />
     </Element>
   `,
   state() {
@@ -31,8 +31,8 @@ const SeasonListItem = Blits.Component('SeasonsListItem', {
 const ListItem = Blits.Component('ListItem', {
   template: `
     <Element w="$w" h="$h" :color="$bColor" :effects="[{type: 'radius', props: {radius: 8}}]">
-      <Text content="$title" x="20" y="20" size="20" :color="$focused ? '#fff' : '#e2e8f0'" font="raleway" />
-      <Text content="$genre" x="20" y="55" size="14" :color="$focused ? '#e2e8f0' : '#a0aec0'" />
+      <Text :content="$title" x="20" y="20" size="20" :color="$focused ? '#fff' : '#e2e8f0'" font="raleway" />
+      <Text :content="$genre" x="20" y="55" size="14" :color="$focused ? '#e2e8f0' : '#a0aec0'" />
       <Text :content="$subtitle" x="20" y="80" size="12" :color="$focused ? '#cbd5e1' : '#9ca3af'" />
     </Element>
   `,
@@ -67,10 +67,10 @@ export const List = Blits.Component('List', {
       <Element :show="!$isSeasonsList">
         <ListItem
           :for="(item, index) in $data"
-          key="$item.id"
+          key="'item' + $item.id"
           title="$item.title"
           genre="$item.genre"
-          :subtitle="$item.subtitle"
+          subtitle="$item.subtitle"
           :x="$index * 450"
           ref="listItem"
         />
@@ -78,7 +78,7 @@ export const List = Blits.Component('List', {
       <Element :show="$isSeasonsList">
         <SeasonListItem
           :for="(item, index) in $data"
-          key="$item.id"
+          key="'seasonItem' + $item.id"
           title="$item.title"
           :x="$index * 450"
           ref="seasonListItem"
@@ -95,7 +95,7 @@ export const List = Blits.Component('List', {
       isSeasonsList: false,
     }
   },
-  props: ['type', 'currentIndex'],
+  props: ['type'],
   watch: {
     activeIndex(v) {
       if (v !== undefined) {
@@ -131,10 +131,9 @@ export const List = Blits.Component('List', {
         this.$appState.selectedMovie = targetItem
         this.$router.to(`/examples/router/movies/${targetItem.id}`)
       } else if (this.type === 'tv') {
-        this.$appState.selectedTvShow = targetItem
         this.$router.to(`/examples/router/tv/${targetItem.id}`)
       } else if (this.type === 'tv-seasons') {
-        const activeShowId = this.$appState.selectedTvShow.id
+        const activeShowId = this.$appState.activeShowId
         this.$router.to(`/examples/router/tv/${activeShowId}/season/${targetItem.id}`)
       }
     },
@@ -149,7 +148,7 @@ export const List = Blits.Component('List', {
       this.activeIndex = next
     },
     async fetchData() {
-      let d
+      let d = []
       if (this.type == 'movies') {
         d = await getMovies()
         // Add subtitle for movies
@@ -163,9 +162,9 @@ export const List = Blits.Component('List', {
         }))
       } else if (this.type === 'tv-seasons') {
         this.isSeasonsList = true
-        const activeShowSeasonsCount = this.$appState.selectedTvShow.seasons || 1
-        d = []
-        for (let i = 1; i <= activeShowSeasonsCount; i++) {
+        const tvShows = await getTvShows()
+        const activeShow = tvShows[this.$appState.activeShowId - 1]
+        for (let i = 1; i <= activeShow.seasons; i++) {
           d.push({ id: i, title: `Season ${i}` })
         }
       }

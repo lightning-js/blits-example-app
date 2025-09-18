@@ -156,10 +156,10 @@ export default Blits.Application({
     {
       path: '*',
       component: () => import('./components/RouterExample/NotFound.js'),
-      announce: 'Page Not Found - Press Back to Return'
+      announce: 'Page Not Found - Press Back to Return',
     },
   ],
-  hooks: { 
+  hooks: {
     ready() {
       if (process.env.NODE_ENV === 'testing') {
         this.showFPS = false
@@ -221,7 +221,7 @@ export default Blits.Application({
       if (v !== undefined) {
         const isRouterPath = v.includes('/examples/router/')
         const isLoaderPath = v.includes('/examples/router/loader')
-        
+
         if (isRouterPath && !isLoaderPath) {
           // Show menu for all router pages except loader
           this.$appState.showMenu = true
