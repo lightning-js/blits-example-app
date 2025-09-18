@@ -124,12 +124,12 @@ export const RouterExampleRoutes = [
         const id = to.params.id
         const movies = await getMovies()
         const selectedMovie = movies[id - 1]
-        
+
         // Handle invalid movie ID
         if (!selectedMovie) {
           return '*' // Redirect to 404 page
         }
-        
+
         this.$appState.selectedMovie = selectedMovie
         to.announce = `${selectedMovie.title} Movie Details`
       },
@@ -161,21 +161,19 @@ export const RouterExampleRoutes = [
     hooks: {
       async before(to, from) {
         const seasonId = to.params.season
-        
-        // Handle missing TV show data
-        if (!this.$appState.selectedTvShow) {
-          return '*' // Redirect to 404 page
-        }
-        
+
+        // // Handle missing TV show data
+        // if (!this.$appState.selectedTvShow) {
+        //   return '*' // Redirect to 404 page
+        // }
+
         const season = parseInt(seasonId)
         if (!season || season < 1 || season > 5) {
           return '*' // Redirect to 404 for invalid season
         }
-        
-        const showTitle = this.$appState.selectedTvShow.title
+        const showTitle = to.data.show
         to.announce = `${showTitle} Show Season ${seasonId} Details`
         to.data = {
-          seasonId,
           showTitle,
         }
       },
@@ -193,15 +191,16 @@ export const RouterExampleRoutes = [
       async before(to, from) {
         const id = to.params.id
         const tvShows = await getTvShows()
-        const selectedTvShow = tvShows[id - 1]
-        
+
+        const targetShow = tvShows[id - 1]
+
         // Handle invalid TV show ID
-        if (!selectedTvShow) {
+        if (!targetShow) {
           return '*' // Redirect to 404 page
         }
-        
-        this.$appState.selectedTvShow = selectedTvShow
-        to.announce = `${selectedTvShow.title} Show Details`
+
+        to.data.tvShow = targetShow
+        to.announce = `${targetShow.title} Show Details`
       },
     },
     transition: PageTransitions.zoomIn,
