@@ -162,9 +162,7 @@ export const List = Blits.Component('List', {
         }))
       } else if (this.type === 'tv-seasons') {
         this.isSeasonsList = true
-        const tvShows = await getTvShows()
-        const activeShow = tvShows[this.$appState.activeShowId - 1]
-        for (let i = 1; i <= activeShow.seasons; i++) {
+        for (let i = 1; i <= this.$appState.activeShowSeasons; i++) {
           d.push({ id: i, title: `Season ${i}` })
         }
       }

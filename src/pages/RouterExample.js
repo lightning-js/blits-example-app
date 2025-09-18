@@ -171,7 +171,7 @@ export const RouterExampleRoutes = [
         if (!season || season < 1 || season > 5) {
           return '*' // Redirect to 404 for invalid season
         }
-        const showTitle = to.data.show
+        const showTitle = this.$appState.activeShowTitle
         to.announce = `${showTitle} Show Season ${seasonId} Details`
         to.data = {
           showTitle,
