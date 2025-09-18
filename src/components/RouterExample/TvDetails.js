@@ -95,10 +95,8 @@ export default Blits.Component('TvDetails', {
     },
   },
   hooks: {
-    ready() {
-      this.getSeasons()
-    },
     focus() {
+      this.getSeasons()
       this.focusedSeasonIndex = 0
       this.$trigger('focusedSeasonIndex')
     },
@@ -132,10 +130,9 @@ export default Blits.Component('TvDetails', {
     },
     enter() {
       this.$appState.activeShowId = this.tvShow.id
-      this.$router.to(
-        `/examples/router/tv/${this.tvShow.id}/season/${this.focusedSeasonIndex + 1}`,
-        { show: this.tvShow.title }
-      )
+      this.$appState.activeShowTitle = this.tvShow.title
+      this.$appState.activeShowSeasons = this.tvShow.seasons
+      this.$router.to(`/examples/router/tv/${this.tvShow.id}/season/${this.focusedSeasonIndex + 1}`)
     },
   },
   methods: {
