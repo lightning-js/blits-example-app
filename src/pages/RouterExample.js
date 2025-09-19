@@ -131,6 +131,7 @@ export const RouterExampleRoutes = [
         }
 
         this.$appState.selectedMovie = selectedMovie
+        to.data.selectedMovie = selectedMovie
         to.announce = `${selectedMovie.title} Movie Details`
       },
     },
@@ -161,16 +162,11 @@ export const RouterExampleRoutes = [
     hooks: {
       async before(to, from) {
         const seasonId = to.params.season
-
-        // // Handle missing TV show data
-        // if (!this.$appState.selectedTvShow) {
-        //   return '*' // Redirect to 404 page
-        // }
-
+        
         const season = parseInt(seasonId)
         if (!season || season < 1 || season > 5) {
           return '*' // Redirect to 404 for invalid season
-        }
+        }  
         const showTitle = this.$appState.activeShowTitle
         to.announce = `${showTitle} Show Season ${seasonId} Details`
         to.data = {

@@ -20,35 +20,35 @@ export default Blits.Component('Details', {
           <Text content="Movie Information" x="40" y="40" size="32" color="#fff" />
           <Text :content="'Movie ID: ' + $id" x="40" y="100" size="24" color="#e2e8f0" />
           <Text
-            :content="'Title: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.title : 'Movie not found')"
+            :content="'Title: ' + ($selectedMovie.title || 'Movie not found')"
             x="40"
             y="140"
             size="24"
             color="#e2e8f0"
           />
           <Text
-            :content="'Genre: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.genre : 'N/A')"
+            :content="'Genre: ' + ($selectedMovie.genre || 'N/A')"
             x="40"
             y="180"
             size="24"
             color="#e2e8f0"
           />
           <Text
-            :content="'Year: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.year : 'N/A')"
+            :content="'Year: ' + ($selectedMovie.year || 'N/A')"
             x="40"
             y="220"
             size="24"
             color="#e2e8f0"
           />
           <Text
-            :content="'Director: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.director : 'N/A')"
+            :content="'Director: ' + ($selectedMovie.director || 'N/A')"
             x="40"
             y="260"
             size="24"
             color="#e2e8f0"
           />
           <Text
-            :content="'Mood: ' + ($$appState.selectedMovie ? $$appState.selectedMovie.mood : 'N/A')"
+            :content="'Mood: ' + ($selectedMovie.mood || 'N/A')"
             x="40"
             y="300"
             size="20"
@@ -61,7 +61,7 @@ export default Blits.Component('Details', {
       </Element>
     </Element>
   `,
-  props: ['id'],
+  props: ['id', 'selectedMovie'],
   state() {
     return {
       color: '#374151',
