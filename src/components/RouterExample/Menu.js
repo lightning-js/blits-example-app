@@ -72,6 +72,9 @@ export default Blits.Component('Menu', {
     focus() {
       this.$trigger('focused')
     },
+    unfocus() {
+      this.$appState.focusMenu = false
+    },
     ready() {
       this.x = 0
     },
