@@ -30,7 +30,7 @@ export default Blits.Component('TvSeason', {
               :for="(episode, index) in $episodes"
               key="$episode.number"
               x="0"
-              :y="40 + ($index * 30)"
+              :y="40 + ($index * 40)"
               w="200"
               h="40"
               :color="($focusedEpisodeIndex === $index && $isFocused) ? '#fbbf24' : 'transparent'"

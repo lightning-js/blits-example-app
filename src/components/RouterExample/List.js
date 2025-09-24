@@ -71,7 +71,7 @@ export const List = Blits.Component('List', {
           title="$item.title"
           genre="$item.genre"
           subtitle="$item.subtitle"
-          :x="$index * 450"
+          :x="$index * 440"
           ref="listItem"
         />
       </Element>
@@ -80,7 +80,7 @@ export const List = Blits.Component('List', {
           :for="(item, index) in $data"
           key="'seasonItem' + $item.id"
           title="$item.title"
-          :x="$index * 450"
+          :x="$index * 440"
           ref="seasonListItem"
         />
       </Element>
@@ -144,7 +144,7 @@ export const List = Blits.Component('List', {
   methods: {
     move(dir) {
       const next = this.activeIndex + dir
-      this.x = next > 2 ? -(next - 2) * 450 : 0
+      this.x = next > 2 ? -(next - 2) * 440 : 0
       this.activeIndex = next
     },
     async fetchData() {

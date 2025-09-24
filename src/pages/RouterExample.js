@@ -85,6 +85,24 @@ const PageTransitions = {
       duration: 300,
     },
   },
+  fadeInOut: {
+    before: {
+      prop: 'alpha',
+      value: 0,
+    },
+    in: {
+      prop: 'alpha',
+      value: 1,
+      duration: 400,
+      easing: 'ease-out',
+    },
+    out: {
+      prop: 'alpha',
+      value: 0,
+      duration: 250,
+      easing: 'ease-in',
+    },
+  },
 }
 
 // Router Routes
@@ -150,7 +168,7 @@ export const RouterExampleRoutes = [
         to.data.tvShows = await getTvShows()
       },
     },
-    transition: PageTransitions.zoomIn,
+    transition: PageTransitions.fadeInOut,
   },
   {
     path: '/examples/router/tv/:id/season/:season',
@@ -174,7 +192,7 @@ export const RouterExampleRoutes = [
         }
       },
     },
-    transition: PageTransitions.zoomIn,
+    transition: PageTransitions.fadeInOut,
   },
   {
     path: '/examples/router/tv/:id',
@@ -199,6 +217,6 @@ export const RouterExampleRoutes = [
         to.announce = `${targetShow.title} Show Details`
       },
     },
-    transition: PageTransitions.zoomIn,
+    transition: PageTransitions.fadeInOut,
   },
 ]
