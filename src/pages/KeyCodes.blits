@@ -1,0 +1,98 @@
+/*
+ * Copyright 2024 Comcast Cable Communications Management, LLC
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+*/
+
+<template>
+  <Element w="1920" h="1080">
+    <Element y="250">
+      <Text
+        content="KeyCode Finder"
+        font="raleway"
+        mount="{x: 0.5}"
+        x="960"
+        size="62"
+        w="800"
+        h="200"
+        contain="width"
+      />
+      <Text
+        content="Press any key to get find the correct key code mapping"
+        mount="{x: 0.5}"
+        x="960"
+        y="100"
+        size="32"
+        w="800"
+        h="200"
+        contain="width"
+      />
+    </Element>
+    <Element x="200">
+      <Box y="600" header="Key" :text="$key" />
+      <Box x="500" y="600" header="Code" :text="$code" />
+      <Box x="1000" y="600" header="keyCode" :text="$keyCode" />
+    </Element>
+    <Text mount="{x: 1}" x="1860" y="1000" size="30" :content="$backLabel" :color="$backPressed ? '#fff' : '#667a97'" />
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import Box from '../components/Box.blits'
+
+export default Blits.Component('KeyCodes', {
+  components: {
+    Box,
+  },
+  state() {
+    return {
+      backPressed: false,
+      key: '...',
+      code: '...',
+      keyCode: '...',
+    }
+  },
+  computed: {
+    backLabel() {
+      return this.backPressed ? 'Press back key again to navigate back' : ''
+    },
+  },
+  methods: {
+    updateLabels(e) {
+      this.key = e.key
+      this.code = e.code
+      this.keyCode = e.keyCode + ''
+    },
+  },
+  input: {
+    any(e) {
+      this.backPressed = false
+      this.updateLabels(e)
+    },
+    back(e) {
+      if (this.backPressed === true) {
+        this.$router.back()
+      } else {
+        this.updateLabels(e)
+      }
+
+      return () => {
+        this.backPressed = true
+      }
+    },
+  },
+})
+</script>
