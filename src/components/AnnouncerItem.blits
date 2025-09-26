@@ -1,0 +1,40 @@
+<template>
+  <Element
+    :color="$$hasFocus ? '#e0f2fe' : '#fef9c3'"
+    w="200"
+    h="200"
+    :effects="[{type: 'radius', props: {radius: 12}}]"
+  >
+    <Text
+      :content="$name"
+      :size="$$hasFocus ? 38 : 32"
+      :color="$$hasFocus ? '#1e3a8a' : '#2563eb'"
+      placement="{x: 'center', y: 'middle'}"
+    />
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+
+export default Blits.Component('AnnouncerItem', {
+  props: ['name'],
+  state() {
+    return {
+      message: null,
+    }
+  },
+  hooks: {
+    focus() {
+      this.message = this.$announcer.speak(this.name)
+    },
+    unfocus() {
+      if (this.message) {
+        this.message.stop()
+        this.message.cancel()
+      }
+    },
+  },
+})
+</script>

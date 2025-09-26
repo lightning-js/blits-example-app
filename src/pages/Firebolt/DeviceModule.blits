@@ -1,0 +1,62 @@
+<template>
+  <Element>
+    <Text content="Device" x="960" mount="{x:0.5}" y="50" font="raleway" size="40" />
+    <Text content="$device.about" x="960" mount="{x:0.5}" y="110" font="lato" />
+    <List data="$device.methods" x="300" ref="methods" type="method" y="100" />
+    <Text x="1400" y="540" :content="$response" size="100" mount="0.5" font="lato" :show="!$isNetworkRes" />
+    <Element :show="$isNetworkRes">
+      <Text :content="'State: ' + $networkRes.state" size="70" font="lato" x="1400" y="500" mount="0.5" />
+      <Text :content="'Type: ' + $networkRes.type" size="70" font="lato" y="100" x="1400" y="580" mount="0.5" />
+    </Element>
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import List from './List.blits'
+import { Device } from '@firebolt-js/sdk'
+import fireBoltModules from '../../api/fireBoltModules'
+
+export default Blits.Component('DeviceModule', {
+  components: { List },
+  state() {
+    return {
+      device: fireBoltModules.device,
+      response: '',
+      networkRes: {},
+      isNetworkRes: false,
+    }
+  },
+  hooks: {
+    ready() {
+      this.$listen('execute', async (api) => {
+        this.$log.info(`Execute Device ${api} API`)
+        this.isNetworkRes = false
+        switch (api) {
+          case 'make':
+            this.response = await Device.make()
+            break
+          case 'model':
+            this.response = await Device.model()
+            break
+          case 'name':
+            this.response = await Device.name()
+            break
+          case 'network':
+            Object.assign(this.networkRes, await Device.network())
+            this.isNetworkRes = true
+            break
+          case 'platform':
+            this.response = await Device.platform()
+            break
+        }
+      })
+    },
+    focus() {
+      const comp = this.$select('methods')
+      comp && comp.$focus && comp.$focus()
+    },
+  },
+})
+</script>

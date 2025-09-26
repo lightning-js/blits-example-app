@@ -1,0 +1,51 @@
+<template>
+  <Element>
+    <Text :content="$title" size="40" />
+    <AnnouncerItem :for="(item, index) in $items" name="$item" y="100" x="$index * 250 + 100" ref="item" />
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import AnnouncerItem from './AnnouncerItem.blits'
+
+export default Blits.Component('AnnouncerRow', {
+  components: {
+    AnnouncerItem,
+  },
+  props: ['title', 'items'],
+  state() {
+    return {
+      focusIndex: -1,
+      message: null,
+    }
+  },
+  hooks: {
+    focus() {
+      this.message = this.$announcer.speak('Row with different ' + this.title)
+      this.focusIndex = 0
+      this.$trigger('focusIndex')
+    },
+    unfocus() {
+      if (this.message) {
+        this.message.stop()
+        this.message.cancel()
+      }
+    },
+  },
+  watch: {
+    focusIndex(v) {
+      this.$select('item' + v).$focus()
+    },
+  },
+  input: {
+    right() {
+      this.focusIndex = Math.min(this.focusIndex + 1, this.items.length - 1)
+    },
+    left() {
+      this.focusIndex = Math.max(this.focusIndex - 1, 0)
+    },
+  },
+})
+</script>

@@ -16,7 +16,7 @@
  */
 
 import Blits from '@lightningjs/blits'
-import Ball from '../components/Ball.js'
+import Ball from '../components/Ball.blits'
 
 const randomIntBetween = (from, to) => Math.floor(Math.random() * (to - from + 1) + from)
 

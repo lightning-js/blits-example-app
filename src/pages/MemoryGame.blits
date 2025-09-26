@@ -1,0 +1,210 @@
+<template>
+  <Element>
+    <Text font="raleway" size="80" color="white" content="Let's play memory!" x="580" y="60" />
+    <Text font="kalam" size="40" color="#b91c1c" content="the Accessible edition :)" x="1200" y="170" rotation="-6" />
+    <Text size="26" color="white" content="Announcer on / off" x="260" y="200" />
+    <Toggle ref="toggle" x="525" y="200" :toggled="$toggle" />
+    <Element x="260" y="260">
+      <MemoryCard
+        :for="(card, index) in $cards"
+        :col="$index % 4"
+        :row="Math.floor($index / 4) % 3"
+        key="$card.id"
+        image="$card.image"
+        description="$card.description"
+        :ref="'card' + $index"
+        :index="$index"
+      />
+    </Element>
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import MemoryCard from "../components/MemoryCard.blits";
+import Toggle from "../components/Toggles.blits";
+
+const cards = [
+  {
+    image:
+      "https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb",
+    description: "House",
+  },
+  {
+    image:
+      "https://images.pexels.com/photos/2902440/pexels-photo-2902440.jpeg?auto=compress&cs=tinysrgb",
+    description: "Tree",
+  },
+  {
+    image:
+      "https://images.pexels.com/photos/686094/pexels-photo-686094.jpeg?auto=compress&cs=tinysrgb",
+    description: "Dog",
+  },
+  {
+    image:
+      "https://images.pexels.com/photos/1302290/pexels-photo-1302290.jpeg?auto=compress&cs=tinysrgb",
+    description: "Cat",
+  },
+  {
+    image:
+      "https://images.pexels.com/photos/627678/pexels-photo-627678.jpeg?auto=compress&cs=tinysrgb",
+    description: "Car",
+  },
+  {
+    image:
+      "https://images.pexels.com/photos/1616566/pexels-photo-1616566.jpeg?auto=compress&cs=tinysrgb",
+    description: "Bicycle",
+  },
+];
+
+export default Blits.Component('MemoryGame', {
+  components: {
+    MemoryCard,
+    Toggle,
+  },
+  state() {
+    return {
+      cards: cards.concat(cards).map((card, index) => {
+        return { ...card, id: `card${index}` }
+      }),
+      focusedRow: -1,
+      focusedCol: -1,
+      openCards: [],
+      pairs: 0,
+      toggle: true,
+      focusable: ['toggle'],
+      focusIndex: 0,
+    }
+  },
+  hooks: {
+    init() {
+      this.shuffle()
+      this.$listen('selectMemoryCard', (index) => {
+        if (this.openCards.length < 2) {
+          this.openCards.push(index)
+        }
+
+        if (this.openCards.length === 2) {
+          if (this.cards[this.openCards[0]].description === this.cards[this.openCards[1]].description) {
+            this.$emit('deactivateMemoryCard', this.openCards[0])
+            this.$emit('deactivateMemoryCard', this.openCards[1])
+            this.pairs++
+            this.$setTimeout(() => {
+              this.$announcer.speak(
+                this.pairs === this.cards.length / 2
+                  ? 'Congratulations, you found all pairs!'
+                  : `You found a pair! ${this.cards.length / 2 - this.pairs} more to go.`,
+              )
+            }, 1500)
+          } else {
+            this.$emit('closeMemoryCard', this.openCards[0])
+            this.$emit('closeMemoryCard', this.openCards[1])
+            this.$setTimeout(() => {
+              this.$announcer.speak('No match. Try again')
+            }, 1500)
+          }
+          this.openCards.length = 0
+        }
+      })
+    },
+    ready() {
+      //To make sure announcer enabled when we revisit the page
+      this.$announcer.enable()
+      this.focusedRow = 0
+      this.focusedCol = 0
+    },
+    destroy() {
+      this.$announcer.speak('Thanks for playing Memory')
+    },
+  },
+  watch: {
+    focusedCol(v) {
+      if (this.focusedRow === -1) {
+        this.focusedRow = 0
+        return
+      }
+      v = v + this.focusedRow * 4
+      this.$select('card' + v).$focus()
+    },
+    focusedRow(v) {
+      if (this.focusedCol === -1) {
+        this.focusedCol = 0
+        return
+      }
+      v = this.focusedCol + v * 4
+      this.$select('card' + v).$focus()
+    },
+  },
+  methods: {
+    shuffle() {
+      this.cards.sort(() => 0.5 - Math.random())
+    },
+  },
+  input: {
+    left() {
+      if (this.focusIndex === 0) {
+        if (this.focusedCol === 0) {
+          if (this.focusedRow === 0) {
+            this.$announcer.speak('You are already at the first card')
+          } else {
+            this.focusedCol = 3
+            this.focusedRow--
+          }
+        } else {
+          this.focusedCol = Math.max(0, this.focusedCol - 1)
+        }
+      }
+    },
+    right() {
+      if (this.focusIndex === 0) {
+        if (this.focusedCol === 3) {
+          if (this.focusedRow === 2) {
+            this.$announcer.speak('You are already at the last card')
+          } else {
+            this.focusedCol = 0
+            this.focusedRow++
+          }
+        } else {
+          this.focusedCol = Math.min(3, this.focusedCol + 1)
+        }
+      }
+    },
+    up() {
+      if (this.focusIndex === 0) {
+        if (this.focusedRow === 0) {
+          this.$select('toggle').$focus()
+          this.focusIndex = -1
+        } else {
+          this.focusedRow = Math.max(0, this.focusedRow - 1)
+        }
+      }
+    },
+    down() {
+      if (this.focusIndex === -1) {
+        this.$select('card0').$focus()
+        this.focusIndex = 0
+        this.focusedRow = 0
+        this.focusedCol = 0
+      } else {
+        if (this.focusedRow === 2) {
+          this.$announcer.speak('You are already at the last card')
+        } else {
+          this.focusedRow = Math.min(2, this.focusedRow + 1)
+        }
+      }
+    },
+    enter() {
+      if (this.focusIndex === -1) {
+        this.toggle = !this.toggle
+        console.log('Toggle:', this.toggle)
+        if (this.toggle) {
+          this.$announcer.enable()
+        } else {
+          this.$announcer.disable()
+        }
+      }
+    },
+  },
+})
+</script>

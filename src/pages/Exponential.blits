@@ -1,0 +1,35 @@
+<template>
+  <Element>
+    <ExponentialItem :for="item in $items" key="$item" />
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import ExponentialItem from '../components/ExponentialItem.blits'
+
+export default Blits.Component('Exponential', {
+  components: {
+    ExponentialItem,
+  },
+  state() {
+    return {
+      items: [],
+    }
+  },
+  hooks: {
+    ready() {
+      const interval = this.$setInterval(() => {
+        for (let i = 0; i <= Math.floor(this.items.length / 10); i++) {
+          this.items.push(`item${this.items.length}`)
+        }
+        this.$log.info('# items', this.items.length)
+        if (this.items.length > 100) {
+          clearInterval(interval)
+        }
+      }, 2000)
+    },
+  },
+})
+</script>

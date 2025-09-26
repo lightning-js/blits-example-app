@@ -21,13 +21,13 @@ import Blits from '@lightningjs/blits'
 import Portal from './pages/Portal'
 import Intro from './pages/Intro'
 import Theming from './pages/Theming'
-import Tmdb from './pages/Tmdb'
-import Sprites from './pages/Sprites'
-import FocusHandling from './pages/FocusHandling'
+import Tmdb from './pages/Tmdb.blits'
+import Sprites from './pages/Sprites.blits'
+import FocusHandling from './pages/FocusHandling.blits'
 
 // Example & Test pages
 import Positioning from './pages/Positioning'
-import Player from './pages/Player'
+import Player from './pages/Player.blits'
 import Colors from './pages/Colors'
 import Gradients from './pages/Gradients'
 import Transitions from './pages/Transitions'
@@ -45,18 +45,18 @@ import ShadersCustom from './pages/ShadersCustom.js'
 import ShowIf from './pages/ShowIf'
 import Events from './pages/Events'
 import Slots from './pages/Slots'
-import MemoryGame from './pages/MemoryGame'
-import Exponential from './pages/Exponential'
+import MemoryGame from './pages/MemoryGame.blits'
+import Exponential from './pages/Exponential.blits'
 import Viewport from './pages/Viewport'
 import { RouterHookRoutes } from './pages/RouterHooks.js'
-import Resize from './pages/Resize'
-import LanguagePlugin from './pages/LanguagePlugin.js'
-import KeyCodes from './pages/KeyCodes.js'
+import Resize from './pages/Resize.blits'
+import LanguagePlugin from './pages/LanguagePlugin.blits'
+import KeyCodes from './pages/KeyCodes.blits'
 import SourceInfo from './components/SourceInfo.js'
-import SpecialCharacters from './pages/SpecialCharacters.js'
-import Layout from './pages/Layout.js'
-import { FireBoltRoutes } from './pages/Firebolt.js'
-import Announcer from './pages/Announcer.js'
+import SpecialCharacters from './pages/SpecialCharacters.blits'
+import Layout from './pages/Layout.blits'
+import FireBoltRoutes from './pages/Firebolt/index.js'
+import Announcer from './pages/Announcer.blits'
 
 const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
@@ -130,7 +130,6 @@ export default Blits.Application({
     { path: '/examples/viewport', component: Viewport },
     ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
-    { path: '/examples/languageplugin', component: LanguagePlugin },
     { path: '/examples/keycodes', component: KeyCodes },
     { path: '/examples/translations', component: LanguagePlugin },
     { path: '/examples/special-characters', component: SpecialCharacters },

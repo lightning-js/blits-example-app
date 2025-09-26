@@ -1,0 +1,48 @@
+<template>
+  <Element>
+    <Text content="Account" x="960" mount="{x:0.5}" y="50" font="raleway" size="40" />
+    <Text content="$account.about" x="960" mount="{x:0.5}" y="110" font="lato" />
+    <List data="$account.methods" x="300" ref="methods" y="300" type="method" />
+    <Text x="1400" y="540" :content="$response" :size="$size" mount="0.5" font="lato" />
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import List from './List.blits'
+import { Account } from '@firebolt-js/sdk'
+import fireBoltModules from '../../api/fireBoltModules'
+
+export default Blits.Component('AccountModule', {
+  components: { List },
+  state() {
+    return {
+      account: fireBoltModules.account,
+      response: '',
+      size: 100,
+    }
+  },
+  hooks: {
+    ready() {
+      this.$listen('execute', async (api) => {
+        this.$log.info(`Execute Account ${api} API`)
+        switch (api) {
+          case 'id':
+            this.size = 100
+            this.response = await Account.id()
+            break
+          case 'uid':
+            this.size = 40
+            this.response = await Device.uid()
+            break
+        }
+      })
+    },
+    focus() {
+      const comp = this.$select('methods')
+      comp && comp.$focus && comp.$focus()
+    },
+  },
+})
+</script>

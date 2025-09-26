@@ -1,0 +1,30 @@
+<template>
+  <Element w="300" h="250" :color="$bColor" rounded="8">
+    <Text x="150" y="125" mount="{x:0.5, y:0.5}" :content="$lang" color="#fff" font="lato-black" />
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+
+export default Blits.Component('Accent', {
+  state() {
+    return {
+      /**
+       * background color of accent tile
+       */
+      bColor: "{ top: '#93C5FD', bottom: '#3B82F6' }",
+    }
+  },
+  props: ['lang'],
+  hooks: {
+    focus() {
+      this.bColor = "{ top: '#6366F1', bottom: '#4F46E5' }"
+    },
+    unfocus() {
+      this.bColor = "{ top: '#93C5FD', bottom: '#3B82F6' }"
+    },
+  },
+})
+</script>

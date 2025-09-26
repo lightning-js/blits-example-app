@@ -1,0 +1,86 @@
+<template>
+  <Element>
+    <Element :y.transition="$y">
+      <Method
+        :for="(item, index) in $methods"
+        key="$item.name"
+        name="$item.name"
+        about="$item.about"
+        :y="$index * 160"
+        :ref="$type+$index"
+      />
+    </Element>
+    <Element :x.transition="$x" y="325">
+      <Module :for="(item, index) in $modules" key="$item.id" name="$item.name" :ref="$type+$index" x="$index * 400" />
+    </Element>
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import Method from './Method.blits'
+import Module from './Module.blits'
+
+export default Blits.Component('List', {
+  components: {
+    Method,
+    Module,
+  },
+  state() {
+    return {
+      x: 400,
+      y: 100,
+      activeIndex: 0,
+    }
+  },
+  props: ['data', 'type'],
+  computed: {
+    methods() {
+      return !this.isModule ? this.data : []
+    },
+    modules() {
+      return this.isModule ? this.data : []
+    },
+    isModule() {
+      return this.type === 'module'
+    },
+  },
+  watch: {
+    activeIndex(v) {
+      const el = this.$select(`${this.type}${v}`)
+      el && el.$focus && el.$focus()
+    },
+  },
+  hooks: {
+    focus() {
+      this.$trigger('activeIndex')
+    },
+  },
+  input: {
+    right() {
+      if (this.isModule && this.activeIndex < this.data.length - 1) this.move(1)
+    },
+    left() {
+      if (this.isModule && this.activeIndex > 0) this.move(-1)
+    },
+    down() {
+      if (!this.isModule && this.activeIndex < this.data.length - 1) this.move(1)
+    },
+    up() {
+      if (!this.isModule && this.activeIndex > 0) this.move(-1)
+    },
+  },
+  methods: {
+    move(dir) {
+      const next = this.activeIndex + dir
+      if (this.type == 'method') {
+        this.y = next > 5 ? -(next - 5) * 160 - 100 : 100
+      } else if (this.type == 'module') {
+        this.x = next > 3 ? -(next - 3) * 400 - 400 : 400
+      }
+      this.activeIndex = next
+    },
+  },
+})
+</script>

@@ -1,0 +1,32 @@
+<template>
+  <MenuSprite :show="$currentSprite === 'menu'" />
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import MenuSprite from '../components/MenuSprite.blits'
+
+const sprites = ['menu']
+
+export default Blits.Component('Sprites', {
+  components: {
+    MenuSprite,
+  },
+  state() {
+    return {
+      currentSprite: 'menu',
+    }
+  },
+  input: {
+    down() {
+      const index = sprites.indexOf(this.currentSprite)
+      if (index < sprites.length - 1) {
+        this.currentSprite = sprites[index + 1]
+      } else {
+        this.currentSprite = sprites[0]
+      }
+    },
+  },
+})
+</script>

@@ -1,0 +1,40 @@
+<template>
+  <Element>
+    <Element
+      w="$width"
+      h="$height"
+      color="#121212"
+      rounded="$radius"
+      :border.transition="{width: 2, color: $$hasFocus ? '#fff' : '#888'}"
+    />
+    <Element
+      w="$innerWidth"
+      h="$innerHeight"
+      mount="0.5"
+      :x.transition="$toggled ? $width - $offset : $offset"
+      y="$height/2"
+      :color.transition="$toggled ? '#fff' : '#888'"
+      rounded="$innerRadius"
+    />
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+
+export default Blits.Component('Toggles', {
+  props: ['toggled'],
+  state() {
+    return {
+      height: 40,
+      innerHeight: 18,
+      innerRadius: 9,
+      innerWidth: 18,
+      radius: 20,
+      width: 60,
+      offset: 20,
+    }
+  },
+})
+</script>

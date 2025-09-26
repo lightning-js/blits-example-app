@@ -1,0 +1,32 @@
+<template>
+  <Element>
+    <Text content="FireBolt Modules" x="960" y="80" mount="{x:0.5}" size="80" font="raleway" />
+    <List data="$moduleNames" type="module" ref="modules" />
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import List from './List.blits'
+import fireBoltModules from '../../api/fireBoltModules'
+
+export default Blits.Component('Firebolt', {
+  components: {
+    List,
+  },
+  computed: {
+    moduleNames() {
+      return Object.keys(fireBoltModules).map((m) => {
+        return { id: m, name: m.charAt(0).toUpperCase() + m.slice(1) }
+      })
+    },
+  },
+  hooks: {
+    focus() {
+      const cmp = this.$select('modules')
+      cmp && cmp.$focus && cmp.$focus()
+    },
+  },
+})
+</script>

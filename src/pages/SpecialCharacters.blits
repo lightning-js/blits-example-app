@@ -1,0 +1,58 @@
+<template>
+  <Element w="1920">
+    <Text x="960" y="50" mount="{x:0.5}" content="Alphabets" font="lato-black" size="60" />
+    <Text x="960" y="150" mount="{x:0.5}" content="$alphabets" font="lato-black" size="40" letterspacing="10" />
+    <Text x="960" y="290" mount="{x:0.5}" content="Accents" font="lato-black" size="60" />
+    <AccentList data="$accents" y="400" ref="accents" />
+    <Element w="950" h="40" color="#000000ff" rounded="10" y="1000" placement="center">
+      <Text
+        content="The character ? represents a character that is not supported by the Lato-Black font"
+        size="25"
+        x="475"
+        y="20"
+        mount="{x:0.5, y:0.5}"
+      />
+    </Element>
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import AccentList from '../components/AccentList.blits'
+
+export default Blits.Component('SpecialCharacters', {
+  components: {
+    AccentList,
+  },
+  state() {
+    return {
+      alphabets: 'abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+      accents: [
+        {
+          lang: 'Dutch',
+          chars: 'éèëïüáóĳĲ',
+        },
+        {
+          lang: 'French',
+          chars: 'éèêëàâîïôùûç',
+        },
+        {
+          lang: 'Spanish',
+          chars: 'áéíóúñü',
+        },
+        {
+          lang: 'Turkish',
+          chars: 'ÇçĞğİiÖöÜüŞş',
+        },
+      ],
+    }
+  },
+  hooks: {
+    focus() {
+      const comp = this.$select('accents')
+      if (comp && comp.$focus) comp.$focus()
+    },
+  },
+})
+</script>

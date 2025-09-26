@@ -1,0 +1,72 @@
+<template>
+  <Element>
+    <Element :x.transition="$x">
+      <Accent
+        :for="(item, index) in $data"
+        key="$item.lang"
+        lang="$item.lang"
+        :ref="'accent'+$index"
+        x="$index * 400"
+      />
+    </Element>
+    <Text :content="$activeAccent" font="lato-black" x="960" y="400" mount="{x:0.5}" letterspacing="10" size="40" />
+  </Element>
+</template>
+
+<script>
+
+import Blits from '@lightningjs/blits'
+import Accent from './Accent.blits'
+
+export default Blits.Component('AccentList', {
+  components: {
+    Accent,
+  },
+  props: ['data'],
+  state() {
+    return {
+      /**
+       * Position of accents list
+       */
+      x: 160,
+      /**
+       * Current active index of tile
+       */
+      activeIndex: 0,
+      /**
+       * Current active accent characters
+       */
+      activeAccent: '',
+    }
+  },
+  watch: {
+    activeIndex(v) {
+      const el = this.$select(`accent${v}`)
+      if (el && el.$focus) {
+        el.$focus()
+        this.activeAccent = this.data[v].chars
+      }
+    },
+  },
+  hooks: {
+    focus() {
+      this.$trigger('activeIndex')
+    },
+  },
+  input: {
+    right() {
+      if (this.activeIndex < this.data.length - 1) this.move(1)
+    },
+    left() {
+      if (this.activeIndex > 0) this.move(-1)
+    },
+  },
+  methods: {
+    move(dir) {
+      const next = this.activeIndex + dir
+      this.x = next > 3 ? -(next - 3) * 400 - 160 : 160
+      this.activeIndex = next
+    },
+  },
+})
+</script>
