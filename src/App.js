@@ -19,36 +19,36 @@ import Blits from '@lightningjs/blits'
 
 // Demo pages
 import Portal from './pages/Portal'
-import Intro from './pages/Intro'
-import Theming from './pages/Theming'
+import Intro from './pages/Intro.blits'
+import Theming from './pages/Theming.blits'
 import Tmdb from './pages/Tmdb.blits'
 import Sprites from './pages/Sprites.blits'
 import FocusHandling from './pages/FocusHandling.blits'
 
 // Example & Test pages
-import Positioning from './pages/Positioning'
+import Positioning from './pages/Positioning.blits'
 import Player from './pages/Player.blits'
-import Colors from './pages/Colors'
-import Gradients from './pages/Gradients'
-import Transitions from './pages/Transitions'
-import Alpha from './pages/Alpha'
-import Scaling from './pages/Scaling'
-import Rotation from './pages/Rotation'
-import KeyInput from './pages/KeyInput'
-import Texts from './pages/Texts'
-import Images from './pages/Images'
-import Components from './pages/Components'
-import ForLoop from './pages/ForLoop'
-import ForLoopAdvanced from './pages/ForLoopAdvanced'
-import Shaders from './pages/Shaders.js'
-import ShadersCustom from './pages/ShadersCustom.js'
-import ShowIf from './pages/ShowIf'
-import Events from './pages/Events'
-import Slots from './pages/Slots'
+import Colors from './pages/Colors.blits'
+import Gradients from './pages/Gradients.blits'
+import Transitions from './pages/Transitions.blits'
+import Alpha from './pages/Alpha.blits'
+import Scaling from './pages/Scaling.blits'
+import Rotation from './pages/Rotation.blits'
+import KeyInput from './pages/KeyInput.blits'
+import Texts from './pages/Texts.blits'
+import Images from './pages/Images.blits'
+import Components from './pages/Components.blits'
+import ForLoop from './pages/ForLoop.blits'
+import ForLoopAdvanced from './pages/ForLoopAdvanced.blits'
+import Shaders from './pages/Shaders.blits'
+import ShadersCustom from './pages/ShadersCustom.blits'
+import ShowIf from './pages/ShowIf.blits'
+import Events from './pages/Events.blits'
+import Slots from './pages/Slots.blits'
 import MemoryGame from './pages/MemoryGame.blits'
 import Exponential from './pages/Exponential.blits'
-import Viewport from './pages/Viewport'
-import { RouterHookRoutes } from './pages/RouterHooks.js'
+import Viewport from './pages/Viewport.blits'
+import { RouterHookRoutes } from './pages/RouterHooks/index.js'
 import Resize from './pages/Resize.blits'
 import LanguagePlugin from './pages/LanguagePlugin.blits'
 import KeyCodes from './pages/KeyCodes.blits'
@@ -86,7 +86,7 @@ export default Blits.Application({
     // Loading a route via a dynamic import
     {
       path: '/demos/loading',
-      component: () => import('./pages/Loading.js'),
+      component: () => import('./pages/Loading.blits'),
     },
     // Loading a route in a Promise
     {
@@ -199,33 +199,33 @@ export default Blits.Application({
 const getSourcePath = (routerPath) => {
   const sourceMap = {
     '/': 'src/pages/Portal',
-    '/demos/loading': 'src/pages/Loading',
-    '/demos/intro': 'src/pages/Intro',
-    '/demos/theming': 'src/pages/Theming',
+    '/demos/loading': 'src/pages/Loading.blits',
+    '/demos/intro': 'src/pages/Intro.blits',
+    '/demos/theming': 'src/pages/Theming.blits',
     '/demos/tmdb': 'src/pages/Tmdb',
     '/demos/sprites': 'src/pages/Sprites',
     '/demos/focushandling': 'src/pages/FocusHandling',
     '/demos/memory-game': 'src/pages/MemoryGame',
     '/demos/player': 'src/pages/Player',
-    '/examples/positioning': 'src/pages/Positioning',
-    '/examples/colors': 'src/pages/Colors',
-    '/examples/gradients': 'src/pages/Gradients',
-    '/examples/transitions': 'src/pages/Transitions',
-    '/examples/components': 'src/pages/Components',
-    '/examples/alpha': 'src/pages/Alpha',
-    '/examples/scaling': 'src/pages/Scaling',
-    '/examples/rotation': 'src/pages/Rotation',
-    '/examples/keyinput': 'src/pages/KeyInput',
-    '/examples/forloop': 'src/pages/ForLoop',
-    '/examples/forloop-advanced': 'src/pages/ForLoopAdvanced',
-    '/examples/shaders': 'src/pages/Shaders',
-    '/examples/shaders-custom': 'src/pages/ShadersCustom',
-    '/examples/showif': 'src/pages/ShowIf',
-    '/examples/events': 'src/pages/Events',
-    '/examples/images': 'src/pages/Images',
-    '/examples/texts': 'src/pages/Texts',
-    '/examples/slots': 'src/pages/Slots',
-    '/examples/viewport': 'src/pages/Viewport',
+    '/examples/positioning': 'src/pages/Positioning.blits',
+    '/examples/colors': 'src/pages/Colors.blits',
+    '/examples/gradients': 'src/pages/Gradients.blits',
+    '/examples/transitions': 'src/pages/Transitions.blits',
+    '/examples/components': 'src/pages/Components.blits',
+    '/examples/alpha': 'src/pages/Alpha.blits',
+    '/examples/scaling': 'src/pages/Scaling.blits',
+    '/examples/rotation': 'src/pages/Rotation.blits',
+    '/examples/keyinput': 'src/pages/KeyInput.blits',
+    '/examples/forloop': 'src/pages/ForLoop.blits',
+    '/examples/forloop-advanced': 'src/pages/ForLoopAdvanced.blits',
+    '/examples/shaders': 'src/pages/Shaders.blits',
+    '/examples/shaders-custom': 'src/pages/ShadersCustom.blits',
+    '/examples/showif': 'src/pages/ShowIf.blits',
+    '/examples/events': 'src/pages/Events.blits',
+    '/examples/images': 'src/pages/Images.blits',
+    '/examples/texts': 'src/pages/Texts.blits',
+    '/examples/slots': 'src/pages/Slots.blits',
+    '/examples/viewport': 'src/pages/Viewport.blits',
     '/examples/router-hooks': 'src/pages/RouterHooks',
     '/examples/resize': 'src/pages/Resize',
     '/examples/translations': 'src/pages/LanguagePlugin',
