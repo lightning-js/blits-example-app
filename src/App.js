@@ -18,7 +18,7 @@
 import Blits from '@lightningjs/blits'
 
 // Demo pages
-import Portal from './pages/Portal'
+import Portal from './pages/Portal.blits'
 import Intro from './pages/Intro.blits'
 import Theming from './pages/Theming.blits'
 import Tmdb from './pages/Tmdb.blits'
@@ -52,7 +52,7 @@ import { RouterHookRoutes } from './pages/RouterHooks/index.js'
 import Resize from './pages/Resize.blits'
 import LanguagePlugin from './pages/LanguagePlugin.blits'
 import KeyCodes from './pages/KeyCodes.blits'
-import SourceInfo from './components/SourceInfo.js'
+import SourceInfo from './components/SourceInfo.blits'
 import SpecialCharacters from './pages/SpecialCharacters.blits'
 import Layout from './pages/Layout.blits'
 import FireBoltRoutes from './pages/Firebolt/index.js'
@@ -198,7 +198,7 @@ export default Blits.Application({
 
 const getSourcePath = (routerPath) => {
   const sourceMap = {
-    '/': 'src/pages/Portal',
+    '/': 'src/pages/Portal.blits',
     '/demos/loading': 'src/pages/Loading.blits',
     '/demos/intro': 'src/pages/Intro.blits',
     '/demos/theming': 'src/pages/Theming.blits',
