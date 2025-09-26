@@ -15,6 +15,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+<template>
+  <Element w="1920" h="1080" :color="$backgroundColor">
+    <RouterView w="100%" h="100%" />
+    <!-- <FPScounter x="1610" :show="$showFPS" /> -->
+    <SourceInfo ref="info" :show="$showInfo" />
+  </Element>
+</template>
+
+<script>
+
 import Blits from '@lightningjs/blits'
 
 // Demo pages
@@ -62,17 +72,10 @@ const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
 const showFPS = !!queryString.get('fps')
 
-export default Blits.Application({
+export default Blits.Component('App', {
   components: {
     SourceInfo,
   },
-  template: `
-    <Element w="1920" h="1080" :color="$backgroundColor">
-      <RouterView w="100%" h="100%" />
-      <!-- <FPScounter x="1610" :show="$showFPS" /> -->
-      <SourceInfo ref="info" :show="$showInfo" />
-    </Element>
-  `,
   state() {
     return {
       backgroundColor: '#1e293b',
@@ -187,10 +190,7 @@ export default Blits.Application({
       this.showInfo = false
       const sourcePath = getSourcePath(this.$router.currentRoute.path)
       if (sourcePath) {
-        window.open(
-          `https://github.com/lightning-js/blits-example-app/tree/master/${sourcePath}`,
-          '_blank'
-        )
+        window.open(`https://github.com/lightning-js/blits-example-app/tree/master/${sourcePath}`, '_blank')
       }
     },
   },
@@ -238,3 +238,4 @@ const getSourcePath = (routerPath) => {
 
   return sourceMap['/' + routerPath] + '.js'
 }
+</script>

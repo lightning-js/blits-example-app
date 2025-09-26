@@ -87,6 +87,7 @@ export default Blits.Component('PortalRow', {
       }
     },
     right() {
+      this.$log.info('Portal row right ')
       if (this.focused < this.items.length - 1) {
         this.focused++
       } else {

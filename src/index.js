@@ -20,7 +20,7 @@ import { theme } from '@lightningjs/blits/plugins'
 import { language } from '@lightningjs/blits/plugins'
 
 import keymapping from './keymapping.js'
-import App from './App.js'
+import App from './App.blits'
 
 import colors from './themes/colors.js'
 import sizes from './themes/sizes.js'
