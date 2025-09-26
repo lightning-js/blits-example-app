@@ -1,0 +1,66 @@
+<!--
+ * Copyright 2023 Comcast Cable Communications Management, LLC
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+-->
+
+<template>
+  <Element
+    w="1920"
+    h="1080"
+    color="#fff"
+    radialGradient=""
+    shader="{type: 'radialGradient', colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], width: 2400, height: 800}"
+  >
+    <ArrowLeft :show="$left !== false" :label="$left" />
+    <ArrowRight :show="$right !== false" :label="$right" />
+    <Text :content="$pageTitle" font="raleway" x="960" y="540" size="240" mount="0.5" />
+  </Element>
+</template>
+
+<script>
+import Blits from '@lightningjs/blits'
+import { hookPageTemplate } from './RouterHookPageBase.blits'
+import ArrowLeft from './components/ArrowLeft.blits'
+import ArrowRight from './components/ArrowRight.blits'
+
+export default Blits.Component('RouterHookEpisode', {
+  ...hookPageTemplate,
+  components: {
+    ArrowLeft,
+    ArrowRight,
+  },
+  state() {
+    return {
+      title: 'Episode',
+      left: 'Back',
+      right: 'NEXT EPISODE',
+      up: false,
+      bottom: false,
+    }
+  },
+  input: {
+    left() {
+      //trigger router back navigation. Leads back to: /examples/router-hooks. Even when episode id > 1
+      this.$router.back()
+    },
+    right() {
+      //trigger router to navigate to the next episode, and NOT save current episode page in navigation history
+      this.$router.to(`/examples/router-hooks/episode/${this.page.id + 1}`, undefined, {
+        inHistory: false,
+      })
+    },
+  },
+})
+</script>
