@@ -65,13 +65,6 @@ export default Blits.Component('Movies', {
   },
 
   hooks: {
-    ready() {
-      // Show menu and focus Movies (same pattern as other RouterExample components)
-      if (this.$appState) {
-        // this.$appState.showMenu = true
-        this.$appState.focusMenu = false
-      }
-    },
     focus() {
       this.$trigger('focusedMovieIndex')
     },
@@ -81,7 +74,6 @@ export default Blits.Component('Movies', {
     left() {
       if (this.focusedMovieIndex % 3 === 0) {
         if (this.$appState) {
-          this.$appState.activeView = this
           this.$appState.focusMenu = true
         }
       } else {

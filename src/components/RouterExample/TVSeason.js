@@ -129,9 +129,6 @@ export default Blits.Component('TvSeason', {
       this.isFocused = true
       this.$trigger('focusedEpisodeIndex')
     },
-    destroy() {
-      this.$log.info('>>>>>>>>>>>>> Destoyed TV seasons >>>>>>>>>>>>>>>>>>>>')
-    },
   },
 
   methods: {
@@ -153,7 +150,6 @@ export default Blits.Component('TvSeason', {
     left() {
       // Go to sidebar menu
       if (this.$appState) {
-        this.$appState.activeView = this
         this.$appState.focusMenu = true
       }
     },

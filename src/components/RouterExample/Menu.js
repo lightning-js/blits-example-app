@@ -86,13 +86,6 @@ export default Blits.Component('Menu', {
     up() {
       this.focused = Math.max(this.focused - 1, 1)
     },
-    right() {
-      const targetView = this.$appState.activeView
-      this.$appState.focusMenu = false
-      if (targetView !== null) {
-        targetView.$focus()
-      }
-    },
     back() {
       this.$router.back()
     },

@@ -53,7 +53,6 @@ Blits.Plugin(language)
 Blits.Plugin(appState, {
   showMenu: false,
   focusMenu: false,
-  activeView: null,
   selectedMovie: null,
 })
 

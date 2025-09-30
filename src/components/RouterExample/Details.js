@@ -26,34 +26,10 @@ export default Blits.Component('Details', {
             size="24"
             color="#e2e8f0"
           />
-          <Text
-            :content="'Genre: ' + ($selectedMovie.genre || 'N/A')"
-            x="40"
-            y="180"
-            size="24"
-            color="#e2e8f0"
-          />
-          <Text
-            :content="'Year: ' + ($selectedMovie.year || 'N/A')"
-            x="40"
-            y="220"
-            size="24"
-            color="#e2e8f0"
-          />
-          <Text
-            :content="'Director: ' + ($selectedMovie.director || 'N/A')"
-            x="40"
-            y="260"
-            size="24"
-            color="#e2e8f0"
-          />
-          <Text
-            :content="'Mood: ' + ($selectedMovie.mood || 'N/A')"
-            x="40"
-            y="300"
-            size="20"
-            color="#a0aec0"
-          />
+          <Text :content="'Genre: ' + ($selectedMovie.genre || 'N/A')" x="40" y="180" size="24" color="#e2e8f0" />
+          <Text :content="'Year: ' + ($selectedMovie.year || 'N/A')" x="40" y="220" size="24" color="#e2e8f0" />
+          <Text :content="'Director: ' + ($selectedMovie.director || 'N/A')" x="40" y="260" size="24" color="#e2e8f0" />
+          <Text :content="'Mood: ' + ($selectedMovie.mood || 'N/A')" x="40" y="300" size="20" color="#a0aec0" />
           <Text content="Focus is now on this content area - use BACK to return" x="40" y="460" size="18" color="#718096" />
         </Element>
 
@@ -75,7 +51,6 @@ export default Blits.Component('Details', {
   input: {
     left() {
       if (this.$appState) {
-        this.$appState.activeView = this
         this.$appState.focusMenu = true
       }
     },

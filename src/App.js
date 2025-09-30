@@ -70,7 +70,7 @@ export default Blits.Application({
   },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
-      <RouterView w="100%" h="100%" />
+      <RouterView w="100%" h="100%" ref="routerView" />
 
       <!-- Router Examples Menu (rendered on top) -->
       <Menu :alpha="$$appState.showMenu" ref="routerMenu" />
@@ -207,6 +207,12 @@ export default Blits.Application({
           `https://github.com/lightning-js/blits-example-app/tree/master/${sourcePath}`,
           '_blank'
         )
+      }
+    },
+    right() {
+      if (this.$appState.focusMenu === true) {
+        this.$select('routerView').$focus()
+        this.$appState.focusMenu = false
       }
     },
   },
