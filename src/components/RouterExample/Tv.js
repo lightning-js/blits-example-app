@@ -67,12 +67,6 @@ export default Blits.Component('Tv', {
   },
 
   hooks: {
-    ready() {
-      if (this.$appState) {
-        // this.$appState.showMenu = true
-        this.$appState.focusMenu = false
-      }
-    },
     focus() {
       this.$trigger('focusedTvShowIndex')
     },
@@ -82,7 +76,6 @@ export default Blits.Component('Tv', {
     left() {
       if (this.focusedTvShowIndex % 3 === 0) {
         if (this.$appState) {
-          this.$appState.activeView = this
           this.$appState.focusMenu = true
         }
       } else {
