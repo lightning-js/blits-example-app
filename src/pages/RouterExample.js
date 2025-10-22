@@ -117,6 +117,11 @@ export const RouterExampleRoutes = [
   {
     path: '/examples/router/movies',
     component: Movies,
+    meta: {
+      title: 'Movies',
+      category: 'entertainment',
+      type: 'browse'
+    },
     options: {
       keepAlive: true,
     },
@@ -127,6 +132,10 @@ export const RouterExampleRoutes = [
         if (from.path === '/examples/router/tv') {
           to.transition = PageTransitions.zoomIn
         }
+        
+        if (to.meta?.category === 'entertainment') {
+          to.data.pageTitle = to.meta.title
+        }
       },
     },
     transition: PageTransitions.slideInOutLeft,
@@ -134,6 +143,12 @@ export const RouterExampleRoutes = [
   {
     path: '/examples/router/movies/:id',
     component: Details,
+    meta: {
+      title: 'Movie Details',
+      category: 'entertainment',
+      type: 'detail',
+      parentRoute: '/examples/router/movies'
+    },
     options: {
       reuseComponent: true,
     },
@@ -150,6 +165,11 @@ export const RouterExampleRoutes = [
 
         this.$appState.selectedMovie = selectedMovie
         to.data.selectedMovie = selectedMovie
+        
+        if (to.meta?.type === 'detail') {
+          to.data.pageType = to.meta.type
+        }
+        
         to.announce = `${selectedMovie.title} Movie Details`
       },
     },
