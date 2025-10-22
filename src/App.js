@@ -47,7 +47,6 @@ import Slots from './pages/Slots'
 import MemoryGame from './pages/MemoryGame'
 import Exponential from './pages/Exponential'
 import Viewport from './pages/Viewport'
-import { RouterHookRoutes } from './pages/RouterHooks.js'
 import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import KeyCodes from './pages/KeyCodes.js'
@@ -136,7 +135,6 @@ export default Blits.Application({
     { path: '/examples/events', component: Events },
     { path: '/examples/slots', component: Slots },
     { path: '/examples/viewport', component: Viewport },
-    ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
     { path: '/examples/languageplugin', component: LanguagePlugin },
     { path: '/examples/keycodes', component: KeyCodes },

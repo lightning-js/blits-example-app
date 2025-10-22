@@ -200,11 +200,6 @@ export default Blits.Component('Portal', {
           description: 'Lifecycle events when entering and leaving the viewport (margins)',
         },
         {
-          title: 'Router Hooks',
-          id: 'examples/router-hooks',
-          description: 'Example of router before hook',
-        },
-        {
           title: 'Router',
           id: 'examples/router/loader',
           description: 'Example of router',
