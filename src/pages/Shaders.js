@@ -20,13 +20,16 @@ import Blits from '@lightningjs/blits'
 export default Blits.Component('ShaderAttributes', {
   template: `
     <Element>
-      <!-- basic rounded corners and border -->
+      <!-- basic border -->
       <Element w="160" h="160" x="40" y="40" color="#fb923c" border="{w: 10, color: 'white'}" />
     
+      <!-- rounded corners with different radius values -->
       <Element w="160" h="160" x="240" y="40" color="#d97706" rounded="[25, 50]" />
     
+      <!-- basic border with shadow -->
       <Element w="160" h="160" x="440" y="40" color="#b45309" border="{w: 20, color: 'green'}" :shadow="{color: 'pink'}" />
     
+      <!-- rounded corners with border -->
       <Element w="160" h="160" x="640" y="40" color="#78350f" rounded="10" border="20" />
     
       <!-- reactive rounded corner effect -->
@@ -41,6 +44,7 @@ export default Blits.Component('ShaderAttributes', {
         </Element>
       </Element>
     
+      <!-- reactive border effect -->
       <Element w="160" h="160" x="840" y="40" color="#3b82f6" rounded="10" :border="{w: $border, color: '#60a5fa'}" />
     
       <Element w="160" h="160" x="1040" y="40" color="#500724" />
