@@ -20,7 +20,7 @@ import Blits from '@lightningjs/blits'
 export default Blits.Component('ShaderAttributes', {
   template: `
     <Element>
-      <!-- rounded corner effect -->
+      <!-- basic rounded corners and border -->
       <Element w="160" h="160" x="40" y="40" color="#fb923c" border="{w: 10, color: 'white'}" />
     
       <Element w="160" h="160" x="240" y="40" color="#d97706" rounded="[25, 50]" />
