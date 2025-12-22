@@ -23,5 +23,9 @@ export default Blits.Component('Toggle', {
       <Circle :x.transition="$on ? 0 : 50" size="50" :color="$primaryColor" />
     </Element>
   `,
-  props: ['bgColor', 'primaryColor', 'on'],
+  props: {
+    bgColor: '',
+    primaryColor: '',
+    on: false,
+  },
 })

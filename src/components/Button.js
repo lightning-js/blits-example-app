@@ -30,7 +30,9 @@ export default Blits.Component('Button', {
     >
     </Element>
   `,
-  props: ['color'],
+  props: {
+    color: '',
+  },
   state() {
     return {
       alpha: 0.4,

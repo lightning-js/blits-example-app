@@ -25,7 +25,12 @@ export default Blits.Component('PortalItem', {
       <Text x="30" y="200" :content="$description" maxwidth="300" size="28" :color="$fontColor" lineheight="32" />
     </Element>
   `,
-  props: ['title', 'description', 'index', 'id'],
+  props: {
+    title: '',
+    description: '',
+    index: 0,
+    id: '',
+  },
   state() {
     return {
       backgroundColor: '#44037a',

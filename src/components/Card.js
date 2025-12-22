@@ -28,7 +28,9 @@ export default Blits.Component('Card', {
       <Square x="20" y="20" size="40" />
     </Element>
   `,
-  props: ['size'],
+  props: {
+    size: 'small',
+  },
   computed: {
     w() {
       return this.size === 'large' ? 400 : 200

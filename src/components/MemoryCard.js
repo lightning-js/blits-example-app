@@ -47,7 +47,13 @@ export default Blits.Component('MemoryCard', {
       />
     </Element>
   `,
-  props: ['row', 'col', 'image', 'description', 'index'],
+  props: {
+    row: 0,
+    col: 0,
+    image: '',
+    description: '',
+    index: 0,
+  },
   state() {
     return {
       disabled: false,

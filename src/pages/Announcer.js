@@ -28,7 +28,9 @@ const Item = Blits.Component('Item', {
       />
     </Element>
   `,
-  props: ['name'],
+  props: {
+    name: '',
+  },
   state() {
     return {
       message: null,
@@ -57,11 +59,14 @@ const Row = Blits.Component('Row', {
       <Item :for="(item, index) in $items" name="$item" y="100" x="$index * 250 + 100" ref="item" />
     </Element>
   `,
-  props: ['title', 'items'],
+  props: {
+    title: '',
+    items: [],
+  },
   state() {
     return {
       focusIndex: -1,
-      message: null,
+      message: '',
     }
   },
   hooks: {

@@ -22,7 +22,7 @@ export default Blits.Component('Square', {
     <Element :w.transition="$size" :h.transition="$size" :color.transition="$color" />
   `,
   props: {
-    'size': 80
+    size: 80,
   },
   state() {
     return {

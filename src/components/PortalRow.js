@@ -29,7 +29,7 @@ export default Blits.Component('PortalRow', {
         <Text content="$title" x="60" />
         <Element y="50" x="60" h="1" w="1800" color="#e8d7f9" />
       </Element>
-
+    
       <Element y="100" :x.transition="$rowOffset">
         <PortalItem
           :for="(item, index) in $items"
@@ -44,7 +44,10 @@ export default Blits.Component('PortalRow', {
       </Element>
     </Element>
   `,
-  props: ['title', 'items'],
+  props: {
+    title: '',
+    items: [],
+  },
   state() {
     return {
       focused: 0,
@@ -61,6 +64,9 @@ export default Blits.Component('PortalRow', {
     },
   },
   watch: {
+    /**
+     * @param {number} value
+     */
     focused(value) {
       const focusItem = this.$select(`item${value}`)
       if (focusItem && focusItem.$focus) {

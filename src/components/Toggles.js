@@ -38,7 +38,9 @@ export default Blits.Component('Toggle', {
       />
     </Element>
   `,
-  props: ['toggled'],
+  props: {
+    toggled: false,
+  },
   state() {
     return {
       height: 40,

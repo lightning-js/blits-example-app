@@ -34,7 +34,9 @@ const Module = Blits.Component('Module', {
       fColor: '#fff',
     }
   },
-  props: ['name'],
+  props: {
+    name: '',
+  },
   hooks: {
     focus() {
       this.bColor = "{ top: '#6366F1', bottom: '#4F46E5' }"
@@ -68,7 +70,10 @@ const Method = Blits.Component('Methods', {
       nameBgColor: "{ top: '#93C5FD', bottom: '#3B82F6' }",
     }
   },
-  props: ['name', 'about'],
+  props: {
+    name: '',
+    about: '',
+  },
   hooks: {
     focus() {
       this.nameBgColor = "{ top: '#6366F1', bottom: '#4F46E5' }"
@@ -109,7 +114,10 @@ const List = Blits.Component('List', {
       activeIndex: 0,
     }
   },
-  props: ['data', 'type'],
+  props: {
+    data: null,
+    type: '',
+  },
   computed: {
     methods() {
       return !this.isModule ? this.data : []

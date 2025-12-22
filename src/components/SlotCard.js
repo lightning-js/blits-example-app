@@ -25,6 +25,6 @@ export default Blits.Component('SlotCard', {
     </Element>
   `,
   props: {
-    'label': undefined
-  }
+    label: undefined,
+  },
 })

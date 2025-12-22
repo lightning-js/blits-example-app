@@ -32,13 +32,30 @@ export default Blits.Component('Flags', {
       </Element>
     </Element>
   `,
-  props: ['languages'],
+  props: {
+    /**
+     * @typedef {Object} Language
+     * @property {string} code - The language code
+     * @property {string} name - The language name
+     * @property {string} flag - The image of the flag
+     */
+
+    /**
+     * Array with languages
+     * @type {Language[]}
+     */
+    languages: [],
+  },
   state() {
     return {
       activeIndex: 0,
     }
   },
   watch: {
+    /**
+     * Active index
+     * @param {number} v
+     */
     activeIndex(v) {
       const language = this.languages[v]
       if (language && language.code) {

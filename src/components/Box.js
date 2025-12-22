@@ -24,5 +24,8 @@ export default Blits.Component('Box', {
       <Text x="25" y="90" :content="$text" size="45" w="350" contain="width" align="center" />
     </Element>
   `,
-  props: ['header', 'text'],
+  props: {
+    header: '',
+    text: '',
+  },
 })

@@ -45,7 +45,12 @@ export default Blits.Component('Poster', {
       </Element>
     </Element>
   `,
-  props: ['src', 'index', 'item', 'width'],
+  props: {
+    src: '',
+    index: 0,
+    item: '',
+    width: 0,
+  },
   state() {
     return {
       scale: 1,

@@ -35,7 +35,13 @@ export default Blits.Component('Bar', {
       />
     </Element>
   `,
-  props: ['bgColor', 'primaryColor', 'height', 'index', 'size'],
+  props: {
+    bgColor: 'red',
+    primaryColor: 'blue',
+    height: 0,
+    index: 0,
+    size: 'small',
+  },
   state() {
     return {
       h: 200,

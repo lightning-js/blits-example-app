@@ -42,7 +42,12 @@ export default Blits.Component('TmdbRow', {
       </Element>
     </Element>
   `,
-  props: ['title', 'type', 'items', 'width'],
+  props: {
+    title: '',
+    type: '',
+    items: [],
+    width: 0,
+  },
   state() {
     return {
       focused: 0,

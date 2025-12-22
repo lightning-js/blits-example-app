@@ -14,7 +14,9 @@ const Accent = Blits.Component('Accent', {
       bColor: "{ top: '#93C5FD', bottom: '#3B82F6' }",
     }
   },
-  props: ['lang'],
+  props: {
+    lang: '',
+  },
   hooks: {
     focus() {
       this.bColor = "{ top: '#6366F1', bottom: '#4F46E5' }"
@@ -37,7 +39,9 @@ const Accents = Blits.Component('Accents', {
       <Text :content="$activeAccent" font="lato-black" x="960" y="400" mount="{x:0.5}" letterspacing="10" size="40" />
     </Element>
   `,
-  props: ['data'],
+  props: {
+    data: [],
+  },
   state() {
     return {
       /**
