@@ -47,7 +47,6 @@ import Slots from './pages/Slots'
 import MemoryGame from './pages/MemoryGame'
 import Exponential from './pages/Exponential'
 import Viewport from './pages/Viewport'
-import { RouterHookRoutes } from './pages/RouterHooks.js'
 import Resize from './pages/Resize'
 import LanguagePlugin from './pages/LanguagePlugin.js'
 import KeyCodes from './pages/KeyCodes.js'
@@ -56,6 +55,8 @@ import SpecialCharacters from './pages/SpecialCharacters.js'
 import Layout from './pages/Layout.js'
 import { FireBoltRoutes } from './pages/Firebolt.js'
 import Announcer from './pages/Announcer.js'
+import { RouterExampleRoutes } from './pages/RouterExample.js'
+import { Menu } from './components/RouterExample'
 
 const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
@@ -64,14 +65,18 @@ const showFPS = !!queryString.get('fps')
 export default Blits.Application({
   components: {
     SourceInfo,
+    Menu,
   },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
-      <RouterView w="100%" h="100%" />
+      <RouterView w="100%" h="100%" ref="routerView" />
+
+      <!-- Router Examples Menu (rendered on top) -->
+      <Menu :alpha="$$appState.showMenu" ref="routerMenu" />
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
-    `,
+  `,
   state() {
     return {
       backgroundColor: '#1e293b',
@@ -81,11 +86,15 @@ export default Blits.Application({
   },
   routes: [
     // Demo routes
-    { path: '/', component: Portal, options: { keepAlive: true } },
+    { path: '/', component: Portal, options: { keepAlive: true, reuseComponent: true } },
     // Loading a route via a dynamic import
     {
       path: '/demos/loading',
       component: () => import('./pages/Loading.js'),
+      options: {
+        keepAlive: true,
+        reuseComponent: true,
+      },
     },
     // Loading a route in a Promise
     {
@@ -126,7 +135,6 @@ export default Blits.Application({
     { path: '/examples/events', component: Events },
     { path: '/examples/slots', component: Slots },
     { path: '/examples/viewport', component: Viewport },
-    ...RouterHookRoutes,
     { path: '/examples/resize', component: Resize },
     { path: '/examples/languageplugin', component: LanguagePlugin },
     { path: '/examples/keycodes', component: KeyCodes },
@@ -140,7 +148,14 @@ export default Blits.Application({
     },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
+    ...RouterExampleRoutes,
     ...FireBoltRoutes,
+    // Global 404 route - must be last
+    {
+      path: '*',
+      component: () => import('./components/RouterExample/NotFound.js'),
+      announce: 'Page Not Found - Press Back to Return',
+    },
   ],
   hooks: {
     ready() {
@@ -190,6 +205,34 @@ export default Blits.Application({
           `https://github.com/lightning-js/blits-example-app/tree/master/${sourcePath}`,
           '_blank'
         )
+      }
+    },
+    right() {
+      if (this.$appState.focusMenu === true) {
+        this.$select('routerView').$focus()
+        this.$appState.focusMenu = false
+      }
+    },
+  },
+  watch: {
+    '$appState.focusMenu'(v) {
+      if (v === true) {
+        const menu = this.$select('routerMenu')
+        menu && menu.$focus && menu.$focus()
+      }
+    },
+    '$router.state.path'(v) {
+      if (v !== undefined) {
+        const isRouterPath = v.includes('/examples/router/')
+        const isLoaderPath = v.includes('/examples/router/loader')
+
+        if (isRouterPath && !isLoaderPath) {
+          // Show menu for all router pages except loader
+          this.$appState.showMenu = true
+        } else {
+          // Hide menu for non-router pages and loader
+          this.$appState.showMenu = false
+        }
       }
     },
   },

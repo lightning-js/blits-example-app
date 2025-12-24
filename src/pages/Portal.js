@@ -200,9 +200,9 @@ export default Blits.Component('Portal', {
           description: 'Lifecycle events when entering and leaving the viewport (margins)',
         },
         {
-          title: 'Router Hooks',
-          id: 'examples/router-hooks',
-          description: 'Example of router before hook',
+          title: 'Router',
+          id: 'examples/router/loader',
+          description: 'Example of router',
         },
         {
           title: 'Image resizing',
@@ -251,6 +251,8 @@ export default Blits.Component('Portal', {
   },
   hooks: {
     ready() {
+      // Hide router example menu when on Portal
+      this.$appState.showMenu = false
       this.logoOffset = 0
     },
     focus() {
