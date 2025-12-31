@@ -6,8 +6,7 @@ const hookPageTemplate = {
       w="1920"
       h="1080"
       color="#fff"
-      radialGradient=""
-      shader="{type: 'radialGradient', colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], width: 2400, height: 800}"
+      shader="{type: 'radialGradient', colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], w: 2400, h: 800}"
     >
       <Element :show="$up !== false">
         <Element src="assets/arrow.png" w="100" h="44" x="960" y="40" mount="{x: 0.5}" />
@@ -29,7 +28,7 @@ const hookPageTemplate = {
     </Element>
   `,
   props: {
-    'page': undefined
+    page: undefined,
   },
   computed: {
     pageTitle() {
