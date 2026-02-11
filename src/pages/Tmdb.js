@@ -54,7 +54,7 @@ export default Blits.Component('TMdb', {
             title="$row.title"
             :items="$row.items"
             :type="$row.type"
-            :width="$row.width"
+            :sizeX="$row.width"
             y="$row.y"
             ref="row"
           />

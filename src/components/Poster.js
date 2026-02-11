@@ -22,23 +22,17 @@ export default Blits.Component('Poster', {
     <Element
       w="185"
       h="278"
-      x="$x"
       :src="$item.poster"
       :scale.transition="{value: $scale, duration: 200, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
       :_effects="[{type: 'radius', props: {radius: 8}}]"
     />
   `,
-  props: ['src', 'index', 'item', 'width'],
+  props: ['src', 'index', 'item', 'sizeX'],
   state() {
     return {
       scale: 1,
       color: '#333',
     }
-  },
-  computed: {
-    x() {
-      return this.index * this.width
-    },
   },
   hooks: {
     focus() {
