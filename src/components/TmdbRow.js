@@ -36,13 +36,14 @@ export default Blits.Component('TmdbRow', {
           index="$index"
           item="$item"
           ref="poster"
-          width="$width"
+          sizeX="$sizeX"
           key="$item.identifier"
+          :x="$index * $sizeX"
         />
       </Element>
     </Element>
   `,
-  props: ['title', 'type', 'items', 'width'],
+  props: ['title', 'type', 'items', 'sizeX'],
   state() {
     return {
       focused: 0,
@@ -56,7 +57,7 @@ export default Blits.Component('TmdbRow', {
   },
   computed: {
     x() {
-      return 150 - Math.min(this.focused, this.items.length - 1720 / this.width) * this.width
+      return 150 - Math.min(this.focused, this.items.length - 1720 / this.sizeX) * this.sizeX
     },
   },
   watch: {
