@@ -35,7 +35,7 @@ export default Blits.Component('Player', {
           </Element>
           <Element y="22" x="100" w="$progressLength" h="16" color="#ffffff80" rounded="8">
             <Element h="16" :w.transition="{value: $progress, d: 100, f: 'ease-in-out'}" rounded="8" color="#0087CEEB" />
-            <Circle size="28" color="#fff" y="-6" :x.transition="{value: $progress - 8, d: 100, f: 'ease-in-out'}" />
+            <Circle size="28" bgColor="#fff" y="-6" :x.transition="{value: $progress - 8, d: 100, f: 'ease-in-out'}" />
           </Element>
           <Element x="1660" y="16">
             <Text :content="$currentTime" size="25" />
