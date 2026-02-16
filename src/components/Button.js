@@ -22,7 +22,7 @@ export default Blits.Component('Button', {
     <Element
       w="300"
       h="80"
-      color="$color || 'red'"
+      color="$bColor || 'red'"
       rounded="20"
       :alpha.transition="$alpha"
       :scale.transition="$scale"
@@ -31,7 +31,7 @@ export default Blits.Component('Button', {
     </Element>
   `,
   props: {
-    color: '',
+    bColor: '',
   },
   state() {
     return {

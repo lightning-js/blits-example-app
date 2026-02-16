@@ -22,7 +22,6 @@ export default Blits.Component('Poster', {
     <Element
       w="1280"
       h="720"
-      x="$x"
       :src="$item.background"
       color="{top: '#fff', bottom: '#000'}"
       :scale.transition="{value: $scale, duration: 300, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
@@ -49,7 +48,6 @@ export default Blits.Component('Poster', {
     src: '',
     index: 0,
     item: '',
-    width: 0,
   },
   state() {
     return {
@@ -57,11 +55,6 @@ export default Blits.Component('Poster', {
       zIndex: 1,
       alpha: 0,
     }
-  },
-  computed: {
-    x() {
-      return this.index * this.width
-    },
   },
   hooks: {
     focus() {
