@@ -59,7 +59,7 @@ const Method = Blits.Component('Methods', {
         <Text :content="$name" x="$w/2" y="$h/2" mount="0.5" color="#fff" font="lato" size="50" />
       </Element>
       <Element w="$w" h="50" color="#4B5563" y="75" rounded="[0, 0, 8, 8]">
-        <Text :content="$about" wordwrap="$w" align="center" font="lato" maxlines="1" size="28" y="6" />
+        <Text :content="$about" maxwidth="$w" align="center" font="lato" maxlines="1" size="28" y="6" />
       </Element>
     </Element>
   `,
