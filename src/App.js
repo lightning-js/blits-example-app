@@ -16,6 +16,7 @@
  */
 
 import Blits from '@lightningjs/blits'
+import { FPScounter } from '@lightningjs/blits/components'
 
 // Demo pages
 import Portal from './pages/Portal'
@@ -64,6 +65,7 @@ const showFPS = !!queryString.get('fps')
 export default Blits.Application({
   components: {
     SourceInfo,
+    FPScounter,
   },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
@@ -71,7 +73,7 @@ export default Blits.Application({
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
-    `,
+  `,
   state() {
     return {
       backgroundColor: '#1e293b',
