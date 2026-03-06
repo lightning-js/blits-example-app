@@ -129,10 +129,10 @@ export default Blits.Component('Theming', {
   },
   watch: {
     mode(val) {
-      this.$colors.set(val)
+      this.$colors.current(val)
     },
     sizes(val) {
-      this.$sizes.set(val)
+      this.$sizes.current(val)
     },
   },
   computed: {
