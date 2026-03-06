@@ -97,6 +97,11 @@ export default Blits.Component('Portal', {
           description: 'Managing focus between components in a simple layout',
         },
         {
+          title: 'Mouse',
+          id: 'demos/mouse',
+          description: 'Mouse hover and click integrated with focus navigation',
+        },
+        {
           title: 'Memory Game',
           id: 'demos/memory-game',
           description: 'Memory game with speech assistence (for accessibility)',
