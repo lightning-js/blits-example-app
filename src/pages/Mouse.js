@@ -25,13 +25,13 @@ const Block = Blits.Component('MouseBlock', {
       w="280"
       h="120"
       rounded="12"
-      :color.transition="{ value: $isHovered || $$hasFocus ? $color : $dullColor, duration: 200 }"
+      :color.transition="{ value: $isHovered || $$hasFocus ? $focusColor : $color, duration: 200 }"
       :alpha.transition="{ value: $isHovered || $$hasFocus ? 1 : 0.5, duration: 200 }"
     >
       <Text x="140" y="60" mount="0.5" :content="'Clicks: ' + $clicks" size="28" color="#fff" />
     </Element>
   `,
-  props: ['color', 'dullColor', 'blockIndex'],
+  props: ['color', 'focusColor', 'blockIndex'],
   state() {
     return {
       clicks: 0,
@@ -62,7 +62,7 @@ export default Blits.Component('Mouse', {
         <Block
           :for="(block, index) in $blocks"
           color="$block.color"
-          dullColor="$block.dullColor"
+          focusColor="$block.focusColor"
           :x="$index * 320"
           rounded="12"
           :ref="'block' + ($index + 1)"
@@ -96,9 +96,9 @@ export default Blits.Component('Mouse', {
     return {
       focused: 1,
       blocks: [
-        { color: '#3b82f6', dullColor: '#3C5A96' },
-        { color: '#10b981', dullColor: '#047857' },
-        { color: '#f59e0b', dullColor: '#7D633F' },
+        { color: '#3C5A96', focusColor: '#3b82f6' },
+        { color: '#047857', focusColor: '#10b981' },
+        { color: '#7D633F', focusColor: '#f59e0b' },
       ],
     }
   },
