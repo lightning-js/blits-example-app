@@ -8,6 +8,9 @@ const hookPageTemplate = {
       color="#fff"
       :effects="[{type: 'radialGradient', props: {colors: ['#b43fcb', '#6150cb'], pivot: [0.5, 1.1], width: 2400, height: 800}}]"
     >
+      <Element :show="$stateInfo !== undefined">
+        <Text :content="$stateInfo" x="60" y="60" size="28" />
+      </Element>
       <Element :show="$up !== undefined">
         <Element src="assets/arrow.png" w="100" h="44" x="960" y="40" mount="{x: 0.5}" />
         <Text :content="$up && $up.toUpperCase()" x="960" y="100" size="76" mount="{x: 0.5}" />
@@ -48,6 +51,7 @@ const hookPageTemplate = {
       right: 'right',
       down: 'down',
       left: 'left',
+      stateInfo: '',
     }
   },
 }
@@ -121,6 +125,21 @@ const Rating = Blits.Component('RouterHookRating', {
 //movie flow page, with 2 directions left: back, right: next episode
 const Episode = Blits.Component('RouterHookEpisode', {
   ...hookPageTemplate,
+  hooks: {
+    init() {
+      // Get router state information
+      const state = this.$router?.state
+      if (!state) return
+
+      // Display available router state information
+      this.stateInfo = JSON.stringify({
+        path: state.path || '',
+        params: state['params'] || {},
+        data: state['data'] || {},
+      })
+    },
+  },
+
   state() {
     return {
       title: 'Episode',
@@ -134,10 +153,14 @@ const Episode = Blits.Component('RouterHookEpisode', {
       this.$router.back()
     },
     right() {
-      //trigger router to navigate to the next episode, and NOT save current episode page in navigation history
-      this.$router.to(`/examples/router-hooks/episode/${this.page.id + 1}`, undefined, {
-        inHistory: false,
-      })
+      //trigger router to navigate to the next episode without adding to navigation history
+      this.$router.to(
+        `/examples/router-hooks/episode/${Number(this.$router.state['params'].id) + 1}`,
+        undefined,
+        {
+          inHistory: false,
+        }
+      )
     },
   },
 })
