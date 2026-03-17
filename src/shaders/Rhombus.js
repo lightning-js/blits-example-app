@@ -16,14 +16,14 @@
  */
 export default {
   props: {
-    width: 0,
-    height: 0,
+    w: 0,
+    h: 0,
   },
   update(node) {
     this.uniform2f(
       'u_size',
-      this.props.width > 0 ? this.props.width : node.width,
-      this.props.height > 0 ? this.props.height : node.height
+      this.props.w > 0 ? this.props.w : node.w,
+      this.props.h > 0 ? this.props.h : node.h
     )
   },
   fragment: `

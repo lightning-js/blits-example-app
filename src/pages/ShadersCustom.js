@@ -39,16 +39,23 @@ export default Blits.Component('ShadersCustom', {
       <!-- shader applied so now the node has a rhombus shape -->
       <Element color="green" w="250" h="250" x="490" y="400" shader="rhombus" />
       <!-- shader applied with different height -->
-      <Element color="green" w="250" h="250" x="880" y="400" shader="{type: 'rhombus', height: 30}" />
+      <Element color="green" w="250" h="250" x="880" y="400" :shader.transition="{type: 'rhombus', h: $rhombusHeight}" />
 
       <Element src="$image2" w="250" h="250" x="90" y="710" />
       <!-- shader applied with a blur but default amount is 0 -->
       <Element src="$image2" w="250" h="250" x="490" y="710" shader="blur" />
       <!-- shader applied with a blur with a horizontal displacement of 20 but default specified in the shader attribute -->
-      <Element src="$image2" w="250" h="250" x="880" y="710" shader="{type: 'blur', amount: 20}" />
+      <Element src="$image2" w="250" h="250" x="880" y="710" :shader.transition="{type: 'blur', amount: $blurAmount}" />
 
       <!-- shader applied with a  blur with a horizontal displacement of 20 in the shader attribute. with rtt on. -->
-      <Element rtt="true" w="250" h="250" x="1260" y="710" shader="{type: 'blur', amount: 20}">
+      <Element
+        rtt="true"
+        w="250"
+        h="250"
+        x="1260"
+        y="710"
+        :shader.transition="{value: {type: 'blur', amount: $blurAmount}, duration: 1000}"
+      >
         <!-- shader applied with a vertical blur with a displacement of 3 as we specified in the shader attribute -->
         <Element src="$image2" w="250" h="250" shader="{type: 'blur', amount: 3, direction: 1}" />
       </Element>
@@ -58,6 +65,8 @@ export default Blits.Component('ShadersCustom', {
     return {
       image1: images[0],
       image2: images[1],
+      blurAmount: 0,
+      rhombusHeight: 40,
       shType: 'colorBurn',
     }
   },
@@ -73,7 +82,16 @@ export default Blits.Component('ShadersCustom', {
           //   color: 'yellow',
           // }
         }
-      }, 5000)
+        this.blurAmount += 5
+        this.rhombusHeight += 20
+
+        if (this.blurAmount > 20) {
+          this.blurAmount = 0
+        }
+        if (this.rhombusHeight > 250) {
+          this.rhombusHeight = 40
+        }
+      }, 3000)
     },
   },
 })
