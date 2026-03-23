@@ -24,6 +24,7 @@ import Intro from './pages/Intro'
 import Theming from './pages/Theming'
 import Tmdb from './pages/Tmdb'
 import Sprites from './pages/Sprites'
+import Mouse from './pages/Mouse'
 import FocusHandling from './pages/FocusHandling'
 
 // Example & Test pages
@@ -103,6 +104,7 @@ export default Blits.Application({
     { path: '/demos/theming', component: Theming },
     { path: '/demos/tmdb', component: Tmdb },
     { path: '/demos/sprites', component: Sprites },
+    { path: '/demos/mouse', component: Mouse },
     { path: '/demos/focushandling', component: FocusHandling },
     {
       path: '/demos/memory-game',
@@ -207,6 +209,7 @@ const getSourcePath = (routerPath) => {
     '/demos/theming': 'src/pages/Theming',
     '/demos/tmdb': 'src/pages/Tmdb',
     '/demos/sprites': 'src/pages/Sprites',
+    '/demos/mouse': 'src/pages/Mouse',
     '/demos/focushandling': 'src/pages/FocusHandling',
     '/demos/memory-game': 'src/pages/MemoryGame',
     '/demos/player': 'src/pages/Player',
