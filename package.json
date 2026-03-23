@@ -49,6 +49,6 @@
   },
   "dependencies": {
     "@firebolt-js/sdk": "^1.4.1",
-    "@lightningjs/blits": "github:lightning-js/blits#v2/update"
+    "@lightningjs/blits": "^2.0.0"
   }
 }
