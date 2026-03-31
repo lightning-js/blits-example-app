@@ -1,6 +1,6 @@
 {
   "name": "@lightningjs/blits-example-app",
-  "version": "1.15.1",
+  "version": "2.0.0",
   "description": "Lightning 3 Blits Example App",
   "main": "index.js",
   "type": "module",
@@ -32,7 +32,7 @@
   "author": "Michiel van der Geest <hello@michielvandergeest.com>",
   "license": "Apache-2",
   "devDependencies": {
-    "@lightningjs/msdf-generator": "^1.1.1",
+    "@lightningjs/msdf-generator": "^1.2.0",
     "@vitejs/plugin-legacy": "^6.1.1",
     "backstopjs": "^6.3.22",
     "eslint": "^8.8.0",
