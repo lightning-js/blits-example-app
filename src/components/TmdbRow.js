@@ -36,14 +36,18 @@ export default Blits.Component('TmdbRow', {
           index="$index"
           item="$item"
           ref="poster"
-          sizeX="$sizeX"
           key="$item.identifier"
           :x="$index * $sizeX"
         />
       </Element>
     </Element>
   `,
-  props: ['title', 'type', 'items', 'sizeX'],
+  props: {
+    title: '',
+    type: '',
+    items: [],
+    sizeX: 0,
+  },
   state() {
     return {
       focused: 0,

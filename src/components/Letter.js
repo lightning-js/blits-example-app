@@ -39,7 +39,12 @@ export default Blits.Component('Letter', {
       />
     </Element>
   `,
-  props: ['w', 'letter', 'direction', 'delay'],
+  props: {
+    w: 0,
+    letter: '',
+    direction: 'up',
+    delay: 0,
+  },
   computed: {
     image() {
       return `assets/${this.letter}.png`

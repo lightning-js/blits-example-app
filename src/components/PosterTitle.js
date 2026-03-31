@@ -24,7 +24,7 @@ export default Blits.Component('PosterTitle', {
       h="278"
       :src="$item.poster"
       :scale.transition="{value: $scale, duration: 200, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
-      :effects="[{type: 'radius', props: {radius: 8}}]"
+      rounded="8"
     >
       <Element
         x="10"
@@ -37,7 +37,11 @@ export default Blits.Component('PosterTitle', {
   `,
   // color transitions have some issues, so I'll leave it out for now
   // :colorBottom.transition="{v: $colorBottom, d: 200, f: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"!
-  props: ['src', 'index', 'item', 'sizeX'],
+  props: {
+    src: '',
+    index: 0,
+    item: {},
+  },
   state() {
     return {
       scale: 1,

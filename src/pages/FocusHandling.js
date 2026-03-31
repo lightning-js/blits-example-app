@@ -27,15 +27,15 @@ export default Blits.Component('FocusHandling', {
   template: `
     <Element>
       <Element x="300" y="150">
-        <Button color="#ef4444" x="0" ref="button1" :z="$focused === 1 ? 1 : 0" />
-        <Button color="#f97316" x="320" ref="button2" :z="$focused === 2 ? 1 : 0" />
-        <Button color="#84cc16" x="640" ref="button3" :z="$focused === 3 ? 1 : 0" />
-        <Button color="#10b981" x="0" y="100" ref="button4" :z="$focused === 4 ? 1 : 0" />
-        <Button color="#06b6d4" y="100" x="320" ref="button5" :z="$focused === 5 ? 1 : 0" />
-        <Button color="#3b82f6" y="100" x="640" ref="button6" :z="$focused === 6 ? 1 : 0" />
-        <Button color="#8b5cf6" y="200" x="0" ref="button7" :z="$focused === 7 ? 1 : 0" />
-        <Button color="#d946ef" y="200" x="320" ref="button8" :z="$focused === 8 ? 1 : 0" />
-        <Button color="#f43f5e" y="200" x="640" ref="button9" :z="$focused === 9 ? 1 : 0" />
+        <Button bColor="#ef4444" x="0" ref="button1" :z="$focused === 1 ? 1 : 0" />
+        <Button bColor="#f97316" x="320" ref="button2" :z="$focused === 2 ? 1 : 0" />
+        <Button bColor="#84cc16" x="640" ref="button3" :z="$focused === 3 ? 1 : 0" />
+        <Button bColor="#10b981" x="0" y="100" ref="button4" :z="$focused === 4 ? 1 : 0" />
+        <Button bColor="#06b6d4" y="100" x="320" ref="button5" :z="$focused === 5 ? 1 : 0" />
+        <Button bColor="#3b82f6" y="100" x="640" ref="button6" :z="$focused === 6 ? 1 : 0" />
+        <Button bColor="#8b5cf6" y="200" x="0" ref="button7" :z="$focused === 7 ? 1 : 0" />
+        <Button bColor="#d946ef" y="200" x="320" ref="button8" :z="$focused === 8 ? 1 : 0" />
+        <Button bColor="#f43f5e" y="200" x="640" ref="button9" :z="$focused === 9 ? 1 : 0" />
       </Element>
       <Menu ref="menu" />
     </Element>

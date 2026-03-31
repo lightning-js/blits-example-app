@@ -44,7 +44,10 @@ export default Blits.Component('PortalRow', {
       </Element>
     </Element>
   `,
-  props: ['title', 'items'],
+  props: {
+    title: '',
+    items: [],
+  },
   state() {
     return {
       focused: 0,
@@ -61,6 +64,9 @@ export default Blits.Component('PortalRow', {
     },
   },
   watch: {
+    /**
+     * @param {number} value
+     */
     focused(value) {
       const focusItem = this.$select(`item${value}`)
       if (focusItem && focusItem.$focus) {

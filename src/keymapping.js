@@ -47,7 +47,20 @@ const keymapping = {
 }
 
 export default () => {
-  let mapping = {}
+  // Required for blits demo app for-loop example
+  const demoAppKeyMappings = {
+    65: 'a',
+    66: 'b',
+    67: 'c',
+    68: 'd',
+    69: 'e',
+    70: 'f',
+    71: 'g',
+    72: 'h',
+    73: 'i',
+  }
+
+  let mapping = { ...demoAppKeyMappings }
 
   Object.keys(keymapping).forEach((target) => {
     if (
@@ -55,8 +68,8 @@ export default () => {
       typeof keymapping[target].test === 'function' &&
       keymapping[target].test() === true
     ) {
-      mapping = keymapping[target].mapping
-      return
+      mapping = { ...mapping, ...keymapping[target].mapping }
+      return mapping
     }
   })
 

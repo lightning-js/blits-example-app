@@ -97,6 +97,11 @@ export default Blits.Component('Portal', {
           description: 'Managing focus between components in a simple layout',
         },
         {
+          title: 'Mouse',
+          id: 'demos/mouse',
+          description: 'Mouse hover and click integrated with focus navigation',
+        },
+        {
           title: 'Memory Game',
           id: 'demos/memory-game',
           description: 'Memory game with speech assistence (for accessibility)',
@@ -164,11 +169,15 @@ export default Blits.Component('Portal', {
           description: 'Testing various Array operations with a for loop',
         },
         {
-          title: 'Effects',
-          id: 'examples/effects',
-          description: 'Applying one or multiple effects (aka shaders)',
+          title: 'Shaders',
+          id: 'examples/shaders',
+          description: 'Applying shader effects with attributes',
         },
-
+        {
+          title: 'ShadersCustom',
+          id: 'examples/shaders-custom',
+          description: 'Import or Create and use custom shaders',
+        },
         {
           title: 'Show',
           id: 'examples/showif',

@@ -24,10 +24,14 @@ export default Blits.Component('Poster', {
       h="278"
       :src="$item.poster"
       :scale.transition="{value: $scale, duration: 200, easing: 'cubic-bezier(0.20, 1.00, 0.80, 1.00)'}"
-      :effects="[{type: 'radius', props: {radius: 8}}]"
+      rounded="8"
     />
   `,
-  props: ['src', 'index', 'item', 'sizeX'],
+  props: {
+    src: '',
+    index: 0,
+    item: {},
+  },
   state() {
     return {
       scale: 1,

@@ -92,12 +92,15 @@ const makeItems = (num = 1) => {
 const LegendItem = Blits.Component('LegendItem', {
   template: `
     <Element>
-      <Circle color="#fb923c" size="60" />
+      <Circle bgColor="#fb923c" size="60" />
       <Text color="#e5e5e5" size="32" y="10" maxwidth="57" align="center">{{ $id }}</Text>
       <Text color="#e5e5e5" x="80" y="14" size="28">{{ $text }}</Text>
     </Element>
   `,
-  props: ['id', 'text'],
+  props: {
+    id: '',
+    text: '',
+  },
 })
 
 const Row = Blits.Component('Row', {
@@ -107,7 +110,11 @@ const Row = Blits.Component('Row', {
       <Text :content="$text" x="30" y="15" font="lato" size="28" :color="$activeRow == $index ? '#06b6d4' : '#1e293b'" />
     </Element>
   `,
-  props: ['index', 'text', 'activeRow'],
+  props: {
+    index: 0,
+    text: '',
+    activeRow: false,
+  },
 })
 
 const Rows = Blits.Component('Rows', {
@@ -126,7 +133,10 @@ const Rows = Blits.Component('Rows', {
       />
     </Element>
   `,
-  props: ['data', 'activeRowIndex'],
+  props: {
+    data: [],
+    activeRowIndex: 0,
+  },
 })
 
 export default Blits.Component('ForLoop', {

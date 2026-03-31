@@ -24,18 +24,24 @@ export default Blits.Component('Bar', {
       :h="{value: $h, duration: $duration}"
       :color="$bgColor"
       :x="$index * ($w + ($w / 4))"
-      :effects="[{type: 'radius', props: {radius:10}}]"
+      rounded="10"
     >
       <Element
         :w="$w"
         :y.transition="{value: $h-$innerH, duration: $duration}"
         :h.transition="{value: $innerH, duration: $duration}"
         :color="$primaryColor"
-        :effects="[{type: 'radius', props: {radius:10}}]"
+        rounded="10"
       />
     </Element>
   `,
-  props: ['bgColor', 'primaryColor', 'height', 'index', 'size'],
+  props: {
+    bgColor: 'red',
+    primaryColor: 'blue',
+    height: 0,
+    index: 0,
+    size: 'small',
+  },
   state() {
     return {
       h: 200,
