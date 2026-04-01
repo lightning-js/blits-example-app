@@ -22,15 +22,17 @@ export default Blits.Component('Button', {
     <Element
       w="300"
       h="80"
-      color="$color || 'red'"
-      :effects="[{type: 'radius', props: {radius: 20}}]"
+      color="$bColor || 'red'"
+      rounded="20"
       :alpha.transition="$alpha"
       :scale.transition="$scale"
       :rotation="$rotate"
     >
     </Element>
   `,
-  props: ['color'],
+  props: {
+    bColor: '',
+  },
   state() {
     return {
       alpha: 0.4,

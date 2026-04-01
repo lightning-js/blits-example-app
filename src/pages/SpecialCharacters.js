@@ -2,10 +2,10 @@ import Blits from '@lightningjs/blits'
 
 const Accent = Blits.Component('Accent', {
   template: `
-    <Element w="300" h="250" :color="$bColor" :effects="[{type: 'radius', props: {radius: 8}}]">
+    <Element w="300" h="250" :color="$bColor" rounded="8">
       <Text x="150" y="125" mount="{x:0.5, y:0.5}" :content="$lang" color="#fff" font="lato-black" />
     </Element>
-    `,
+  `,
   state() {
     return {
       /**
@@ -14,7 +14,9 @@ const Accent = Blits.Component('Accent', {
       bColor: "{ top: '#93C5FD', bottom: '#3B82F6' }",
     }
   },
-  props: ['lang'],
+  props: {
+    lang: '',
+  },
   hooks: {
     focus() {
       this.bColor = "{ top: '#6366F1', bottom: '#4F46E5' }"
@@ -36,8 +38,10 @@ const Accents = Blits.Component('Accents', {
       </Element>
       <Text :content="$activeAccent" font="lato-black" x="960" y="400" mount="{x:0.5}" letterspacing="10" size="40" />
     </Element>
-    `,
-  props: ['data'],
+  `,
+  props: {
+    data: [],
+  },
   state() {
     return {
       /**
@@ -94,14 +98,7 @@ export default Blits.Component('Characters', {
       <Text x="960" y="150" mount="{x:0.5}" content="$alphabets" font="lato-black" size="40" letterspacing="10" />
       <Text x="960" y="290" mount="{x:0.5}" content="Accents" font="lato-black" size="60" />
       <Accents data="$accents" y="400" ref="accents" />
-      <Element
-        w="950"
-        h="40"
-        color="#000000ff"
-        :effects="[{type: 'radius', props: {radius: 10}}]"
-        y="1000"
-        placement="center"
-      >
+      <Element w="950" h="40" color="#000000ff" rounded="10" y="1000" placement="center">
         <Text
           content="The character ? represents a character that is not supported by the Lato-Black font"
           size="25"
@@ -111,7 +108,7 @@ export default Blits.Component('Characters', {
         />
       </Element>
     </Element>
-    `,
+  `,
   state() {
     return {
       alphabets: 'abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ',

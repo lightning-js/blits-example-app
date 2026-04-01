@@ -19,16 +19,18 @@ import Blits from '@lightningjs/blits'
 
 const Item = Blits.Component('Item', {
   template: `
-    <Element :color="$hasFocus ? '#e0f2fe' : '#fef9c3'" w="200" h="200" :effects="[{type: 'radius', props: {radius: 12}}]">
+    <Element :color="$$hasFocus ? '#e0f2fe' : '#fef9c3'" w="200" h="200" :effects="[{type: 'radius', props: {radius: 12}}]">
       <Text
         :content="$name"
-        :size="$hasFocus ? 38 : 32"
-        :color="$hasFocus ? '#1e3a8a' : '#2563eb'"
+        :size="$$hasFocus ? 38 : 32"
+        :color="$$hasFocus ? '#1e3a8a' : '#2563eb'"
         placement="{x: 'center', y: 'middle'}"
       />
     </Element>
   `,
-  props: ['name'],
+  props: {
+    name: '',
+  },
   state() {
     return {
       message: null,
@@ -57,11 +59,14 @@ const Row = Blits.Component('Row', {
       <Item :for="(item, index) in $items" name="$item" y="100" x="$index * 250 + 100" ref="item" />
     </Element>
   `,
-  props: ['title', 'items'],
+  props: {
+    title: '',
+    items: [],
+  },
   state() {
     return {
       focusIndex: -1,
-      message: null,
+      message: '',
     }
   },
   hooks: {

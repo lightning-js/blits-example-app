@@ -16,6 +16,7 @@
  */
 
 import Blits from '@lightningjs/blits'
+import { FPScounter } from '@lightningjs/blits/components'
 
 // Demo pages
 import Portal from './pages/Portal'
@@ -23,6 +24,7 @@ import Intro from './pages/Intro'
 import Theming from './pages/Theming'
 import Tmdb from './pages/Tmdb'
 import Sprites from './pages/Sprites'
+import Mouse from './pages/Mouse'
 import FocusHandling from './pages/FocusHandling'
 
 // Example & Test pages
@@ -40,7 +42,8 @@ import Images from './pages/Images'
 import Components from './pages/Components'
 import ForLoop from './pages/ForLoop'
 import ForLoopAdvanced from './pages/ForLoopAdvanced'
-import Effects from './pages/Effects'
+import Shaders from './pages/Shaders.js'
+import ShadersCustom from './pages/ShadersCustom.js'
 import ShowIf from './pages/ShowIf'
 import Events from './pages/Events'
 import Slots from './pages/Slots'
@@ -64,6 +67,7 @@ const showFPS = !!queryString.get('fps')
 export default Blits.Application({
   components: {
     SourceInfo,
+    FPScounter,
   },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
@@ -71,7 +75,7 @@ export default Blits.Application({
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
-    `,
+  `,
   state() {
     return {
       backgroundColor: '#1e293b',
@@ -100,6 +104,7 @@ export default Blits.Application({
     { path: '/demos/theming', component: Theming },
     { path: '/demos/tmdb', component: Tmdb },
     { path: '/demos/sprites', component: Sprites },
+    { path: '/demos/mouse', component: Mouse },
     { path: '/demos/focushandling', component: FocusHandling },
     {
       path: '/demos/memory-game',
@@ -121,7 +126,8 @@ export default Blits.Application({
     { path: '/examples/components', component: Components },
     { path: '/examples/forloop', component: ForLoop },
     { path: '/examples/forloop-advanced', component: ForLoopAdvanced },
-    { path: '/examples/effects', component: Effects },
+    { path: '/examples/shaders', component: Shaders },
+    { path: '/examples/shaders-custom', component: ShadersCustom },
     { path: '/examples/showif', component: ShowIf },
     { path: '/examples/events', component: Events },
     { path: '/examples/slots', component: Slots },
@@ -203,6 +209,7 @@ const getSourcePath = (routerPath) => {
     '/demos/theming': 'src/pages/Theming',
     '/demos/tmdb': 'src/pages/Tmdb',
     '/demos/sprites': 'src/pages/Sprites',
+    '/demos/mouse': 'src/pages/Mouse',
     '/demos/focushandling': 'src/pages/FocusHandling',
     '/demos/memory-game': 'src/pages/MemoryGame',
     '/demos/player': 'src/pages/Player',
@@ -217,7 +224,8 @@ const getSourcePath = (routerPath) => {
     '/examples/keyinput': 'src/pages/KeyInput',
     '/examples/forloop': 'src/pages/ForLoop',
     '/examples/forloop-advanced': 'src/pages/ForLoopAdvanced',
-    '/examples/effects': 'src/pages/Effects',
+    '/examples/shaders': 'src/pages/Shaders',
+    '/examples/shaders-custom': 'src/pages/ShadersCustom',
     '/examples/showif': 'src/pages/ShowIf',
     '/examples/events': 'src/pages/Events',
     '/examples/images': 'src/pages/Images',
