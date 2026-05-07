@@ -102,7 +102,7 @@ export default Blits.Component('Announcer', {
     Row,
   },
   template: `
-    <Element width="100%" y="50">
+    <Element w="100%" y="50">
       <Text placement="{x: 'center'}" size="50">Food</Text>
       <Row title="Fruits" x="200" y="150" :items="['Banana', 'Strawberry', 'Kiwi', 'Mango', 'Grape']" ref="row1" />
       <Row title="Snacks" x="200" y="600" :items="['Pizza', 'Burger', 'Fries', 'Popcorn', 'Chocolate']" ref="row2" />
@@ -120,6 +120,7 @@ export default Blits.Component('Announcer', {
   },
   hooks: {
     focus() {
+      console.log(this)
       this.$announcer.speak('The topic is Food')
       this.$trigger('focusIndex')
     },
