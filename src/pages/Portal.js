@@ -111,6 +111,11 @@ export default Blits.Component('Portal', {
           id: 'demos/player',
           description: 'Example of Video Playback with basic controls',
         },
+        {
+          title: 'Named Routes',
+          id: 'demos/named-routes',
+          description: 'App-in-App: child app with its own named RouterView inside the main App',
+        },
       ],
       example: [
         {

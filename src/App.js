@@ -59,6 +59,8 @@ import SpecialCharacters from './pages/SpecialCharacters.js'
 import Layout from './pages/Layout.js'
 import { FireBoltRoutes } from './pages/Firebolt.js'
 import Announcer from './pages/Announcer.js'
+import NamedRoutes from './pages/NamedRoutes.js'
+import SidePanel from './pages/appInApp/SidePanel.js'
 
 const queryString = new URLSearchParams(window.location.search)
 const showSource = !!queryString.get('source')
@@ -68,10 +70,12 @@ export default Blits.Application({
   components: {
     SourceInfo,
     FPScounter,
+    SidePanel,
   },
   template: `
     <Element w="1920" h="1080" :color="$backgroundColor">
-      <RouterView w="100%" h="100%" />
+      <RouterView w="100%" h="100%" ref="routerView" :active="$routerActive" />
+      <SidePanel :x.transition="{value: $panelX, duration: 300}" ref="sidePanel" />
       <FPScounter x="1610" :show="$showFPS" />
       <SourceInfo ref="info" :show="$showInfo" />
     </Element>
@@ -81,6 +85,8 @@ export default Blits.Application({
       backgroundColor: '#1e293b',
       showFPS: showFPS,
       showInfo: false,
+      panelX: 1920,
+      routerActive: true,
     }
   },
   routes: [
@@ -144,6 +150,8 @@ export default Blits.Application({
       component: Announcer,
       announce: 'Welcome to the announcement example page',
     },
+    // Named Routes (App-in-App)
+    { path: '/demos/named-routes', component: NamedRoutes },
     // Benchmarks and stress tests
     { path: '/benchmarks/exponential', component: Exponential },
     ...FireBoltRoutes,
@@ -160,6 +168,21 @@ export default Blits.Application({
       })
       this.$listen('clearBackground', () => {
         this.backgroundColor = 'transparent'
+      })
+
+      // Named routes panel events
+      this.$listen('hidePanel', () => {
+        this.panelX = 1920
+      })
+      this.$listen('openPanel', () => {
+        this.panelX = 1520
+        this.$select('sidePanel').$focus()
+        this.routerActive = false
+      })
+      this.$listen('closePanel', () => {
+        this.$select('routerView').$focus()
+        this.routerActive = true
+        this.panelX = 1920
       })
     },
   },
@@ -213,6 +236,7 @@ const getSourcePath = (routerPath) => {
     '/demos/focushandling': 'src/pages/FocusHandling',
     '/demos/memory-game': 'src/pages/MemoryGame',
     '/demos/player': 'src/pages/Player',
+    '/demos/named-routes': 'src/pages/NamedRoutes',
     '/examples/positioning': 'src/pages/Positioning',
     '/examples/colors': 'src/pages/Colors',
     '/examples/gradients': 'src/pages/Gradients',
