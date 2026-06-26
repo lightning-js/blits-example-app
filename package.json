@@ -17,6 +17,7 @@
     "build:chrome71": "npm --browser_version=chrome71-79 run build",
     "dev": "vite dev --host",
     "test": "NODE_ENV=testing backstop --config=backstop.cjs test",
+    "test:unit": "node -r global-jsdom/register node_modules/tape/bin/tape \"src/**/*.test.js\"",
     "test:reference": "NODE_ENV=testing backstop --config=backstop.cjs reference"
   },
   "lint-staged": {
@@ -38,17 +39,20 @@
     "eslint": "^8.8.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
+    "global-jsdom": "^24.0.0",
     "husky": "^7.0.4",
+    "jsdom": "^24.0.0",
     "lint-staged": "^12.3.3",
     "playwright": "^1.41.0",
     "prettier": "^2.5.1",
     "shaka-player": "^4.7.1",
+    "tape": "^5.5.0",
     "terser": "^5.43.1",
     "vite": "^6.3.5",
     "whatwg-fetch": "^3.6.20"
   },
   "dependencies": {
     "@firebolt-js/sdk": "^1.4.1",
-    "@lightningjs/blits": "^2.0.0"
+    "@lightningjs/blits": "^2.6.0"
   }
 }
