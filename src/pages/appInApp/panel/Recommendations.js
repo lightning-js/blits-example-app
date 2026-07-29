@@ -1,12 +1,19 @@
 import Blits from '@lightningjs/blits'
 
 export default Blits.Component('Recommendations', {
+  props: {
+    subtitle: {
+      type: String,
+      default: '',
+    },
+  },
   template: `
     <Element w="380" h="800">
       <Text content="Recommendations" size="30" x="20" y="30" color="#a855f7" />
       <Text content="Page 2 of 3" size="14" x="20" y="68" color="#64748b" />
-      <Element y="100" x="20" w="340" h="2" color="#ffffff40" />
-      <Element y="120" x="20">
+      <Text :content="$subtitle || 'Based on your history'" size="14" x="20" y="92" color="#86efac" />
+      <Element y="120" x="20" w="340" h="2" color="#ffffff40" />
+      <Element y="140" x="20">
         <Text content="Based on your history" size="16" color="#64748b" />
         <Element y="30">
           <Text content="1. Breaking Bad" size="20" color="#e2e8f0" />
