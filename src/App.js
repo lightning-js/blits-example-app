@@ -171,9 +171,6 @@ export default Blits.Application({
       })
 
       // Named routes panel events
-      this.$listen('hidePanel', () => {
-        this.panelX = 1920
-      })
       this.$listen('openPanel', () => {
         this.panelX = 1520
         this.$select('sidePanel').$focus()
