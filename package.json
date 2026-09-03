@@ -50,6 +50,7 @@
   "dependencies": {
     "@firebolt-js/sdk": "^1.4.1",
     "@lightningjs/blits": "file:../blits",
+    "animejs": "^4.5.0",
     "ftl": "file:../ftl"
   },
   "directories": {
