@@ -51,7 +51,14 @@ Blits.Plugin(theme, 'sizes', {
 // Use the Blits Language plugin
 Blits.Plugin(language)
 
+// Renderer engine selection: `?renderer=ftl` boots the new FTL renderer
+// (phase-1 core-only, see @lightningjs/blits src/engines/FTL/README-FTL.md),
+// anything else (or absent) uses the default Lightning 3 renderer.
+const rendererParams = new URLSearchParams(window.location.search)
+const rendererEngine = rendererParams.get('renderer') === 'ftl' ? 'ftl' : 'l3'
+
 Blits.Launch(App, 'app', {
+  renderer: rendererEngine,
   w: 1920,
   h: 1080,
   multithreaded: false,

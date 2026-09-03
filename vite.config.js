@@ -17,8 +17,15 @@
 
 import { defineConfig, mergeConfig, loadEnv } from 'vite'
 import blitsVitePlugins from '@lightningjs/blits/vite'
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
 
 import browserConfigs from './vite-configs/browsers'
+
+// Local FTL checkout (see README "Renderers" section). Blits declares `ftl`
+// as an optional peer dep, which makes Vite's dev server treat `ftl` imports
+// as external unless aliased — so map them explicitly to the local checkout.
+const ftlDir = fileURLToPath(new URL('../ftl/src', import.meta.url))
 
 export default defineConfig(({ command, mode, ssrBuild }) => {
   const env = loadEnv(mode, process.cwd(), ['npm_config_'])
@@ -28,6 +35,20 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
     plugins: [...blitsVitePlugins],
     resolve: {
       mainFields: ['browser', 'module', 'jsnext:main', 'jsnext'],
+      alias: [
+        // Package-export remaps (must come before the generic rule below)
+        {
+          find: /^ftl\/shaders$/,
+          replacement: path.join(ftlDir, 'renderer/webgl/shader/index.js'),
+        },
+        {
+          find: /^ftl\/shaders\/create$/,
+          replacement: path.join(ftlDir, 'renderer/webgl/shader.js'),
+        },
+        { find: /^ftl\/component$/, replacement: path.join(ftlDir, 'component/index.js') },
+        { find: /^ftl$/, replacement: path.join(ftlDir, 'index.js') },
+        { find: /^ftl\/(.+)$/, replacement: path.join(ftlDir, '$1.js') },
+      ],
     },
     server: {
       headers: {
