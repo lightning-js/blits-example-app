@@ -46,6 +46,7 @@ export default defineConfig(({ command, mode, ssrBuild }) => {
           replacement: path.join(ftlDir, 'renderer/webgl/shader.js'),
         },
         { find: /^ftl\/component$/, replacement: path.join(ftlDir, 'component/index.js') },
+        { find: /^ftl\/stage$/, replacement: path.join(ftlDir, 'stage/index.js') },
         { find: /^ftl$/, replacement: path.join(ftlDir, 'index.js') },
         { find: /^ftl\/(.+)$/, replacement: path.join(ftlDir, '$1.js') },
       ],
