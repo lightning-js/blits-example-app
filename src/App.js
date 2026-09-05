@@ -31,6 +31,8 @@ import FocusHandling from './pages/FocusHandling'
 import Positioning from './pages/Positioning'
 import Player from './pages/Player'
 import Colors from './pages/Colors'
+import Confetti from './pages/Confetti'
+import Animatable from './pages/Animatable'
 import Gradients from './pages/Gradients'
 import Transitions from './pages/Transitions'
 import Alpha from './pages/Alpha'
@@ -117,6 +119,8 @@ export default Blits.Application({
     { path: '/examples/colors', component: Colors },
     { path: '/examples/gradients', component: Gradients },
     { path: '/examples/transitions', component: Transitions },
+    { path: '/examples/animatable', component: Animatable },
+    { path: '/examples/confetti', component: Confetti },
     { path: '/examples/alpha', component: Alpha },
     { path: '/examples/scaling', component: Scaling },
     { path: '/examples/rotation', component: Rotation },

@@ -134,6 +134,16 @@ export default Blits.Component('Portal', {
           description: 'Comparing different transition easing functions',
         },
         {
+          title: 'Confetti',
+          id: 'examples/confetti',
+          description: 'Example of a confetti effect using particles',
+        },
+        {
+          title: 'Animatable',
+          id: 'examples/animatable',
+          description: 'Example of a component that can be animated',
+        },
+        {
           title: 'Components',
           id: 'examples/components',
           description: 'Reusable Components',
