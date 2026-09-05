@@ -42,7 +42,7 @@
     "lint-staged": "^12.3.3",
     "playwright": "^1.41.0",
     "prettier": "^2.5.1",
-    "shaka-player": "^4.7.1",
+    "shaka-player": "^5.2.8",
     "terser": "^5.43.1",
     "vite": "^6.3.5",
     "whatwg-fetch": "^3.6.20"
