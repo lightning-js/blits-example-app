@@ -49,6 +49,20 @@
   },
   "dependencies": {
     "@firebolt-js/sdk": "^1.4.1",
-    "@lightningjs/blits": "^2.0.0"
-  }
+    "@lightningjs/blits": "file:../blits",
+    "animejs": "^4.5.0",
+    "ftl": "file:../ftl"
+  },
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lightning-js/blits-example-app.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/lightning-js/blits-example-app/issues"
+  },
+  "homepage": "https://github.com/lightning-js/blits-example-app#readme"
 }

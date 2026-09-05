@@ -1,5 +1,27 @@
 # Blits L3 Example App
 
+## Renderers: L3 (default) and FTL (opt-in)
+
+This branch (`ftl-enabled`) wires the app to local checkouts of Blits and FTL:
+
+```jsonc
+// package.json
+{
+  "@lightningjs/blits": "file:../blits",
+  "ftl": "file:../ftl"
+}
+```
+
+Run `npm install`, then `npm run dev`:
+
+- Default Lightning 3 renderer: `http://localhost:5173/`
+- New FTL renderer (phase-1 core-only): `http://localhost:5173/?renderer=ftl`
+
+The toggle lives in `src/index.js` (`settings.renderer: 'l3' | 'ftl'`) and is
+purely runtime — one build serves both. FTL limitations (no
+transitions/shaders/MSDF yet, canvas-text fallback) are logged as console
+warnings; see `../blits/src/engines/FTL/README-FTL.md` for the full list.
+
 ## Getting started
 
 Clone this repository and run `npm install` in the project root.
