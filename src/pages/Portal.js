@@ -45,12 +45,12 @@ export default Blits.Component('Portal', {
         items="$benchmark"
         ref="row2"
       />
-      <Element w="1920" h="200" color="#44037a">
-        <Element w="1920" h="70" y="200" color="{top: '#44037a'}" />
-        <Element :y.transition="{value: 80 - $logoOffset, duration: 400}">
-          <Element src="assets/blits-logo-full.png" w="200" h="112" x="60" />
-          <Element w="2" h="120" y="-10" color="#ffffff80" x="300" />
-          <Element x="320" y="16">
+      <Element w="1920" h="200" color="#44037a" zIndex="1">
+        <Element w="1920" h="70" y="200" color="{top: '#44037a'}" zIndex="1" />
+        <Element :y.transition="{value: 80 - $logoOffset, duration: 400}" zIndex="1">
+          <Element src="assets/blits-logo-full.png" w="200" h="112" x="60" zIndex="1" />
+          <Element w="2" h="120" y="-10" color="#ffffff80" x="300" zIndex="1" />
+          <Element x="320" y="16" zIndex="1">
             <Text y="0" size="36">Example App</Text>
             <Text y="50" size="24">v{{ $version }}</Text>
           </Element>
