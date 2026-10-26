@@ -25,13 +25,17 @@ const Block = Blits.Component('MouseBlock', {
       w="280"
       h="120"
       rounded="12"
-      :color.transition="{ value: $isHovered || $$hasFocus ? $focusColor : $color, duration: 200 }"
-      :alpha.transition="{ value: $isHovered || $$hasFocus ? 1 : 0.5, duration: 200 }"
+      :color.transition="{ value: $$isHovered || $$hasFocus ? $focusColor : $color, duration: 200 }"
+      :alpha.transition="{ value: $$isHovered || $$hasFocus ? 1 : 0.5, duration: 200 }"
     >
       <Text x="140" y="60" mount="0.5" :content="'Clicks: ' + $clicks" size="28" color="#fff" />
     </Element>
   `,
-  props: ['color', 'focusColor', 'blockIndex'],
+  props: {
+    color: '',
+    focusColor: '',
+    blockIndex: 0,
+  },
   state() {
     return {
       clicks: 0,
@@ -57,7 +61,15 @@ export default Blits.Component('Mouse', {
   },
   template: `
     <Element w="1920" h="1080" color="#1e293b">
-      <Text x="960" y="120" mount="0.5" content="Mouse Hover and Focus Navigation Demo" font="raleway" size="36" color="#94a3b8" />
+      <Text
+        x="960"
+        y="120"
+        mount="0.5"
+        content="Mouse Hover and Focus Navigation Demo"
+        font="raleway"
+        size="36"
+        color="#94a3b8"
+      />
       <Element x="320" y="380" ref="row">
         <Block
           :for="(block, index) in $blocks"
@@ -68,7 +80,6 @@ export default Blits.Component('Mouse', {
           :ref="'block' + ($index + 1)"
           :blockIndex="$index + 1"
           :z="$focused === ($index + 1) ? 1 : 0"
-          key="$index"
         />
       </Element>
       <Element x="320" y="620" w="1280">
