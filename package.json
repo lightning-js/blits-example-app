@@ -49,7 +49,7 @@
   },
   "dependencies": {
     "@firebolt-js/sdk": "^1.4.1",
-    "@lightningjs/blits": "^2.0.0"
+    "@lightningjs/blits": "github:suresh-gangumalla/blits#omit-overlay-components"
   },
   "overrides": {
     "handlebars": "4.7.9"
